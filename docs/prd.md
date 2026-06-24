@@ -54,12 +54,16 @@ The application splits into two decoupled core experiences: the **Creator Studio
 
 ### **3.1. Creator Studio (Sender Experience)**
 
+* **Sender Dashboard:** A central hub where creators can view, manage, and track the status of all their created quests.
+* **Canvas-Style Design Engine:** A rich design experience featuring drag-and-drop interfaces and canvas-style design tools for building the puzzle flow and placing elements intuitively.
+* **Live Output Preview:** A real-time preview panel allowing the sender to interact with and test the quest exactly as the receiver will see it.
 * **Flow Manager:** A step-by-step configuration wizard allowing users to add, delete, or reorder steps. For the MVP, the gameplay progression is strictly **Linear** (Step N must evaluate to true before Step N+1 unlocks).  
 * **Theme Configurator:** An interface to assign the visual theme preset, select ambient audio, and toggle opening particle effects.  
 * **Per-Step Advanced Settings:** Senders can optionally configure three optional fields for each individual step:  
   * *Hint Text:* A contextual clue revealed only when the recipient clicks the hint/lightbulb icon.  
   * *Success Message:* A short toast or text block appearing immediately after a correct answer (e.g., "Correct\! You always remembered that date.").  
   * *Max Attempts:* An optional integer to cap how many times a recipient can guess before being locked out or penalized.
+* **Unique URL Generation:** Upon publishing, the studio generates a unique, secure URL for the creator to copy and send directly to the recipient.
 
 ### **3.2. MVP Puzzle Block Library**
 
@@ -73,6 +77,7 @@ Each puzzle block operates as an isolated, reusable frontend component accepting
 
 * **Zero-Friction Access:** Recipients **must not** be forced to download an application, register, or authenticate. Gaining access is strictly handled via the unique URL token.  
 * **State Persistence:** Current gameplay progress caches instantly to LocalStorage or SessionStorage. If the user accidentally closes the browser tab or gets interrupted by a phone call, re-opening the link returns them exactly to their furthest unlocked step.  
+* **Dedicated Output Page:** A focused interface exclusively tailored for the gift receiver to interact with the gamified puzzle elements without distraction.
 * **The Grand Finale (Reward Screen):** A dedicated, high-impact component that mounts only when the final puzzle condition is met. It supports modular layouts: an embedded streaming video link, an animated rich-text letter with a typewriter effect, or a digital voucher/gift card display with an instant copy-to-clipboard action.
 
 ### **3.4. Client-Side Data Security**
@@ -81,6 +86,10 @@ To prevent tech-savvy recipients from opening browser developer tools (Inspect E
 
 * Correct answers do not exist as plain text in the payload; they are stored as cryptographic hashes. The recipient's input is hashed on the fly and compared against the stored hash.  
 * The final reward payload (The Grand Finale) is completely omitted from the initial network payload and is only fetched from the server via a secure endpoint after verifying all step solutions are solved.
+
+### **3.5. Public Landing Page**
+
+A dedicated marketing and product introduction page designed to showcase the Puzzify platform's capabilities, highlight use cases (birthdays, corporate events, etc.), and drive new user registrations through clear calls-to-action.
 
 ## **4\. Monetization & Viral Loop**
 
@@ -108,6 +117,7 @@ Because Puzzify is an inherently shared utility, the product leverages built-in 
 
 ## **5\. Non-Functional Requirements**
 
+* **Backend & Database Infrastructure:** The server, database, and authentication layers will utilize **Firebase** to ensure rapid development, real-time database capabilities, and seamless integration with the frontend application.
 * **Performance & Core Web Vitals:** The player client application must be optimized for lightweight network delivery, achieving an initial load time of under 2 seconds even under throttled mobile network speeds.  
 * **Mobile-First Responsive Design:** Given that over 90% of recipients open their custom links natively within social media in-app browsers (e.g., Telegram, WhatsApp, Instagram), every puzzle component, interaction model, and form input field must be optimized perfectly for mobile viewports and touch targets.  
 * **Infrastructure Elasticity:** The backend API routing and storage layers must utilize elastic scaling setups capable of mitigating massive traffic spikes during global hallmark dates (e.g., Valentine's Day, New Year's Eve, major holidays).
