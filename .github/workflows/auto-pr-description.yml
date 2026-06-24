@@ -36,7 +36,7 @@ jobs:
           export HEAD_BRANCH
           
           python3 -c "
-          import os, json, urllib.request
+          import os, json, urllib.request, time
           
           commits = os.environ.get('COMMITS', '')
           diff = os.environ.get('DIFF', '')
@@ -85,18 +85,26 @@ jobs:
           
           req = urllib.request.Request(url, data=json.dumps(data).encode('utf-8'), headers={'Content-Type': 'application/json'})
           
-          try:
-              with urllib.request.urlopen(req) as response:
-                  result = json.loads(response.read().decode('utf-8'))
-                  text = result['candidates'][0]['content']['parts'][0]['text']
-                  with open('pr_body.md', 'w') as f:
-                      f.write(text.strip())
-                      f.write('\\n\\n---\\n*Generated automatically by Puzzify CI/CD Pipeline 🛠️*')
-          except Exception as e:
-              print(f'Error calling Gemini API: {e}')
-              if hasattr(e, 'read'):
-                  print(e.read().decode('utf-8'))
-              exit(1)
+          max_retries = 3
+          for attempt in range(max_retries):
+              try:
+                  with urllib.request.urlopen(req) as response:
+                      result = json.loads(response.read().decode('utf-8'))
+                      text = result['candidates'][0]['content']['parts'][0]['text']
+                      with open('pr_body.md', 'w') as f:
+                          f.write(text.strip())
+                          f.write('\\n\\n---\\n*Generated automatically by Puzzify CI/CD Pipeline 🛠️*')
+                  break
+              except Exception as e:
+                  print(f'Attempt {attempt + 1} failed: Error calling Gemini API: {e}')
+                  if hasattr(e, 'read'):
+                      print(e.read().decode('utf-8'))
+                  if attempt < max_retries - 1:
+                      print('Retrying in 5 seconds...')
+                      time.sleep(5)
+                  else:
+                      print('Max retries reached. Exiting.')
+                      exit(1)
           "
           
           gh pr edit ${{ github.event.pull_request.number }} --body-file pr_body.md
