@@ -21,7 +21,7 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-          GEMINI_MODEL: ${{ vars.GEMINI_MODEL }}
+          GEMINI_MODEL: gemini-2.5-flash-lite
         run: |
           TARGET_BRANCH="${{ github.event.pull_request.base.ref }}"
           HEAD_BRANCH="${{ github.event.pull_request.head.ref }}"
@@ -75,7 +75,10 @@ jobs:
               print('Error: GEMINI_API_KEY is not set')
               exit(1)
               
-          model = os.environ.get('GEMINI_MODEL') or 'gemini-1.5-flash'
+          model = os.environ.get('GEMINI_MODEL')
+          if not model:
+              print('Error: GEMINI_MODEL is not set')
+              exit(1)
           url = f'https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent?key={api_key}'
           
           data = {
@@ -100,8 +103,9 @@ jobs:
                   if hasattr(e, 'read'):
                       print(e.read().decode('utf-8'))
                   if attempt < max_retries - 1:
-                      print('Retrying in 5 seconds...')
-                      time.sleep(5)
+                      delay = 15 * (2 ** attempt)
+                      print(f'Retrying in {delay} seconds due to high demand...')
+                      time.sleep(delay)
                   else:
                       print('Max retries reached. Exiting.')
                       exit(1)
