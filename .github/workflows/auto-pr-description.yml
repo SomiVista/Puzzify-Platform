@@ -24,6 +24,7 @@ jobs:
           GEMINI_MODEL: ${{ vars.GEMINI_MODEL }}
         run: |
           TARGET_BRANCH="${{ github.event.pull_request.base.ref }}"
+          HEAD_BRANCH="${{ github.event.pull_request.head.ref }}"
           
           git fetch origin $TARGET_BRANCH
           
@@ -32,19 +33,33 @@ jobs:
           
           export COMMITS
           export DIFF
+          export HEAD_BRANCH
           
           python3 -c "
           import os, json, urllib.request
           
           commits = os.environ.get('COMMITS', '')
           diff = os.environ.get('DIFF', '')
+          branch = os.environ.get('HEAD_BRANCH', '')
           
-          prompt = f'''You are an expert software engineer. Write a professional and comprehensive Pull Request description based on the provided commit messages and code diff.
+          template_path = '.github/PULL_REQUEST_TEMPLATE.md'
+          template_content = ''
+          if os.path.exists(template_path):
+              with open(template_path, 'r') as f:
+                  template_content = f.read()
+
+          prompt = f'''You are an expert software engineer. Write a Pull Request description based on the provided commit messages and code diff.
           
-          Focus on:
-          1. What changed
-          2. Why it changed
-          3. A brief summary of the technical implementation
+          IMPORTANT INSTRUCTIONS:
+          1. Strictly follow the PR Template provided below. Do not output anything outside of this structure.
+          2. Fill in the appropriate sections with information about what changed, why it changed, and a technical summary.
+          3. If there is a ClickUp Task ID (usually an alphanumeric string like "86..." or starting with "CU-") found in the branch name or commit messages, please fill in the ClickUp Task link section. Format the link like this: `[ClickUp Task](https://app.clickup.com/t/<task_id>)`
+          
+          PR Template:
+          {template_content}
+
+          Branch Name:
+          {branch}
           
           Commit Messages:
           {commits}
@@ -52,7 +67,7 @@ jobs:
           Code Diff:
           {diff}
           
-          Output ONLY the markdown description without any preamble or extra conversational text.
+          Output ONLY the formatted markdown description without any preamble or extra conversational text.
           '''
           
           api_key = os.environ.get('GEMINI_API_KEY')
@@ -75,7 +90,6 @@ jobs:
                   result = json.loads(response.read().decode('utf-8'))
                   text = result['candidates'][0]['content']['parts'][0]['text']
                   with open('pr_body.md', 'w') as f:
-                      f.write('## 🚀 Automated Change Log (Gemini AI)\\n\\n')
                       f.write(text.strip())
                       f.write('\\n\\n---\\n*Generated automatically by Puzzify CI/CD Pipeline & Gemini AI 🤖✨*')
           except Exception as e:
