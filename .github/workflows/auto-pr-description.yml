@@ -1,0 +1,39 @@
+name: Auto PR Description
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+
+permissions:
+  pull-requests: write
+  contents: read
+
+jobs:
+  generate-description:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 
+
+      - name: Generate and Update PR Body
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          TARGET_BRANCH="${{ github.event.pull_request.base.ref }}"
+          
+          git fetch origin $TARGET_BRANCH
+          
+          COMMITS=$(git log origin/$TARGET_BRANCH..HEAD --oneline --pretty=format:"- %s")
+          
+          PR_BODY="## 🚀 Automated Change Log
+
+          This Pull Request automatically includes the following commits and changes:
+
+          $COMMITS
+
+          ---
+          *Generated automatically by Puzzify CI/CD Pipeline 🛠️*"
+          
+          gh pr edit ${{ github.event.pull_request.number }} --body "$PR_BODY"
