@@ -70,12 +70,12 @@ jobs:
           Output ONLY the formatted markdown description without any preamble or extra conversational text.
           '''
           
-          api_key = os.environ.get('GEMINI_API_KEY')
+          api_key = '${{ env.GEMINI_API_KEY }}'
           if not api_key:
               print('Error: GEMINI_API_KEY is not set')
               exit(1)
               
-          model = os.environ.get('GEMINI_MODEL')
+          model = '${{ env.GEMINI_MODEL }}'
           if not model:
               print('Error: GEMINI_MODEL is not set')
               exit(1)
