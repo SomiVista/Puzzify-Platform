@@ -91,7 +91,7 @@ jobs:
                   text = result['candidates'][0]['content']['parts'][0]['text']
                   with open('pr_body.md', 'w') as f:
                       f.write(text.strip())
-                      f.write('\\n\\n---\\n*Generated automatically by Puzzify CI/CD Pipeline & Gemini AI 🤖✨*')
+                      f.write('\\n\\n---\\n*Generated automatically by Puzzify CI/CD Pipeline 🛠️*')
           except Exception as e:
               print(f'Error calling Gemini API: {e}')
               if hasattr(e, 'read'):

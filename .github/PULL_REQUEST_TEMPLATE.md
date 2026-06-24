@@ -1,6 +1,5 @@
 ## 🎯 ClickUp Task
-<!-- If there's a ClickUp Task ID in the branch name or commits, the AI will place the link here -->
-[ClickUp Task](https://app.clickup.com/t/<task_id>)
+<!-- Replace this line with the ClickUp Task link, formatted as [ClickUp Task](https://app.clickup.com/t/<task_id>). If none found, write 'No ClickUp task ID found.' -->
 
 ## 📝 What changed
 <!-- A brief description of what this PR introduces -->
