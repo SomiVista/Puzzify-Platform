@@ -1,352 +1,229 @@
----
-name: Puzzify Default Design System
-description: The complete occasion-agnostic design system for the Puzzify platform.
----
-
 # Puzzify Design System
 
-### 1. Brand Identity & Personality
-
-- **Brand Personality Keywords:** Mysterious, Delightful, Playful, Premium, Warm.
-- **Tone of Voice:** Encouraging, theatrical, and clear. Successes are celebrated ("You unlocked it!"), errors are playful but guide the user ("Not quite! Try another angle."), and system messaging is crisp and frictionless.
-- **Logo Concept:** A wordmark combining an elegant, modern sans-serif with a subtle puzzle piece motif integrated into the negative space of the 'P'. The accompanying icon is an abstract, geometric lock mechanism that visually resembles a wrapped gift box.
+> A token-driven system for building gift-quest experiences. One component set;
+> the **theme** (a set of token values) is the product. Swap tokens → re-skin
+> everything. Flip one attribute → mirror everything for RTL.
 
 ---
 
-### 2. Color System
+## 1. Foundations
 
-The semantic design tokens are mapped to Light and Dark mode values. The Dark mode is the primary UX experience (moody, deep-space aesthetic), while the Light mode provides a clean, editorial alternative.
+### 1.1 Core idea — semantic over primitive
 
-| Semantic Token | Dark Mode Default | Light Mode |
-|---|---|---|
-| `--color-surface-base` | `#0B1020` | `#F7F8FC` |
-| `--color-surface-elevated` | `#121A31` | `#FFFFFF` |
-| `--color-surface-overlay` | `rgba(8,12,24,0.82)` | `rgba(255,255,255,0.88)` |
-| `--color-text-primary` | `#F5F7FF` | `#182033` |
-| `--color-text-secondary` | `#B8C1E6` | `#5E6886` |
-| `--color-text-disabled` | `#6B749A` | `#A0A8BE` |
-| `--color-text-on-accent` | `#08101F` | `#FFFFFF` |
-| `--color-accent-primary` | `#7C5CFF` | `#6D5EF7` |
-| `--color-accent-secondary` | `#21D4C3` | `#18B8A7` |
-| `--color-accent-glow` | `#A78BFA` | `#B9B3FF` |
-| `--color-border-default` | `#273253` | `#D9DFF0` |
-| `--color-border-focus` | `#8B7CFF` | `#6D5EF7` |
-| `--color-border-error` | `#FF6B8B` | `#E85D75` |
-| `--color-feedback-success` | `#4ADE80` | `#1EAE62` |
-| `--color-feedback-warning` | `#FBBF24` | `#D99A1A` |
-| `--color-feedback-error` | `#FF6B6B` | `#E85D75` |
-| `--color-feedback-info` | `#38BDF8` | `#2C8DEB` |
+Components **only ever read semantic token names** (`--pz-primary`, `--pz-surface`,
+`--pz-text`…). They never reference a raw hex value or a holiday. A *theme* is a JSON
+preset that assigns values to those names. The runtime flips one `data-theme`
+attribute and every component re-skins with zero component edits.
 
-#### Seasonal Theme Override Patches
-
-1. **Valentine's Day** (warm reds, rose pinks, candlelight golds)
-   - `--color-surface-base`: `#2B0A12`
-   - `--color-accent-primary`: `#FF4D6D`
-   - `--color-accent-secondary`: `#FFB3C6`
-   - `--color-accent-glow`: `#FF758F`
-
-2. **Mystery / Detective** (deep charcoal, cold blue, amber spotlight)
-   - `--color-surface-base`: `#1A1A1A`
-   - `--color-accent-primary`: `#F59E0B`
-   - `--color-accent-secondary`: `#3B82F6`
-   - `--color-accent-glow`: `#FBBF24`
-
-3. **Birthday / Celebration** (vivid confetti brights, electric violet)
-   - `--color-surface-base`: `#171032`
-   - `--color-accent-primary`: `#D946EF`
-   - `--color-accent-secondary`: `#06B6D4`
-   - `--color-accent-glow`: `#E879F9`
-
-**Accessibility:** All text/background token pairs (e.g., `--color-text-primary` on `--color-surface-base`) meet or exceed WCAG AA contrast ratios (minimum 4.5:1 for body text).
-
----
-
-### 3. Typography System
-
-- **Font Stack:** 
-  - **Latin:** `Inter` (Clean, highly legible on mobile, handles varied weights beautifully).
-  - **RTL (Persian/Arabic):** `Vazirmatn` (Excellent pairing with Inter, ensuring RTL parity).
-- **Type Scale** (Ratio 1.25, Base 16px):
-  - `--text-xs`: 0.75rem (12px), Line Height 1.5, Tracking 0.02em
-  - `--text-sm`: 0.875rem (14px), Line Height 1.5, Tracking 0.01em
-  - `--text-base`: 1rem (16px), Line Height 1.5, Tracking 0
-  - `--text-lg`: 1.25rem (20px), Line Height 1.4, Tracking -0.01em
-  - `--text-xl`: 1.56rem (25px), Line Height 1.3, Tracking -0.015em
-  - `--text-2xl`: 1.95rem (31px), Line Height 1.2, Tracking -0.02em
-  - `--text-3xl`: 2.44rem (39px), Line Height 1.2, Tracking -0.02em
-  - `--text-display`: 3.05rem (49px), Line Height 1.1, Tracking -0.025em
-
-- **Semantic Roles:**
-  - **Display Heading:** `h1`, `--text-display`, bold (Hero, finale screen).
-  - **Section Heading:** `h2`, `--text-2xl`, semibold (Step titles).
-  - **Body:** `p`, `--text-base`, regular (Reading text).
-  - **Caption / Label:** `--text-sm`, medium (Hints, timestamps).
-  - **Interactive Label:** `--text-base`, semibold (Button text).
-  - **Monospaced:** `JetBrains Mono` or similar system monospace, `--text-sm` (Voucher codes, IDs).
-
----
-
-### 4. Spacing & Layout System
-
-- **Base Unit:** 4px
-- **Scale:**
-  - `--space-1`: 0.25rem (4px)
-  - `--space-2`: 0.5rem (8px)
-  - `--space-3`: 0.75rem (12px)
-  - `--space-4`: 1rem (16px)
-  - `--space-6`: 1.5rem (24px)
-  - `--space-8`: 2rem (32px)
-  - `--space-12`: 3rem (48px)
-  - `--space-16`: 4rem (64px)
-  - `--space-20`: 5rem (80px)
-
-- **Component Density Variants:** 
-  - *Compact:* Studio sidepanels.
-  - *Comfortable:* Standard components, inputs.
-  - *Spacious:* Player puzzle cards to emphasize focus.
-
-- **Grid System:**
-  - **Mobile:** Single column, full-bleed with `--space-4` horizontal padding.
-  - **Tablet:** 2-column layout for studio.
-  - **Desktop:** 3-zone layout for Studio (Left Sidebar 300px / Center Canvas 1fr / Right Panel 300px); single-column centered for Player.
-- **Container Widths:** 
-  - Landing page sections: max `1200px`
-  - Player puzzle card: max `600px`
-
----
-
-### 5. Elevation & Depth System
-
-- `--elevation-0`: `none` (flat surface background)
-- `--elevation-1`: `0 2px 4px rgba(0,0,0,0.1)` (Cards, list items)
-- `--elevation-2`: `0 4px 8px rgba(0,0,0,0.12), 0 2px 4px rgba(0,0,0,0.08)` (Active cards, dropdowns)
-- `--elevation-3`: `0 12px 24px rgba(0,0,0,0.15), 0 4px 8px rgba(0,0,0,0.1)` (Modals, floating panels)
-- `--elevation-4`: `0 24px 48px rgba(0,0,0,0.2), 0 12px 24px rgba(0,0,0,0.1)` + `backdrop-filter: blur(8px)` (Grand Finale container)
-- `--glow-accent`: `0 0 16px var(--color-accent-glow)` (Success states, CTA buttons)
-
----
-
-### 6. Border & Shape System
-
-- **Border Radius Scale:**
-  - `--radius-sm`: 0.25rem (4px)
-  - `--radius-md`: 0.5rem (8px)
-  - `--radius-lg`: 1rem (16px)
-  - `--radius-xl`: 1.5rem (24px)
-  - `--radius-pill`: 9999px
-  - `--radius-circle`: 50%
-- **Border Widths:**
-  - `--border-thin`: 1px
-  - `--border-default`: 2px
-  - `--border-thick`: 4px
-- **Shape Language:** Elements are soft and prominently rounded (using `--radius-lg` and `--radius-md`). This friendly, pill-like geometric approach prevents the UI from feeling like strict corporate software, elevating the gamified and gift-giving nature.
-
----
-
-### 7. Motion & Animation System
-
-- **Timing Tokens:**
-  - `--duration-instant`: 0ms
-  - `--duration-fast`: 150ms (Micro-interactions)
-  - `--duration-normal`: 300ms (Standard transitions)
-  - `--duration-slow`: 600ms (Emphasis transitions)
-  - `--duration-cinematic`: 1200ms (Finale reveals)
-- **Easing Tokens:**
-  - `--ease-linear`: `linear`
-  - `--ease-out`: `cubic-bezier(0, 0, 0.2, 1)`
-  - `--ease-in-out`: `cubic-bezier(0.4, 0, 0.2, 1)`
-  - `--ease-spring`: `cubic-bezier(0.175, 0.885, 0.32, 1.275)`
-  - `--ease-bounce`: `cubic-bezier(0.68, -0.55, 0.265, 1.55)`
-
-- **Named Animation Patterns:**
-  1. **Step Unlock:** Element scales up to `1.05`, border flashes success, spring easing.
-  2. **Wrong Answer Shake:** 3 rapid horizontal translations (`-8px` to `8px`), fast duration.
-  3. **Step Transition:** Fade out and vertical slide (`20px`), normal duration.
-  4. **Grand Finale Entrance:** Slow slide up with scale up, cinematic duration.
-  5. **Particle Burst:** Confetti translation and rotation using keyframes.
-  6. **Typewriter Reveal:** Staggered opacity transitions per character.
-  7. **Hint Reveal:** Vertical height and opacity interpolation.
-  8. **Glitch / Suspense Pulse:** Subtle opacity and sub-pixel translations.
-
-- **Reduced Motion:** If `prefers-reduced-motion` is true, `--duration-fast` and spring/bounce easings collapse to `opacity` fades, and durations are halved or disabled.
-
----
-
-### 8. Iconography System
-
-- **Style:** Filled (for the Player, solid and tactile feel) and Outline (for the Studio, precision and clarity).
-- **Sizes:** Small (16px), Medium (24px), Large (32px), XL (48px). All wrapped in touch targets of min `44x44px`.
-- **Core Key Icons:** Hint (Lightbulb), Correct (Check), Incorrect (X), Lock, Unlock, Steps, Share, Copy, Theme, Sound, Progress, User, Reward, Settings.
-- **Animation:** The Lock icon scales into an Unlock icon on correct answers; sync/loading icons utilize infinite rotation.
-
----
-
-### 9. Component Library Specification
-
-**Foundations:**
-- **Button:** 
-  - *Variants:* Primary (`bg: accent-primary`), Secondary (`bg: surface-elevated`), Ghost, Icon-only.
-  - *States:* Hover scales to `1.02`, active to `0.98`.
-- **Input:** 
-  - *Default:* `surface-elevated` background, `border-default`. 
-  - *Focus:* `border-focus`, adds `--glow-accent`.
-- **Badge:** Uses `surface-elevated` or `accent-secondary` for statuses.
-- **Tooltip:** Hover-triggered helper text, `elevation-2`, `radius-sm`.
-- **Toast:** Auto-dismiss notifications, `elevation-3`, specific feedback background colors.
-
-**Creator Studio:**
-- **StepCard:** Draggable card (`elevation-1`), collapsible content.
-- **ThemeConfigurator:** Visual selector with `--border-focus` indicating the active swatch.
-- **PublishButton:** Transitions text to a spinner, then to a checkmark when complete.
-- **LivePreviewPanel:** `iframe` container styled with a phone-like border and `radius-xl`.
-
-**Player:**
-- **PuzzleCard:** The main interaction surface. `surface-elevated`, `radius-lg`, heavily padded (`--space-8`).
-- **AnswerInput:** Specialized text input, highly centered, large text.
-- **HintButton:** Distinct `text-accent-primary` coloring, triggers drop-down animation.
-- **MultipleChoiceOption:** Standard list options that highlight `--border-focus` on click.
-- **GrandFinaleScreen:** Utilizes `--elevation-4` and cinematic motion.
-
----
-
-### 10. Pattern Library
-
-1. **Linear Step Progression:** Current step is at 100% opacity, upcoming steps are blurred or `opacity: 0.5` with a lock icon.
-2. **Correct Answer Celebration:** Form validation -> feedback success color -> correct sound -> Step Unlock animation -> auto-scroll.
-3. **Wrong Answer Feedback:** Shake animation triggers -> text input clears -> optional "Try again" toast.
-4. **Theme Switching:** Selecting a theme injects CSS custom properties to `:root`, instantly cascading across all variables.
-5. **Grand Finale Sequence:** Final lock breaks -> cinematic pause -> particle burst -> main container elevates.
-6. **Loading States:** Uses skeleton screens with a subtle gradient sweep animation over `surface-elevated` blocks.
-
----
-
-### 11. Accessibility Framework
-
-- **Color Contrast:** The token architecture restricts foreground/background combinations to those meeting WCAG AA.
-- **Focus Management:** All interactive elements receive a `2px solid var(--color-border-focus)` outline with a `2px` offset.
-- **ARIA Live Regions:** All toasts, hint reveals, and incorrect answer feedbacks are wrapped in `aria-live="polite"` or `aria-live="assertive"`.
-- **Touch Targets:** The base spacing system forces buttons and inputs to be at least `44px` tall on mobile.
-
----
-
-### 12. Design Tokens — Export Format
-
-#### CSS Custom Properties
-
-```css
-:root {
-  /* Colors - Dark Mode Default */
-  --color-surface-base: #0B1020;
-  --color-surface-elevated: #121A31;
-  --color-surface-overlay: rgba(8, 12, 24, 0.82);
-  --color-text-primary: #F5F7FF;
-  --color-text-secondary: #B8C1E6;
-  --color-text-disabled: #6B749A;
-  --color-text-on-accent: #08101F;
-  --color-accent-primary: #7C5CFF;
-  --color-accent-secondary: #21D4C3;
-  --color-accent-glow: #A78BFA;
-  --color-border-default: #273253;
-  --color-border-focus: #8B7CFF;
-  --color-border-error: #FF6B8B;
-  --color-feedback-success: #4ADE80;
-  --color-feedback-warning: #FBBF24;
-  --color-feedback-error: #FF6B6B;
-  --color-feedback-info: #38BDF8;
-
-  /* Typography */
-  --font-family-latin: 'Inter', sans-serif;
-  --font-family-rtl: 'Vazirmatn', sans-serif;
-  --text-xs: 0.75rem;
-  --text-sm: 0.875rem;
-  --text-base: 1rem;
-  --text-lg: 1.25rem;
-  --text-xl: 1.56rem;
-  --text-2xl: 1.95rem;
-  --text-3xl: 2.44rem;
-  --text-display: 3.05rem;
-
-  /* Spacing */
-  --space-1: 0.25rem;
-  --space-2: 0.5rem;
-  --space-3: 0.75rem;
-  --space-4: 1rem;
-  --space-6: 1.5rem;
-  --space-8: 2rem;
-  --space-12: 3rem;
-  --space-16: 4rem;
-  --space-20: 5rem;
-
-  /* Borders */
-  --radius-sm: 0.25rem;
-  --radius-md: 0.5rem;
-  --radius-lg: 1rem;
-  --radius-xl: 1.5rem;
-  --radius-pill: 9999px;
-  --radius-circle: 50%;
-  --border-thin: 1px;
-  --border-default: 2px;
-  --border-thick: 4px;
-
-  /* Shadows / Elevation */
-  --elevation-0: none;
-  --elevation-1: 0 2px 4px rgba(0, 0, 0, 0.1);
-  --elevation-2: 0 4px 8px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.08);
-  --elevation-3: 0 12px 24px rgba(0, 0, 0, 0.15), 0 4px 8px rgba(0, 0, 0, 0.1);
-  --elevation-4: 0 24px 48px rgba(0, 0, 0, 0.2), 0 12px 24px rgba(0, 0, 0, 0.1);
-  --glow-accent: 0 0 16px var(--color-accent-glow);
-
-  /* Animation */
-  --duration-instant: 0ms;
-  --duration-fast: 150ms;
-  --duration-normal: 300ms;
-  --duration-slow: 600ms;
-  --duration-cinematic: 1200ms;
-  --ease-linear: linear;
-  --ease-out: cubic-bezier(0, 0, 0.2, 1);
-  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
-  --ease-spring: cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  --ease-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
-}
-
-[data-theme="light"] {
-  --color-surface-base: #F7F8FC;
-  --color-surface-elevated: #FFFFFF;
-  --color-surface-overlay: rgba(255, 255, 255, 0.88);
-  --color-text-primary: #182033;
-  --color-text-secondary: #5E6886;
-  --color-text-disabled: #A0A8BE;
-  --color-text-on-accent: #FFFFFF;
-  --color-accent-primary: #6D5EF7;
-  --color-accent-secondary: #18B8A7;
-  --color-accent-glow: #B9B3FF;
-  --color-border-default: #D9DFF0;
-  --color-border-focus: #6D5EF7;
-  --color-border-error: #E85D75;
-  --color-feedback-success: #1EAE62;
-  --color-feedback-warning: #D99A1A;
-  --color-feedback-error: #E85D75;
-  --color-feedback-info: #2C8DEB;
-}
+```
+Primitive values  ─►  Semantic tokens  ─►  Components
+   #D62E6C              --pz-primary         button, lock, dot…
+   (per theme)          (stable name)        (never see the hex)
 ```
 
-#### JSON Tokens (W3C DTCG Format)
+**Themeable axes:** `color` · `particles` · `ambient audio` · `box asset`
 
-```json
+### 1.2 Typography
+
+| Role | Family | Stack |
+|------|--------|-------|
+| Display | **Bricolage Grotesque** | `'Bricolage Grotesque', system-ui, sans-serif` |
+| UI / body | **IBM Plex Sans** | `'IBM Plex Sans', system-ui, sans-serif` |
+| Mono / code | **IBM Plex Mono** | `'IBM Plex Mono', ui-monospace, monospace` |
+| RTL (Persian) | **Vazirmatn** | `'Vazirmatn', system-ui, sans-serif` (overrides both display + UI under `.pz-lang-fa`) |
+
+Tokens: `--pz-font-display`, `--pz-font-ui`.
+
+**Type scale**
+
+| Step | Family | Size | Weight | Use |
+|------|--------|------|--------|-----|
+| display | display | 30–38px | 800 | Hero / finale title |
+| title | display | 20–22px | 700 | Card titles |
+| body | ui | 14px | 400 | Prompts, paragraphs |
+| caption | ui | 12px | 400 | Meta, watermark |
+
+### 1.3 Color tokens
+
+Stored as semantic names. Two shipped presets below share **every name** — only the values differ.
+
+| Token | Role | Birthday (default) | Mystery |
+|-------|------|-------------------|---------|
+| `--pz-bg` | Canvas | `#FFF6F1` | `#0E1118` |
+| `--pz-surface` | Cards | `#FFFFFF` | `#161B26` |
+| `--pz-surface-2` | Raised / chips | `#FFEEF3` | `#1E2531` |
+| `--pz-surface-3` | Tertiary fill | `#FFF9EC` | `#11202A` |
+| `--pz-text` | Text | `#2B2230` | `#ECEFF4` |
+| `--pz-muted` | Secondary text | `#7C6F79` | `#94A0B0` |
+| `--pz-border` | Borders | `#F2DBE4` | `#2A3340` |
+| `--pz-hairline` | Dividers | `#F6E7EC` | `#222B38` |
+| `--pz-primary` | Primary action | `#D62E6C` | `#E0A92E` |
+| `--pz-on-primary` | Text on primary | `#FFFFFF` | `#15110A` |
+| `--pz-secondary` | Accent action | `#1C9A92` | `#4FB0A5` |
+| `--pz-accent` | Highlight / hint | `#F4B740` | `#C7604F` |
+| `--pz-success` | Correct | `#1E9E6A` | `#56B47E` |
+| `--pz-error` | Incorrect | `#D64545` | `#E06A6A` |
+| `--pz-focus` | Focus border | `#D62E6C` | `#E0A92E` |
+| `--pz-ring` | Focus ring | `rgba(214,46,108,.26)` | `rgba(224,169,46,.30)` |
+| `--pz-glow` | Hint glow | `rgba(244,183,64,.55)` | `rgba(79,176,165,.5)` |
+
+> **Contrast:** every theme targets **WCAG AA**.
+
+### 1.4 Spacing scale
+
+`4 · 8 · 12 · 16 · 24 · 32 · 48`
+
+| Token | Value |
+|-------|-------|
+| `--pz-sp-1` | 4px |
+| `--pz-sp-2` | 8px |
+| `--pz-sp-3` | 12px |
+| `--pz-sp-4` | 16px |
+| `--pz-sp-5` | 24px |
+| `--pz-sp-6` | 32px |
+| `--pz-sp-7` | 48px |
+
+### 1.5 Radius
+
+| Token | Value |
+|-------|-------|
+| `--pz-r-sm` | 8px |
+| `--pz-r-md` | 14px |
+| `--pz-r-lg` | 20px |
+| `--pz-r-xl` | 30px |
+| `--pz-r-full` | 999px |
+
+### 1.6 Elevation
+
+| Token | Shadow | Use |
+|-------|--------|-----|
+| `--pz-e-1` | `0 1px 2px rgba(12,14,20,.06), 0 2px 6px rgba(12,14,20,.05)` | Buttons, chips, small cards |
+| `--pz-e-2` | `0 8px 22px rgba(12,14,20,.12)` | Raised cards, voucher |
+| `--pz-e-3` | `0 26px 70px rgba(8,9,14,.45)` | Phone frame, studio window |
+
+> Mystery theme deepens `--pz-e-1` / `--pz-e-2` for dark-surface legibility.
+
+### 1.7 Motion
+
+- Duration token: `--pz-dur: .32s` (320ms)
+- Easing token: `--pz-ease: cubic-bezier(.2, .8, .2, 1)`
+- CSS-only animations; **honors `prefers-reduced-motion`** (`.pz-anim` is disabled).
+
+| Keyframe | Purpose |
+|----------|---------|
+| `pzFall` | Birthday particles fall + spin |
+| `pzRise` | Mystery particles rise + scale |
+| `pzBars` | Ambient-audio equalizer bars |
+| `pzFloatBox` | Box asset idle float |
+| `pzPulse` | Focus / hotspot ring pulse |
+| `pzCaret` | Input caret blink |
+
+---
+
+## 2. Components
+
+All components are token-only and direction-agnostic (logical `start`/`end`).
+
+### 2.1 Puzzle block
+The core unit — one puzzle per screen. Variants by type:
+
+- **Password Lock** — kicker chip (puzzle type) → title → prompt → focused input
+  with blinking caret → hint button + attempts counter → primary submit.
+- **Trivia (MCQ)** — optional media placeholder → radio options; selected option
+  uses `--pz-success` border + filled radio.
+- **Image inspect / hotspot** — scene image with a pulsing `--pz-primary` ring
+  marking the tappable clue.
+
+**States:** Correct (`--pz-success`) · Incorrect (`--pz-error`) · Locked
+(muted, "solve previous") · Hint (`--pz-accent` + `--pz-glow`).
+
+### 2.2 Buttons
+
+| Variant | Fill | Text | Border |
+|---------|------|------|--------|
+| Primary | `--pz-primary` | `--pz-on-primary` | none |
+| Secondary | `--pz-surface-2` | `--pz-primary` | `--pz-border` |
+| Disabled | transparent | `--pz-muted` | `--pz-border`, `opacity:.6` |
+
+Padding `10–14px`, radius `--pz-r-md`, weight 700, `--pz-e-1`. Min hit target **44px**.
+
+### 2.3 Inputs
+Background `--pz-bg`, `1.5px` border. **Focus:** `--pz-focus` border + `0 0 0 4px var(--pz-ring)`. **Error:** `--pz-error` border + text. Text aligns `start` (RTL-safe).
+
+### 2.4 Step indicator
+Row of dots; active dot widens to `30px` and fills `--pz-primary`, completed dots fill, upcoming dots are `--pz-border`. Animated width transition.
+
+### 2.5 Toggle / switch
+46×27 (or 44×26) pill track. On = `--pz-primary` + knob to end; Off = `--pz-border` + knob to start. White knob with `--pz-e-1`.
+
+### 2.6 Toast
+`--pz-text` background, `--pz-bg` text, `--pz-success` status dot. Radius `--pz-r-md`.
+
+### 2.7 Box stage (swappable asset)
+One framed 128px tile; the artwork is **token-selected** (`box.asset`). Shipped assets: **gift** (Birthday default), **safe** (Mystery default), **envelope**. Idle `pzFloatBox` + `pzPulse` ring.
+
+### 2.8 Voucher / reward
+Surface card: label + small gift icon → title → description → dashed-border code row (mono) with copy button (turns `--pz-success` "Copied!").
+
+### 2.9 Particle field
+Decorative overlay of 14–16 token-colored shapes. Birthday falls (`pzFall`), Mystery rises (`pzRise`). Toggleable; off by default respects reduced-motion.
+
+---
+
+## 3. Surfaces / patterns
+
+- **Player (mobile)** — 312×646 phone frame, single puzzle per step, thumb-first,
+  ambient-audio control, watermark. Two key screens: *puzzle step* and *grand finale*.
+- **Creator Studio (desktop)** — windowed builder: left quest rail → center
+  linear flow builder (draggable step cards on a dotted canvas) → right live
+  preview + theme configurator (preset picker, particle / audio toggles).
+
+---
+
+## 4. Internationalization (RTL)
+
+RTL is **automatic**. Every component uses logical properties
+(`inset-inline-start/end`, `margin-inline-*`, `text-align:start`), so a Persian
+locale mirrors layout, alignment, and box animations with **zero new CSS**.
+
+- Switch sets `dir="rtl"` and adds `.pz-lang-fa`, which swaps both font tokens to **Vazirmatn**.
+- Chrome / control bar stays `dir="ltr"` (neutral shell).
+
+---
+
+## 5. Theming — add an occasion
+
+A theme is a JSON preset of token values. No component edits. The runtime flips
+one `data-theme` attribute and every component re-skins.
+
+```jsonc
+// themes/spooky.json
 {
-  "color": {
-    "surface": {
-      "base": { "$value": "#0B1020", "$type": "color" },
-      "elevated": { "$value": "#121A31", "$type": "color" }
-    },
-    "text": {
-      "primary": { "$value": "#F5F7FF", "$type": "color" },
-      "secondary": { "$value": "#B8C1E6", "$type": "color" }
-    },
-    "accent": {
-      "primary": { "$value": "#7C5CFF", "$type": "color" },
-      "secondary": { "$value": "#21D4C3", "$type": "color" }
-    }
-  }
+  "id": "spooky",
+  "color.primary": "#7C5CFF",
+  "color.bg": "#120E1F",
+  "box.asset": "cauldron",
+  "particles": "embers",
+  "audio": "low-hum"
 }
 ```
+
+Shipped: **Birthday** (pastel-bright, default) · **Mystery** (dark detective).
+Roadmap presets: **Spooky**, **Corporate**.
+
+---
+
+## 6. Design principles
+
+1. **The theme is the product.** Every pixel reads a token — never a hardcoded holiday.
+2. **Tension, then relief.** Motion earns the unlock; celebration is the payoff, not the noise.
+3. **Thumb-first.** The recipient is one-handed inside a chat app — reachable, ≥44px, safe-area aware.
+4. **Two seconds or it's gone.** CSS-driven motion, zero heavy decoration on the Player.
+5. **One step, one job.** A single puzzle on screen; clarity beats density.
+6. **Mirror, don't flip.** Logical start/end so Persian RTL feels native.
+7. **Delight everyone.** AA contrast in every theme; motion you can switch off.
+
+---
+
+*Source of truth: `Puzzify System.dc.html` — the live, themeable showcase. Toggle
+its controls to see every token, component, and screen re-skin and mirror.*
