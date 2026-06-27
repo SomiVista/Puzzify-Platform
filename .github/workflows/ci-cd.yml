@@ -66,7 +66,13 @@ jobs:
         run: |
           NEW=$(node -p "require('./package.json').version")
           git fetch origin "${{ github.base_ref }}" --depth=1
-          OLD=$(git show "origin/${{ github.base_ref }}:package.json" \
+          # On the first PR that introduces package.json, there is nothing to
+          # compare against on the base branch — skip the gate in that case.
+          if ! OLD_JSON=$(git show "origin/${{ github.base_ref }}:package.json" 2>/dev/null); then
+            echo "package.json does not exist on ${{ github.base_ref }} yet — skipping version comparison."
+            exit 0
+          fi
+          OLD=$(printf '%s' "$OLD_JSON" \
             | node -pe "JSON.parse(require('fs').readFileSync('/dev/stdin','utf8')).version")
           echo "Base version: $OLD | PR version: $NEW"
           if [ "$NEW" = "$OLD" ]; then
