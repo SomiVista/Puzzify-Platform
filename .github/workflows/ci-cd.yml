@@ -1,0 +1,112 @@
+name: CI/CD
+
+# Runs the full pipeline on every PR to main (validation only) and on every
+# merge/push to main (validation + deploy to Firebase Hosting).
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+# Cancel superseded runs on the same ref to save CI minutes.
+concurrency:
+  group: ci-cd-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  # ---------------------------------------------------------------------------
+  # 1. Validate: lint -> unit tests -> E2E -> build. Runs for PRs and pushes.
+  # ---------------------------------------------------------------------------
+  validate:
+    name: Lint, Test & Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint --if-present
+
+      - name: Run unit tests
+        run: npm run test
+
+      - name: Run E2E tests
+        run: npm run test:e2e
+
+      - name: Build project
+        run: npm run build
+
+  # ---------------------------------------------------------------------------
+  # 2. Version check: on PRs, fail unless package.json version was bumped above
+  #    the version currently on the base branch (semver greater-than).
+  # ---------------------------------------------------------------------------
+  version-check:
+    name: Version bump check
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Ensure package.json version was bumped
+        run: |
+          NEW=$(node -p "require('./package.json').version")
+          git fetch origin "${{ github.base_ref }}" --depth=1
+          OLD=$(git show "origin/${{ github.base_ref }}:package.json" \
+            | node -pe "JSON.parse(require('fs').readFileSync('/dev/stdin','utf8')).version")
+          echo "Base version: $OLD | PR version: $NEW"
+          if [ "$NEW" = "$OLD" ]; then
+            echo "::error::package.json version ($NEW) is unchanged. Bump the semver before merging to main."
+            exit 1
+          fi
+          if [ -z "$(npx --yes semver -r \">$OLD\" \"$NEW\")" ]; then
+            echo "::error::package.json version ($NEW) is not greater than base ($OLD)."
+            exit 1
+          fi
+          echo "Version bump OK: $OLD -> $NEW"
+
+  # ---------------------------------------------------------------------------
+  # 3. Deploy: only on merge/push to main, after validation passes.
+  # ---------------------------------------------------------------------------
+  deploy:
+    name: Deploy to Firebase Hosting
+    needs: validate
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build project
+        run: npm run build
+
+      - name: Deploy to Firebase Hosting (live)
+        uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: '${{ secrets.GITHUB_TOKEN }}'
+          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_PUZZIFY_PLATFORM }}'
+          channelId: live
+          projectId: puzzify-platform
