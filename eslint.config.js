@@ -7,6 +7,7 @@ export default [
   {
     ignores: [
       'dist/**',
+      '.vite/**', // Vite dependency pre-bundling cache (generated, not source)
       'node_modules/**',
       'old-version/**',
       'src/assets/**', // vendored/minified font + helper assets, not source

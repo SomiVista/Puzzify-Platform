@@ -86,6 +86,9 @@ out
 .nuxt
 dist
 
+# Vite dependency pre-bundling cache (generated)
+.vite/
+
 # Gatsby files
 .cache/
 # Comment in the public line in if your build script does not copy public files to your public directory
