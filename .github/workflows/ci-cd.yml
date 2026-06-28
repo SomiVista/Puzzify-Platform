@@ -43,11 +43,22 @@ jobs:
       - name: Run unit tests
         run: npm run test
 
+      - name: Build project
+        run: npm run build
+
+      - name: Install Playwright browser
+        run: npx playwright install --with-deps chromium
+
       - name: Run E2E tests
         run: npm run test:e2e
 
-      - name: Build project
-        run: npm run build
+      - name: Upload Playwright report
+        if: ${{ !cancelled() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 7
 
   # ---------------------------------------------------------------------------
   # 2. Version check: on PRs, fail unless package.json version was bumped above
@@ -80,7 +91,9 @@ jobs:
             echo "::error::package.json version ($NEW) is unchanged. Bump the semver before merging to main."
             exit 1
           fi
-          if [ -z "$(npx --yes semver -r \">$OLD\" \"$NEW\")" ]; then
+          # New version must sort highest under version ordering (semver-aware).
+          HIGHEST=$(printf '%s\n%s\n' "$OLD" "$NEW" | sort -V | tail -1)
+          if [ "$HIGHEST" != "$NEW" ]; then
             echo "::error::package.json version ($NEW) is not greater than base ($OLD)."
             exit 1
           fi
