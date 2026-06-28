@@ -3,7 +3,7 @@ import { ref, computed } from 'vue'
 
 const content = {
   en: {
-    navHow:'How it works', navUses:'Use cases', navPricing:'Pricing', navCta:'Create free',
+    navHow:'How it works', navUses:'Use cases', navPartners:'Partners', navPricing:'Pricing', navCta:'Create free',
     themeBirthday:'Birthday', themeMystery:'Mystery',
     heroKicker:'You just played one. Now make one.',
     heroHeadline:'Turn any gift into a mini-escape room.',
@@ -50,6 +50,18 @@ const content = {
       { name:'Corporate', price:'Custom', period:'billed annually', tagline:'For teams, events & launches', cta:'Talk to us',
         features:['Team dashboard & seats','White-label & custom domains','Analytics & play tracking','Priority support'] },
     ],
+    partnerBlock: {
+      kicker: 'Now collaborating',
+      title: 'Puzzify × WelloWork — play your way to a stronger team.',
+      desc: 'We’ve teamed up with WelloWork, the Swedish workplace-performance platform, to bring Puzzify quests inside the tools companies already use. Employers turn onboarding, training, and team-building into games employees actually want to play.',
+      cta: 'Explore the partnership',
+      link: 'https://www.wellowork.net/',
+      features: [
+        { t: 'Team-building games', d: 'Co-built quests that turn cognitive training and culture moments into a shared challenge.' },
+        { t: 'Onboarding at scale', d: 'Roll out branded welcome quests to every new hire from a single dashboard.' },
+        { t: 'Built for employers', d: 'Plugs into WelloWork’s manager view, so engagement is something you can actually see.' }
+      ]
+    },
     finalKicker:'Your turn', finalLine:'Want to surprise someone else?', finalSub:'Create your first quest free — they will be asking how you did it.',
     finalCta:'Create your first quest — free',
     footTagline:'Turn any gift into a mini-escape room.',
@@ -61,7 +73,7 @@ const content = {
     footLang:'Language', footLegal:'© 2026 Puzzify · Made for delightful surprises',
   },
   fa: {
-    navHow:'چطور کار می‌کند', navUses:'کاربردها', navPricing:'قیمت‌ها', navCta:'ساخت رایگان',
+    navHow:'چطور کار می‌کند', navUses:'کاربردها', navPartners:'همکاران', navPricing:'قیمت‌ها', navCta:'ساخت رایگان',
     themeBirthday:'تولد', themeMystery:'رمزآلود',
     heroKicker:'تو یکی‌اش را بازی کردی. حالا یکی بساز.',
     heroHeadline:'هر هدیه را به یک اتاق فرار کوچک تبدیل کن.',
@@ -108,6 +120,18 @@ const content = {
       { name:'سازمانی', price:'سفارشی', period:'صورتحساب سالانه', tagline:'برای تیم‌ها، رویدادها و رونمایی‌ها', cta:'با ما صحبت کن',
         features:['داشبورد و صندلی تیمی','وایت‌لیبل و دامنهٔ اختصاصی','تحلیل و رهگیری بازی','پشتیبانی ویژه'] },
     ],
+    partnerBlock: {
+      kicker: 'همکاری جدید',
+      title: 'پازلیفای × WelloWork — بازی کنید تا تیم قوی‌تری بسازید.',
+      desc: 'ما با WelloWork، پلتفرم سوئدی عملکرد محیط کار، همکاری کرده‌ایم تا کوئست‌های پازلیفای را به ابزارهایی که شرکت‌ها در حال حاضر استفاده می‌کنند بیاوریم. کارفرمایان می‌توانند آنبوردینگ، آموزش و تیم‌سازی را به بازی‌هایی تبدیل کنند که کارمندان واقعاً می‌خواهند بازی کنند.',
+      cta: 'آشنایی با این همکاری',
+      link: 'https://www.wellowork.net/',
+      features: [
+        { t: 'بازی‌های تیم‌سازی', d: 'کوئست‌های مشترکی که آموزش شناختی و لحظات فرهنگی را به یک چالش مشترک تبدیل می‌کنند.' },
+        { t: 'آنبوردینگ در مقیاس بالا', d: 'کوئست‌های خوش‌آمدگویی برندشده را برای هر استخدام جدید از یک داشبورد مشترک ارائه دهید.' },
+        { t: 'ساخته شده برای کارفرمایان', d: 'متصل به نمای مدیر WelloWork، بنابراین تعامل چیزی است که واقعاً می‌توانید ببینید.' }
+      ]
+    },
     finalKicker:'نوبت توست', finalLine:'می‌خواهی کس دیگری را غافلگیر کنی؟', finalSub:'اولین کوئستت را رایگان بساز — بعد می‌پرسند چطور انجامش دادی.',
     finalCta:'اولین کوئستت را بساز — رایگان',
     footTagline:'هر هدیه را به یک اتاق فرار کوچک تبدیل کن.',

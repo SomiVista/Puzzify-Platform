@@ -32,4 +32,14 @@ test.describe('Public landing page', () => {
       page.getByRole('heading', { name: 'هر هدیه را به یک اتاق فرار کوچک تبدیل کن.' })
     ).toBeVisible()
   })
+
+  test('shows the Partners section with Wellowork', async ({ page }) => {
+    await page.goto('/')
+    await expect(
+      page.getByRole('heading', { name: 'Puzzify × WelloWork — play your way to a stronger team.' })
+    ).toBeVisible()
+    const partnerLink = page.getByRole('link', { name: /Explore the partnership/i })
+    await expect(partnerLink).toBeVisible()
+    await expect(partnerLink).toHaveAttribute('href', 'https://www.wellowork.net/')
+  })
 })
