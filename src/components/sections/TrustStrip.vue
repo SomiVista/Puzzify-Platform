@@ -3,10 +3,6 @@
  * @file TrustStrip.vue
  * @description Trust markers and statistics.
  */
-import { storeToRefs } from 'pinia'
-import { useAppStore } from '../../stores/useAppStore'
-
-const store = useAppStore()
 </script>
 
 <template>

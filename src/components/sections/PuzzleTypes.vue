@@ -4,11 +4,8 @@
  * @description Showcase of available puzzle types with interactive mocks.
  */
 import { computed } from 'vue'
-import { storeToRefs } from 'pinia'
-import { useAppStore } from '../../stores/useAppStore'
 import { useI18n } from 'vue-i18n'
 
-const store = useAppStore()
 const { tm } = useI18n()
 const pt = computed(() => tm('pt').map((p,i) => ({ 
   tag:p.tag, title:p.title, desc:p.desc, premium:p.premium||'', isPremium:!!p.premium, kind:i,

@@ -8,7 +8,7 @@ import { storeToRefs } from 'pinia'
 import { useAppStore } from '../../stores/useAppStore'
 
 const store = useAppStore()
-const { t, isMystery, particlesOn } = storeToRefs(store)
+const { isMystery, particlesOn } = storeToRefs(store)
 
 const stepDots = computed(() => [0,1,2,3].map(i => {
   const active = i === 1, done = i < 1

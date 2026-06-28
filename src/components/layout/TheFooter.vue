@@ -10,7 +10,7 @@ import { useI18n } from 'vue-i18n'
 
 const store = useAppStore()
 const { tm } = useI18n()
-const { t, isFa } = storeToRefs(store)
+const { isFa } = storeToRefs(store)
 const { setLang } = store
 
 const footCols = computed(() => tm('footCols').map(c => ({ h:c.h, links:c.links })))

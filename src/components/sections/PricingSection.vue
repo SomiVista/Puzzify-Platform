@@ -4,11 +4,8 @@
  * @description Subscription and single purchase tiers.
  */
 import { computed } from 'vue'
-import { storeToRefs } from 'pinia'
-import { useAppStore } from '../../stores/useAppStore'
 import { useI18n } from 'vue-i18n'
 
-const store = useAppStore()
 const { tm } = useI18n()
 const tierCard = 'display:flex; flex-direction:column; background:var(--pz-surface); border:1px solid var(--pz-border); border-radius:var(--pz-r-xl); padding:28px; box-shadow:var(--pz-e-1);'
 const tierCardRec = 'display:flex; flex-direction:column; background:var(--pz-surface); border:2px solid var(--pz-primary); border-radius:var(--pz-r-xl); padding:28px; box-shadow:var(--pz-e-2); position:relative;'

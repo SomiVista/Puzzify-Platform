@@ -3,10 +3,7 @@
  * @file FinalCta.vue
  * @description Final call to action section.
  */
-import { storeToRefs } from 'pinia'
-import { useAppStore } from '../../stores/useAppStore'
 
-const store = useAppStore()
 </script>
 
 <template>

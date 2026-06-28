@@ -4,11 +4,8 @@
  * @description Value propositions block.
  */
 import { computed } from 'vue'
-import { storeToRefs } from 'pinia'
-import { useAppStore } from '../../stores/useAppStore'
 import { useI18n } from 'vue-i18n'
 
-const store = useAppStore()
 const { tm } = useI18n()
 const why = computed(() => tm('why').map(w => ({ t:w.t, d:w.d })))
 </script>

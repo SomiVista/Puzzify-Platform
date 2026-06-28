@@ -4,11 +4,8 @@
  * @description Tag list of use cases.
  */
 import { computed } from 'vue'
-import { storeToRefs } from 'pinia'
-import { useAppStore } from '../../stores/useAppStore'
 import { useI18n } from 'vue-i18n'
 
-const store = useAppStore()
 const { tm } = useI18n()
 const ucAccents = ['var(--pz-primary)','var(--pz-secondary)','var(--pz-accent)','var(--pz-secondary)','var(--pz-primary)','var(--pz-accent)']
 const uc = computed(() => tm('uc').map((u,i) => ({ label:u, dot:ucAccents[i % ucAccents.length] })))

@@ -4,7 +4,6 @@
  * @description Partners and collaborators section.
  */
 import { computed } from 'vue'
-import { storeToRefs } from 'pinia'
 import { useAppStore } from '../../stores/useAppStore'
 import { useI18n } from 'vue-i18n'
 
