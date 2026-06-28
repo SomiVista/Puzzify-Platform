@@ -32,6 +32,7 @@ const langButton = computed(() => lang.value === 'fa' ? 'فارسی → EN' : 'E
       <nav style="display:flex; align-items:center; gap:clamp(10px,2vw,22px); flex-wrap:wrap;">
         <a href="#how" style="font-size:13.5px; font-weight:600; color:var(--pz-muted); text-decoration:none;">{{ t.navHow }}</a>
         <a href="#uses" style="font-size:13.5px; font-weight:600; color:var(--pz-muted); text-decoration:none;">{{ t.navUses }}</a>
+        <a href="#partners" style="font-size:13.5px; font-weight:600; color:var(--pz-muted); text-decoration:none;">{{ t.navPartners }}</a>
         <a href="#pricing" style="font-size:13.5px; font-weight:600; color:var(--pz-muted); text-decoration:none;">{{ t.navPricing }}</a>
       </nav>
       <div style="display:flex; padding:3px; background:var(--pz-surface-2); border:1px solid var(--pz-border); border-radius:var(--pz-r-full); gap:2px;">

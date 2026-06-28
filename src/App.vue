@@ -13,6 +13,7 @@ import HowItWorks from './components/sections/HowItWorks.vue'
 import PuzzleTypes from './components/sections/PuzzleTypes.vue'
 import UseCases from './components/sections/UseCases.vue'
 import WhyPuzzify from './components/sections/WhyPuzzify.vue'
+import PartnersSection from './components/sections/PartnersSection.vue'
 import PricingSection from './components/sections/PricingSection.vue'
 import FinalCta from './components/sections/FinalCta.vue'
 import TheFooter from './components/layout/TheFooter.vue'
@@ -34,6 +35,7 @@ const { isFa, isMystery, dir } = storeToRefs(store)
     <PuzzleTypes />
     <UseCases />
     <WhyPuzzify />
+    <PartnersSection />
     <PricingSection />
     <FinalCta />
     <TheFooter />
