@@ -6,11 +6,12 @@
 import { computed } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useAppStore } from '../../stores/useAppStore'
+import { useI18n } from 'vue-i18n'
 
 const store = useAppStore()
-const { t } = storeToRefs(store)
+const { tm } = useI18n()
 
-const pb = computed(() => t.value.partnerBlock)
+const pb = computed(() => tm('partnerBlock'))
 </script>
 
 <template>

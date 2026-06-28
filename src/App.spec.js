@@ -1,6 +1,7 @@
 import { describe, it, expect, beforeEach } from 'vitest'
 import { mount } from '@vue/test-utils'
 import { createPinia, setActivePinia } from 'pinia'
+import i18n from './i18n'
 import App from './App.vue'
 
 describe('App.vue', () => {
@@ -12,7 +13,7 @@ describe('App.vue', () => {
     setActivePinia(pinia)
     wrapper = mount(App, {
       global: {
-        plugins: [pinia]
+        plugins: [pinia, i18n]
       }
     })
   })
@@ -37,12 +38,19 @@ describe('App.vue', () => {
   })
 
   it('toggles language to persian', async () => {
+    // Find the language dropdown button and open it
     const buttons = wrapper.findAll('button')
-    // The lang toggle button has text "EN → فارسی" by default
-    const langBtn = buttons.find(b => b.text().includes('فارسی'))
-    expect(langBtn.exists()).toBe(true)
+    const dropdownBtn = buttons.find(b => b.text().includes('English'))
+    expect(dropdownBtn.exists()).toBe(true)
     
-    await langBtn.trigger('click')
+    await dropdownBtn.trigger('click')
+    
+    // Find the persian option in the dropdown and click it
+    const dropdownOptions = wrapper.findAll('button')
+    const persianOption = dropdownOptions.find(b => b.text().includes('فارسی'))
+    expect(persianOption.exists()).toBe(true)
+
+    await persianOption.trigger('click')
     
     expect(wrapper.classes()).toContain('pz-lang-fa')
     expect(wrapper.text()).toContain('هر هدیه را به یک اتاق فرار کوچک تبدیل کن.')

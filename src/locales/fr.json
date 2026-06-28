@@ -1,0 +1,201 @@
+{
+  "navHow": "Comment ça marche",
+  "navUses": "Cas d'utilisation",
+  "navPartners": "Partenaires",
+  "navPricing": "Tarifs",
+  "navCta": "Créer gratuitement",
+  "themeBirthday": "Célébration",
+  "themeMystery": "Mystère",
+  "heroKicker": "Vous venez d'en jouer un. Créez-en un maintenant.",
+  "heroHeadline": "Transformez n'importe quel cadeau en un mini escape room.",
+  "heroSub": "Puzzify transforme un cadeau numérique, un message ou une annonce en une quête en ligne personnalisée. Vous construisez le mystère — ils jouent pour débloquer leur récompense. Pas d'application, pas de connexion.",
+  "heroCta1": "Créez votre première quête — gratuit",
+  "heroCta2": "Voir une démo en direct",
+  "playerKicker": "Quête · Une Année Ensemble",
+  "puzzleType": "Verrou à Mot de Passe",
+  "playerTitle": "Le Premier Indice",
+  "playerPrompt": "Où avons-nous partagé notre premier café ? Un seul mot.",
+  "inputPlaceholder": "Tapez votre réponse",
+  "submit": "Déverrouiller",
+  "watermark": "Créé avec Puzzify",
+  "trustLine": "Prenez cinq minutes. Offrez quelque chose d'inoubliable.",
+  "trustStats": [
+    "Plus de 120k quêtes jouées",
+    "Pas d'application · pas de connexion",
+    "S'ouvre dans n'importe quelle app de chat"
+  ],
+  "howKicker": "Comment ça marche",
+  "howTitle": "Trois étapes pour une surprise",
+  "howSub": "D'une toile vierge à un lien qu'ils ont hâte d'ouvrir — le temps d'emballer un cadeau.",
+  "how": [
+    {
+      "t": "Construisez une quête",
+      "d": "Empilez des énigmes dans le Studio Créateur. Choisissez un thème, ajoutez vos indices et la récompense à la fin."
+    },
+    {
+      "t": "Envoyez un lien",
+      "d": "Partagez un simple lien sur WhatsApp, Telegram, Instagram — ou imprimez-le sur une carte."
+    },
+    {
+      "t": "Ils jouent et débloquent",
+      "d": "Pas de téléchargement. Ils résolvent chaque indice et regardent la boîte s'ouvrir sur leur récompense."
+    }
+  ],
+  "howStepLabel": "Étape",
+  "ptKicker": "Types d'énigmes",
+  "ptTitle": "Des énigmes qui semblent personnelles",
+  "ptSub": "Mélangez et associez les modules pour chaque étape. Chacun lit les mêmes jetons de thème.",
+  "pt": [
+    {
+      "tag": "Verrou à Mot de Passe",
+      "title": "Demandez quelque chose qu'eux seuls savent",
+      "desc": "Un mot, une date, une blague privée — tapez-le correctement et la prochaine étape s'ouvre."
+    },
+    {
+      "tag": "Trivia",
+      "title": "Choix multiple avec médias",
+      "desc": "Posez une question avec une photo, un audio ou un indice vidéo. La bonne réponse s'allume en vert."
+    },
+    {
+      "tag": "Point d'Accès Image",
+      "title": "Cachez un indice dans une scène",
+      "desc": "Placez un point d'accès clignotant sur n'importe quelle photo. Ils tapent pour trouver ce que vous avez caché.",
+      "premium": "Premium"
+    }
+  ],
+  "ucKicker": "Cas d'utilisation",
+  "ucTitle": "Un moteur, chaque occasion",
+  "ucSub": "Remodèlez les mêmes composants — aucune fête n'est codée en dur. Changez de thème et toute la quête change d'ambiance.",
+  "uc": [
+    "Anniversaires",
+    "Fêtes de couple",
+    "Blagues privées",
+    "Intégration en entreprise",
+    "Révélations de produits",
+    "Demandes en mariage"
+  ],
+  "whyKicker": "Pourquoi Puzzify",
+  "whyTitle": "La livraison est le cadeau",
+  "whySub": "Une surprise qu'ils débloquent vaut mieux qu'un lien qu'ils ignorent. Conçu pour convertir le moment de joie en une nouvelle quête.",
+  "why": [
+    {
+      "t": "Livraison inoubliable",
+      "d": "Le voyage vers la récompense est le cadeau. Les gens font des captures d'écran de la finale, pas de la carte cadeau."
+    },
+    {
+      "t": "Zéro friction pour recevoir",
+      "d": "Pas d'application, pas de connexion, pas d'inscription pour les destinataires. Ils tapent sur un lien et commencent à jouer."
+    },
+    {
+      "t": "Fonctionne là où ils sont déjà",
+      "d": "S'exécute dans les navigateurs intégrés de WhatsApp, Telegram et Instagram sur n'importe quel téléphone."
+    },
+    {
+      "t": "Multilingue et RTL",
+      "d": "Anglais, Persan, et plus — les mises en page se reflètent nativement sans texte cassé."
+    }
+  ],
+  "prKicker": "Tarifs",
+  "prTitle": "Commencez gratuit. Améliorez par surprise.",
+  "prSub": "Créez votre première quête pour rien. Payez une fois lorsque vous voulez la finition premium — ou évoluez pour une équipe.",
+  "recommended": "Le plus populaire",
+  "pricing": [
+    {
+      "name": "Freemium",
+      "price": "0 €",
+      "period": "gratuit pour toujours",
+      "tagline": "Pour votre première surprise",
+      "cta": "Créer gratuitement",
+      "features": [
+        "Jusqu'à 3 étapes",
+        "Modules d'énigmes de base",
+        "Thèmes Célébration et Mystère",
+        "Filigrane Puzzify"
+      ]
+    },
+    {
+      "name": "Boîte Premium",
+      "price": "4 €",
+      "period": "paiement unique, par quête",
+      "tagline": "Pour la surprise qui doit marquer",
+      "cta": "Construire une quête premium",
+      "rec": true,
+      "features": [
+        "Étapes illimitées",
+        "Thèmes premium, particules et audio",
+        "Module de Point d'Accès Image",
+        "Pas de filigrane"
+      ]
+    },
+    {
+      "name": "Entreprise",
+      "price": "Sur mesure",
+      "period": "facturé annuellement",
+      "tagline": "Pour les équipes, événements et lancements",
+      "cta": "Parlez-nous",
+      "features": [
+        "Tableau de bord d'équipe",
+        "Marque blanche et domaines personnalisés",
+        "Analyses et suivi des jeux",
+        "Support prioritaire"
+      ]
+    }
+  ],
+  "partnerBlock": {
+    "kicker": "En collaboration",
+    "title": "Puzzify × WelloWork — jouez pour renforcer votre équipe.",
+    "desc": "Nous nous sommes associés à WelloWork, la plateforme suédoise de performance au travail, pour apporter les quêtes Puzzify dans les outils que les entreprises utilisent déjà. Les employeurs transforment l'intégration, la formation et le team-building en jeux auxquels les employés ont vraiment envie de jouer.",
+    "cta": "Explorer le partenariat",
+    "link": "https://www.wellowork.net/",
+    "features": [
+      {
+        "t": "Jeux de team-building",
+        "d": "Des quêtes co-créées qui transforment l'entraînement cognitif et les moments culturels en un défi partagé."
+      },
+      {
+        "t": "Intégration à l'échelle",
+        "d": "Déployez des quêtes de bienvenue personnalisées à chaque nouvelle recrue depuis un seul tableau de bord."
+      },
+      {
+        "t": "Conçu pour les employeurs",
+        "d": "Se connecte à la vue manager de WelloWork, pour que l'engagement soit quelque chose que vous puissiez réellement voir."
+      }
+    ]
+  },
+  "finalKicker": "À vous de jouer",
+  "finalLine": "Vous voulez surprendre quelqu'un d'autre ?",
+  "finalSub": "Créez votre première quête gratuitement — ils vous demanderont comment vous avez fait.",
+  "finalCta": "Créez votre première quête — gratuit",
+  "footTagline": "Transformez n'importe quel cadeau en un mini escape room.",
+  "footCols": [
+    {
+      "h": "Produit",
+      "links": [
+        "Comment ça marche",
+        "Cas d'utilisation",
+        "Tarifs",
+        "Studio Créateur"
+      ]
+    },
+    {
+      "h": "Entreprise",
+      "links": [
+        "À propos",
+        "Blog",
+        "Carrières",
+        "Dossier de presse"
+      ]
+    },
+    {
+      "h": "Légal",
+      "links": [
+        "Confidentialité",
+        "Conditions",
+        "Cookies",
+        "Sécurité"
+      ]
+    }
+  ],
+  "footLang": "Langue",
+  "footLegal": "© 2026 Puzzify · Conçu pour des surprises mémorables"
+}

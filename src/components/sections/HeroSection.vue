@@ -41,14 +41,14 @@ const heroParticles = computed(() => {
     <div style="position:relative; max-width:1180px; margin:0 auto; padding:clamp(36px,6vw,76px) clamp(16px,4vw,26px); display:flex; gap:clamp(28px,5vw,56px); align-items:center; flex-wrap:wrap;">
       <div style="flex:1 1 380px; min-width:min(100%,340px);">
         <span style="display:inline-flex; align-items:center; gap:8px; font-size:12.5px; font-weight:700; color:var(--pz-secondary); background:var(--pz-surface); border:1px solid var(--pz-border); padding:7px 14px; border-radius:var(--pz-r-full); box-shadow:var(--pz-e-1); margin-bottom:20px;">
-          <span style="width:7px; height:7px; border-radius:50%; background:var(--pz-primary);"></span>{{ t.heroKicker }}
+          <span style="width:7px; height:7px; border-radius:50%; background:var(--pz-primary);"></span>{{ $t('heroKicker') }}
         </span>
-        <h1 style="margin:0 0 18px; font-family:var(--pz-font-display); font-weight:800; font-size:clamp(34px,5.6vw,60px); line-height:1.02; letter-spacing:-.025em; color:var(--pz-text); text-wrap:balance; max-width:16ch;">{{ t.heroHeadline }}</h1>
-        <p style="margin:0 0 28px; font-size:clamp(15px,1.5vw,18px); line-height:1.55; color:var(--pz-muted); max-width:42ch;">{{ t.heroSub }}</p>
+        <h1 style="margin:0 0 18px; font-family:var(--pz-font-display); font-weight:800; font-size:clamp(34px,5.6vw,60px); line-height:1.02; letter-spacing:-.025em; color:var(--pz-text); text-wrap:balance; max-width:16ch;">{{ $t('heroHeadline') }}</h1>
+        <p style="margin:0 0 28px; font-size:clamp(15px,1.5vw,18px); line-height:1.55; color:var(--pz-muted); max-width:42ch;">{{ $t('heroSub') }}</p>
         <div style="display:flex; gap:12px; flex-wrap:wrap;">
-          <a href="#pricing" style="display:inline-flex; align-items:center; justify-content:center; padding:15px 24px; min-height:44px; background:var(--pz-primary); color:var(--pz-on-primary); border-radius:var(--pz-r-md); font-family:var(--pz-font-ui); font-weight:700; font-size:15px; text-decoration:none; box-shadow:var(--pz-e-2);">{{ t.heroCta1 }}</a>
+          <a href="#pricing" style="display:inline-flex; align-items:center; justify-content:center; padding:15px 24px; min-height:44px; background:var(--pz-primary); color:var(--pz-on-primary); border-radius:var(--pz-r-md); font-family:var(--pz-font-ui); font-weight:700; font-size:15px; text-decoration:none; box-shadow:var(--pz-e-2);">{{ $t('heroCta1') }}</a>
           <a href="#how" style="display:inline-flex; align-items:center; justify-content:center; gap:9px; padding:15px 22px; min-height:44px; background:var(--pz-surface-2); color:var(--pz-primary); border:1px solid var(--pz-border); border-radius:var(--pz-r-md); font-family:var(--pz-font-ui); font-weight:700; font-size:15px; text-decoration:none;">
-            <span style="width:0; height:0; border-style:solid; border-width:6px 0 6px 9px; border-color:transparent transparent transparent currentColor;"></span>{{ t.heroCta2 }}
+            <span style="width:0; height:0; border-style:solid; border-width:6px 0 6px 9px; border-color:transparent transparent transparent currentColor;"></span>{{ $t('heroCta2') }}
           </a>
         </div>
       </div>
@@ -64,7 +64,7 @@ const heroParticles = computed(() => {
             </div>
             <div style="flex:1; display:flex; flex-direction:column; padding:16px 20px 0;">
               <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:14px;">
-                <span style="font-size:12px; font-weight:600; color:var(--pz-muted);">{{ t.playerKicker }}</span>
+                <span style="font-size:12px; font-weight:600; color:var(--pz-muted);">{{ $t('playerKicker') }}</span>
                 <span style="display:flex; align-items:flex-end; gap:2px; height:13px;">
                   <span class="pz-anim" style="width:2.5px; height:13px; background:var(--pz-primary); border-radius:2px; transform-origin:bottom; animation:pzBars 1s var(--pz-ease) infinite;"></span>
                   <span class="pz-anim" style="width:2.5px; height:13px; background:var(--pz-primary); border-radius:2px; transform-origin:bottom; animation:pzBars 1s var(--pz-ease) .25s infinite;"></span>
@@ -95,17 +95,17 @@ const heroParticles = computed(() => {
                 </div>
               </div>
               <div style="background:var(--pz-surface); border:1px solid var(--pz-border); border-radius:var(--pz-r-lg); padding:16px; box-shadow:var(--pz-e-1);">
-                <span style="display:inline-block; font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:.1em; color:var(--pz-secondary); background:var(--pz-surface-2); padding:4px 9px; border-radius:var(--pz-r-full); margin-bottom:10px;">{{ t.puzzleType }}</span>
-                <h2 style="margin:0 0 5px; font-family:var(--pz-font-display); font-weight:700; font-size:20px; line-height:1.1; color:var(--pz-text);">{{ t.playerTitle }}</h2>
-                <p style="margin:0 0 12px; font-size:13px; line-height:1.4; color:var(--pz-muted);">{{ t.playerPrompt }}</p>
+                <span style="display:inline-block; font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:.1em; color:var(--pz-secondary); background:var(--pz-surface-2); padding:4px 9px; border-radius:var(--pz-r-full); margin-bottom:10px;">{{ $t('puzzleType') }}</span>
+                <h2 style="margin:0 0 5px; font-family:var(--pz-font-display); font-weight:700; font-size:20px; line-height:1.1; color:var(--pz-text);">{{ $t('playerTitle') }}</h2>
+                <p style="margin:0 0 12px; font-size:13px; line-height:1.4; color:var(--pz-muted);">{{ $t('playerPrompt') }}</p>
                 <div style="display:flex; align-items:center; gap:10px; padding:11px 13px; background:var(--pz-bg); border:1.5px solid var(--pz-focus); border-radius:var(--pz-r-md); box-shadow:0 0 0 4px var(--pz-ring); margin-bottom:12px;">
-                  <span style="flex:1; font-size:14px; color:var(--pz-muted);">{{ t.inputPlaceholder }}</span>
+                  <span style="flex:1; font-size:14px; color:var(--pz-muted);">{{ $t('inputPlaceholder') }}</span>
                   <span class="pz-anim" style="width:1.5px; height:18px; background:var(--pz-primary); animation:pzCaret 1s step-end infinite;"></span>
                 </div>
-                <button style="width:100%; padding:13px; background:var(--pz-primary); color:var(--pz-on-primary); border:none; border-radius:var(--pz-r-md); font-family:var(--pz-font-ui); font-weight:700; font-size:15px; cursor:pointer; min-height:44px;">{{ t.submit }}</button>
+                <button style="width:100%; padding:13px; background:var(--pz-primary); color:var(--pz-on-primary); border:none; border-radius:var(--pz-r-md); font-family:var(--pz-font-ui); font-weight:700; font-size:15px; cursor:pointer; min-height:44px;">{{ $t('submit') }}</button>
               </div>
             </div>
-            <div style="text-align:center; padding:11px; font-size:10.5px; color:var(--pz-muted);">{{ t.watermark }}</div>
+            <div style="text-align:center; padding:11px; font-size:10.5px; color:var(--pz-muted);">{{ $t('watermark') }}</div>
           </div>
         </div>
       </div>

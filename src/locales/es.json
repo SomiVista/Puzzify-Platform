@@ -1,0 +1,201 @@
+{
+  "navHow": "Cómo funciona",
+  "navUses": "Casos de uso",
+  "navPartners": "Socios",
+  "navPricing": "Precios",
+  "navCta": "Crear gratis",
+  "themeBirthday": "Celebración",
+  "themeMystery": "Misterio",
+  "heroKicker": "Acabas de jugar uno. Ahora crea uno.",
+  "heroHeadline": "Convierte cualquier regalo en un mini escape room.",
+  "heroSub": "Puzzify convierte un regalo digital, mensaje o anuncio en una misión online personalizada. Tú construyes el misterio — ellos juegan para desbloquear su recompensa. Sin app, sin inicio de sesión.",
+  "heroCta1": "Crea tu primera misión — gratis",
+  "heroCta2": "Ver una demo en vivo",
+  "playerKicker": "Misión · Un Año Juntos",
+  "puzzleType": "Cerradura con Contraseña",
+  "playerTitle": "La Primera Pista",
+  "playerPrompt": "¿Dónde compartimos nuestro primer café? Una palabra.",
+  "inputPlaceholder": "Escribe tu respuesta",
+  "submit": "Desbloquear",
+  "watermark": "Creado con Puzzify",
+  "trustLine": "Dedica cinco minutos. Entrega algo inolvidable.",
+  "trustStats": [
+    "Más de 120k misiones jugadas",
+    "Sin app · sin inicio de sesión",
+    "Se abre en cualquier app de chat"
+  ],
+  "howKicker": "Cómo funciona",
+  "howTitle": "Tres pasos para una sorpresa",
+  "howSub": "De un lienzo en blanco a un enlace que vale la pena abrir — en el tiempo que lleva envolver un regalo.",
+  "how": [
+    {
+      "t": "Construye una misión",
+      "d": "Apila acertijos en el Estudio de Creadores. Elige un tema, añade tus pistas y la recompensa al final."
+    },
+    {
+      "t": "Envía un enlace",
+      "d": "Comparte un solo enlace en WhatsApp, Telegram, Instagram — o imprímelo en una tarjeta."
+    },
+    {
+      "t": "Ellos juegan y desbloquean",
+      "d": "Sin descargas. Resuelven cada pista y ven cómo se abre la caja con su recompensa."
+    }
+  ],
+  "howStepLabel": "Paso",
+  "ptKicker": "Tipos de acertijos",
+  "ptTitle": "Acertijos que se sienten personales",
+  "ptSub": "Mezcla y combina módulos por paso. Cada uno lee los mismos tokens de tema.",
+  "pt": [
+    {
+      "tag": "Cerradura con Contraseña",
+      "title": "Pregunta algo que solo ellos sepan",
+      "desc": "Una palabra, una fecha, una broma interna — escríbelo bien y se abrirá el siguiente paso."
+    },
+    {
+      "tag": "Trivia",
+      "title": "Opción múltiple con multimedia",
+      "desc": "Plantea una pregunta con una foto, audio o pista de video. La respuesta correcta se ilumina en verde."
+    },
+    {
+      "tag": "Punto de Acceso en Imagen",
+      "title": "Esconde una pista en una escena",
+      "desc": "Coloca un punto de acceso pulsante en cualquier foto. Tocan para encontrar lo que escondiste.",
+      "premium": "Premium"
+    }
+  ],
+  "ucKicker": "Casos de uso",
+  "ucTitle": "Un motor, cada ocasión",
+  "ucSub": "Re-estiliza los mismos componentes — ninguna festividad está programada de forma rígida. Cambia un tema y toda la misión cambia de estado de ánimo.",
+  "uc": [
+    "Cumpleaños",
+    "Aniversarios",
+    "Bromas internas",
+    "Inducción corporativa",
+    "Revelaciones de productos",
+    "Propuestas"
+  ],
+  "whyKicker": "Por qué Puzzify",
+  "whyTitle": "La entrega es el regalo",
+  "whySub": "Una sorpresa que desbloquean supera a un enlace que ignoran. Construido para convertir el momento de deleite en la siguiente misión.",
+  "why": [
+    {
+      "t": "Entrega inolvidable",
+      "d": "El viaje hacia la recompensa es el regalo. La gente toma captura de pantalla del gran final, no de la tarjeta de regalo."
+    },
+    {
+      "t": "Cero fricción para recibir",
+      "d": "Sin app, sin login, sin registro para los destinatarios. Tocan un enlace y comienzan a jugar."
+    },
+    {
+      "t": "Funciona donde ya están",
+      "d": "Se ejecuta dentro de los navegadores integrados de WhatsApp, Telegram e Instagram en cualquier teléfono."
+    },
+    {
+      "t": "Multilingüe y RTL",
+      "d": "Inglés, Persa y más — los diseños se reflejan de forma nativa sin texto roto."
+    }
+  ],
+  "prKicker": "Precios",
+  "prTitle": "Empieza gratis. Mejora por sorpresa.",
+  "prSub": "Crea tu primera misión gratis. Paga una vez cuando quieras el acabado premium — o escala a un equipo.",
+  "recommended": "Más popular",
+  "pricing": [
+    {
+      "name": "Freemium",
+      "price": "$0",
+      "period": "gratis para siempre",
+      "tagline": "Para tu primera sorpresa",
+      "cta": "Crear gratis",
+      "features": [
+        "Hasta 3 pasos",
+        "Módulos de acertijos base",
+        "Temas de Celebración y Misterio",
+        "Marca de agua de Puzzify"
+      ]
+    },
+    {
+      "name": "Caja Premium",
+      "price": "$4",
+      "period": "pago único, por misión",
+      "tagline": "Para la sorpresa que tiene que impactar",
+      "cta": "Construye una misión premium",
+      "rec": true,
+      "features": [
+        "Pasos ilimitados",
+        "Temas premium, partículas y audio",
+        "Módulo de Punto de Acceso en Imagen",
+        "Sin marca de agua"
+      ]
+    },
+    {
+      "name": "Corporativo",
+      "price": "Personalizado",
+      "period": "facturado anualmente",
+      "tagline": "Para equipos, eventos y lanzamientos",
+      "cta": "Habla con nosotros",
+      "features": [
+        "Panel de equipo y asientos",
+        "Marca blanca y dominios personalizados",
+        "Analíticas y seguimiento de jugadas",
+        "Soporte prioritario"
+      ]
+    }
+  ],
+  "partnerBlock": {
+    "kicker": "Ahora colaborando",
+    "title": "Puzzify × WelloWork — juega tu camino hacia un equipo más fuerte.",
+    "desc": "Nos hemos asociado con WelloWork, la plataforma sueca de rendimiento laboral, para llevar misiones de Puzzify dentro de las herramientas que las empresas ya utilizan. Los empleadores convierten la inducción, formación y creación de equipos en juegos que los empleados realmente quieren jugar.",
+    "cta": "Explora la asociación",
+    "link": "https://www.wellowork.net/",
+    "features": [
+      {
+        "t": "Juegos de creación de equipos",
+        "d": "Misiones co-creadas que convierten el entrenamiento cognitivo y momentos culturales en un desafío compartido."
+      },
+      {
+        "t": "Inducción a escala",
+        "d": "Lanza misiones de bienvenida con tu marca a cada nuevo empleado desde un solo panel."
+      },
+      {
+        "t": "Construido para empleadores",
+        "d": "Se conecta a la vista de gerente de WelloWork, para que el compromiso sea algo que realmente puedas ver."
+      }
+    ]
+  },
+  "finalKicker": "Tu turno",
+  "finalLine": "¿Quieres sorprender a alguien más?",
+  "finalSub": "Crea tu primera misión gratis — te preguntarán cómo lo hiciste.",
+  "finalCta": "Crea tu primera misión — gratis",
+  "footTagline": "Convierte cualquier regalo en un mini escape room.",
+  "footCols": [
+    {
+      "h": "Producto",
+      "links": [
+        "Cómo funciona",
+        "Casos de uso",
+        "Precios",
+        "Estudio de Creadores"
+      ]
+    },
+    {
+      "h": "Empresa",
+      "links": [
+        "Acerca de",
+        "Blog",
+        "Carreras",
+        "Kit de prensa"
+      ]
+    },
+    {
+      "h": "Legal",
+      "links": [
+        "Privacidad",
+        "Términos",
+        "Cookies",
+        "Seguridad"
+      ]
+    }
+  ],
+  "footLang": "Idioma",
+  "footLegal": "© 2026 Puzzify · Hecho para sorpresas deliciosas"
+}
