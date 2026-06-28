@@ -1,13 +1,15 @@
 name: Release
 
-# When a version bump lands on main, publish a matching GitHub Release with
-# auto-generated notes. Mirrors the version-gate in ci-cd.yml: every merge to
-# main carries a fresh semver, so each merge cuts a release.
+# Every merge/push to main automatically bumps the patch version, commits the
+# bump back to main, and publishes a matching GitHub Release with generated
+# notes. No manual version bump is ever required.
+#
+# The bump commit is made with the repo GITHUB_TOKEN, so it does NOT trigger
+# another workflow run (GitHub suppresses recursive runs for GITHUB_TOKEN), and
+# it carries [skip ci] as an extra safeguard against loops.
 on:
   push:
     branches: [main]
-    paths:
-      - package.json
 
 permissions:
   contents: write
@@ -18,28 +20,42 @@ concurrency:
 
 jobs:
   release:
-    name: Publish GitHub Release
+    name: Auto version & publish release
+    # Skip the run triggered by our own version-bump commit.
+    if: ${{ !contains(github.event.head_commit.message, '[skip ci]') }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Read package.json version
-        id: version
-        run: echo "version=$(node -p "require('./package.json').version")" >> "$GITHUB_OUTPUT"
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
 
-      - name: Create release if the tag does not exist yet
+      - name: Bump patch version
+        id: bump
+        run: |
+          # npm version prints the new tag (e.g. v1.2.3) and updates
+          # package.json + package-lock.json without creating a git tag itself.
+          TAG=$(npm version patch --no-git-tag-version)
+          echo "tag=$TAG" >> "$GITHUB_OUTPUT"
+
+      - name: Commit version bump back to main
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -am "chore(release): ${{ steps.bump.outputs.tag }} [skip ci]"
+          git push
+
+      - name: Publish GitHub Release
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          TAG="v${{ steps.version.outputs.version }}"
-          if gh release view "$TAG" >/dev/null 2>&1; then
-            echo "Release $TAG already exists — nothing to do."
-            exit 0
-          fi
-          gh release create "$TAG" \
-            --title "$TAG" \
+          gh release create "${{ steps.bump.outputs.tag }}" \
+            --title "${{ steps.bump.outputs.tag }}" \
             --generate-notes \
-            --target "${{ github.sha }}"
+            --target "$(git rev-parse HEAD)"

@@ -63,46 +63,7 @@ jobs:
           retention-days: 7
 
   # ---------------------------------------------------------------------------
-  # 2. Version check: on PRs, fail unless package.json version was bumped above
-  #    the version currently on the base branch (semver greater-than).
-  # ---------------------------------------------------------------------------
-  version-check:
-    name: Version bump check
-    if: github.event_name == 'pull_request'
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repo
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
-      - name: Ensure package.json version was bumped
-        run: |
-          NEW=$(node -p "require('./package.json').version")
-          git fetch origin "${{ github.base_ref }}" --depth=1
-          # On the first PR that introduces package.json, there is nothing to
-          # compare against on the base branch — skip the gate in that case.
-          if ! OLD_JSON=$(git show "origin/${{ github.base_ref }}:package.json" 2>/dev/null); then
-            echo "package.json does not exist on ${{ github.base_ref }} yet — skipping version comparison."
-            exit 0
-          fi
-          OLD=$(printf '%s' "$OLD_JSON" \
-            | node -pe "JSON.parse(require('fs').readFileSync('/dev/stdin','utf8')).version")
-          echo "Base version: $OLD | PR version: $NEW"
-          if [ "$NEW" = "$OLD" ]; then
-            echo "::error::package.json version ($NEW) is unchanged. Bump the semver before merging to main."
-            exit 1
-          fi
-          # New version must sort highest under version ordering (semver-aware).
-          HIGHEST=$(printf '%s\n%s\n' "$OLD" "$NEW" | sort -V | tail -1)
-          if [ "$HIGHEST" != "$NEW" ]; then
-            echo "::error::package.json version ($NEW) is not greater than base ($OLD)."
-            exit 1
-          fi
-          echo "Version bump OK: $OLD -> $NEW"
-
-  # ---------------------------------------------------------------------------
-  # 3a. Deploy (dev): on PRs, ship the build to a persistent Firebase preview
+  # 2a. Deploy (dev): on PRs, ship the build to a persistent Firebase preview
   #     channel and record it under the GitHub "dev" environment.
   # ---------------------------------------------------------------------------
   deploy-dev:
@@ -139,7 +100,7 @@ jobs:
           projectId: puzzify-platform
 
   # ---------------------------------------------------------------------------
-  # 3b. Deploy (prod): only on merge/push to main, after validation passes.
+  # 2b. Deploy (prod): only on merge/push to main, after validation passes.
   #     Recorded under the GitHub "prod" environment.
   # ---------------------------------------------------------------------------
   deploy-prod:
