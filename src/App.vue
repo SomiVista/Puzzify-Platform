@@ -26,7 +26,7 @@ const { isFa, isMystery, dir } = storeToRefs(store)
   <div 
     :class="['pz-stage', { 'pz-theme-mystery': isMystery, 'pz-lang-fa': isFa }]" 
     :dir="dir" 
-    style="min-height:100vh; background:var(--pz-bg); overflow-x:hidden;"
+    style="min-height:100vh; background:var(--pz-bg); overflow-x:clip;"
   >
     <TheHeader />
     <HeroSection />

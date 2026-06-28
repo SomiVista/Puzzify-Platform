@@ -1,0 +1,201 @@
+{
+  "navHow": "How it works",
+  "navUses": "Use cases",
+  "navPartners": "Partners",
+  "navPricing": "Pricing",
+  "navCta": "Create free",
+  "themeBirthday": "Celebration",
+  "themeMystery": "Mystery",
+  "heroKicker": "You just played one. Now make one.",
+  "heroHeadline": "Turn any gift into a mini-escape room.",
+  "heroSub": "Puzzify turns a digital gift, message, or announcement into a personalized online quest. You build the mystery — they play to unlock their reward. No app, no login.",
+  "heroCta1": "Create your first quest — free",
+  "heroCta2": "See a live demo",
+  "playerKicker": "Quest · A Year of Us",
+  "puzzleType": "Password Lock",
+  "playerTitle": "The First Clue",
+  "playerPrompt": "Where did we first share a coffee? One word.",
+  "inputPlaceholder": "Type your answer",
+  "submit": "Unlock",
+  "watermark": "Made with Puzzify",
+  "trustLine": "Spend five minutes. Deliver something unforgettable.",
+  "trustStats": [
+    "120k+ quests played",
+    "No app · no login",
+    "Opens in any chat app"
+  ],
+  "howKicker": "How it works",
+  "howTitle": "Three steps to a surprise",
+  "howSub": "From blank canvas to a link worth opening — in the time it takes to wrap a present.",
+  "how": [
+    {
+      "t": "Build a quest",
+      "d": "Stack puzzles in the Creator Studio. Pick a theme, add your clues and the reward at the end."
+    },
+    {
+      "t": "Send one link",
+      "d": "Share a single link in WhatsApp, Telegram, Instagram — or print it on a card."
+    },
+    {
+      "t": "They play & unlock",
+      "d": "No download. They solve each clue and watch the box open on their reward."
+    }
+  ],
+  "howStepLabel": "Step",
+  "ptKicker": "Puzzle types",
+  "ptTitle": "Puzzles that feel personal",
+  "ptSub": "Mix and match modules per step. Each one reads the same theme tokens.",
+  "pt": [
+    {
+      "tag": "Password Lock",
+      "title": "Ask something only they know",
+      "desc": "One word, a date, an inside joke — type it right and the next step opens."
+    },
+    {
+      "tag": "Trivia",
+      "title": "Multiple choice with media",
+      "desc": "Pose a question with a photo, audio, or video clue. The right answer lights up green."
+    },
+    {
+      "tag": "Image Hotspot",
+      "title": "Hide a clue in a scene",
+      "desc": "Drop a pulsing hotspot on any photo. They tap to find what you hid.",
+      "premium": "Premium"
+    }
+  ],
+  "ucKicker": "Use cases",
+  "ucTitle": "One engine, every occasion",
+  "ucSub": "Re-skin the same components — no holiday is ever hardcoded. Flip a theme and the whole quest changes mood.",
+  "uc": [
+    "Birthdays",
+    "Anniversaries",
+    "Inside jokes",
+    "Corporate onboarding",
+    "Product reveals",
+    "Proposals"
+  ],
+  "whyKicker": "Why Puzzify",
+  "whyTitle": "The delivery is the gift",
+  "whySub": "A surprise they unlock beats a link they ignore. Built to convert the moment of delight into the next quest.",
+  "why": [
+    {
+      "t": "Unforgettable delivery",
+      "d": "The journey to the reward is the present. People screenshot the finale, not the gift card."
+    },
+    {
+      "t": "Zero friction to receive",
+      "d": "No app, no login, no signup for recipients. They tap a link and start playing."
+    },
+    {
+      "t": "Works where they already are",
+      "d": "Runs inside WhatsApp, Telegram, and Instagram in-app browsers on any phone."
+    },
+    {
+      "t": "Multilingual & RTL",
+      "d": "English, Persian, and more — layouts mirror natively with no broken text."
+    }
+  ],
+  "prKicker": "Pricing",
+  "prTitle": "Start free. Upgrade per surprise.",
+  "prSub": "Make your first quest for nothing. Pay once when you want the premium finish — or scale to a team.",
+  "recommended": "Most popular",
+  "pricing": [
+    {
+      "name": "Freemium",
+      "price": "$0",
+      "period": "free forever",
+      "tagline": "For your first surprise",
+      "cta": "Create free",
+      "features": [
+        "Up to 3 steps",
+        "Base puzzle modules",
+        "Birthday & Mystery themes",
+        "Puzzify watermark"
+      ]
+    },
+    {
+      "name": "Premium Box",
+      "price": "$4",
+      "period": "one-time, per quest",
+      "tagline": "For the surprise that has to land",
+      "cta": "Build a premium quest",
+      "rec": true,
+      "features": [
+        "Unlimited steps",
+        "Premium themes, particles & audio",
+        "Image Hotspot module",
+        "No watermark"
+      ]
+    },
+    {
+      "name": "Corporate",
+      "price": "Custom",
+      "period": "billed annually",
+      "tagline": "For teams, events & launches",
+      "cta": "Talk to us",
+      "features": [
+        "Team dashboard & seats",
+        "White-label & custom domains",
+        "Analytics & play tracking",
+        "Priority support"
+      ]
+    }
+  ],
+  "partnerBlock": {
+    "kicker": "Now collaborating",
+    "title": "Puzzify × WelloWork — play your way to a stronger team.",
+    "desc": "We’ve teamed up with WelloWork, the Swedish workplace-performance platform, to bring Puzzify quests inside the tools companies already use. Employers turn onboarding, training, and team-building into games employees actually want to play.",
+    "cta": "Explore the partnership",
+    "link": "https://www.wellowork.net/",
+    "features": [
+      {
+        "t": "Team-building games",
+        "d": "Co-built quests that turn cognitive training and culture moments into a shared challenge."
+      },
+      {
+        "t": "Onboarding at scale",
+        "d": "Roll out branded welcome quests to every new hire from a single dashboard."
+      },
+      {
+        "t": "Built for employers",
+        "d": "Plugs into WelloWork’s manager view, so engagement is something you can actually see."
+      }
+    ]
+  },
+  "finalKicker": "Your turn",
+  "finalLine": "Want to surprise someone else?",
+  "finalSub": "Create your first quest free — they will be asking how you did it.",
+  "finalCta": "Create your first quest — free",
+  "footTagline": "Turn any gift into a mini-escape room.",
+  "footCols": [
+    {
+      "h": "Product",
+      "links": [
+        "How it works",
+        "Use cases",
+        "Pricing",
+        "Creator Studio"
+      ]
+    },
+    {
+      "h": "Company",
+      "links": [
+        "About",
+        "Blog",
+        "Careers",
+        "Press kit"
+      ]
+    },
+    {
+      "h": "Legal",
+      "links": [
+        "Privacy",
+        "Terms",
+        "Cookies",
+        "Security"
+      ]
+    }
+  ],
+  "footLang": "Language",
+  "footLegal": "© 2026 Puzzify · Made for delightful surprises"
+}

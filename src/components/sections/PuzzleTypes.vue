@@ -4,13 +4,10 @@
  * @description Showcase of available puzzle types with interactive mocks.
  */
 import { computed } from 'vue'
-import { storeToRefs } from 'pinia'
-import { useAppStore } from '../../stores/useAppStore'
+import { useI18n } from 'vue-i18n'
 
-const store = useAppStore()
-const { t } = storeToRefs(store)
-
-const pt = computed(() => t.value.pt.map((p,i) => ({ 
+const { tm } = useI18n()
+const pt = computed(() => tm('pt').map((p,i) => ({ 
   tag:p.tag, title:p.title, desc:p.desc, premium:p.premium||'', isPremium:!!p.premium, kind:i,
   isLock: i===0, isTrivia: i===1, isHotspot: i===2 
 })))
@@ -20,9 +17,9 @@ const pt = computed(() => t.value.pt.map((p,i) => ({
   <section style="background:var(--pz-surface); border-top:1px solid var(--pz-hairline); border-bottom:1px solid var(--pz-hairline);">
     <div style="max-width:1180px; margin:0 auto; padding:clamp(56px,8vw,96px) clamp(16px,4vw,26px);">
       <div style="max-width:42ch; margin-bottom:clamp(32px,5vw,48px);">
-        <span style="font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:.16em; color:var(--pz-secondary);">{{ t.ptKicker }}</span>
-        <h2 style="margin:10px 0 12px; font-family:var(--pz-font-display); font-weight:800; font-size:clamp(28px,4vw,44px); line-height:1.05; letter-spacing:-.02em; color:var(--pz-text); text-wrap:balance;">{{ t.ptTitle }}</h2>
-        <p style="margin:0; font-size:clamp(15px,1.5vw,17px); line-height:1.55; color:var(--pz-muted);">{{ t.ptSub }}</p>
+        <span style="font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:.16em; color:var(--pz-secondary);">{{ $t('ptKicker') }}</span>
+        <h2 style="margin:10px 0 12px; font-family:var(--pz-font-display); font-weight:800; font-size:clamp(28px,4vw,44px); line-height:1.05; letter-spacing:-.02em; color:var(--pz-text); text-wrap:balance;">{{ $t('ptTitle') }}</h2>
+        <p style="margin:0; font-size:clamp(15px,1.5vw,17px); line-height:1.55; color:var(--pz-muted);">{{ $t('ptSub') }}</p>
       </div>
       <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:18px;">
         <div v-for="(p, index) in pt" :key="index" style="display:flex; flex-direction:column; background:var(--pz-bg); border:1px solid var(--pz-border); border-radius:var(--pz-r-lg); padding:20px; box-shadow:var(--pz-e-1);">

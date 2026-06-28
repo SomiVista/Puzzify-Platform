@@ -1,0 +1,201 @@
+{
+  "navHow": "Hur det fungerar",
+  "navUses": "Användningsområden",
+  "navPartners": "Partners",
+  "navPricing": "Priser",
+  "navCta": "Skapa gratis",
+  "themeBirthday": "Firande",
+  "themeMystery": "Mysterium",
+  "heroKicker": "Du har precis spelat ett. Gör nu ett eget.",
+  "heroHeadline": "Förvandla vilken present som helst till ett miniescape-room.",
+  "heroSub": "Puzzify förvandlar en digital present, ett meddelande eller ett tillkännagivande till ett personligt online-äventyr. Du bygger mysteriet — de spelar för att låsa upp sin belöning. Ingen app, ingen inloggning.",
+  "heroCta1": "Skapa ditt första äventyr — gratis",
+  "heroCta2": "Se en live-demo",
+  "playerKicker": "Äventyr · Ett år av oss",
+  "puzzleType": "Lösenordslås",
+  "playerTitle": "Den första ledtråden",
+  "playerPrompt": "Var delade vi vår första fika? Ett ord.",
+  "inputPlaceholder": "Skriv ditt svar",
+  "submit": "Lås upp",
+  "watermark": "Skapad med Puzzify",
+  "trustLine": "Ägna fem minuter. Leverera något oförglömligt.",
+  "trustStats": [
+    "Över 120k spelade äventyr",
+    "Ingen app · ingen inloggning",
+    "Öppnas i vilken chattapp som helst"
+  ],
+  "howKicker": "Hur det fungerar",
+  "howTitle": "Tre steg till en överraskning",
+  "howSub": "Från en tom duk till en länk som är värd att öppna — på den tid det tar att slå in en present.",
+  "how": [
+    {
+      "t": "Bygg ett äventyr",
+      "d": "Stapla pussel i Creator Studio. Välj ett tema, lägg till dina ledtrådar och belöningen i slutet."
+    },
+    {
+      "t": "Skicka en länk",
+      "d": "Dela en enda länk i WhatsApp, Telegram, Instagram — eller skriv ut den på ett kort."
+    },
+    {
+      "t": "De spelar och låser upp",
+      "d": "Ingen nedladdning. De löser varje ledtråd och ser lådan öppnas mot sin belöning."
+    }
+  ],
+  "howStepLabel": "Steg",
+  "ptKicker": "Pusseltyper",
+  "ptTitle": "Pussel som känns personliga",
+  "ptSub": "Blanda och matcha moduler för varje steg. Varje modul läser samma tematokens.",
+  "pt": [
+    {
+      "tag": "Lösenordslås",
+      "title": "Fråga något som bara de vet",
+      "desc": "Ett ord, ett datum, ett internt skämt — skriv det rätt så öppnas nästa steg."
+    },
+    {
+      "tag": "Frågesport",
+      "title": "Flervalsfrågor med media",
+      "desc": "Ställ en fråga med ett foto, ljud eller videoklipp. Rätt svar lyser grönt."
+    },
+    {
+      "tag": "Bildhotspot",
+      "title": "Göm en ledtråd i en scen",
+      "desc": "Placera en pulserande hotspot på vilket foto som helst. De trycker för att hitta det du gömt.",
+      "premium": "Premium"
+    }
+  ],
+  "ucKicker": "Användningsområden",
+  "ucTitle": "En motor, varje tillfälle",
+  "ucSub": "Byt stil på samma komponenter — ingen högtid är hårdkodad. Ändra ett tema och hela äventyret byter stämning.",
+  "uc": [
+    "Födelsedagar",
+    "Årsdagar",
+    "Interna skämt",
+    "Företagsintroduktion",
+    "Produktlanseringar",
+    "Frierier"
+  ],
+  "whyKicker": "Varför Puzzify",
+  "whyTitle": "Leveransen är presenten",
+  "whySub": "En överraskning de låser upp slår en länk de ignorerar. Byggt för att omvandla glädjeögonblicket till nästa äventyr.",
+  "why": [
+    {
+      "t": "Oförglömlig leverans",
+      "d": "Resan till belöningen är gåvan. Folk tar skärmdumpar av finalen, inte presentkortet."
+    },
+    {
+      "t": "Noll friktion för mottagaren",
+      "d": "Ingen app, ingen inloggning, ingen registrering för mottagare. De trycker på en länk och börjar spela."
+    },
+    {
+      "t": "Fungerar där de redan är",
+      "d": "Körs inuti WhatsApp, Telegram och Instagrams inbyggda webbläsare på vilken telefon som helst."
+    },
+    {
+      "t": "Flerspråkig & RTL",
+      "d": "Engelska, persiska och mer — layouter speglas nativt utan trasig text."
+    }
+  ],
+  "prKicker": "Priser",
+  "prTitle": "Börja gratis. Uppgradera per överraskning.",
+  "prSub": "Skapa ditt första äventyr för ingenting. Betala en gång när du vill ha premiumfinishen — eller skala upp för ett team.",
+  "recommended": "Mest populär",
+  "pricing": [
+    {
+      "name": "Freemium",
+      "price": "0 kr",
+      "period": "gratis för alltid",
+      "tagline": "För din första överraskning",
+      "cta": "Skapa gratis",
+      "features": [
+        "Upp till 3 steg",
+        "Grundläggande pusselmoduler",
+        "Teman: Firande & Mysterium",
+        "Puzzify-vattenstämpel"
+      ]
+    },
+    {
+      "name": "Premiumbox",
+      "price": "40 kr",
+      "period": "engångsavgift, per äventyr",
+      "tagline": "För överraskningen som måste landa rätt",
+      "cta": "Bygg ett premiumäventyr",
+      "rec": true,
+      "features": [
+        "Obegränsade steg",
+        "Premiumteman, partiklar & ljud",
+        "Modul för Bildhotspot",
+        "Inget vattenstämpel"
+      ]
+    },
+    {
+      "name": "Företag",
+      "price": "Anpassad",
+      "period": "faktureras årligen",
+      "tagline": "För team, event & lanseringar",
+      "cta": "Prata med oss",
+      "features": [
+        "Team-dashboard & platser",
+        "Eget varumärke & domäner",
+        "Analys & spelspårning",
+        "Prioriterad support"
+      ]
+    }
+  ],
+  "partnerBlock": {
+    "kicker": "Samarbetar nu",
+    "title": "Puzzify × WelloWork — spela er till ett starkare team.",
+    "desc": "Vi har slagit oss samman med WelloWork, den svenska plattformen för arbetsprestation, för att ta in Puzzify-äventyr i de verktyg som företag redan använder. Arbetsgivare förvandlar onboarding, utbildning och teambuilding till spel som anställda faktiskt vill spela.",
+    "cta": "Utforska partnerskapet",
+    "link": "https://www.wellowork.net/",
+    "features": [
+      {
+        "t": "Teambuilding-spel",
+        "d": "Samskapade äventyr som förvandlar kognitiv träning och kulturögonblick till en gemensam utmaning."
+      },
+      {
+        "t": "Onboarding i stor skala",
+        "d": "Rulla ut brandade välkomst-äventyr till varje nyanställd från en enda dashboard."
+      },
+      {
+        "t": "Byggt för arbetsgivare",
+        "d": "Ansluter till WelloWorks manager-vy, så att engagemang är något du faktiskt kan se."
+      }
+    ]
+  },
+  "finalKicker": "Din tur",
+  "finalLine": "Vill du överraska någon annan?",
+  "finalSub": "Skapa ditt första äventyr gratis — de kommer att fråga hur du gjorde det.",
+  "finalCta": "Skapa ditt första äventyr — gratis",
+  "footTagline": "Förvandla vilken present som helst till ett miniescape-room.",
+  "footCols": [
+    {
+      "h": "Produkt",
+      "links": [
+        "Hur det fungerar",
+        "Användningsområden",
+        "Priser",
+        "Creator Studio"
+      ]
+    },
+    {
+      "h": "Företag",
+      "links": [
+        "Om oss",
+        "Blogg",
+        "Karriär",
+        "Presskit"
+      ]
+    },
+    {
+      "h": "Juridiskt",
+      "links": [
+        "Integritet",
+        "Villkor",
+        "Cookies",
+        "Säkerhet"
+      ]
+    }
+  ],
+  "footLang": "Språk",
+  "footLegal": "© 2026 Puzzify · Gjord för härliga överraskningar"
+}

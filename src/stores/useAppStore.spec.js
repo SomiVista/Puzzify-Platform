@@ -1,10 +1,12 @@
 import { describe, it, expect, beforeEach } from 'vitest'
 import { setActivePinia, createPinia } from 'pinia'
 import { useAppStore } from './useAppStore'
+import i18n from '../i18n'
 
 describe('useAppStore', () => {
   beforeEach(() => {
     setActivePinia(createPinia())
+    i18n.global.locale.value = 'en'
   })
 
   it('initializes with default state', () => {
@@ -46,12 +48,12 @@ describe('useAppStore', () => {
     expect(store.particlesOn).toBe(false)
   })
 
-  it('provides correct translations based on language', () => {
+  it('syncs language with i18n', () => {
     const store = useAppStore()
     // default English
-    expect(store.t.navHow).toBe('How it works')
+    expect(i18n.global.locale.value).toBe('en')
     // Persian
     store.setLang('fa')
-    expect(store.t.navHow).toBe('چطور کار می‌کند')
+    expect(i18n.global.locale.value).toBe('fa')
   })
 })
