@@ -16,6 +16,8 @@ concurrency:
 
 permissions:
   contents: read
+  pull-requests: write
+  checks: write
 
 jobs:
   # ---------------------------------------------------------------------------
@@ -100,13 +102,54 @@ jobs:
           echo "Version bump OK: $OLD -> $NEW"
 
   # ---------------------------------------------------------------------------
-  # 3. Deploy: only on merge/push to main, after validation passes.
+  # 3a. Deploy (dev): on PRs, ship the build to a persistent Firebase preview
+  #     channel and record it under the GitHub "dev" environment.
   # ---------------------------------------------------------------------------
-  deploy:
-    name: Deploy to Firebase Hosting
+  deploy-dev:
+    name: Deploy to dev (preview channel)
+    needs: validate
+    # Skip on forked PRs — the Firebase service-account secret is not exposed
+    # to forks, so the deploy would fail.
+    if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    environment:
+      name: dev
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build project
+        run: npm run build
+
+      - name: Deploy to Firebase Hosting (dev preview channel)
+        uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: '${{ secrets.GITHUB_TOKEN }}'
+          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_PUZZIFY_PLATFORM }}'
+          channelId: dev
+          projectId: puzzify-platform
+
+  # ---------------------------------------------------------------------------
+  # 3b. Deploy (prod): only on merge/push to main, after validation passes.
+  #     Recorded under the GitHub "prod" environment.
+  # ---------------------------------------------------------------------------
+  deploy-prod:
+    name: Deploy to prod (live)
     needs: validate
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
+    environment:
+      name: prod
+      url: https://puzzify-platform.web.app
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
