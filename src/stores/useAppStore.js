@@ -20,6 +20,11 @@ export const useAppStore = defineStore('app', () => {
   const setTheme = (newTheme) => theme.value = newTheme
   const toggleParticles = () => particlesOn.value = !particlesOn.value
 
+  // Dashboard State
+  const planTier = ref('free') // 'free' | 'premium' | 'corporate'
+  const quests = ref([]) // empty for empty state
+  const creatorInfo = ref({ name: 'Maya Kapoor', initials: 'MK' })
+
   // Getters
   const isFa = computed(() => lang.value === 'fa')
   const isMystery = computed(() => theme.value === 'mystery')
@@ -28,6 +33,7 @@ export const useAppStore = defineStore('app', () => {
   return {
     lang, theme, particlesOn,
     setLang, toggleLang, setTheme, toggleParticles,
+    planTier, quests, creatorInfo,
     isFa, isMystery, dir
   }
 })

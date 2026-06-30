@@ -6,18 +6,6 @@
 import { storeToRefs } from 'pinia'
 import { useAppStore } from './stores/useAppStore'
 
-import TheHeader from './components/layout/TheHeader.vue'
-import HeroSection from './components/sections/HeroSection.vue'
-import TrustStrip from './components/sections/TrustStrip.vue'
-import HowItWorks from './components/sections/HowItWorks.vue'
-import PuzzleTypes from './components/sections/PuzzleTypes.vue'
-import UseCases from './components/sections/UseCases.vue'
-import WhyPuzzify from './components/sections/WhyPuzzify.vue'
-import PartnersSection from './components/sections/PartnersSection.vue'
-import PricingSection from './components/sections/PricingSection.vue'
-import FinalCta from './components/sections/FinalCta.vue'
-import TheFooter from './components/layout/TheFooter.vue'
-
 const store = useAppStore()
 const { isFa, isMystery, dir } = storeToRefs(store)
 </script>
@@ -28,16 +16,6 @@ const { isFa, isMystery, dir } = storeToRefs(store)
     :dir="dir" 
     style="min-height:100vh; background:var(--pz-bg); overflow-x:clip;"
   >
-    <TheHeader />
-    <HeroSection />
-    <TrustStrip />
-    <HowItWorks />
-    <PuzzleTypes />
-    <UseCases />
-    <WhyPuzzify />
-    <PartnersSection />
-    <PricingSection />
-    <FinalCta />
-    <TheFooter />
+    <router-view />
   </div>
 </template>

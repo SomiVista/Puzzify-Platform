@@ -5,9 +5,11 @@
  */
 import { computed, ref } from 'vue'
 import { storeToRefs } from 'pinia'
+import { useRouter } from 'vue-router'
 import { useAppStore } from '../../stores/useAppStore'
 
 const store = useAppStore()
+const router = useRouter()
 const { isMystery, lang } = storeToRefs(store)
 const { setTheme, setLang } = store
 
@@ -87,6 +89,9 @@ const selectLang = (code) => {
           </div>
         </div>
       </div>
+      <button @click="router.push('/dashboard')" style="padding:11px 22px; background:var(--pz-text); color:var(--pz-surface); border:none; border-radius:var(--pz-r-full); font-family:var(--pz-font-ui); font-size:14px; font-weight:700; cursor:pointer; box-shadow:var(--pz-e-1); transition:opacity .2s;" onmouseover="this.style.opacity='.9'" onmouseout="this.style.opacity='1'">
+        {{ $t('navLogin') || 'Log in' }}
+      </button>
     </nav>
   </header>
 </template>
