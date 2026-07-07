@@ -1,0 +1,10 @@
+/* Puzzify radius tokens.
+   sm 8 — small wells, list rows · md 14 — buttons, inputs · lg 20 — cards
+   xl 30 — hero cards, modals, box stage · full — pills, dots */
+:root {
+  --pz-r-sm: 8px;
+  --pz-r-md: 14px;
+  --pz-r-lg: 20px;
+  --pz-r-xl: 30px;
+  --pz-r-full: 999px;
+}

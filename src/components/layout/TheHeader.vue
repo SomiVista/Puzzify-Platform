@@ -10,15 +10,14 @@ import { useAppStore } from '../../stores/useAppStore'
 
 const store = useAppStore()
 const router = useRouter()
-const { isMystery, lang } = storeToRefs(store)
+const { theme, lang } = storeToRefs(store)
 const { setTheme, setLang } = store
 
 const pillBase = 'padding:7px 15px; min-height:38px; border:none; border-radius:999px; font-family:var(--pz-font-ui); font-size:13px; font-weight:700; cursor:pointer; transition:all .2s;'
 const pillOn = 'background:var(--pz-primary); color:var(--pz-on-primary);'
 const pillOff = 'background:transparent; color:var(--pz-muted);'
 
-const pillBirthday = computed(() => pillBase + (isMystery.value ? pillOff : pillOn))
-const pillMystery = computed(() => pillBase + (isMystery.value ? pillOn : pillOff))
+const getPillStyle = (t) => pillBase + (theme.value === t ? pillOn : pillOff)
 
 const isLangMenuOpen = ref(false)
 const toggleLangMenu = () => { isLangMenuOpen.value = !isLangMenuOpen.value }
@@ -61,8 +60,10 @@ const selectLang = (code) => {
       </nav>
       <div style="display:flex; align-items:center; padding:4px; padding-inline-end:16px; background:var(--pz-surface); border:1px solid var(--pz-border); border-radius:var(--pz-r-full); box-shadow:var(--pz-e-1);">
         <div style="display:flex; background:var(--pz-surface-2); border-radius:var(--pz-r-full);">
-          <button @click="setTheme('birthday')" :style="pillBirthday">{{ $t('themeBirthday') }}</button>
-          <button @click="setTheme('mystery')" :style="pillMystery">{{ $t('themeMystery') }}</button>
+          <button @click="setTheme('birthday')" :style="getPillStyle('birthday')">{{ $t('themeBirthday') || 'Birthday' }}</button>
+          <button @click="setTheme('mystery')" :style="getPillStyle('mystery')">{{ $t('themeMystery') || 'Mystery' }}</button>
+          <button @click="setTheme('spooky')" :style="getPillStyle('spooky')">Spooky</button>
+          <button @click="setTheme('corporate')" :style="getPillStyle('corporate')">Corporate</button>
         </div>
         <div style="width:1px; height:20px; background:var(--pz-border); margin:0 16px 0 12px;"></div>
         <div style="position:relative;" @focusout="setTimeout(closeLangMenu, 200)">

@@ -2,9 +2,19 @@
   <header class="main-header">
     <h1>{{ pageTitle }}</h1>
     <div class="header-actions">
-      <button class="icon-btn" aria-label="Notifications">
+      <div class="search-wrapper">
+        <Search class="search-icon" :size="16" />
+        <input 
+          type="text" 
+          class="search-input" 
+          placeholder="Search quests..." 
+          v-model="searchQuery"
+          aria-label="Search quests"
+        />
+      </div>
+      <IconButton aria-label="Notifications" :size="44">
         <Bell :size="20" />
-      </button>
+      </IconButton>
       <router-link to="/dashboard/settings" class="avatar" aria-label="User settings">
         {{ creatorInfo.initials }}
       </router-link>
@@ -17,11 +27,12 @@ import { computed } from 'vue'
 import { useRoute } from 'vue-router'
 import { storeToRefs } from 'pinia'
 import { useAppStore } from '../../stores/useAppStore'
-import { Bell } from 'lucide-vue-next'
+import { Bell, Search } from 'lucide-vue-next'
+import IconButton from '../ui/IconButton.vue'
 
 const route = useRoute()
 const store = useAppStore()
-const { creatorInfo } = storeToRefs(store)
+const { creatorInfo, searchQuery } = storeToRefs(store)
 
 const pageTitle = computed(() => route.meta?.title || 'Dashboard')
 </script>
@@ -48,20 +59,37 @@ const pageTitle = computed(() => route.meta?.title || 'Dashboard')
   align-items: center;
   gap: 16px;
 }
-.icon-btn {
-  width: 44px;
+.search-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.search-icon {
+  position: absolute;
+  left: 14px;
+  color: var(--pz-muted);
+  pointer-events: none;
+}
+.search-input {
+  width: 240px;
   height: 44px;
-  border-radius: 13px;
+  padding: 0 16px 0 40px;
+  border-radius: var(--pz-r-full);
   border: 1px solid var(--pz-border);
   background: var(--pz-surface);
   color: var(--pz-text);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all var(--pz-dur) var(--pz-ease);
+  font-family: var(--pz-font-ui);
+  font-size: 14px;
+  transition: all .2s;
+  outline: none;
 }
-.icon-btn:focus-visible { outline: none; box-shadow: 0 0 0 4px var(--pz-ring); }
+.search-input::placeholder {
+  color: var(--pz-muted);
+}
+.search-input:focus {
+  border-color: var(--pz-focus);
+  box-shadow: 0 0 0 4px var(--pz-ring);
+}
 .avatar {
   width: 44px;
   height: 44px;
@@ -76,7 +104,7 @@ const pageTitle = computed(() => route.meta?.title || 'Dashboard')
   font-size: 15px;
   text-decoration: none;
   cursor: pointer;
-  transition: all var(--pz-dur) var(--pz-ease);
+  transition: transform .15s, box-shadow .15s, filter .2s;
 }
 .avatar:hover {
   filter: brightness(0.95);

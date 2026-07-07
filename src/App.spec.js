@@ -2,18 +2,24 @@ import { describe, it, expect, beforeEach } from 'vitest'
 import { mount } from '@vue/test-utils'
 import { createPinia, setActivePinia } from 'pinia'
 import i18n from './i18n'
+import router from './router'
 import App from './App.vue'
 
 describe('App.vue', () => {
   let wrapper
   let pinia
 
-  beforeEach(() => {
+  beforeEach(async () => {
     pinia = createPinia()
     setActivePinia(pinia)
+    
+    // Ensure router is ready
+    router.push('/')
+    await router.isReady()
+    
     wrapper = mount(App, {
       global: {
-        plugins: [pinia, i18n]
+        plugins: [pinia, i18n, router]
       }
     })
   })

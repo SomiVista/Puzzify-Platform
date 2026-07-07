@@ -1,0 +1,28 @@
+/* Puzzify motion. One duration, one ease, CSS-only keyframes.
+   EVERY animated element carries class "pz-anim" so reduced-motion can kill it. */
+:root {
+  --pz-dur: .32s;
+  --pz-ease: cubic-bezier(.2, .8, .2, 1);
+}
+
+/* Particles */
+@keyframes pzFall { 0%{ transform:translateY(-30px) rotate(0); opacity:0 } 8%{ opacity:.95 } 92%{ opacity:.95 } 100%{ transform:translateY(660px) rotate(260deg); opacity:0 } }
+@keyframes pzRise { 0%{ transform:translateY(620px) scale(.7); opacity:0 } 12%{ opacity:.85 } 100%{ transform:translateY(-40px) scale(1); opacity:0 } }
+@keyframes pzBurst { 0%{ transform:translate(0,0) scale(1); opacity:1 } 100%{ transform:translate(var(--bx), var(--by)) scale(.4); opacity:0 } }
+
+/* Ambient / idle */
+@keyframes pzBars { 0%,100%{ transform:scaleY(.35) } 50%{ transform:scaleY(1) } }
+@keyframes pzFloatBox { 0%,100%{ transform:translateY(0) rotate(-1deg) } 50%{ transform:translateY(-10px) rotate(1deg) } }
+@keyframes pzPulse { 0%,100%{ box-shadow:0 0 0 0 var(--pz-ring) } 50%{ box-shadow:0 0 0 16px transparent } }
+@keyframes pzCaret { 0%,100%{ opacity:0 } 50%{ opacity:1 } }
+
+/* Verdicts */
+@keyframes pzShake { 0%,100%{ transform:translateX(0) } 20%,60%{ transform:translateX(-7px) } 40%,80%{ transform:translateX(7px) } }
+@keyframes pzPop { 0%{ transform:scale(.6); opacity:0 } 70%{ transform:scale(1.04); opacity:1 } 100%{ transform:scale(1); opacity:1 } }
+@keyframes pzFadeUp { 0%{ transform:translateY(14px); opacity:0 } 100%{ transform:translateY(0); opacity:1 } }
+@keyframes pzSpin { 0%{ transform:rotate(0) } 100%{ transform:rotate(360deg) } }
+@keyframes pzLidOpen { 0%{ transform:translateY(0) rotate(0) } 100%{ transform:translateY(-26px) rotate(-9deg) } }
+
+@media (prefers-reduced-motion: reduce) {
+  .pz-anim { animation: none !important; }
+}
