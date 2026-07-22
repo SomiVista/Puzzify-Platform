@@ -27,14 +27,9 @@
 </template>
 
 <script setup>
-import { storeToRefs } from 'pinia'
-import { useAppStore } from '../../stores/useAppStore'
 import { Plus, Cake, Heart, Search, Briefcase, Snowflake } from 'lucide-vue-next'
 import BoxStage from '../ui/BoxStage.vue'
 import PzButton from '../ui/PzButton.vue'
-
-const store = useAppStore()
-const { creatorInfo } = storeToRefs(store)
 
 const presets = [
   { name: 'Birthday', icon: Cake },

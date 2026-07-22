@@ -1,6 +1,6 @@
 <template>
   <div class="dashboard-layout">
-    <Sidebar />
+    <DashboardSidebar />
     <div class="main-column">
       <DashboardHeader />
       <router-view class="main-content" />
@@ -9,7 +9,7 @@
 </template>
 
 <script setup>
-import Sidebar from '../components/dashboard/Sidebar.vue'
+import DashboardSidebar from '../components/dashboard/DashboardSidebar.vue'
 import DashboardHeader from '../components/dashboard/DashboardHeader.vue'
 </script>
 
