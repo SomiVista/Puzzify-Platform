@@ -1,0 +1,28 @@
+/* Puzzify typography tokens.
+   Display: Bricolage Grotesque (700/800, tight tracking)
+   UI/body: IBM Plex Sans (400/600/700)
+   Mono:    IBM Plex Mono (500/600) — codes, tokens, URLs
+   RTL:     Vazirmatn replaces BOTH display + UI under .pz-lang-fa */
+
+:root {
+  --pz-font-display: 'Bricolage Grotesque', system-ui, sans-serif;
+  --pz-font-ui: 'IBM Plex Sans', system-ui, sans-serif;
+  --pz-font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+
+  /* Type scale (role tokens) */
+  --pz-fs-display: 34px;   /* hero / finale titles · display 800 · 30–38px range */
+  --pz-fs-title: 21px;     /* card titles · display 700 · 20–22px range */
+  --pz-fs-body: 14px;      /* prompts, paragraphs · ui 400 */
+  --pz-fs-caption: 12px;   /* meta, watermark · ui 400–600 */
+  --pz-lh-display: 1.05;
+  --pz-lh-body: 1.5;
+  --pz-track-display: -.025em;
+  --pz-track-kicker: .14em; /* uppercase kickers/badges */
+}
+
+/* Persian / RTL locale: swap both families to Vazirmatn.
+   Pair with dir="rtl" on the same container. */
+.pz-lang-fa {
+  --pz-font-display: 'Vazirmatn', system-ui, sans-serif;
+  --pz-font-ui: 'Vazirmatn', system-ui, sans-serif;
+}

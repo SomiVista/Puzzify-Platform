@@ -4,40 +4,25 @@
  * @description Root component that assembles all page sections.
  */
 import { storeToRefs } from 'pinia'
+import { computed } from 'vue'
 import { useAppStore } from './stores/useAppStore'
-
-import TheHeader from './components/layout/TheHeader.vue'
-import HeroSection from './components/sections/HeroSection.vue'
-import TrustStrip from './components/sections/TrustStrip.vue'
-import HowItWorks from './components/sections/HowItWorks.vue'
-import PuzzleTypes from './components/sections/PuzzleTypes.vue'
-import UseCases from './components/sections/UseCases.vue'
-import WhyPuzzify from './components/sections/WhyPuzzify.vue'
-import PartnersSection from './components/sections/PartnersSection.vue'
-import PricingSection from './components/sections/PricingSection.vue'
-import FinalCta from './components/sections/FinalCta.vue'
-import TheFooter from './components/layout/TheFooter.vue'
+import { THEMES } from './themes'
 
 const store = useAppStore()
-const { isFa, isMystery, dir } = storeToRefs(store)
+const { isFa, theme, dir } = storeToRefs(store)
+
+const themeVars = computed(() => {
+  const currentTheme = THEMES[theme.value] || THEMES.birthday
+  return currentTheme.vars
+})
 </script>
 
 <template>
   <div 
-    :class="['pz-stage', { 'pz-theme-mystery': isMystery, 'pz-lang-fa': isFa }]" 
+    :class="['pz-stage', `pz-theme-${theme}`, { 'pz-lang-fa': isFa }]" 
     :dir="dir" 
-    style="min-height:100vh; background:var(--pz-bg); overflow-x:clip;"
+    :style="{ minHeight: '100vh', background: 'var(--pz-bg)', overflowX: 'clip', ...themeVars }"
   >
-    <TheHeader />
-    <HeroSection />
-    <TrustStrip />
-    <HowItWorks />
-    <PuzzleTypes />
-    <UseCases />
-    <WhyPuzzify />
-    <PartnersSection />
-    <PricingSection />
-    <FinalCta />
-    <TheFooter />
+    <router-view />
   </div>
 </template>

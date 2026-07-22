@@ -1,3 +1,11 @@
+@import "./tokens/colors.css";
+@import "./tokens/typography.css";
+@import "./tokens/spacing.css";
+@import "./tokens/radius.css";
+@import "./tokens/elevation.css";
+@import "./tokens/motion.css";
+@import "./tokens/base.css";
+
 /* vietnamese */
 @font-face {
   font-family: 'Bricolage Grotesque';
@@ -385,42 +393,7 @@
   src: url("./925abbff-41ad-4cc1-9d8b-4d1bfa2604d7.woff2") format('woff2');
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
-
-*{ box-sizing:border-box; }
-html,body{ margin:0; padding:0; }
-body{ font-family:'IBM Plex Sans', system-ui, sans-serif; -webkit-font-smoothing:antialiased; }
-:root{
-  --pz-font-display:'Bricolage Grotesque', system-ui, sans-serif;
-  --pz-font-ui:'IBM Plex Sans', system-ui, sans-serif;
-  --pz-r-sm:8px; --pz-r-md:14px; --pz-r-lg:20px; --pz-r-xl:30px; --pz-r-full:999px;
-  --pz-sp-1:4px; --pz-sp-2:8px; --pz-sp-3:12px; --pz-sp-4:16px; --pz-sp-5:24px; --pz-sp-6:32px; --pz-sp-7:48px;
-  --pz-e-1:0 1px 2px rgba(12,14,20,.06), 0 2px 6px rgba(12,14,20,.05);
-  --pz-e-2:0 8px 22px rgba(12,14,20,.12);
-  --pz-e-3:0 26px 70px rgba(8,9,14,.45);
-  --pz-dur:.32s; --pz-ease:cubic-bezier(.2,.8,.2,1);
+.pz-lang-fa {
+  --pz-font-display: 'Vazirmatn', system-ui, sans-serif;
+  --pz-font-ui: 'Vazirmatn', system-ui, sans-serif;
 }
-.pz-stage{
-  --pz-bg:#FFF6F1; --pz-surface:#FFFFFF; --pz-surface-2:#FFEEF3; --pz-surface-3:#FFF9EC;
-  --pz-text:#2B2230; --pz-muted:#7C6F79; --pz-border:#F2DBE4; --pz-hairline:#F6E7EC;
-  --pz-primary:#D62E6C; --pz-on-primary:#FFFFFF; --pz-secondary:#1C9A92; --pz-accent:#F4B740;
-  --pz-success:#1E9E6A; --pz-error:#D64545; --pz-focus:#D62E6C; --pz-ring:rgba(214,46,108,.26);
-  --pz-glow:rgba(244,183,64,.55);
-  font-family:var(--pz-font-ui); color:var(--pz-text);
-}
-.pz-stage.pz-theme-mystery{
-  --pz-bg:#0E1118; --pz-surface:#161B26; --pz-surface-2:#1E2531; --pz-surface-3:#11202A;
-  --pz-text:#ECEFF4; --pz-muted:#94A0B0; --pz-border:#2A3340; --pz-hairline:#222B38;
-  --pz-primary:#E0A92E; --pz-on-primary:#15110A; --pz-secondary:#4FB0A5; --pz-accent:#C7604F;
-  --pz-success:#56B47E; --pz-error:#E06A6A; --pz-focus:#E0A92E; --pz-ring:rgba(224,169,46,.30);
-  --pz-glow:rgba(79,176,165,.5);
-  --pz-e-1:0 1px 2px rgba(0,0,0,.4), 0 2px 8px rgba(0,0,0,.35);
-  --pz-e-2:0 10px 26px rgba(0,0,0,.5);
-}
-.pz-lang-fa{ --pz-font-display:'Vazirmatn', system-ui, sans-serif; --pz-font-ui:'Vazirmatn', system-ui, sans-serif; }
-@keyframes pzFall{ 0%{ transform:translateY(-30px) rotate(0); opacity:0 } 8%{opacity:.95} 92%{opacity:.95} 100%{ transform:translateY(620px) rotate(260deg); opacity:0 } }
-@keyframes pzRise{ 0%{ transform:translateY(620px) scale(.7); opacity:0 } 12%{opacity:.85} 100%{ transform:translateY(-40px) scale(1); opacity:0 } }
-@keyframes pzBars{ 0%,100%{ transform:scaleY(.35) } 50%{ transform:scaleY(1) } }
-@keyframes pzFloatBox{ 0%,100%{ transform:translateY(0) rotate(-1deg) } 50%{ transform:translateY(-10px) rotate(1deg) } }
-@keyframes pzPulse{ 0%,100%{ box-shadow:0 0 0 0 var(--pz-ring) } 50%{ box-shadow:0 0 0 16px transparent } }
-@keyframes pzCaret{ 0%,100%{ opacity:0 } 50%{ opacity:1 } }
-@media (prefers-reduced-motion: reduce){ .pz-anim{ animation:none !important } }

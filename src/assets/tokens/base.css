@@ -1,0 +1,8 @@
+/* Puzzify base reset — intentionally tiny. */
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--pz-bg);
+  color: var(--pz-text);
+  font-family: var(--pz-font-ui);
+}
