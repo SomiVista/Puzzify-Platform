@@ -198,5 +198,258 @@
     }
   ],
   "footLang": "Langue",
-  "footLegal": "© 2026 Puzzify · Conçu pour des surprises mémorables"
+  "footLegal": "© 2026 Puzzify · Conçu pour des surprises mémorables",
+  "dashboard": {
+    "workspace": "Espace de travail",
+    "nav": {
+      "quests": "Quêtes",
+      "analytics": "Statistiques",
+      "presets": "Préréglages",
+      "settings": "Paramètres"
+    },
+    "titles": {
+      "quests": "Vos quêtes",
+      "analytics": "Statistiques",
+      "presets": "Préréglages",
+      "settings": "Paramètres"
+    },
+    "upgrade": {
+      "title": "Vous êtes en Gratuit",
+      "body": "Accédez aux fonctions avancées et à plus de quêtes.",
+      "cta": "Améliorer un cadeau"
+    },
+    "plans": {
+      "free": "Formule gratuite",
+      "premium": "Premium",
+      "corporate": "Espace entreprise"
+    },
+    "header": {
+      "searchPlaceholder": "Rechercher des quêtes…",
+      "searchLabel": "Rechercher des quêtes",
+      "notifications": "Notifications",
+      "userSettings": "Paramètres du compte"
+    },
+    "stats": {
+      "gifts": "Cadeaux créés au total",
+      "plays": "Parties au total",
+      "completion": "Taux moyen de réussite",
+      "solve": "Temps moyen de résolution"
+    },
+    "list": {
+      "title": "Vos quêtes",
+      "all": "Toutes",
+      "published": "Publiées",
+      "drafts": "Brouillons",
+      "sortRecent": "Récentes",
+      "noResults": "Aucune quête ne correspond à votre recherche ou à votre filtre."
+    },
+    "card": {
+      "plays": "Parties",
+      "avgSolve": "Temps moyen",
+      "completion": "Réussite",
+      "edit": "Modifier la quête",
+      "analytics": "Statistiques",
+      "statusPublished": "Publiée",
+      "statusDraft": "Brouillon"
+    },
+    "createHero": {
+      "title": "Créer un nouveau cadeau",
+      "newQuest": "Nouvelle quête"
+    },
+    "empty": {
+      "title": "Créez votre premier cadeau",
+      "body": "Montez une quête en quelques minutes : quelques indices, puis la récompense. Partez d’une occasion et nous choisissons le thème, l’audio et la boîte pour vous.",
+      "newQuest": "Nouvelle quête",
+      "kicker": "Ou partez d’une occasion",
+      "tagline": "La façon de l’offrir est le cadeau."
+    },
+    "soon": {
+      "analytics": "La vue Statistiques arrive bientôt.",
+      "presets": "La vue Préréglages arrive bientôt.",
+      "settings": "La vue Paramètres arrive bientôt."
+    }
+  },
+  "builder": {
+    "occasions": {
+      "birthday": "Anniversaire",
+      "anniversary": "Anniversaire de couple",
+      "holiday": "Fêtes",
+      "mysteryNight": "Soirée mystère",
+      "corporate": "Entreprise",
+      "blank": "Partir de zéro"
+    },
+    "topbar": {
+      "back": "Retour au tableau de bord",
+      "namePlaceholder": "Nommez votre quête",
+      "stepsLabel": "Étapes",
+      "save": "Enregistrer le brouillon",
+      "saved": "Enregistré",
+      "unsaved": "Modifications non enregistrées",
+      "newQuest": "Nouvelle quête"
+    },
+    "palette": {
+      "title": "Blocs d’énigme",
+      "hint": "Glissez sur le canevas, ou appuyez pour ajouter.",
+      "add": "Ajouter {block}",
+      "lock": {
+        "label": "Serrure texte",
+        "desc": "Une réponse exacte saisie dans un champ"
+      },
+      "trivia": {
+        "label": "Quiz",
+        "desc": "2 à 4 options, une seule correcte"
+      },
+      "hotspot": {
+        "label": "Point sur image",
+        "desc": "Toucher le bon endroit sur une image"
+      }
+    },
+    "canvas": {
+      "title": "Parcours",
+      "subtitle": "Les étapes se jouent de haut en bas, une par une.",
+      "start": "Départ",
+      "startCaption": "La personne ouvre le lien",
+      "finale": "Grande finale",
+      "finaleCaption": "La récompense se débloque ici",
+      "empty": "Déposez un bloc d’énigme ici",
+      "emptyBody": "Les étapes se jouent dans l’ordre où vous les placez.",
+      "dropHere": "Déposer ici",
+      "step": "Étape {n}",
+      "unlocks": "Débloque l’étape {n}",
+      "lockedUntil": "Verrouillée jusqu’à la résolution de l’étape {n}",
+      "playsFirst": "Se joue en premier",
+      "incomplete": "À configurer",
+      "ready": "Prête",
+      "moveUp": "Déplacer avant",
+      "moveDown": "Déplacer après",
+      "delete": "Supprimer l’étape",
+      "untitled": "Étape sans titre"
+    },
+    "inspector": {
+      "title": "Réglages de l’étape",
+      "stepOf": "Étape {n} sur {total}",
+      "prev": "Précédente",
+      "next": "Suivante",
+      "none": "Aucune étape sélectionnée",
+      "noneBody": "Choisissez une carte sur le canevas, ou ajoutez un bloc d’énigme pour commencer.",
+      "kind": "Type de bloc",
+      "fields": {
+        "title": "Titre de l’étape",
+        "titlePlaceholder": "Titre facultatif",
+        "prompt": "Énoncé",
+        "promptPlaceholder": "Que doit deviner la personne ?",
+        "answer": "Bonne réponse",
+        "answerPlaceholder": "La réponse exacte",
+        "caseSensitive": "Sensible à la casse",
+        "options": "Options",
+        "optionPlaceholder": "Option {n}",
+        "addOption": "Ajouter une option",
+        "removeOption": "Retirer l’option",
+        "correct": "Marquer comme correcte",
+        "imageUrl": "URL de l’image",
+        "imagePlaceholder": "https://…",
+        "target": "Zone cible (% de l’image)",
+        "targetX": "X",
+        "targetY": "Y",
+        "targetW": "Largeur",
+        "targetH": "Hauteur"
+      },
+      "advanced": {
+        "title": "Réglages avancés",
+        "hintText": "Texte de l’indice",
+        "hintHelp": "Affiché uniquement quand la personne touche l’icône d’indice.",
+        "hintPlaceholder": "Un petit coup de pouce…",
+        "successMessage": "Message de réussite",
+        "successHelp": "Apparaît juste après une bonne réponse.",
+        "successPlaceholder": "Bravo ! Tu t’es toujours souvenu de cette date.",
+        "maxAttempts": "Essais maximum",
+        "maxAttemptsHelp": "Laissez vide pour des essais illimités (1–10).",
+        "unlimited": "Illimités"
+      }
+    },
+    "theme": {
+      "title": "Thème",
+      "preset": "Préréglage de thème",
+      "ambientAudio": "Ambiance sonore",
+      "ambientAudioHelp": "Démarre après le premier appui de la personne.",
+      "particles": "Particules d’ouverture",
+      "particlesHelp": "Mouvement décoratif sur l’écran d’ouverture.",
+      "on": "Activé",
+      "off": "Désactivé"
+    },
+    "preview": {
+      "title": "Aperçu en direct",
+      "empty": "Ajoutez une étape pour la prévisualiser.",
+      "hint": "Indice",
+      "submit": "Déverrouiller",
+      "inputPlaceholder": "Saisissez votre réponse",
+      "attempts": "{n} essais",
+      "watermark": "Créé avec Puzzify"
+    },
+    "issues": {
+      "promptRequired": "Ajoutez un énoncé.",
+      "answerRequired": "Ajoutez la bonne réponse.",
+      "optionsRequired": "Ajoutez au moins deux options.",
+      "correctOptionRequired": "Remplissez l’option marquée comme correcte.",
+      "imageRequired": "Ajoutez l’URL d’une image.",
+      "targetRequired": "Définissez une zone cible.",
+      "maxAttemptsRange": "Le nombre d’essais doit être compris entre 1 et 10.",
+      "unknownKind": "Type de bloc non pris en charge.",
+      "nameRequired": "Nommez votre quête.",
+      "stepsRequired": "Ajoutez au moins une étape.",
+      "stepsIncomplete": "Terminez toutes les étapes."
+    },
+    "reward": {
+      "title": "Récompense",
+      "type": "Type de récompense",
+      "letter": "Lettre",
+      "video": "Vidéo",
+      "voucher": "Bon",
+      "headline": "Titre de la récompense",
+      "headlinePlaceholder": "Joyeux anniversaire, maman !",
+      "message": "Message",
+      "messagePlaceholder": "Écrivez le mot qu’ils déverrouillent…",
+      "videoUrl": "URL de la vidéo",
+      "videoPlaceholder": "https://…",
+      "code": "Code",
+      "codePlaceholder": "GIFT-2026"
+    },
+    "publish": {
+      "action": "Publier",
+      "update": "Mettre à jour le lien",
+      "published": "Publiée",
+      "copyLink": "Copier le lien",
+      "copied": "Lien copié",
+      "shareHint": "Envoyez ce lien à la personne pour qui vous l’avez créé.",
+      "blocked": "Terminez toutes les étapes avant de publier."
+    }
+  },
+  "player": {
+    "loading": "Ouverture de votre cadeau…",
+    "notFoundTitle": "Ce lien a expiré",
+    "notFoundBody": "Aucune quête ici. Demandez un nouveau lien à la personne qui vous l’a envoyé.",
+    "notFoundCta": "Créez la vôtre",
+    "stepOf": "Étape {n} sur {total}",
+    "hint": "Indice",
+    "showHint": "Besoin d’un indice ?",
+    "attemptsLeft": "{n} essais restants",
+    "lastAttempt": "Dernier essai",
+    "submit": "Déverrouiller",
+    "inputPlaceholder": "Saisissez votre réponse",
+    "incorrect": "Presque — réessayez.",
+    "tapPrompt": "Touchez le bon endroit",
+    "lockedTitle": "Plus d’essais",
+    "lockedBody": "Vous avez utilisé tous les essais de cette étape.",
+    "restart": "Recommencer",
+    "audioOn": "Activer le son",
+    "audioOff": "Couper le son",
+    "finaleKicker": "Vous avez réussi",
+    "finaleTitle": "Votre récompense",
+    "copyCode": "Copier le code",
+    "copied": "Copié !",
+    "ctaTitle": "Envie de surprendre quelqu’un d’autre ?",
+    "ctaBody": "Créez votre première quête gratuitement.",
+    "ctaButton": "Créez la vôtre",
+    "watermark": "Créé avec Puzzify"
+  }
 }

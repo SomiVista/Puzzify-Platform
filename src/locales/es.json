@@ -198,5 +198,258 @@
     }
   ],
   "footLang": "Idioma",
-  "footLegal": "© 2026 Puzzify · Hecho para sorpresas deliciosas"
+  "footLegal": "© 2026 Puzzify · Hecho para sorpresas deliciosas",
+  "dashboard": {
+    "workspace": "Espacio de trabajo",
+    "nav": {
+      "quests": "Misiones",
+      "analytics": "Analíticas",
+      "presets": "Ajustes previos",
+      "settings": "Configuración"
+    },
+    "titles": {
+      "quests": "Tus misiones",
+      "analytics": "Analíticas",
+      "presets": "Ajustes previos",
+      "settings": "Configuración"
+    },
+    "upgrade": {
+      "title": "Estás en el plan Gratis",
+      "body": "Consigue funciones avanzadas y más misiones.",
+      "cta": "Mejorar un regalo"
+    },
+    "plans": {
+      "free": "Plan gratuito",
+      "premium": "Premium",
+      "corporate": "Espacio corporativo"
+    },
+    "header": {
+      "searchPlaceholder": "Buscar misiones…",
+      "searchLabel": "Buscar misiones",
+      "notifications": "Notificaciones",
+      "userSettings": "Ajustes de usuario"
+    },
+    "stats": {
+      "gifts": "Regalos creados en total",
+      "plays": "Partidas totales",
+      "completion": "Tasa media de finalización",
+      "solve": "Tiempo medio de resolución"
+    },
+    "list": {
+      "title": "Tus misiones",
+      "all": "Todas",
+      "published": "Publicadas",
+      "drafts": "Borradores",
+      "sortRecent": "Recientes",
+      "noResults": "Ninguna misión coincide con tu búsqueda o filtro."
+    },
+    "card": {
+      "plays": "Partidas",
+      "avgSolve": "Tiempo medio",
+      "completion": "Finalización",
+      "edit": "Editar misión",
+      "analytics": "Analíticas",
+      "statusPublished": "Publicada",
+      "statusDraft": "Borrador"
+    },
+    "createHero": {
+      "title": "Crea un regalo nuevo",
+      "newQuest": "Nueva misión"
+    },
+    "empty": {
+      "title": "Crea tu primer regalo",
+      "body": "Monta una misión en unos minutos: unas pistas y luego la recompensa. Empieza por una ocasión y elegimos el tema, el audio y la caja por ti.",
+      "newQuest": "Nueva misión",
+      "kicker": "O empieza por una ocasión",
+      "tagline": "La entrega es el regalo."
+    },
+    "soon": {
+      "analytics": "La vista de analíticas llegará pronto.",
+      "presets": "La vista de ajustes previos llegará pronto.",
+      "settings": "La vista de configuración llegará pronto."
+    }
+  },
+  "builder": {
+    "occasions": {
+      "birthday": "Cumpleaños",
+      "anniversary": "Aniversario",
+      "holiday": "Fiestas",
+      "mysteryNight": "Noche de misterio",
+      "corporate": "Corporativo",
+      "blank": "Empezar en blanco"
+    },
+    "topbar": {
+      "back": "Volver al panel",
+      "namePlaceholder": "Pon nombre a tu misión",
+      "stepsLabel": "Pasos",
+      "save": "Guardar borrador",
+      "saved": "Guardado",
+      "unsaved": "Cambios sin guardar",
+      "newQuest": "Nueva misión"
+    },
+    "palette": {
+      "title": "Bloques de puzle",
+      "hint": "Arrastra al lienzo o pulsa para añadir.",
+      "add": "Añadir {block}",
+      "lock": {
+        "label": "Cerradura de texto",
+        "desc": "Una respuesta exacta escrita en un campo"
+      },
+      "trivia": {
+        "label": "Trivia",
+        "desc": "De 2 a 4 opciones, una correcta"
+      },
+      "hotspot": {
+        "label": "Punto en imagen",
+        "desc": "Toca el punto correcto de una imagen"
+      }
+    },
+    "canvas": {
+      "title": "Flujo",
+      "subtitle": "Los pasos se juegan de arriba abajo, uno a uno.",
+      "start": "Inicio",
+      "startCaption": "La persona abre el enlace",
+      "finale": "Gran final",
+      "finaleCaption": "Aquí se desbloquea la recompensa",
+      "empty": "Suelta aquí un bloque de puzle",
+      "emptyBody": "Los pasos se juegan en el orden en que los colocas.",
+      "dropHere": "Suelta aquí",
+      "step": "Paso {n}",
+      "unlocks": "Desbloquea el paso {n}",
+      "lockedUntil": "Bloqueado hasta resolver el paso {n}",
+      "playsFirst": "Se juega primero",
+      "incomplete": "Falta configurar",
+      "ready": "Listo",
+      "moveUp": "Mover antes",
+      "moveDown": "Mover después",
+      "delete": "Eliminar paso",
+      "untitled": "Paso sin título"
+    },
+    "inspector": {
+      "title": "Ajustes del paso",
+      "stepOf": "Paso {n} de {total}",
+      "prev": "Anterior",
+      "next": "Siguiente",
+      "none": "Ningún paso seleccionado",
+      "noneBody": "Elige una tarjeta del lienzo o añade un bloque de puzle para empezar.",
+      "kind": "Tipo de bloque",
+      "fields": {
+        "title": "Título del paso",
+        "titlePlaceholder": "Encabezado opcional",
+        "prompt": "Enunciado",
+        "promptPlaceholder": "¿Qué tiene que averiguar quien lo recibe?",
+        "answer": "Respuesta correcta",
+        "answerPlaceholder": "La respuesta exacta",
+        "caseSensitive": "Distingue mayúsculas",
+        "options": "Opciones",
+        "optionPlaceholder": "Opción {n}",
+        "addOption": "Añadir opción",
+        "removeOption": "Quitar opción",
+        "correct": "Marcar como correcta",
+        "imageUrl": "URL de la imagen",
+        "imagePlaceholder": "https://…",
+        "target": "Área objetivo (% de la imagen)",
+        "targetX": "X",
+        "targetY": "Y",
+        "targetW": "Ancho",
+        "targetH": "Alto"
+      },
+      "advanced": {
+        "title": "Ajustes avanzados",
+        "hintText": "Texto de la pista",
+        "hintHelp": "Se muestra solo al tocar el icono de pista.",
+        "hintPlaceholder": "Un pequeño empujón…",
+        "successMessage": "Mensaje de acierto",
+        "successHelp": "Aparece justo después de una respuesta correcta.",
+        "successPlaceholder": "¡Correcto! Siempre te acordabas de esa fecha.",
+        "maxAttempts": "Intentos máximos",
+        "maxAttemptsHelp": "Déjalo en blanco para intentos ilimitados (1–10).",
+        "unlimited": "Ilimitados"
+      }
+    },
+    "theme": {
+      "title": "Tema",
+      "preset": "Tema predefinido",
+      "ambientAudio": "Audio ambiente",
+      "ambientAudioHelp": "Suena tras el primer toque de quien lo recibe.",
+      "particles": "Partículas de apertura",
+      "particlesHelp": "Movimiento decorativo en la pantalla inicial.",
+      "on": "Sí",
+      "off": "No"
+    },
+    "preview": {
+      "title": "Vista previa",
+      "empty": "Añade un paso para verlo aquí.",
+      "hint": "Pista",
+      "submit": "Desbloquear",
+      "inputPlaceholder": "Escribe tu respuesta",
+      "attempts": "{n} intentos",
+      "watermark": "Hecho con Puzzify"
+    },
+    "issues": {
+      "promptRequired": "Añade un enunciado.",
+      "answerRequired": "Añade la respuesta correcta.",
+      "optionsRequired": "Añade al menos dos opciones.",
+      "correctOptionRequired": "Rellena la opción que marcaste como correcta.",
+      "imageRequired": "Añade la URL de una imagen.",
+      "targetRequired": "Define un área objetivo.",
+      "maxAttemptsRange": "Los intentos máximos deben estar entre 1 y 10.",
+      "unknownKind": "Tipo de bloque no admitido.",
+      "nameRequired": "Pon nombre a tu misión.",
+      "stepsRequired": "Añade al menos un paso.",
+      "stepsIncomplete": "Termina todos los pasos."
+    },
+    "reward": {
+      "title": "Recompensa",
+      "type": "Tipo de recompensa",
+      "letter": "Carta",
+      "video": "Vídeo",
+      "voucher": "Cupón",
+      "headline": "Título de la recompensa",
+      "headlinePlaceholder": "¡Feliz cumpleaños, mamá!",
+      "message": "Mensaje",
+      "messagePlaceholder": "Escribe la nota que desbloquearán…",
+      "videoUrl": "URL del vídeo",
+      "videoPlaceholder": "https://…",
+      "code": "Código",
+      "codePlaceholder": "GIFT-2026"
+    },
+    "publish": {
+      "action": "Publicar",
+      "update": "Actualizar enlace",
+      "published": "Publicada",
+      "copyLink": "Copiar enlace",
+      "copied": "Enlace copiado",
+      "shareHint": "Envía este enlace a la persona para quien lo creaste.",
+      "blocked": "Termina todos los pasos antes de publicar."
+    }
+  },
+  "player": {
+    "loading": "Abriendo tu regalo…",
+    "notFoundTitle": "Este enlace ha caducado",
+    "notFoundBody": "No encontramos ninguna misión aquí. Pide un enlace nuevo a quien te lo envió.",
+    "notFoundCta": "Crea la tuya",
+    "stepOf": "Paso {n} de {total}",
+    "hint": "Pista",
+    "showHint": "¿Necesitas una pista?",
+    "attemptsLeft": "{n} intentos restantes",
+    "lastAttempt": "Último intento",
+    "submit": "Desbloquear",
+    "inputPlaceholder": "Escribe tu respuesta",
+    "incorrect": "Casi — inténtalo otra vez.",
+    "tapPrompt": "Toca el punto correcto",
+    "lockedTitle": "Sin intentos",
+    "lockedBody": "Has agotado los intentos de este paso.",
+    "restart": "Empezar de nuevo",
+    "audioOn": "Activar sonido",
+    "audioOff": "Silenciar",
+    "finaleKicker": "Lo lograste",
+    "finaleTitle": "Tu recompensa",
+    "copyCode": "Copiar código",
+    "copied": "¡Copiado!",
+    "ctaTitle": "¿Quieres sorprender a alguien más?",
+    "ctaBody": "Crea tu primera misión gratis.",
+    "ctaButton": "Crea la tuya",
+    "watermark": "Hecho con Puzzify"
+  }
 }

@@ -1,37 +1,43 @@
 <template>
   <section class="create-hero">
-    <h2 class="hero-title">Start a new gift</h2>
-    <div class="preset-grid">
-      <PzButton 
-        v-for="preset in presets" 
-        :key="preset.id"
-        variant="secondary"
-        size="lg"
-        class="preset-card"
-        @click="createQuest(preset.id)"
-      >
-        <component :is="preset.icon" :size="20" class="preset-icon" />
-        {{ preset.label }}
+    <div class="hero-head">
+      <h2 class="hero-title">{{ t('dashboard.createHero.title') }}</h2>
+      <PzButton variant="primary" size="md" data-testid="new-quest" @click="startQuest()">
+        <Plus :size="18" /> {{ t('dashboard.createHero.newQuest') }}
       </PzButton>
+    </div>
+
+    <div class="preset-grid">
+      <button
+        v-for="preset in OCCASION_PRESETS"
+        :key="preset.id"
+        type="button"
+        class="preset-card"
+        :data-testid="`occasion-${preset.id}`"
+        @click="startQuest(preset.id)"
+      >
+        <span class="preset-icon">
+          <component :is="preset.icon" :size="20" />
+        </span>
+        <span class="preset-name">{{ t(preset.labelKey) }}</span>
+      </button>
     </div>
   </section>
 </template>
 
 <script setup>
-import { Heart, Cake, Briefcase, Gem, PartyPopper, Plus } from 'lucide-vue-next'
+import { useI18n } from 'vue-i18n'
+import { useRouter } from 'vue-router'
+import { Plus } from 'lucide-vue-next'
+import { OCCASION_PRESETS } from '../../quest/occasions'
 import PzButton from '../ui/PzButton.vue'
 
-const presets = [
-  { id: 'anniversary', label: 'Anniversary', icon: Heart },
-  { id: 'birthday', label: 'Birthday', icon: Cake },
-  { id: 'corporate', label: 'Corporate', icon: Briefcase },
-  { id: 'proposal', label: 'Proposal', icon: Gem },
-  { id: 'celebration', label: 'Celebration', icon: PartyPopper },
-  { id: 'blank', label: 'Blank Quest', icon: Plus },
-]
+const { t } = useI18n()
+const router = useRouter()
 
-const createQuest = (id) => {
-  console.log(`Starting a new quest: ${id}`)
+/** Both paths open the Quest Builder; an occasion just pre-seeds the theme. */
+function startQuest(occasion) {
+  router.push({ name: 'quest-builder-new', query: occasion ? { occasion } : {} })
 }
 </script>
 
@@ -39,14 +45,21 @@ const createQuest = (id) => {
 .create-hero {
   padding: 32px 30px;
 }
+.hero-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 16px;
+}
 .hero-title {
   font-family: var(--pz-font-ui);
   font-size: 13px;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: var(--pz-track-kicker);
   color: var(--pz-muted);
-  margin: 0 0 16px 0;
+  margin: 0;
 }
 .preset-grid {
   display: grid;
@@ -60,25 +73,42 @@ const createQuest = (id) => {
   justify-content: center;
   gap: 12px;
   padding: 24px 16px;
-  height: 120px;
+  min-height: 120px;
   background: var(--pz-surface);
   box-shadow: var(--pz-e-1);
   border-radius: var(--pz-r-lg);
+  border: 1px solid var(--pz-border);
+  font-family: var(--pz-font-ui);
+  font-size: 13.5px;
   font-weight: 600;
   color: var(--pz-text);
-  border: 1px solid var(--pz-border);
+  cursor: pointer;
+  transition: transform var(--pz-dur) var(--pz-ease), box-shadow var(--pz-dur) var(--pz-ease),
+    border-color var(--pz-dur) var(--pz-ease);
 }
 .preset-card:hover {
-  background: var(--pz-surface-2);
+  border-color: var(--pz-primary);
   transform: translateY(-2px);
   box-shadow: var(--pz-e-2);
 }
+.preset-card:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 4px var(--pz-ring);
+}
 .preset-icon {
   color: var(--pz-primary);
+  display: inline-flex;
+}
+.preset-name {
+  line-height: 1.2;
+  text-align: center;
 }
 
 @media (max-width: 1200px) {
   .preset-grid { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 900px) {
+  .create-hero { padding: 24px 16px; }
 }
 @media (max-width: 768px) {
   .preset-grid { grid-template-columns: repeat(2, 1fr); }

@@ -198,5 +198,258 @@
     }
   ],
   "footLang": "Sprache",
-  "footLegal": "© 2026 Puzzify · Gemacht für herrliche Überraschungen"
+  "footLegal": "© 2026 Puzzify · Gemacht für herrliche Überraschungen",
+  "dashboard": {
+    "workspace": "Arbeitsbereich",
+    "nav": {
+      "quests": "Quests",
+      "analytics": "Auswertung",
+      "presets": "Vorlagen",
+      "settings": "Einstellungen"
+    },
+    "titles": {
+      "quests": "Deine Quests",
+      "analytics": "Auswertung",
+      "presets": "Vorlagen",
+      "settings": "Einstellungen"
+    },
+    "upgrade": {
+      "title": "Du nutzt Gratis",
+      "body": "Hol dir erweiterte Funktionen und mehr Quests.",
+      "cta": "Geschenk upgraden"
+    },
+    "plans": {
+      "free": "Gratis-Tarif",
+      "premium": "Premium",
+      "corporate": "Firmen-Arbeitsbereich"
+    },
+    "header": {
+      "searchPlaceholder": "Quests suchen…",
+      "searchLabel": "Quests suchen",
+      "notifications": "Benachrichtigungen",
+      "userSettings": "Benutzereinstellungen"
+    },
+    "stats": {
+      "gifts": "Erstellte Geschenke gesamt",
+      "plays": "Spiele insgesamt",
+      "completion": "Ø Abschlussquote",
+      "solve": "Ø Lösungszeit"
+    },
+    "list": {
+      "title": "Deine Quests",
+      "all": "Alle",
+      "published": "Veröffentlicht",
+      "drafts": "Entwürfe",
+      "sortRecent": "Neueste",
+      "noResults": "Keine Quest passt zu deiner Suche oder deinem Filter."
+    },
+    "card": {
+      "plays": "Spiele",
+      "avgSolve": "Ø Zeit",
+      "completion": "Abschluss",
+      "edit": "Quest bearbeiten",
+      "analytics": "Auswertung",
+      "statusPublished": "Veröffentlicht",
+      "statusDraft": "Entwurf"
+    },
+    "createHero": {
+      "title": "Neues Geschenk starten",
+      "newQuest": "Neue Quest"
+    },
+    "empty": {
+      "title": "Erstelle dein erstes Geschenk",
+      "body": "Baue in wenigen Minuten eine Quest — ein paar Hinweise, dann die Belohnung. Starte mit einem Anlass, und wir setzen Thema, Audio und Box für dich.",
+      "newQuest": "Neue Quest",
+      "kicker": "Oder starte mit einem Anlass",
+      "tagline": "Die Übergabe ist das Geschenk."
+    },
+    "soon": {
+      "analytics": "Die Auswertung kommt bald.",
+      "presets": "Die Vorlagen kommen bald.",
+      "settings": "Die Einstellungen kommen bald."
+    }
+  },
+  "builder": {
+    "occasions": {
+      "birthday": "Geburtstag",
+      "anniversary": "Jahrestag",
+      "holiday": "Feiertag",
+      "mysteryNight": "Mystery-Abend",
+      "corporate": "Firma",
+      "blank": "Leer beginnen"
+    },
+    "topbar": {
+      "back": "Zurück zur Übersicht",
+      "namePlaceholder": "Benenne deine Quest",
+      "stepsLabel": "Schritte",
+      "save": "Entwurf speichern",
+      "saved": "Gespeichert",
+      "unsaved": "Nicht gespeicherte Änderungen",
+      "newQuest": "Neue Quest"
+    },
+    "palette": {
+      "title": "Rätselblöcke",
+      "hint": "Auf die Fläche ziehen oder zum Hinzufügen antippen.",
+      "add": "{block} hinzufügen",
+      "lock": {
+        "label": "Text-/Passwortschloss",
+        "desc": "Eine exakte Antwort in einem Feld"
+      },
+      "trivia": {
+        "label": "Quizfrage",
+        "desc": "2–4 Optionen, eine davon richtig"
+      },
+      "hotspot": {
+        "label": "Bild-Hotspot",
+        "desc": "Die richtige Stelle im Bild antippen"
+      }
+    },
+    "canvas": {
+      "title": "Ablauf",
+      "subtitle": "Die Schritte laufen von oben nach unten, einer nach dem anderen.",
+      "start": "Start",
+      "startCaption": "Die beschenkte Person öffnet den Link",
+      "finale": "Großes Finale",
+      "finaleCaption": "Hier wird die Belohnung freigeschaltet",
+      "empty": "Rätselblock hier ablegen",
+      "emptyBody": "Die Schritte laufen in der Reihenfolge, in der du sie platzierst.",
+      "dropHere": "Hier ablegen",
+      "step": "Schritt {n}",
+      "unlocks": "Schaltet Schritt {n} frei",
+      "lockedUntil": "Gesperrt, bis Schritt {n} gelöst ist",
+      "playsFirst": "Läuft zuerst",
+      "incomplete": "Muss eingerichtet werden",
+      "ready": "Fertig",
+      "moveUp": "Nach vorn schieben",
+      "moveDown": "Nach hinten schieben",
+      "delete": "Schritt löschen",
+      "untitled": "Schritt ohne Titel"
+    },
+    "inspector": {
+      "title": "Schritt-Einstellungen",
+      "stepOf": "Schritt {n} von {total}",
+      "prev": "Zurück",
+      "next": "Weiter",
+      "none": "Kein Schritt ausgewählt",
+      "noneBody": "Wähle eine Karte auf der Fläche oder füge einen Rätselblock hinzu.",
+      "kind": "Blocktyp",
+      "fields": {
+        "title": "Titel des Schritts",
+        "titlePlaceholder": "Optionale Überschrift",
+        "prompt": "Frage",
+        "promptPlaceholder": "Was soll die beschenkte Person herausfinden?",
+        "answer": "Richtige Antwort",
+        "answerPlaceholder": "Die exakte Antwort",
+        "caseSensitive": "Groß-/Kleinschreibung beachten",
+        "options": "Optionen",
+        "optionPlaceholder": "Option {n}",
+        "addOption": "Option hinzufügen",
+        "removeOption": "Option entfernen",
+        "correct": "Als richtig markieren",
+        "imageUrl": "Bild-URL",
+        "imagePlaceholder": "https://…",
+        "target": "Zielbereich (% des Bildes)",
+        "targetX": "X",
+        "targetY": "Y",
+        "targetW": "Breite",
+        "targetH": "Höhe"
+      },
+      "advanced": {
+        "title": "Erweiterte Einstellungen",
+        "hintText": "Hinweistext",
+        "hintHelp": "Wird nur gezeigt, wenn das Hinweissymbol angetippt wird.",
+        "hintPlaceholder": "Ein kleiner Schubs…",
+        "successMessage": "Erfolgsmeldung",
+        "successHelp": "Erscheint direkt nach einer richtigen Antwort.",
+        "successPlaceholder": "Richtig! Du hast dieses Datum nie vergessen.",
+        "maxAttempts": "Maximale Versuche",
+        "maxAttemptsHelp": "Leer lassen für unbegrenzte Versuche (1–10).",
+        "unlimited": "Unbegrenzt"
+      }
+    },
+    "theme": {
+      "title": "Thema",
+      "preset": "Themenvorlage",
+      "ambientAudio": "Hintergrundton",
+      "ambientAudioHelp": "Startet nach dem ersten Antippen.",
+      "particles": "Partikel beim Öffnen",
+      "particlesHelp": "Dekorative Bewegung auf dem Startbildschirm.",
+      "on": "An",
+      "off": "Aus"
+    },
+    "preview": {
+      "title": "Live-Vorschau",
+      "empty": "Füge einen Schritt hinzu, um ihn hier zu sehen.",
+      "hint": "Hinweis",
+      "submit": "Freischalten",
+      "inputPlaceholder": "Antwort eingeben",
+      "attempts": "{n} Versuche",
+      "watermark": "Erstellt mit Puzzify"
+    },
+    "issues": {
+      "promptRequired": "Füge eine Frage hinzu.",
+      "answerRequired": "Füge die richtige Antwort hinzu.",
+      "optionsRequired": "Füge mindestens zwei Optionen hinzu.",
+      "correctOptionRequired": "Fülle die als richtig markierte Option aus.",
+      "imageRequired": "Füge eine Bild-URL hinzu.",
+      "targetRequired": "Lege einen Zielbereich fest.",
+      "maxAttemptsRange": "Die maximalen Versuche müssen zwischen 1 und 10 liegen.",
+      "unknownKind": "Blocktyp wird nicht unterstützt.",
+      "nameRequired": "Benenne deine Quest.",
+      "stepsRequired": "Füge mindestens einen Schritt hinzu.",
+      "stepsIncomplete": "Schließe alle Schritte ab."
+    },
+    "reward": {
+      "title": "Belohnung",
+      "type": "Art der Belohnung",
+      "letter": "Brief",
+      "video": "Video",
+      "voucher": "Gutschein",
+      "headline": "Titel der Belohnung",
+      "headlinePlaceholder": "Alles Gute, Mama!",
+      "message": "Nachricht",
+      "messagePlaceholder": "Schreib die Nachricht, die sie freischalten…",
+      "videoUrl": "Video-URL",
+      "videoPlaceholder": "https://…",
+      "code": "Code",
+      "codePlaceholder": "GIFT-2026"
+    },
+    "publish": {
+      "action": "Veröffentlichen",
+      "update": "Link aktualisieren",
+      "published": "Veröffentlicht",
+      "copyLink": "Link kopieren",
+      "copied": "Link kopiert",
+      "shareHint": "Schick diesen Link an die Person, für die du ihn gemacht hast.",
+      "blocked": "Schließe alle Schritte ab, bevor du veröffentlichst."
+    }
+  },
+  "player": {
+    "loading": "Dein Geschenk wird geöffnet…",
+    "notFoundTitle": "Dieser Link ist abgelaufen",
+    "notFoundBody": "Hier ist keine Quest. Bitte die Person, die ihn geschickt hat, um einen neuen Link.",
+    "notFoundCta": "Eigene erstellen",
+    "stepOf": "Schritt {n} von {total}",
+    "hint": "Hinweis",
+    "showHint": "Brauchst du einen Hinweis?",
+    "attemptsLeft": "Noch {n} Versuche",
+    "lastAttempt": "Letzter Versuch",
+    "submit": "Freischalten",
+    "inputPlaceholder": "Antwort eingeben",
+    "incorrect": "Fast — versuch es nochmal.",
+    "tapPrompt": "Tippe auf die richtige Stelle",
+    "lockedTitle": "Keine Versuche mehr",
+    "lockedBody": "Du hast alle Versuche für diesen Schritt verbraucht.",
+    "restart": "Neu starten",
+    "audioOn": "Ton einschalten",
+    "audioOff": "Ton ausschalten",
+    "finaleKicker": "Geschafft",
+    "finaleTitle": "Deine Belohnung",
+    "copyCode": "Code kopieren",
+    "copied": "Kopiert!",
+    "ctaTitle": "Willst du jemand anderen überraschen?",
+    "ctaBody": "Erstelle deine erste Quest kostenlos.",
+    "ctaButton": "Eigene erstellen",
+    "watermark": "Erstellt mit Puzzify"
+  }
 }

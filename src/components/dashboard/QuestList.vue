@@ -1,7 +1,7 @@
 <template>
   <section class="quest-list-section">
     <div class="list-header">
-      <h2 class="section-title">Your quests</h2>
+      <h2 class="section-title">{{ t('dashboard.list.title') }}</h2>
       <div class="list-controls">
         <div class="segmented-filter">
           <button 
@@ -14,7 +14,7 @@
           </button>
         </div>
         <PzButton variant="secondary" size="md" class="sort-btn">
-          Recent
+          {{ t('dashboard.list.sortRecent') }}
           <ChevronDown :size="14" />
         </PzButton>
       </div>
@@ -28,26 +28,29 @@
       />
     </div>
     <div v-else class="no-results">
-      <p>No quests match your search or filter.</p>
+      <p>{{ t('dashboard.list.noResults') }}</p>
     </div>
   </section>
 </template>
 
 <script setup>
+import { computed } from 'vue'
+import { useI18n } from 'vue-i18n'
 import { storeToRefs } from 'pinia'
 import { ChevronDown } from 'lucide-vue-next'
 import { useAppStore } from '../../stores/useAppStore'
 import PzButton from '../ui/PzButton.vue'
 import QuestCard from './QuestCard.vue'
 
+const { t } = useI18n()
 const store = useAppStore()
 const { questFilter, filteredQuests } = storeToRefs(store)
 
-const filters = [
-  { label: 'All', value: 'all' },
-  { label: 'Published', value: 'published' },
-  { label: 'Drafts', value: 'drafts' }
-]
+const filters = computed(() => [
+  { label: t('dashboard.list.all'), value: 'all' },
+  { label: t('dashboard.list.published'), value: 'published' },
+  { label: t('dashboard.list.drafts'), value: 'drafts' }
+])
 </script>
 
 <style scoped>
@@ -118,6 +121,11 @@ const filters = [
 
 @media (max-width: 1100px) {
   .quests-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 900px) {
+  .quest-list-section { padding-inline: 16px; }
+  /* 44px hit-target floor on touch (PRD §6.3). */
+  .filter-btn { min-height: 44px; }
 }
 @media (max-width: 768px) {
   .list-header { flex-direction: column; align-items: flex-start; gap: 16px; }

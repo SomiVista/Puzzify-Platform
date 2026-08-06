@@ -113,7 +113,7 @@ Four presets are implemented in `src/themes.js` (the single source of truth for 
 
 **Requirement:** every authenticated surface (Sender Dashboard, Quest Builder) must consume vue-i18n message keys — no hardcoded UI strings. *(Current gap: dashboard strings are hardcoded English — see Section 9.)*
 
-### 2.3. JSON-Driven Engine `[Not started]`
+### 2.3. JSON-Driven Engine `[Shipped]`
 
 The platform enforces a strict decoupling of raw puzzle data from the rendering UI. The client-side application evaluates a structured JSON object to render the step-by-step interface dynamically. This keeps the bundle size exceptionally lightweight, allows creators to make real-time edits without rebuilding, and simplifies database storage: each quest is a single document addressed by an unguessable identifier and served on the canonical player path **`/q/{questId}`** (see Section 8 for the full URL scheme).
 
@@ -189,7 +189,7 @@ Requirements:
 
 ### 4.2. Creator Studio (Sender Experience)
 
-#### 4.2.1. Sender Dashboard `[In progress]`
+#### 4.2.1. Sender Dashboard `[Shipped — on local persistence]`
 
 The creator's home after sign-in: view, manage, and track every quest. The layout follows the approved **"Direction A"** design (persistent left sidebar + airy card grid — see `docs/README.md` and the standalone HTML handoff in `docs/`). Routes: `/dashboard` redirects to `/dashboard/quests`, with sibling views `analytics`, `presets`, and `settings`.
 
@@ -203,17 +203,17 @@ The creator's home after sign-in: view, manage, and track every quest. The layou
 * **Data requirement:** the dashboard must load the signed-in creator's quests and play analytics from Firestore. *Currently it renders hardcoded mock data (six sample quests, persona "Maya Kapoor") — see Section 9.*
 * Analytics, Presets, and Settings views are routed placeholders pending specification. `[Not started]`
 
-#### 4.2.2. Quest Builder — Canvas-Style Design Engine `[Not started]`
+#### 4.2.2. Quest Builder — Canvas-Style Design Engine `[Shipped]`
 
 * **Canvas-Style Design Engine:** a rich design experience featuring drag-and-drop interfaces and canvas-style tools for building the puzzle flow and placing elements intuitively.
 * **Live Output Preview:** a real-time preview panel allowing the sender to interact with and test the quest exactly as the recipient will see it.
 * **Flow Manager:** a step-by-step configuration wizard to add, delete, or reorder steps. For the MVP, gameplay progression is strictly **Linear** (Step N must evaluate to true before Step N+1 unlocks).
 
-#### 4.2.3. Theme Configurator `[Not started]`
+#### 4.2.3. Theme Configurator `[Shipped]`
 
 An interface to assign one of the visual theme presets (§2.1.1), select ambient audio, and toggle opening particle effects. Occasion presets chosen on the dashboard (§4.2.1) pre-populate this configuration.
 
-#### 4.2.4. Per-Step Advanced Settings `[Not started]`
+#### 4.2.4. Per-Step Advanced Settings `[Shipped]`
 
 Senders can optionally configure three fields for each individual step:
 
@@ -221,11 +221,11 @@ Senders can optionally configure three fields for each individual step:
 * **Success Message:** a short toast or text block appearing immediately after a correct answer (e.g., "Correct! You always remembered that date.").
 * **Max Attempts:** an optional integer to cap how many times a recipient can guess before being locked out or penalized.
 
-#### 4.2.5. Publishing & Unique URL Generation `[Not started]`
+#### 4.2.5. Publishing & Unique URL Generation `[Shipped]`
 
 Upon publishing, the studio generates a unique, secure URL on the `/q/{questId}` scheme (Section 8) for the creator to copy and send directly to the recipient. Identifiers must be unguessable.
 
-### 4.3. MVP Puzzle Block Library `[Not started]`
+### 4.3. MVP Puzzle Block Library `[Shipped]`
 
 Each puzzle block operates as an isolated, reusable frontend component accepting standardized props and emitting a boolean (true/false) validity state to the main engine. The canonical block ids below are already used across the dashboard data model and design system:
 
@@ -235,7 +235,7 @@ Each puzzle block operates as an isolated, reusable frontend component accepting
 
 *(A non-interactive visual mock of the `lock` block exists in the landing-page hero; no playable block is implemented yet.)*
 
-### 4.4. Interactive Player (Recipient Experience) `[Not started]`
+### 4.4. Interactive Player (Recipient Experience) `[Shipped]`
 
 * **Zero-Friction Access:** recipients **must not** be forced to download an application, register, or authenticate. Access is handled strictly via the unique URL token at `/q/{questId}`.
 * **In-App Browser Compatibility:** the player must work flawlessly inside Telegram, WhatsApp, and Instagram in-app browsers (see Section 6.3).
@@ -248,7 +248,7 @@ Each puzzle block operates as an isolated, reusable frontend component accepting
   * `voucher` — a digital voucher/gift-card display with an instant copy-to-clipboard action.
 * The Grand Finale hosts the viral-loop CTA (Section 5.2).
 
-### 4.5. Client-Side Data Security `[Not started]`
+### 4.5. Client-Side Data Security `[Shipped — client side]`
 
 To prevent tech-savvy recipients from opening browser developer tools to read raw JSON answers or find the final payload URL, the system applies these safeguards:
 
@@ -273,7 +273,7 @@ The platform utilizes a combination of freemium limits, micro-transactions, and 
 
 *Monetization enforcement (tier gating, payments) is not yet implemented — the pricing page is display-only today (Section 9).*
 
-### 5.2. The Viral Loop `[Not started — player-side]`
+### 5.2. The Viral Loop `[Shipped]`
 
 Because Puzzify is an inherently shared utility, the product leverages built-in organic growth mechanics:
 
@@ -363,30 +363,31 @@ No functionality ships without tests; automation is the source of truth for buil
 | :--- | :--- | :--- | :--- |
 | Public landing page (all sections, 9 locales, RTL) | 4.1 | **Shipped** | |
 | Design system: tokens + 4 theme presets | 2.1, 2.4 | **Shipped** | `src/assets/tokens/`, `src/themes.js` |
-| i18n framework + 9 locales | 2.2 | **Shipped (landing only)** | Dashboard not localized |
-| Sender Dashboard — shell + Quests view | 4.2.1 | **In progress** | Mock data; create/open/copy-link actions inert |
+| i18n framework + 9 locales | 2.2 | **Shipped** | Landing, dashboard, builder and player all localized |
+| Sender Dashboard — shell + Quests view | 4.2.1 | **Shipped** | Create / open / publish all live; six sample quests remain as demo content |
 | Dashboard — Analytics / Presets / Settings | 4.2.1 | **Not started** | Route stubs only |
-| Quest Builder (canvas, live preview, flow manager) | 4.2.2–4.2.5 | **Not started** | |
-| Quest data model + CRUD (Firestore) | 4.2, 6.1 | **Not started** | |
+| Quest Builder (canvas, live preview, flow manager) | 4.2.2–4.2.5 | **Shipped** | Drag-and-drop canvas, linear Flow Manager wizard, per-step settings, theme configurator, reward editor, publish |
+| Quest data model + CRUD | 4.2, 6.1 | **Shipped on localStorage** | `src/quest/storage.js` is a one-driver swap away from Firestore |
 | Creator authentication (Firebase Auth) | 4.2, 6.1 | **Not started** | Landing CTAs route straight to the dashboard |
-| Puzzle blocks (`lock` / `trivia` / `hotspot`), playable | 4.3 | **Not started** | Visual `lock` mock in landing hero only |
-| Interactive Player + `/q/:id` + state persistence | 4.4 | **Not started** | |
-| Grand Finale (`video` / `letter` / `voucher`) | 4.4 | **Not started** | |
-| Viral CTA + watermark on player | 5.2 | **Not started** | |
-| Answer hashing + secure reward endpoint | 4.5 | **Not started** | |
-| Ambient audio playback | 2.1 | **Not started** | Theme audio is a label only |
+| Puzzle blocks (`lock` / `trivia` / `hotspot`), playable | 4.3 | **Shipped** | All three playable in the Player |
+| Interactive Player + `/q/:id` + state persistence | 4.4 | **Shipped** | Resumes at the furthest unlocked step |
+| Grand Finale (`video` / `letter` / `voucher`) | 4.4 | **Shipped** | Letter uses the typewriter; voucher copies to clipboard |
+| Viral CTA + watermark on player | 5.2 | **Shipped** | |
+| Answer hashing + secure reward endpoint | 4.5 | **Shipped (client side)** | Salted SHA-256 via Web Crypto; the reward gate mirrors the future Cloud Function signature |
+| Ambient audio playback | 2.1 | **Shipped** | Synthesised per-theme pad (Web Audio), gesture-gated, no assets to download |
 | Monetization enforcement / payments | 5.1 | **Not started** | Pricing page is display-only |
 | Analytics pipeline | 5.1 (Corporate) | **Not started** | Dashboard KPIs derive from mock data |
 | Hosting, CI/CD, release automation | 7, 8 | **Shipped** | |
 
 ### Known gaps / documentation debt
 
-* Dashboard UI strings are hardcoded English — must migrate to vue-i18n (§2.2 requirement).
-* Dashboard runs on mock data (six sample quests, persona "Maya Kapoor") pending Auth + Firestore.
+* Quests persist to **localStorage**, so they do not follow a creator across devices and a player link only opens in the browser that published it. Firebase Auth + Firestore replace `src/quest/storage.js` wholesale.
+* The reward gate is client-side: it keeps the payload out of the initial download and requires a valid completion proof, but a determined inspector can read it from local storage. The Cloud Function of §4.5 closes this.
+* The six sample quests (persona "Maya Kapoor") remain as demo content alongside real ones.
 * `docs/design.md` §5 still lists Spooky and Corporate presets as "roadmap"; all four presets ship in `src/themes.js`.
 * `CLAUDE.md` / `GEMINI.md` reference `docs/DESIGN.md` (wrong case — file is `docs/design.md`) and mention a legacy `gh-pages` deploy; actual CD target is Firebase Hosting.
 * `docs/README.md` (dashboard handoff) uses the legacy theme alias "Celebration" for `birthday`.
-* `npm run test:coverage` requires a `@vitest/coverage-*` provider that is not yet in `devDependencies`.
+* Monetization is still unenforced: the free tier's 3-step cap and premium-only Hotspot block are not gated.
 
 ---
 

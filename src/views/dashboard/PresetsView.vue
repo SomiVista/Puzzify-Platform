@@ -1,8 +1,14 @@
 <template>
   <div class="placeholder-view">
-    <p>Presets view coming soon.</p>
+    <p>{{ t('dashboard.soon.presets') }}</p>
   </div>
 </template>
+
+<script setup>
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
+</script>
 
 <style scoped>
 .placeholder-view {

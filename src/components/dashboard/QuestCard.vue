@@ -2,8 +2,8 @@
   <div class="quest-card">
     <div class="card-header">
       <h3 class="quest-title">{{ quest.name }}</h3>
-      <PzBadge :tone="quest.status === 'Published' ? 'success' : 'neutral'">
-        {{ quest.status }}
+      <PzBadge :tone="isPublished ? 'success' : 'neutral'">
+        {{ isPublished ? t('dashboard.card.statusPublished') : t('dashboard.card.statusDraft') }}
       </PzBadge>
     </div>
 
@@ -18,18 +18,18 @@
 
     <div class="metrics-row">
       <div class="metric">
-        <span class="metric-label">Plays</span>
+        <span class="metric-label">{{ t('dashboard.card.plays') }}</span>
         <span class="metric-value">{{ quest.plays }}</span>
       </div>
       <div class="metric">
-        <span class="metric-label">Avg Solve</span>
+        <span class="metric-label">{{ t('dashboard.card.avgSolve') }}</span>
         <span class="metric-value">{{ formatTime(quest.avgSolve) }}</span>
       </div>
     </div>
 
     <div class="completion-bar-container">
       <div class="completion-header">
-        <span class="completion-label">Completion</span>
+        <span class="completion-label">{{ t('dashboard.card.completion') }}</span>
         <span class="completion-value">{{ quest.completion }}%</span>
       </div>
       <div class="completion-track">
@@ -40,10 +40,21 @@
     <div class="card-footer">
       <span class="last-activity">{{ quest.lastActivity }}</span>
       <div class="footer-actions">
-        <IconButton label="Edit quest" :size="32" frosted>
+        <IconButton
+          :label="t('dashboard.card.edit')"
+          :size="32"
+          frosted
+          :data-testid="`edit-quest-${quest.id}`"
+          @click="openBuilder"
+        >
           <Edit2 :size="14" />
         </IconButton>
-        <IconButton label="Analytics" :size="32" frosted>
+        <IconButton
+          :label="t('dashboard.card.analytics')"
+          :size="32"
+          frosted
+          @click="router.push({ name: 'dashboard-analytics' })"
+        >
           <BarChart2 :size="14" />
         </IconButton>
       </div>
@@ -52,25 +63,30 @@
 </template>
 
 <script setup>
-import { Lock, HelpCircle, MapPin, Gift, Edit2, BarChart2 } from 'lucide-vue-next'
+import { computed } from 'vue'
+import { useI18n } from 'vue-i18n'
+import { useRouter } from 'vue-router'
+import { Gift, Edit2, BarChart2 } from 'lucide-vue-next'
+import { blockIcon } from '../../quest/blocks'
 import PzBadge from '../ui/PzBadge.vue'
 import IconButton from '../ui/IconButton.vue'
 
-defineProps({
+const props = defineProps({
   quest: {
     type: Object,
     required: true
   }
 })
 
-const getStepIcon = (kind) => {
-  switch (kind) {
-    case 'lock': return Lock
-    case 'trivia': return HelpCircle
-    case 'hotspot': return MapPin
-    default: return Lock
-  }
-}
+const { t } = useI18n()
+const router = useRouter()
+
+const isPublished = computed(() => props.quest.status === 'Published')
+
+const getStepIcon = blockIcon
+
+const openBuilder = () =>
+  router.push({ name: 'quest-builder', params: { id: props.quest.id } })
 
 const formatTime = (seconds) => {
   if (!seconds) return '--'
@@ -207,5 +223,14 @@ const formatTime = (seconds) => {
 .footer-actions {
   display: flex;
   gap: 8px;
+}
+
+/* IconButton sizes itself with an inline style, so overriding it for the
+   mobile 44px hit-target floor (PRD §6.3) needs both :deep and !important. */
+@media (max-width: 900px) {
+  .footer-actions :deep(.pz-icon-btn) {
+    width: 44px !important;
+    height: 44px !important;
+  }
 }
 </style>

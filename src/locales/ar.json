@@ -198,5 +198,258 @@
     }
   ],
   "footLang": "اللغة",
-  "footLegal": "© 2026 بوزيفاي · صُنعت لمفاجآت مبهجة"
+  "footLegal": "© 2026 بوزيفاي · صُنعت لمفاجآت مبهجة",
+  "dashboard": {
+    "workspace": "مساحة العمل",
+    "nav": {
+      "quests": "المهام",
+      "analytics": "التحليلات",
+      "presets": "الإعدادات الجاهزة",
+      "settings": "الإعدادات"
+    },
+    "titles": {
+      "quests": "مهامك",
+      "analytics": "التحليلات",
+      "presets": "الإعدادات الجاهزة",
+      "settings": "الإعدادات"
+    },
+    "upgrade": {
+      "title": "أنت على الخطة المجانية",
+      "body": "احصل على مزايا متقدمة ومهام أكثر.",
+      "cta": "ترقية هدية"
+    },
+    "plans": {
+      "free": "الخطة المجانية",
+      "premium": "المميزة",
+      "corporate": "مساحة الشركات"
+    },
+    "header": {
+      "searchPlaceholder": "ابحث في المهام…",
+      "searchLabel": "ابحث في المهام",
+      "notifications": "الإشعارات",
+      "userSettings": "إعدادات المستخدم"
+    },
+    "stats": {
+      "gifts": "إجمالي الهدايا المُنشأة",
+      "plays": "إجمالي مرات اللعب",
+      "completion": "متوسط نسبة الإكمال",
+      "solve": "متوسط زمن الحل"
+    },
+    "list": {
+      "title": "مهامك",
+      "all": "الكل",
+      "published": "منشورة",
+      "drafts": "مسودات",
+      "sortRecent": "الأحدث",
+      "noResults": "لا توجد مهام تطابق بحثك أو التصفية."
+    },
+    "card": {
+      "plays": "مرات اللعب",
+      "avgSolve": "متوسط الزمن",
+      "completion": "الإكمال",
+      "edit": "تعديل المهمة",
+      "analytics": "التحليلات",
+      "statusPublished": "منشورة",
+      "statusDraft": "مسودة"
+    },
+    "createHero": {
+      "title": "ابدأ هدية جديدة",
+      "newQuest": "مهمة جديدة"
+    },
+    "empty": {
+      "title": "أنشئ هديتك الأولى",
+      "body": "ابنِ مهمة في دقائق — بعض الألغاز ثم المكافأة. ابدأ من مناسبة ونختار لك السمة والصوت والصندوق.",
+      "newQuest": "مهمة جديدة",
+      "kicker": "أو ابدأ من مناسبة",
+      "tagline": "طريقة التسليم هي الهدية."
+    },
+    "soon": {
+      "analytics": "صفحة التحليلات قادمة قريبًا.",
+      "presets": "صفحة الإعدادات الجاهزة قادمة قريبًا.",
+      "settings": "صفحة الإعدادات قادمة قريبًا."
+    }
+  },
+  "builder": {
+    "occasions": {
+      "birthday": "عيد ميلاد",
+      "anniversary": "ذكرى سنوية",
+      "holiday": "عطلة",
+      "mysteryNight": "ليلة الغموض",
+      "corporate": "شركات",
+      "blank": "ابدأ من الصفر"
+    },
+    "topbar": {
+      "back": "العودة إلى لوحة التحكم",
+      "namePlaceholder": "سمِّ مهمتك",
+      "stepsLabel": "الخطوات",
+      "save": "حفظ المسودة",
+      "saved": "تم الحفظ",
+      "unsaved": "تغييرات غير محفوظة",
+      "newQuest": "مهمة جديدة"
+    },
+    "palette": {
+      "title": "كتل الألغاز",
+      "hint": "اسحبها إلى اللوحة، أو اضغط لإضافتها.",
+      "add": "إضافة {block}",
+      "lock": {
+        "label": "قفل نصي",
+        "desc": "إجابة دقيقة تُكتب في حقل"
+      },
+      "trivia": {
+        "label": "أسئلة اختيارية",
+        "desc": "من ٢ إلى ٤ خيارات، واحد صحيح"
+      },
+      "hotspot": {
+        "label": "نقطة في صورة",
+        "desc": "الضغط على الموضع الصحيح في صورة"
+      }
+    },
+    "canvas": {
+      "title": "المسار",
+      "subtitle": "تُلعب الخطوات من الأعلى إلى الأسفل، واحدة تلو الأخرى.",
+      "start": "البداية",
+      "startCaption": "يفتح المستلم الرابط",
+      "finale": "الختام الكبير",
+      "finaleCaption": "تُفتح المكافأة هنا",
+      "empty": "أفلت كتلة لغز هنا",
+      "emptyBody": "تُلعب الخطوات بالترتيب الذي تضعها به.",
+      "dropHere": "أفلت هنا",
+      "step": "الخطوة {n}",
+      "unlocks": "تفتح الخطوة {n}",
+      "lockedUntil": "مقفلة حتى تُحل الخطوة {n}",
+      "playsFirst": "تُلعب أولًا",
+      "incomplete": "تحتاج إعدادًا",
+      "ready": "جاهزة",
+      "moveUp": "نقل إلى الأمام",
+      "moveDown": "نقل إلى الخلف",
+      "delete": "حذف الخطوة",
+      "untitled": "خطوة بلا عنوان"
+    },
+    "inspector": {
+      "title": "إعدادات الخطوة",
+      "stepOf": "الخطوة {n} من {total}",
+      "prev": "السابقة",
+      "next": "التالية",
+      "none": "لم تُحدَّد أي خطوة",
+      "noneBody": "اختر بطاقة على اللوحة، أو أضف كتلة لغز للبدء.",
+      "kind": "نوع الكتلة",
+      "fields": {
+        "title": "عنوان الخطوة",
+        "titlePlaceholder": "عنوان اختياري",
+        "prompt": "السؤال",
+        "promptPlaceholder": "ما الذي يجب أن يكتشفه المستلم؟",
+        "answer": "الإجابة الصحيحة",
+        "answerPlaceholder": "الإجابة الدقيقة",
+        "caseSensitive": "حساس لحالة الأحرف",
+        "options": "الخيارات",
+        "optionPlaceholder": "الخيار {n}",
+        "addOption": "إضافة خيار",
+        "removeOption": "إزالة الخيار",
+        "correct": "تحديده كإجابة صحيحة",
+        "imageUrl": "رابط الصورة",
+        "imagePlaceholder": "https://…",
+        "target": "المنطقة المستهدفة (٪ من الصورة)",
+        "targetX": "X",
+        "targetY": "Y",
+        "targetW": "العرض",
+        "targetH": "الارتفاع"
+      },
+      "advanced": {
+        "title": "إعدادات متقدمة",
+        "hintText": "نص التلميح",
+        "hintHelp": "يظهر فقط عند الضغط على أيقونة التلميح.",
+        "hintPlaceholder": "دفعة صغيرة…",
+        "successMessage": "رسالة النجاح",
+        "successHelp": "تظهر مباشرة بعد الإجابة الصحيحة.",
+        "successPlaceholder": "أحسنت! لطالما تذكّرت ذلك التاريخ.",
+        "maxAttempts": "أقصى عدد محاولات",
+        "maxAttemptsHelp": "اتركه فارغًا لمحاولات غير محدودة (١–١٠).",
+        "unlimited": "غير محدودة"
+      }
+    },
+    "theme": {
+      "title": "السمة",
+      "preset": "سمة جاهزة",
+      "ambientAudio": "صوت الخلفية",
+      "ambientAudioHelp": "يبدأ بعد أول لمسة من المستلم.",
+      "particles": "جسيمات البداية",
+      "particlesHelp": "حركة زخرفية على شاشة البداية.",
+      "on": "مفعّل",
+      "off": "متوقف"
+    },
+    "preview": {
+      "title": "معاينة حية",
+      "empty": "أضف خطوة لمعاينتها.",
+      "hint": "تلميح",
+      "submit": "افتح",
+      "inputPlaceholder": "اكتب إجابتك",
+      "attempts": "{n} محاولات",
+      "watermark": "صُنع بواسطة Puzzify"
+    },
+    "issues": {
+      "promptRequired": "أضف سؤالًا.",
+      "answerRequired": "أضف الإجابة الصحيحة.",
+      "optionsRequired": "أضف خيارين على الأقل.",
+      "correctOptionRequired": "املأ الخيار الذي حددته كإجابة صحيحة.",
+      "imageRequired": "أضف رابط صورة.",
+      "targetRequired": "حدّد منطقة مستهدفة.",
+      "maxAttemptsRange": "يجب أن يكون أقصى عدد محاولات بين ١ و١٠.",
+      "unknownKind": "نوع الكتلة غير مدعوم.",
+      "nameRequired": "سمِّ مهمتك.",
+      "stepsRequired": "أضف خطوة واحدة على الأقل.",
+      "stepsIncomplete": "أكمل كل الخطوات."
+    },
+    "reward": {
+      "title": "المكافأة",
+      "type": "نوع المكافأة",
+      "letter": "رسالة",
+      "video": "فيديو",
+      "voucher": "قسيمة",
+      "headline": "عنوان المكافأة",
+      "headlinePlaceholder": "عيد ميلاد سعيد يا أمي!",
+      "message": "الرسالة",
+      "messagePlaceholder": "اكتب الرسالة التي سيفتحونها…",
+      "videoUrl": "رابط الفيديو",
+      "videoPlaceholder": "https://…",
+      "code": "الرمز",
+      "codePlaceholder": "GIFT-2026"
+    },
+    "publish": {
+      "action": "انشر",
+      "update": "حدّث الرابط",
+      "published": "منشورة",
+      "copyLink": "انسخ الرابط",
+      "copied": "تم نسخ الرابط",
+      "shareHint": "أرسل هذا الرابط إلى الشخص الذي صنعتها من أجله.",
+      "blocked": "أكمل كل الخطوات قبل النشر."
+    }
+  },
+  "player": {
+    "loading": "جارٍ فتح هديتك…",
+    "notFoundTitle": "انتهت صلاحية هذا الرابط",
+    "notFoundBody": "لم نجد أي مهمة هنا. اطلب رابطًا جديدًا ممن أرسله إليك.",
+    "notFoundCta": "أنشئ مهمتك",
+    "stepOf": "الخطوة {n} من {total}",
+    "hint": "تلميح",
+    "showHint": "تحتاج تلميحًا؟",
+    "attemptsLeft": "بقيت {n} محاولات",
+    "lastAttempt": "المحاولة الأخيرة",
+    "submit": "افتح",
+    "inputPlaceholder": "اكتب إجابتك",
+    "incorrect": "قريب — حاول مرة أخرى.",
+    "tapPrompt": "اضغط على الموضع الصحيح",
+    "lockedTitle": "نفدت المحاولات",
+    "lockedBody": "استخدمت كل المحاولات لهذه الخطوة.",
+    "restart": "ابدأ من جديد",
+    "audioOn": "تشغيل الصوت",
+    "audioOff": "كتم الصوت",
+    "finaleKicker": "لقد نجحت",
+    "finaleTitle": "مكافأتك",
+    "copyCode": "انسخ الرمز",
+    "copied": "تم النسخ!",
+    "ctaTitle": "تريد مفاجأة شخص آخر؟",
+    "ctaBody": "أنشئ مهمتك الأولى مجانًا.",
+    "ctaButton": "أنشئ مهمتك",
+    "watermark": "صُنع بواسطة Puzzify"
+  }
 }

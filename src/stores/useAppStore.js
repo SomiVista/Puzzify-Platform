@@ -1,6 +1,8 @@
 import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
 import i18n from '../i18n'
+import { summarizeFlow } from '../quest/model'
+import { loadAllQuests, saveQuest } from '../quest/storage'
 
 export const useAppStore = defineStore('app', () => {
   // State
@@ -34,9 +36,48 @@ export const useAppStore = defineStore('app', () => {
     { id: 6, name: 'Team offsite hunt', occasion: 'Corporate', steps: 5, stepKinds: ['hotspot', 'lock', 'trivia', 'hotspot', 'lock'], status: 'Draft', plays: 0, completion: 0, avgSolve: 0, rewardType: 'Voucher', lastActivity: 'Edited 5h ago', timestamp: Date.now() - 5 * 3600000 },
   ])
   
+  // Quests the creator has actually built survive a reload; the six samples
+  // above stay as demo content until Firebase Auth + Firestore land (PRD §6.1).
+  for (const stored of loadAllQuests()) {
+    const index = quests.value.findIndex((q) => String(q.id) === String(stored.id))
+    if (index === -1) quests.value.push(stored)
+    else quests.value[index] = stored
+  }
+
   const searchQuery = ref('')
   const questFilter = ref('all') // 'all' | 'published' | 'drafts'
   const questSort = ref('recent') // 'recent'
+
+  // Quest CRUD — in-memory until Firebase Auth + Firestore land (PRD §6.1).
+  const getQuestById = (id) => quests.value.find((q) => String(q.id) === String(id)) || null
+
+  const nextQuestId = () =>
+    quests.value.reduce((max, q) => Math.max(max, Number(q.id) || 0), 0) + 1
+
+  /**
+   * Insert or update a quest from the builder. `steps` and `stepKinds` (what the
+   * dashboard card renders) are always DERIVED from `flow`, so the two cannot drift.
+   */
+  const upsertQuest = (quest) => {
+    const record = {
+      plays: 0,
+      completion: 0,
+      avgSolve: 0,
+      ...getQuestById(quest.id),
+      ...quest,
+      ...summarizeFlow(quest.flow),
+      timestamp: Date.now(),
+      lastActivity: 'Edited just now'
+    }
+    const index = quests.value.findIndex((q) => String(q.id) === String(record.id))
+    if (index === -1) {
+      quests.value.push(record)
+    } else {
+      quests.value[index] = record
+    }
+    saveQuest(record)
+    return record
+  }
 
   // Getters
   const isFa = computed(() => lang.value === 'fa')
@@ -76,6 +117,7 @@ export const useAppStore = defineStore('app', () => {
     lang, theme, particlesOn,
     setLang, toggleLang, setTheme, toggleParticles,
     planTier, quests, creatorInfo, searchQuery, questFilter, questSort,
+    getQuestById, nextQuestId, upsertQuest,
     isFa, isMystery, dir,
     filteredQuests, totalGifts, totalPublished, totalPlays, avgCompletion, avgSolveSeconds
   }

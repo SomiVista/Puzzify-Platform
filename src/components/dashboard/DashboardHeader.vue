@@ -7,15 +7,16 @@
         <input 
           type="text" 
           class="search-input" 
-          placeholder="Search quests..." 
+          :placeholder="t('dashboard.header.searchPlaceholder')"
+          
           v-model="searchQuery"
-          aria-label="Search quests"
+          :aria-label="t('dashboard.header.searchLabel')"
         />
       </div>
-      <IconButton aria-label="Notifications" :size="44">
+      <IconButton :label="t('dashboard.header.notifications')" :size="44">
         <Bell :size="20" />
       </IconButton>
-      <router-link to="/dashboard/settings" class="avatar" aria-label="User settings">
+      <router-link to="/dashboard/settings" class="avatar" :aria-label="t('dashboard.header.userSettings')">
         {{ creatorInfo.initials }}
       </router-link>
     </div>
@@ -25,16 +26,20 @@
 <script setup>
 import { computed } from 'vue'
 import { useRoute } from 'vue-router'
+import { useI18n } from 'vue-i18n'
 import { storeToRefs } from 'pinia'
 import { useAppStore } from '../../stores/useAppStore'
 import { Bell, Search } from 'lucide-vue-next'
 import IconButton from '../ui/IconButton.vue'
 
+const { t } = useI18n()
 const route = useRoute()
 const store = useAppStore()
 const { creatorInfo, searchQuery } = storeToRefs(store)
 
-const pageTitle = computed(() => route.meta?.title || 'Dashboard')
+const pageTitle = computed(() =>
+  route.meta?.titleKey ? t(route.meta.titleKey) : t('dashboard.titles.quests')
+)
 </script>
 
 <style scoped>
@@ -66,14 +71,14 @@ const pageTitle = computed(() => route.meta?.title || 'Dashboard')
 }
 .search-icon {
   position: absolute;
-  left: 14px;
+  inset-inline-start: 14px;
   color: var(--pz-muted);
   pointer-events: none;
 }
 .search-input {
   width: 240px;
   height: 44px;
-  padding: 0 16px 0 40px;
+  padding-inline: 40px 16px;
   border-radius: var(--pz-r-full);
   border: 1px solid var(--pz-border);
   background: var(--pz-surface);
@@ -111,4 +116,31 @@ const pageTitle = computed(() => route.meta?.title || 'Dashboard')
   box-shadow: var(--pz-e-1);
 }
 .avatar:focus-visible { outline: none; box-shadow: 0 0 0 4px var(--pz-ring); }
+
+@media (max-width: 900px) {
+  .main-header {
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 18px 16px 12px;
+  }
+  .main-header h1 {
+    font-size: 20px;
+  }
+  /* Search takes the full second line rather than fighting the title for room. */
+  .header-actions {
+    width: 100%;
+    gap: 10px;
+  }
+  .search-wrapper {
+    flex: 1;
+    min-width: 0;
+  }
+  .search-input {
+    width: 100%;
+  }
+  /* The sidebar collapses into a top bar that already shows the avatar. */
+  .avatar {
+    display: none;
+  }
+}
 </style>

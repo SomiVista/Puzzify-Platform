@@ -11,27 +11,27 @@
     </div>
 
     <!-- Workspace -->
-    <div class="kicker">WORKSPACE</div>
+    <div class="kicker">{{ t('dashboard.workspace') }}</div>
     <nav class="nav-menu">
       <router-link to="/dashboard/quests" class="nav-item">
-        <LayoutGrid :size="18" /> Quests
+        <LayoutGrid :size="18" /> {{ t('dashboard.nav.quests') }}
       </router-link>
       <router-link to="/dashboard/analytics" class="nav-item">
-        <BarChart2 :size="18" /> Analytics
+        <BarChart2 :size="18" /> {{ t('dashboard.nav.analytics') }}
       </router-link>
       <router-link to="/dashboard/presets" class="nav-item">
-        <Star :size="18" /> Presets
+        <Star :size="18" /> {{ t('dashboard.nav.presets') }}
       </router-link>
       <router-link to="/dashboard/settings" class="nav-item">
-        <Settings :size="18" /> Settings
+        <Settings :size="18" /> {{ t('dashboard.nav.settings') }}
       </router-link>
     </nav>
 
     <!-- Upgrade Card -->
     <div v-if="planTier === 'free'" class="upgrade-card">
-      <div class="upgrade-title">You're on Free</div>
-      <div class="upgrade-body">Get advanced features and more quests.</div>
-      <PzButton variant="primary" size="sm" block class="upgrade-btn">Upgrade a gift</PzButton>
+      <div class="upgrade-title">{{ t('dashboard.upgrade.title') }}</div>
+      <div class="upgrade-body">{{ t('dashboard.upgrade.body') }}</div>
+      <PzButton variant="primary" size="sm" block class="upgrade-btn">{{ t('dashboard.upgrade.cta') }}</PzButton>
     </div>
 
     <!-- User Row -->
@@ -47,19 +47,17 @@
 
 <script setup>
 import { computed } from 'vue'
+import { useI18n } from 'vue-i18n'
 import { storeToRefs } from 'pinia'
 import { useAppStore } from '../../stores/useAppStore'
 import { LayoutGrid, BarChart2, Star, Settings } from 'lucide-vue-next'
 import PzButton from '../ui/PzButton.vue'
 
+const { t } = useI18n()
 const store = useAppStore()
 const { planTier, creatorInfo } = storeToRefs(store)
 
-const planLabel = computed(() => {
-  if (planTier.value === 'free') return 'Free plan'
-  if (planTier.value === 'premium') return 'Premium'
-  return 'Corporate workspace'
-})
+const planLabel = computed(() => t(`dashboard.plans.${planTier.value}`))
 </script>
 
 <style scoped>
@@ -198,5 +196,79 @@ const planLabel = computed(() => {
 .user-plan {
   font-size: 11.5px;
   color: var(--pz-muted);
+}
+
+/* On phones the rail becomes a compact top bar: logo and avatar on one line,
+   the workspace nav scrolling horizontally beneath it. */
+@media (max-width: 900px) {
+  .pz-sidebar {
+    width: 100%;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    grid-template-areas:
+      'logo . user'
+      'nav nav nav'
+      'upgrade upgrade upgrade';
+    align-items: center;
+    column-gap: 12px;
+    row-gap: 12px;
+    padding: 14px 16px;
+    border-inline-end: none;
+    border-block-end: 1px solid var(--pz-hairline);
+  }
+  .logo-lockup {
+    grid-area: logo;
+    margin-bottom: 0;
+  }
+  .kicker {
+    display: none;
+  }
+  .nav-menu {
+    grid-area: nav;
+    flex-direction: row;
+    gap: 6px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    /* Bleed to the edges so the scroll affordance reaches the screen border. */
+    margin-inline: -16px;
+    padding-inline: 16px;
+  }
+  .nav-menu::-webkit-scrollbar {
+    display: none;
+  }
+  .nav-item {
+    flex: none;
+    white-space: nowrap;
+    min-height: 44px;
+  }
+  .upgrade-card {
+    grid-area: upgrade;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 0;
+    padding: 10px 14px;
+  }
+  .upgrade-title {
+    flex: 1;
+    margin-bottom: 0;
+  }
+  .upgrade-body {
+    display: none;
+  }
+  .upgrade-card .upgrade-btn {
+    width: auto;
+    flex: none;
+  }
+  .user-row {
+    grid-area: user;
+    margin-top: 0;
+    border-top: none;
+    padding-top: 0;
+  }
+  /* Avatar alone — the name and plan live in Settings anyway. */
+  .user-info {
+    display: none;
+  }
 }
 </style>

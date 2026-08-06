@@ -2,27 +2,29 @@
   <section class="stats-row">
     <div class="stat-card">
       <div class="stat-value">{{ totalGifts }}</div>
-      <div class="stat-label">Total gifts created</div>
+      <div class="stat-label">{{ t('dashboard.stats.gifts') }}</div>
     </div>
     <div class="stat-card">
       <div class="stat-value">{{ totalPlays }}</div>
-      <div class="stat-label">Total plays across all gifts</div>
+      <div class="stat-label">{{ t('dashboard.stats.plays') }}</div>
     </div>
     <div class="stat-card">
       <div class="stat-value">{{ avgCompletion }}<span class="stat-unit">%</span></div>
-      <div class="stat-label">Avg completion rate</div>
+      <div class="stat-label">{{ t('dashboard.stats.completion') }}</div>
     </div>
     <div class="stat-card">
       <div class="stat-value">{{ formatTime(avgSolveSeconds) }}</div>
-      <div class="stat-label">Avg time to solve</div>
+      <div class="stat-label">{{ t('dashboard.stats.solve') }}</div>
     </div>
   </section>
 </template>
 
 <script setup>
+import { useI18n } from 'vue-i18n'
 import { storeToRefs } from 'pinia'
 import { useAppStore } from '../../stores/useAppStore'
 
+const { t } = useI18n()
 const store = useAppStore()
 const { totalGifts, totalPlays, avgCompletion, avgSolveSeconds } = storeToRefs(store)
 
@@ -70,7 +72,7 @@ const formatTime = (seconds) => {
 }
 
 @media (max-width: 900px) {
-  .stats-row { grid-template-columns: repeat(2, 1fr); }
+  .stats-row { grid-template-columns: repeat(2, 1fr); padding-inline: 16px; }
 }
 @media (max-width: 480px) {
   .stats-row { grid-template-columns: 1fr; }

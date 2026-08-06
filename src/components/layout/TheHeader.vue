@@ -13,7 +13,8 @@ const router = useRouter()
 const { theme, lang } = storeToRefs(store)
 const { setTheme, setLang } = store
 
-const pillBase = 'padding:7px 15px; min-height:38px; border:none; border-radius:999px; font-family:var(--pz-font-ui); font-size:13px; font-weight:700; cursor:pointer; transition:all .2s;'
+// min-height 44px is the design-system floor for hit targets (design.md §2.2).
+const pillBase = 'padding:7px 15px; min-height:44px; border:none; border-radius:999px; font-family:var(--pz-font-ui); font-size:13px; font-weight:700; cursor:pointer; transition:all .2s;'
 const pillOn = 'background:var(--pz-primary); color:var(--pz-on-primary);'
 const pillOff = 'background:transparent; color:var(--pz-muted);'
 
@@ -58,15 +59,15 @@ const selectLang = (code) => {
         <a href="#partners" style="font-size:13.5px; font-weight:600; color:var(--pz-muted); text-decoration:none;">{{ $t('navPartners') }}</a>
         <a href="#pricing" style="font-size:13.5px; font-weight:600; color:var(--pz-muted); text-decoration:none;">{{ $t('navPricing') }}</a>
       </nav>
-      <div style="display:flex; align-items:center; padding:4px; padding-inline-end:16px; background:var(--pz-surface); border:1px solid var(--pz-border); border-radius:var(--pz-r-full); box-shadow:var(--pz-e-1);">
-        <div style="display:flex; background:var(--pz-surface-2); border-radius:var(--pz-r-full);">
+      <div class="pz-controls" style="display:flex; align-items:center; padding:4px; padding-inline-end:16px; background:var(--pz-surface); border:1px solid var(--pz-border); border-radius:var(--pz-r-full); box-shadow:var(--pz-e-1);">
+        <div class="pz-theme-pills" style="display:flex; background:var(--pz-surface-2); border-radius:var(--pz-r-full);">
           <button @click="setTheme('birthday')" :style="getPillStyle('birthday')">{{ $t('themeBirthday') || 'Birthday' }}</button>
           <button @click="setTheme('mystery')" :style="getPillStyle('mystery')">{{ $t('themeMystery') || 'Mystery' }}</button>
           <button @click="setTheme('spooky')" :style="getPillStyle('spooky')">Spooky</button>
           <button @click="setTheme('corporate')" :style="getPillStyle('corporate')">Corporate</button>
         </div>
-        <div style="width:1px; height:20px; background:var(--pz-border); margin:0 16px 0 12px;"></div>
-        <div style="position:relative;" @focusout="setTimeout(closeLangMenu, 200)">
+        <div class="pz-controls-divider" style="width:1px; height:20px; background:var(--pz-border); margin:0 16px 0 12px;"></div>
+        <div class="pz-lang" style="position:relative;" @focusout="setTimeout(closeLangMenu, 200)">
           <button @click="toggleLangMenu" aria-label="Language options" style="display:flex; align-items:center; gap:8px; padding:0; background:transparent; border:none; color:var(--pz-text); font-family:var(--pz-font-ui); font-size:14px; font-weight:700; cursor:pointer;">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--pz-secondary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <circle cx="12" cy="12" r="10"></circle>
@@ -96,3 +97,26 @@ const selectLang = (code) => {
     </nav>
   </header>
 </template>
+
+<style scoped>
+/* The control cluster is one non-wrapping flex row, which pushed the language
+   switcher past the viewport (and out of reach) on phones. None of these
+   properties are set inline, so a plain stylesheet rule wins here. */
+@media (max-width: 760px) {
+  .pz-controls {
+    flex-wrap: wrap;
+    justify-content: center;
+    row-gap: 6px;
+  }
+  .pz-theme-pills {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .pz-controls-divider {
+    display: none;
+  }
+  .pz-lang button {
+    min-height: 44px;
+  }
+}
+</style>
