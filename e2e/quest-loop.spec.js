@@ -142,7 +142,7 @@ test.describe('Build → publish → play → reward', () => {
 
     const payloads = await page.evaluate(() =>
       Object.keys(localStorage)
-        .filter((key) => key.startsWith('pz.play.'))
+        .filter((key) => key.startsWith('app.play.'))
         .map((key) => localStorage.getItem(key))
         .join('')
     )
@@ -163,7 +163,7 @@ test.describe('Build → publish → play → reward', () => {
     await page.goto(path)
 
     // Mystery night seeded the mystery preset at build time.
-    await expect(page.locator('.player')).toHaveAttribute('data-pz-theme', 'mystery')
+    await expect(page.locator('.player')).toHaveAttribute('data-theme', 'mystery')
   })
 
   test('the published quest appears on the dashboard', async ({ page }) => {

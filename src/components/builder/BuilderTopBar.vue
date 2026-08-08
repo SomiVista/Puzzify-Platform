@@ -27,11 +27,11 @@
         <Check :size="13" aria-hidden="true" /> {{ t('builder.topbar.saved') }}
       </span>
 
-      <PzButton variant="secondary" size="md" data-testid="save-quest" @click="$emit('save')">
+      <BaseButton variant="secondary" size="md" data-testid="save-quest" @click="$emit('save')">
         <Save :size="16" /> {{ t('builder.topbar.save') }}
-      </PzButton>
+      </BaseButton>
 
-      <PzButton
+      <BaseButton
         variant="primary"
         size="md"
         data-testid="publish-quest"
@@ -41,12 +41,12 @@
       >
         <Rocket :size="16" />
         {{ builder.isPublished ? t('builder.publish.update') : t('builder.publish.action') }}
-      </PzButton>
+      </BaseButton>
     </div>
 
     <!-- The shareable link, once the quest exists at /q/{id} (PRD §4.2.5). -->
     <div v-if="builder.isPublished" class="share" data-testid="share-row">
-      <PzBadge tone="success">{{ t('builder.publish.published') }}</PzBadge>
+      <BaseBadge tone="success">{{ t('builder.publish.published') }}</BaseBadge>
       <a class="share-link" :href="builder.shareUrl" target="_blank" rel="noopener" data-testid="share-link">
         {{ builder.shareUrl }}
       </a>
@@ -64,8 +64,8 @@ import { computed, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { ArrowLeft, Check, Save, Rocket, Link as LinkIcon } from 'lucide-vue-next'
 import { useBuilderStore } from '../../stores/useBuilderStore'
-import PzButton from '../ui/PzButton.vue'
-import PzBadge from '../ui/PzBadge.vue'
+import BaseButton from '../ui/BaseButton.vue'
+import BaseBadge from '../ui/BaseBadge.vue'
 
 defineEmits(['save', 'publish'])
 
@@ -95,8 +95,8 @@ async function copyLink() {
   align-items: center;
   gap: 16px;
   padding: 12px 20px;
-  background: var(--pz-surface);
-  border-block-end: 1px solid var(--pz-hairline);
+  background: var(--color-surface);
+  border-block-end: 1px solid var(--color-hairline);
   flex-shrink: 0;
 }
 
@@ -106,22 +106,22 @@ async function copyLink() {
   gap: 8px;
   min-height: 44px;
   padding-inline: 10px;
-  border-radius: var(--pz-r-md);
-  color: var(--pz-muted);
+  border-radius: var(--radius-md);
+  color: var(--color-muted);
   text-decoration: none;
   font-size: 13px;
   font-weight: 600;
   outline: none;
 }
 .back:hover {
-  background: var(--pz-surface-2);
-  color: var(--pz-text);
+  background: var(--color-surface-2);
+  color: var(--color-text);
 }
 .back:focus-visible {
-  box-shadow: 0 0 0 4px var(--pz-ring);
+  box-shadow: 0 0 0 4px var(--color-ring);
 }
 /* The arrow points back along the reading direction. Scoped CSS only scopes the
-   LAST selector, so the ancestor [dir='rtl'] (set on .pz-stage) matches as-is —
+   LAST selector, so the ancestor [dir='rtl'] (set on .app-stage) matches as-is —
    wrapping it in :global() would hoist the whole rule and flip the page. */
 [dir='rtl'] .back-icon {
   transform: scaleX(-1);
@@ -134,24 +134,24 @@ async function copyLink() {
   min-height: 44px;
   padding: 10px 14px;
   border: 1.5px solid transparent;
-  border-radius: var(--pz-r-md);
-  background: var(--pz-bg);
-  color: var(--pz-text);
-  font-family: var(--pz-font-display);
+  border-radius: var(--radius-md);
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-display);
   font-size: 17px;
   font-weight: 700;
-  letter-spacing: var(--pz-track-display);
+  letter-spacing: var(--tracking-display);
   text-align: start;
   outline: none;
-  transition: border-color var(--pz-dur) var(--pz-ease), box-shadow var(--pz-dur) var(--pz-ease);
+  transition: border-color var(--duration) var(--ease), box-shadow var(--duration) var(--ease);
 }
 .name-input::placeholder {
-  color: var(--pz-muted);
+  color: var(--color-muted);
   font-weight: 600;
 }
 .name-input:focus {
-  border-color: var(--pz-focus);
-  box-shadow: 0 0 0 4px var(--pz-ring);
+  border-color: var(--color-focus);
+  box-shadow: 0 0 0 4px var(--color-ring);
 }
 
 .topbar-end {
@@ -162,16 +162,16 @@ async function copyLink() {
 }
 .steps-chip {
   padding: 6px 11px;
-  border-radius: var(--pz-r-full);
-  background: var(--pz-surface-2);
-  color: var(--pz-muted);
+  border-radius: var(--radius-full);
+  background: var(--color-surface-2);
+  color: var(--color-muted);
   font-size: 11.5px;
   font-weight: 700;
   white-space: nowrap;
 }
 .issue-hint {
   font-size: 12px;
-  color: var(--pz-accent);
+  color: var(--color-accent);
   font-weight: 600;
 }
 .saved-hint {
@@ -179,7 +179,7 @@ async function copyLink() {
   align-items: center;
   gap: 5px;
   font-size: 12px;
-  color: var(--pz-success);
+  color: var(--color-success);
   font-weight: 600;
 }
 
@@ -190,15 +190,15 @@ async function copyLink() {
   gap: 10px;
   width: 100%;
   padding: 10px 12px;
-  border-radius: var(--pz-r-md);
-  background: var(--pz-surface-2);
+  border-radius: var(--radius-md);
+  background: var(--color-surface-2);
 }
 .share-link {
   flex: 1;
   min-width: 180px;
-  font-family: var(--pz-font-mono);
+  font-family: var(--font-mono);
   font-size: 12.5px;
-  color: var(--pz-primary);
+  color: var(--color-primary);
   text-align: start;
   word-break: break-all;
 }
@@ -208,23 +208,23 @@ async function copyLink() {
   gap: 6px;
   min-height: 44px;
   padding: 0 14px;
-  border: 1px solid var(--pz-border);
-  border-radius: var(--pz-r-md);
-  background: var(--pz-surface);
-  color: var(--pz-text);
-  font-family: var(--pz-font-ui);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  color: var(--color-text);
+  font-family: var(--font-ui);
   font-size: 12.5px;
   font-weight: 700;
   cursor: pointer;
 }
 .copy:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 4px var(--pz-ring);
+  box-shadow: 0 0 0 4px var(--color-ring);
 }
 .share-hint {
   flex-basis: 100%;
   font-size: 11.5px;
-  color: var(--pz-muted);
+  color: var(--color-muted);
 }
 
 @media (max-width: 860px) {

@@ -15,9 +15,9 @@
         @click="builder.setThemePreset(preset.id)"
       >
         <span class="swatch" :style="swatchStyle(preset)">
-          <i :style="{ background: preset.vars['--pz-primary'] }"></i>
-          <i :style="{ background: preset.vars['--pz-secondary'] }"></i>
-          <i :style="{ background: preset.vars['--pz-accent'] }"></i>
+          <i :style="{ background: preset.vars['--color-primary'] }"></i>
+          <i :style="{ background: preset.vars['--color-secondary'] }"></i>
+          <i :style="{ background: preset.vars['--color-accent'] }"></i>
         </span>
         <span class="preset-label">{{ preset.label }}</span>
         <span class="preset-tagline">{{ preset.tagline }}</span>
@@ -30,7 +30,7 @@
         <span class="row-label">{{ t('builder.theme.ambientAudio') }}</span>
         <small>{{ activePreset.audio }} · {{ t('builder.theme.ambientAudioHelp') }}</small>
       </span>
-      <PzToggle
+      <BaseToggle
         :model-value="builder.draft.theme.ambientAudio"
         :label="t('builder.theme.ambientAudio')"
         data-testid="toggle-audio"
@@ -43,7 +43,7 @@
         <span class="row-label">{{ t('builder.theme.particles') }}</span>
         <small>{{ activePreset.particles.label }} · {{ t('builder.theme.particlesHelp') }}</small>
       </span>
-      <PzToggle
+      <BaseToggle
         :model-value="builder.draft.theme.particles"
         :label="t('builder.theme.particles')"
         data-testid="toggle-particles"
@@ -57,22 +57,22 @@
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { Check } from 'lucide-vue-next'
-import { THEMES } from '../../themes'
+import { THEMES, themeOf } from '../../themes'
 import { useBuilderStore } from '../../stores/useBuilderStore'
-import PzToggle from '../ui/PzToggle.vue'
+import BaseToggle from '../ui/BaseToggle.vue'
 
 const { t } = useI18n()
 const builder = useBuilderStore()
 
 const presets = Object.values(THEMES)
-const activePreset = computed(() => THEMES[builder.themePreset] || THEMES.birthday)
+const activePreset = computed(() => themeOf(builder.themePreset))
 
 /* Swatches must show the preset's OWN palette, so they read raw values from the
-   preset object rather than the ambient --pz-* tokens of the studio chrome. */
+   preset object rather than the ambient --color-* tokens of the studio chrome. */
 function swatchStyle(preset) {
   return {
-    background: preset.vars['--pz-bg'],
-    borderColor: preset.vars['--pz-border']
+    background: preset.vars['--color-bg'],
+    borderColor: preset.vars['--color-border']
   }
 }
 </script>
@@ -80,24 +80,24 @@ function swatchStyle(preset) {
 <style scoped>
 .theme-config {
   padding: 20px 16px;
-  border-top: 1px solid var(--pz-hairline);
+  border-top: 1px solid var(--color-hairline);
   display: flex;
   flex-direction: column;
   gap: 12px;
 }
 .pane-title {
-  font-family: var(--pz-font-ui);
+  font-family: var(--font-ui);
   font-size: 12px;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: var(--pz-track-kicker);
-  color: var(--pz-muted);
+  letter-spacing: var(--tracking-kicker);
+  color: var(--color-muted);
   margin: 0;
 }
 .field-label {
   font-size: 12px;
   font-weight: 700;
-  color: var(--pz-text);
+  color: var(--color-text);
 }
 
 .presets {
@@ -113,25 +113,25 @@ function swatchStyle(preset) {
   gap: 4px;
   min-height: 44px;
   padding: 10px;
-  background: var(--pz-surface);
-  border: 1.5px solid var(--pz-border);
-  border-radius: var(--pz-r-md);
-  font-family: var(--pz-font-ui);
-  color: var(--pz-text);
+  background: var(--color-surface);
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-md);
+  font-family: var(--font-ui);
+  color: var(--color-text);
   text-align: start;
   cursor: pointer;
-  transition: border-color var(--pz-dur) var(--pz-ease), box-shadow var(--pz-dur) var(--pz-ease);
+  transition: border-color var(--duration) var(--ease), box-shadow var(--duration) var(--ease);
 }
 .preset:hover {
-  border-color: color-mix(in srgb, var(--pz-primary) 45%, var(--pz-border));
+  border-color: color-mix(in srgb, var(--color-primary) 45%, var(--color-border));
 }
 .preset.selected {
-  border-color: var(--pz-primary);
-  box-shadow: var(--pz-e-1);
+  border-color: var(--color-primary);
+  box-shadow: var(--shadow-1);
 }
 .preset:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 4px var(--pz-ring);
+  box-shadow: 0 0 0 4px var(--color-ring);
 }
 .swatch {
   display: flex;
@@ -139,7 +139,7 @@ function swatchStyle(preset) {
   gap: 3px;
   width: 100%;
   padding: 6px;
-  border-radius: var(--pz-r-sm);
+  border-radius: var(--radius-sm);
   border: 1px solid;
 }
 .swatch i {
@@ -153,14 +153,14 @@ function swatchStyle(preset) {
 }
 .preset-tagline {
   font-size: 10.5px;
-  color: var(--pz-muted);
+  color: var(--color-muted);
   line-height: 1.3;
 }
 .preset-check {
   position: absolute;
   top: 8px;
   inset-inline-end: 8px;
-  color: var(--pz-primary);
+  color: var(--color-primary);
 }
 
 .row {
@@ -178,11 +178,11 @@ function swatchStyle(preset) {
 .row-label {
   font-size: 12.5px;
   font-weight: 700;
-  color: var(--pz-text);
+  color: var(--color-text);
 }
 .row-text small {
   font-size: 11px;
   line-height: 1.4;
-  color: var(--pz-muted);
+  color: var(--color-muted);
 }
 </style>

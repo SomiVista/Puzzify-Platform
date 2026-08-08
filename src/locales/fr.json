@@ -9,7 +9,7 @@
   "themeMystery": "Mystère",
   "heroKicker": "Vous venez d'en jouer un. Créez-en un maintenant.",
   "heroHeadline": "Transformez n'importe quel cadeau en un mini escape room.",
-  "heroSub": "Puzzify transforme un cadeau numérique, un message ou une annonce en une quête en ligne personnalisée. Vous construisez le mystère — ils jouent pour débloquer leur récompense. Pas d'application, pas de connexion.",
+  "heroSub": "@:appName transforme un cadeau numérique, un message ou une annonce en une quête en ligne personnalisée. Vous construisez le mystère — ils jouent pour débloquer leur récompense. Pas d'application, pas de connexion.",
   "heroCta1": "Créez votre première quête — gratuit",
   "heroCta2": "Voir une démo en direct",
   "playerKicker": "Quête · Une Année Ensemble",
@@ -18,7 +18,7 @@
   "playerPrompt": "Où avons-nous partagé notre premier café ? Un seul mot.",
   "inputPlaceholder": "Tapez votre réponse",
   "submit": "Déverrouiller",
-  "watermark": "Créé avec Puzzify",
+  "watermark": "Créé avec @:appName",
   "trustLine": "Prenez cinq minutes. Offrez quelque chose d'inoubliable.",
   "trustStats": [
     "Plus de 120k quêtes jouées",
@@ -75,7 +75,7 @@
     "Révélations de produits",
     "Demandes en mariage"
   ],
-  "whyKicker": "Pourquoi Puzzify",
+  "whyKicker": "Pourquoi @:appName",
   "whyTitle": "La livraison est le cadeau",
   "whySub": "Une surprise qu'ils débloquent vaut mieux qu'un lien qu'ils ignorent. Conçu pour convertir le moment de joie en une nouvelle quête.",
   "why": [
@@ -111,7 +111,7 @@
         "Jusqu'à 3 étapes",
         "Modules d'énigmes de base",
         "Thèmes Célébration et Mystère",
-        "Filigrane Puzzify"
+        "Filigrane @:appName"
       ]
     },
     {
@@ -144,8 +144,8 @@
   ],
   "partnerBlock": {
     "kicker": "En collaboration",
-    "title": "Puzzify × WelloWork — jouez pour renforcer votre équipe.",
-    "desc": "Nous nous sommes associés à WelloWork, la plateforme suédoise de performance au travail, pour apporter les quêtes Puzzify dans les outils que les entreprises utilisent déjà. Les employeurs transforment l'intégration, la formation et le team-building en jeux auxquels les employés ont vraiment envie de jouer.",
+    "title": "@:appName × WelloWork — jouez pour renforcer votre équipe.",
+    "desc": "Nous nous sommes associés à WelloWork, la plateforme suédoise de performance au travail, pour apporter les quêtes @:appName dans les outils que les entreprises utilisent déjà. Les employeurs transforment l'intégration, la formation et le team-building en jeux auxquels les employés ont vraiment envie de jouer.",
     "cta": "Explorer le partenariat",
     "link": "https://www.wellowork.net/",
     "features": [
@@ -198,7 +198,7 @@
     }
   ],
   "footLang": "Langue",
-  "footLegal": "© 2026 Puzzify · Conçu pour des surprises mémorables",
+  "footLegal": "© 2026 @:appName · Conçu pour des surprises mémorables",
   "dashboard": {
     "workspace": "Espace de travail",
     "nav": {
@@ -241,16 +241,24 @@
       "published": "Publiées",
       "drafts": "Brouillons",
       "sortRecent": "Récentes",
-      "noResults": "Aucune quête ne correspond à votre recherche ou à votre filtre."
+      "noResults": "Aucune quête ne correspond à votre recherche ou à votre filtre.",
+      "sortName": "Nom"
     },
     "card": {
       "plays": "Parties",
       "avgSolve": "Temps moyen",
       "completion": "Réussite",
-      "edit": "Modifier la quête",
-      "analytics": "Statistiques",
       "statusPublished": "Publiée",
-      "statusDraft": "Brouillon"
+      "statusDraft": "Brouillon",
+      "open": "Ouvrir",
+      "copyLink": "Copier le lien",
+      "copied": "Lien copié",
+      "reward": "Récompense",
+      "rewards": {
+        "letter": "Lettre",
+        "video": "Vidéo",
+        "voucher": "Bon"
+      }
     },
     "createHero": {
       "title": "Créer un nouveau cadeau",
@@ -384,7 +392,7 @@
       "submit": "Déverrouiller",
       "inputPlaceholder": "Saisissez votre réponse",
       "attempts": "{n} essais",
-      "watermark": "Créé avec Puzzify"
+      "watermark": "Créé avec @:appName"
     },
     "issues": {
       "promptRequired": "Ajoutez un énoncé.",
@@ -450,6 +458,6 @@
     "ctaTitle": "Envie de surprendre quelqu’un d’autre ?",
     "ctaBody": "Créez votre première quête gratuitement.",
     "ctaButton": "Créez la vôtre",
-    "watermark": "Créé avec Puzzify"
+    "watermark": "Créé avec @:appName"
   }
 }

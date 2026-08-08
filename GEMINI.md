@@ -1,6 +1,6 @@
 # GEMINI.md — Agent Guide for Puzzify
 
-This file tells Gemini (and any Gemini-based agent or automation) how to work in the **Puzzify** repository. Read it before making changes. Keep it in sync with `docs/prd.md` and `docs/DESIGN.md`.
+This file tells Gemini (and any Gemini-based agent or automation) how to work in the **Puzzify** repository. Read it before making changes. Keep it in sync with `docs/prd.md` and `docs/design.md`.
 
 > Note: Gemini already powers an automation in this repo — the **Auto PR Description** workflow (`.github/workflows/auto-pr-description.yml`, model `gemini-2.5-flash-lite`). Section 5 is especially relevant to that role.
 
@@ -9,7 +9,7 @@ Puzzify turns any digital gift, message, or announcement into a personalized, on
 
 Authoritative specs:
 - Product scope & requirements → `docs/prd.md`
-- Design system, tokens, components → `docs/DESIGN.md`
+- Design system, tokens, components → `docs/design.md`
 
 Never contradict these. If a request conflicts with them, flag it instead of silently diverging.
 
@@ -36,7 +36,7 @@ Expected scripts (add if missing): `npm run test` (unit), `npm run test:e2e` (Pl
 GitHub Actions is the source of truth for build, test, and deploy. Automation must stay green.
 
 - **Every push and PR runs the full pipeline:** install → lint → unit tests → build → E2E tests. A red pipeline blocks merge.
-- **Automatic deployment (CD):** merges to the default branch deploy automatically (current setup uses Vite build → `gh-pages`; the Firebase-hosted target follows the same automated pattern). Never deploy manually around CI.
+- **Automatic deployment (CD):** merges to the default branch deploy automatically — Vite build → **Firebase Hosting** (project `puzzify-platform`); pull requests deploy to a `dev` preview channel. Never deploy manually around CI.
 - **Version control discipline:**
   - Branch per task; name branches with the ClickUp task ID (e.g. `CU-86xxxx_short-description`) so automation can link them.
   - Use Conventional Commits (`feat:`, `fix:`, `test:`, `chore:`, `ci:`...).
@@ -54,7 +54,7 @@ A PR is incomplete until its description is correct and complete. **Gemini gener
 - Do not merge a PR whose description is empty, still contains template placeholders, or omits the ClickUp link.
 
 ## 6. Definition of Done (check before opening/merging a PR)
-1. Code matches `prd.md` and `DESIGN.md`; theming stays token-driven; no hardcoded occasion logic.
+1. Code matches `docs/prd.md` and `docs/design.md`; theming stays token-driven; no hardcoded occasion logic.
 2. RTL/LTR verified; mobile-first verified; player load budget respected.
 3. Unit **and** E2E tests added/updated and the full suite passes.
 4. CI pipeline is green; no secrets committed; version/commits follow convention.

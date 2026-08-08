@@ -13,11 +13,11 @@
  */
 
 const KEYS = {
-  index: 'pz.quests.index',
-  quest: (id) => `pz.quest.${id}`,
-  play: (id) => `pz.play.${id}`,
-  reward: (id) => `pz.reward.${id}`,
-  progress: (id) => `pz.progress.${id}`
+  index: 'app.quests.index',
+  quest: (id) => `app.quest.${id}`,
+  play: (id) => `app.play.${id}`,
+  reward: (id) => `app.reward.${id}`,
+  progress: (id) => `app.progress.${id}`
 }
 
 function safeParse(raw, fallback = null) {
@@ -38,7 +38,7 @@ function createLocalDriver() {
   const memory = new Map()
   let available
   try {
-    const probe = '__pz__'
+    const probe = '__storage_probe__'
     window.localStorage.setItem(probe, '1')
     window.localStorage.removeItem(probe)
     available = true

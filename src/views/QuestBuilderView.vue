@@ -81,7 +81,7 @@ function claimEditUrl(record) {
   display: flex;
   flex-direction: column;
   height: 100vh;
-  background: var(--pz-bg);
+  background: var(--color-bg);
   overflow: hidden;
 }
 
@@ -94,13 +94,13 @@ function claimEditUrl(record) {
 
 .rail {
   overflow-y: auto;
-  background: var(--pz-surface);
+  background: var(--color-surface);
 }
 .rail-start {
-  border-inline-end: 1px solid var(--pz-hairline);
+  border-inline-end: 1px solid var(--color-hairline);
 }
 .rail-end {
-  border-inline-start: 1px solid var(--pz-hairline);
+  border-inline-start: 1px solid var(--color-hairline);
 }
 /* The first section in the end rail has no divider above it. */
 .rail-end > :first-child {
@@ -132,7 +132,7 @@ function claimEditUrl(record) {
   .rail-start,
   .rail-end {
     border-inline: none;
-    border-block-end: 1px solid var(--pz-hairline);
+    border-block-end: 1px solid var(--color-hairline);
   }
 }
 </style>

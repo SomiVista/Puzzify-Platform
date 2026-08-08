@@ -16,6 +16,6 @@ const { t } = useI18n()
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  color: var(--pz-muted);
+  color: var(--color-muted);
 }
 </style>

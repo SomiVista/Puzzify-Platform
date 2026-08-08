@@ -28,7 +28,7 @@
     </button>
 
     <div class="card-actions">
-      <IconButton
+      <BaseIconButton
         :label="t('builder.canvas.moveUp')"
         :size="32"
         :disabled="index === 0"
@@ -36,8 +36,8 @@
         @click="$emit('move', -1)"
       >
         <ChevronUp :size="15" />
-      </IconButton>
-      <IconButton
+      </BaseIconButton>
+      <BaseIconButton
         :label="t('builder.canvas.moveDown')"
         :size="32"
         :disabled="index === total - 1"
@@ -45,15 +45,15 @@
         @click="$emit('move', 1)"
       >
         <ChevronDown :size="15" />
-      </IconButton>
-      <IconButton
+      </BaseIconButton>
+      <BaseIconButton
         :label="t('builder.canvas.delete')"
         :size="32"
         :data-testid="`delete-step-${index}`"
         @click="$emit('delete')"
       >
         <Trash2 :size="15" />
-      </IconButton>
+      </BaseIconButton>
     </div>
   </li>
 </template>
@@ -63,7 +63,7 @@ import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { ChevronUp, ChevronDown, Trash2, Lock, Play } from 'lucide-vue-next'
 import { blockIcon } from '../../quest/blocks'
-import IconButton from '../ui/IconButton.vue'
+import BaseIconButton from '../ui/BaseIconButton.vue'
 
 const props = defineProps({
   step: { type: Object, required: true },
@@ -102,20 +102,20 @@ function onDragStart(event) {
   gap: 8px;
   padding-block: 4px;
   padding-inline: 4px 6px;
-  background: var(--pz-surface);
-  border: 1.5px solid var(--pz-border);
-  border-radius: var(--pz-r-lg);
-  box-shadow: var(--pz-e-1);
+  background: var(--color-surface);
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-1);
   cursor: grab;
-  transition: border-color var(--pz-dur) var(--pz-ease), box-shadow var(--pz-dur) var(--pz-ease),
-    opacity var(--pz-dur) var(--pz-ease);
+  transition: border-color var(--duration) var(--ease), box-shadow var(--duration) var(--ease),
+    opacity var(--duration) var(--ease);
 }
 .step-card:hover {
-  border-color: color-mix(in srgb, var(--pz-primary) 45%, var(--pz-border));
+  border-color: color-mix(in srgb, var(--color-primary) 45%, var(--color-border));
 }
 .step-card.selected {
-  border-color: var(--pz-primary);
-  box-shadow: var(--pz-e-2);
+  border-color: var(--color-primary);
+  box-shadow: var(--shadow-2);
 }
 .step-card.dragging {
   opacity: 0.45;
@@ -132,14 +132,14 @@ function onDragStart(event) {
   background: none;
   border: none;
   text-align: start;
-  font-family: var(--pz-font-ui);
-  color: var(--pz-text);
+  font-family: var(--font-ui);
+  color: var(--color-text);
   cursor: pointer;
-  border-radius: var(--pz-r-md);
+  border-radius: var(--radius-md);
   outline: none;
 }
 .card-main:focus-visible {
-  box-shadow: 0 0 0 4px var(--pz-ring);
+  box-shadow: 0 0 0 4px var(--color-ring);
 }
 
 .card-top {
@@ -152,9 +152,9 @@ function onDragStart(event) {
   flex: none;
   width: 22px;
   height: 22px;
-  border-radius: var(--pz-r-full);
-  background: var(--pz-primary);
-  color: var(--pz-on-primary);
+  border-radius: var(--radius-full);
+  background: var(--color-primary);
+  color: var(--color-on-primary);
   font-size: 11.5px;
   font-weight: 700;
   display: flex;
@@ -169,23 +169,23 @@ function onDragStart(event) {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: var(--pz-muted);
+  color: var(--color-muted);
 }
 .status {
   margin-inline-start: auto;
   flex: none;
   padding: 3px 8px;
-  border-radius: var(--pz-r-full);
+  border-radius: var(--radius-full);
   font-size: 10.5px;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  background: color-mix(in srgb, var(--pz-accent) 18%, transparent);
-  color: var(--pz-accent);
+  background: color-mix(in srgb, var(--color-accent) 18%, transparent);
+  color: var(--color-accent);
 }
 .status.ready {
-  background: color-mix(in srgb, var(--pz-success) 15%, transparent);
-  color: var(--pz-success);
+  background: color-mix(in srgb, var(--color-success) 15%, transparent);
+  color: var(--color-success);
 }
 
 .card-title {
@@ -204,7 +204,7 @@ function onDragStart(event) {
   align-items: center;
   gap: 5px;
   font-size: 11.5px;
-  color: var(--pz-muted);
+  color: var(--color-muted);
 }
 
 .card-actions {
@@ -212,7 +212,9 @@ function onDragStart(event) {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 4px;
+  /* 6px keeps each button's 44px hit target (BaseIconButton) clear of its
+     neighbour's visible box while the column stays compact. */
+  gap: 6px;
   padding-block: 8px;
 }
 </style>

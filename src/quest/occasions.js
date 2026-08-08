@@ -20,3 +20,16 @@ export const OCCASION_PRESETS = [
 export function getOccasionPreset(id) {
   return OCCASION_PRESETS.find((preset) => preset.id === id) || null
 }
+
+/**
+ * The i18n key for an occasion label, or `null` when the quest carries free
+ * text the creator typed. Matching is case-insensitive so legacy records
+ * ("Birthday") localize alongside preset ids ("birthday").
+ */
+export function occasionLabelKey(occasion) {
+  if (typeof occasion !== 'string' || occasion === '') return null
+  const match = OCCASION_PRESETS.find(
+    (preset) => preset.id.toLowerCase() === occasion.toLowerCase()
+  )
+  return match ? match.labelKey : null
+}

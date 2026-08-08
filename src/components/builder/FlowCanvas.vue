@@ -83,24 +83,24 @@ const flow = computed(() => builder.flow)
   min-height: 100%;
   padding: 20px 24px 40px;
   /* Dotted design surface (design.md §3). */
-  background-image: radial-gradient(var(--pz-border) 1px, transparent 1px);
+  background-image: radial-gradient(var(--color-border) 1px, transparent 1px);
   background-size: 18px 18px;
 }
 .canvas-head {
   margin-bottom: 18px;
 }
 .pane-title {
-  font-family: var(--pz-font-ui);
+  font-family: var(--font-ui);
   font-size: 12px;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: var(--pz-track-kicker);
-  color: var(--pz-muted);
+  letter-spacing: var(--tracking-kicker);
+  color: var(--color-muted);
   margin: 0 0 6px;
 }
 .pane-hint {
   font-size: 12.5px;
-  color: var(--pz-muted);
+  color: var(--color-muted);
   margin: 0;
 }
 
@@ -124,24 +124,24 @@ const flow = computed(() => builder.flow)
   align-items: center;
   gap: 10px;
   padding: 12px 14px;
-  border: 1.5px dashed var(--pz-border);
-  border-radius: var(--pz-r-md);
-  background: color-mix(in srgb, var(--pz-surface) 65%, transparent);
+  border: 1.5px dashed var(--color-border);
+  border-radius: var(--radius-md);
+  background: color-mix(in srgb, var(--color-surface) 65%, transparent);
 }
 .node.finale {
   border-style: solid;
-  border-color: color-mix(in srgb, var(--pz-primary) 40%, var(--pz-border));
+  border-color: color-mix(in srgb, var(--color-primary) 40%, var(--color-border));
 }
 .node-dot {
   flex: none;
   width: 30px;
   height: 30px;
-  border-radius: var(--pz-r-full);
+  border-radius: var(--radius-full);
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--pz-surface-2);
-  color: var(--pz-primary);
+  background: var(--color-surface-2);
+  color: var(--color-primary);
 }
 .node-text {
   display: flex;
@@ -153,7 +153,7 @@ const flow = computed(() => builder.flow)
 }
 .node-text small {
   font-size: 11.5px;
-  color: var(--pz-muted);
+  color: var(--color-muted);
 }
 
 /* Linear connector — the visual expression of "step N unlocks step N+1". */
@@ -163,19 +163,19 @@ const flow = computed(() => builder.flow)
   align-items: center;
   justify-content: center;
   height: 24px;
-  color: var(--pz-muted);
+  color: var(--color-muted);
 }
 .connector::before {
   content: '';
   position: absolute;
   inset-block: 0;
   width: 1.5px;
-  background: var(--pz-border);
+  background: var(--color-border);
 }
 .connector > * {
   position: relative;
   padding-block: 2px;
-  background: var(--pz-bg);
+  background: var(--color-bg);
 }
 
 .empty {
@@ -185,14 +185,14 @@ const flow = computed(() => builder.flow)
   gap: 6px;
   padding: 36px 24px;
   text-align: center;
-  border: 1.5px dashed var(--pz-border);
-  border-radius: var(--pz-r-lg);
-  color: var(--pz-muted);
+  border: 1.5px dashed var(--color-border);
+  border-radius: var(--radius-lg);
+  color: var(--color-muted);
 }
 .empty strong {
-  font-family: var(--pz-font-display);
+  font-family: var(--font-display);
   font-size: 16px;
-  color: var(--pz-text);
+  color: var(--color-text);
 }
 .empty span {
   font-size: 12.5px;

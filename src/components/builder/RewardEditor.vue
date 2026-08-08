@@ -23,7 +23,7 @@
       <label for="reward-headline">{{ t('builder.reward.headline') }}</label>
       <input
         id="reward-headline"
-        class="pz-input"
+        class="base-input"
         type="text"
         data-testid="reward-headline"
         :value="reward.title || ''"
@@ -37,7 +37,7 @@
       <label for="reward-url">{{ t('builder.reward.videoUrl') }}</label>
       <input
         id="reward-url"
-        class="pz-input"
+        class="base-input"
         type="url"
         data-testid="reward-url"
         :value="reward.url || ''"
@@ -50,7 +50,7 @@
       <label for="reward-message">{{ t('builder.reward.message') }}</label>
       <textarea
         id="reward-message"
-        class="pz-input"
+        class="base-input"
         rows="4"
         data-testid="reward-message"
         :value="reward.body || ''"
@@ -63,7 +63,7 @@
       <label for="reward-code">{{ t('builder.reward.code') }}</label>
       <input
         id="reward-code"
-        class="pz-input mono"
+        class="base-input mono"
         type="text"
         data-testid="reward-code"
         :value="reward.code || ''"
@@ -91,25 +91,25 @@ const reward = computed(() => builder.draft.reward)
 <style scoped>
 .reward-editor {
   padding: 20px 16px;
-  border-top: 1px solid var(--pz-hairline);
+  border-top: 1px solid var(--color-hairline);
   display: flex;
   flex-direction: column;
   gap: 12px;
 }
 .pane-title {
-  font-family: var(--pz-font-ui);
+  font-family: var(--font-ui);
   font-size: 12px;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: var(--pz-track-kicker);
-  color: var(--pz-muted);
+  letter-spacing: var(--tracking-kicker);
+  color: var(--color-muted);
   margin: 0;
 }
 .field-label,
 .field label {
   font-size: 12px;
   font-weight: 700;
-  color: var(--pz-text);
+  color: var(--color-text);
 }
 
 .types {
@@ -124,24 +124,24 @@ const reward = computed(() => builder.draft.reward)
   gap: 5px;
   min-height: 44px;
   padding: 9px 6px;
-  border: 1.5px solid var(--pz-border);
-  border-radius: var(--pz-r-md);
-  background: var(--pz-surface);
-  color: var(--pz-muted);
-  font-family: var(--pz-font-ui);
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  color: var(--color-muted);
+  font-family: var(--font-ui);
   font-size: 11.5px;
   font-weight: 700;
   cursor: pointer;
-  transition: border-color var(--pz-dur) var(--pz-ease), color var(--pz-dur) var(--pz-ease);
+  transition: border-color var(--duration) var(--ease), color var(--duration) var(--ease);
 }
 .type.selected {
-  border-color: var(--pz-primary);
-  color: var(--pz-primary);
-  background: var(--pz-surface-2);
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  background: var(--color-surface-2);
 }
 .type:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 4px var(--pz-ring);
+  box-shadow: 0 0 0 4px var(--color-ring);
 }
 
 .field {
@@ -149,31 +149,31 @@ const reward = computed(() => builder.draft.reward)
   flex-direction: column;
   gap: 6px;
 }
-.pz-input {
+.base-input {
   width: 100%;
   min-height: 44px;
   padding: 11px 12px;
-  border: 1.5px solid var(--pz-border);
-  border-radius: var(--pz-r-md);
-  background: var(--pz-bg);
-  color: var(--pz-text);
-  font-family: var(--pz-font-ui);
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-ui);
   font-size: 13.5px;
   text-align: start;
   outline: none;
-  transition: border-color var(--pz-dur) var(--pz-ease), box-shadow var(--pz-dur) var(--pz-ease);
+  transition: border-color var(--duration) var(--ease), box-shadow var(--duration) var(--ease);
 }
-.pz-input.mono {
-  font-family: var(--pz-font-mono);
+.base-input.mono {
+  font-family: var(--font-mono);
   letter-spacing: 0.04em;
 }
-textarea.pz-input {
+textarea.base-input {
   min-height: 88px;
   resize: vertical;
   line-height: 1.5;
 }
-.pz-input:focus {
-  border-color: var(--pz-focus);
-  box-shadow: 0 0 0 4px var(--pz-ring);
+.base-input:focus {
+  border-color: var(--color-focus);
+  box-shadow: 0 0 0 4px var(--color-ring);
 }
 </style>

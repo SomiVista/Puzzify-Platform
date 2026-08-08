@@ -128,11 +128,11 @@ test.describe('Quest Builder', () => {
     await page.getByTestId('palette-lock').click()
 
     const preview = page.getByTestId('live-preview')
-    await expect(preview).toHaveAttribute('data-pz-theme', 'birthday')
+    await expect(preview).toHaveAttribute('data-theme', 'birthday')
 
     await page.getByTestId('theme-spooky').click()
 
-    await expect(preview).toHaveAttribute('data-pz-theme', 'spooky')
+    await expect(preview).toHaveAttribute('data-theme', 'spooky')
     await expect(page.getByTestId('theme-birthday')).toHaveAttribute('aria-pressed', 'false')
   })
 
@@ -192,7 +192,7 @@ test.describe('Quest Builder — Persian (RTL)', () => {
     await page.goto('/')
     await page.getByRole('button', { name: /فارسی/ }).click()
 
-    const stage = page.locator('.pz-stage')
+    const stage = page.locator('.app-stage')
     await expect(stage).toHaveAttribute('dir', 'rtl')
 
     // Navigate in-app so the language choice survives (it lives in the store,

@@ -9,7 +9,7 @@
   "themeMystery": "Mysterium",
   "heroKicker": "Du har precis spelat ett. Gör nu ett eget.",
   "heroHeadline": "Förvandla vilken present som helst till ett miniescape-room.",
-  "heroSub": "Puzzify förvandlar en digital present, ett meddelande eller ett tillkännagivande till ett personligt online-äventyr. Du bygger mysteriet — de spelar för att låsa upp sin belöning. Ingen app, ingen inloggning.",
+  "heroSub": "@:appName förvandlar en digital present, ett meddelande eller ett tillkännagivande till ett personligt online-äventyr. Du bygger mysteriet — de spelar för att låsa upp sin belöning. Ingen app, ingen inloggning.",
   "heroCta1": "Skapa ditt första äventyr — gratis",
   "heroCta2": "Se en live-demo",
   "playerKicker": "Äventyr · Ett år av oss",
@@ -18,7 +18,7 @@
   "playerPrompt": "Var delade vi vår första fika? Ett ord.",
   "inputPlaceholder": "Skriv ditt svar",
   "submit": "Lås upp",
-  "watermark": "Skapad med Puzzify",
+  "watermark": "Skapad med @:appName",
   "trustLine": "Ägna fem minuter. Leverera något oförglömligt.",
   "trustStats": [
     "Över 120k spelade äventyr",
@@ -75,7 +75,7 @@
     "Produktlanseringar",
     "Frierier"
   ],
-  "whyKicker": "Varför Puzzify",
+  "whyKicker": "Varför @:appName",
   "whyTitle": "Leveransen är presenten",
   "whySub": "En överraskning de låser upp slår en länk de ignorerar. Byggt för att omvandla glädjeögonblicket till nästa äventyr.",
   "why": [
@@ -111,7 +111,7 @@
         "Upp till 3 steg",
         "Grundläggande pusselmoduler",
         "Teman: Firande & Mysterium",
-        "Puzzify-vattenstämpel"
+        "@:appName-vattenstämpel"
       ]
     },
     {
@@ -144,8 +144,8 @@
   ],
   "partnerBlock": {
     "kicker": "Samarbetar nu",
-    "title": "Puzzify × WelloWork — spela er till ett starkare team.",
-    "desc": "Vi har slagit oss samman med WelloWork, den svenska plattformen för arbetsprestation, för att ta in Puzzify-äventyr i de verktyg som företag redan använder. Arbetsgivare förvandlar onboarding, utbildning och teambuilding till spel som anställda faktiskt vill spela.",
+    "title": "@:appName × WelloWork — spela er till ett starkare team.",
+    "desc": "Vi har slagit oss samman med WelloWork, den svenska plattformen för arbetsprestation, för att ta in @:appName-äventyr i de verktyg som företag redan använder. Arbetsgivare förvandlar onboarding, utbildning och teambuilding till spel som anställda faktiskt vill spela.",
     "cta": "Utforska partnerskapet",
     "link": "https://www.wellowork.net/",
     "features": [
@@ -198,7 +198,7 @@
     }
   ],
   "footLang": "Språk",
-  "footLegal": "© 2026 Puzzify · Gjord för härliga överraskningar",
+  "footLegal": "© 2026 @:appName · Gjord för härliga överraskningar",
   "dashboard": {
     "workspace": "Arbetsyta",
     "nav": {
@@ -241,16 +241,24 @@
       "published": "Publicerade",
       "drafts": "Utkast",
       "sortRecent": "Senaste",
-      "noResults": "Inga uppdrag matchar din sökning eller ditt filter."
+      "noResults": "Inga uppdrag matchar din sökning eller ditt filter.",
+      "sortName": "Namn"
     },
     "card": {
       "plays": "Spel",
       "avgSolve": "Snittid",
       "completion": "Klarade",
-      "edit": "Redigera uppdrag",
-      "analytics": "Statistik",
       "statusPublished": "Publicerad",
-      "statusDraft": "Utkast"
+      "statusDraft": "Utkast",
+      "open": "Öppna",
+      "copyLink": "Kopiera länken",
+      "copied": "Länk kopierad",
+      "reward": "Belöning",
+      "rewards": {
+        "letter": "Brev",
+        "video": "Video",
+        "voucher": "Presentkort"
+      }
     },
     "createHero": {
       "title": "Skapa en ny present",
@@ -384,7 +392,7 @@
       "submit": "Lås upp",
       "inputPlaceholder": "Skriv ditt svar",
       "attempts": "{n} försök",
-      "watermark": "Skapad med Puzzify"
+      "watermark": "Skapad med @:appName"
     },
     "issues": {
       "promptRequired": "Lägg till en fråga.",
@@ -450,6 +458,6 @@
     "ctaTitle": "Vill du överraska någon annan?",
     "ctaBody": "Skapa ditt första uppdrag gratis.",
     "ctaButton": "Gör ett eget",
-    "watermark": "Skapad med Puzzify"
+    "watermark": "Skapad med @:appName"
   }
 }

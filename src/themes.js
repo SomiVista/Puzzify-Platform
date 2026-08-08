@@ -1,6 +1,6 @@
 /**
- * Puzzify theme presets — the single source of truth for token VALUES.
- * Components only ever read semantic names (--pz-*); a theme is just this preset.
+ * Theme presets — the single source of truth for token VALUES.
+ * Components only ever read semantic names (--color-*, --shadow-*); a theme is just this preset.
  * Every palette targets WCAG 2.1 AA on its own surfaces.
  */
 export const THEMES = {
@@ -12,13 +12,13 @@ export const THEMES = {
     particles: { label: 'Confetti', motion: 'fall' },
     audio: 'Lo-fi pop',
     vars: {
-      '--pz-bg': '#FFF8F0', '--pz-surface': '#FFFFFF', '--pz-surface-2': '#F2EDFD', '--pz-surface-3': '#FFF1E2',
-      '--pz-text': '#2D2438', '--pz-muted': '#756A80', '--pz-border': '#ECE3EE', '--pz-hairline': '#F3EDF3',
-      '--pz-primary': '#6C3BF0', '--pz-on-primary': '#FFFFFF', '--pz-secondary': '#0B7568', '--pz-accent': '#FFAE1F',
-      '--pz-success': '#0D8049', '--pz-error': '#D42F55', '--pz-focus': '#6C3BF0',
-      '--pz-ring': 'rgba(108,59,240,.24)', '--pz-glow': 'rgba(255,174,31,.5)',
-      '--pz-e-1': '0 1px 2px rgba(24,16,40,.05), 0 2px 6px rgba(24,16,40,.05)',
-      '--pz-e-2': '0 8px 22px rgba(24,16,40,.11)'
+      '--color-bg': '#FFF8F0', '--color-surface': '#FFFFFF', '--color-surface-2': '#F2EDFD', '--color-surface-3': '#FFF1E2',
+      '--color-text': '#2D2438', '--color-muted': '#756A80', '--color-border': '#ECE3EE', '--color-hairline': '#F3EDF3',
+      '--color-primary': '#6C3BF0', '--color-on-primary': '#FFFFFF', '--color-secondary': '#0B7568', '--color-accent': '#FFAE1F',
+      '--color-success': '#0D8049', '--color-error': '#D42F55', '--color-on-error': '#FFFFFF', '--color-focus': '#6C3BF0',
+      '--color-ring': 'rgba(108,59,240,.24)', '--color-glow': 'rgba(255,174,31,.5)',
+      '--shadow-1': '0 1px 2px rgba(24,16,40,.05), 0 2px 6px rgba(24,16,40,.05)',
+      '--shadow-2': '0 8px 22px rgba(24,16,40,.11)'
     }
   },
   mystery: {
@@ -29,13 +29,13 @@ export const THEMES = {
     particles: { label: 'Dust motes', motion: 'rise' },
     audio: 'Suspense hum',
     vars: {
-      '--pz-bg': '#0D1017', '--pz-surface': '#151B27', '--pz-surface-2': '#1D2536', '--pz-surface-3': '#182031',
-      '--pz-text': '#EDF1F8', '--pz-muted': '#98A4BA', '--pz-border': '#2B3549', '--pz-hairline': '#212B3D',
-      '--pz-primary': '#E8B94D', '--pz-on-primary': '#181004', '--pz-secondary': '#74B8C4', '--pz-accent': '#D97852',
-      '--pz-success': '#5CC08D', '--pz-error': '#EA7086', '--pz-focus': '#E8B94D',
-      '--pz-ring': 'rgba(232,185,77,.32)', '--pz-glow': 'rgba(116,184,196,.45)',
-      '--pz-e-1': '0 1px 2px rgba(0,0,0,.4), 0 2px 8px rgba(0,0,0,.35)',
-      '--pz-e-2': '0 10px 26px rgba(0,0,0,.5)'
+      '--color-bg': '#0D1017', '--color-surface': '#151B27', '--color-surface-2': '#1D2536', '--color-surface-3': '#182031',
+      '--color-text': '#EDF1F8', '--color-muted': '#98A4BA', '--color-border': '#2B3549', '--color-hairline': '#212B3D',
+      '--color-primary': '#E8B94D', '--color-on-primary': '#181004', '--color-secondary': '#74B8C4', '--color-accent': '#D97852',
+      '--color-success': '#5CC08D', '--color-error': '#EA7086', '--color-on-error': '#1A0A0E', '--color-focus': '#E8B94D',
+      '--color-ring': 'rgba(232,185,77,.32)', '--color-glow': 'rgba(116,184,196,.45)',
+      '--shadow-1': '0 1px 2px rgba(0,0,0,.4), 0 2px 8px rgba(0,0,0,.35)',
+      '--shadow-2': '0 10px 26px rgba(0,0,0,.5)'
     }
   },
   spooky: {
@@ -46,13 +46,13 @@ export const THEMES = {
     particles: { label: 'Embers', motion: 'rise' },
     audio: 'Eerie drone',
     vars: {
-      '--pz-bg': '#120D1B', '--pz-surface': '#1C1429', '--pz-surface-2': '#271D3A', '--pz-surface-3': '#1F1930',
-      '--pz-text': '#F1EBF8', '--pz-muted': '#A697BD', '--pz-border': '#372A50', '--pz-hairline': '#2B2142',
-      '--pz-primary': '#FF7A33', '--pz-on-primary': '#241003', '--pz-secondary': '#A3E257', '--pz-accent': '#9D7BFF',
-      '--pz-success': '#6FCB8B', '--pz-error': '#F27080', '--pz-focus': '#FF7A33',
-      '--pz-ring': 'rgba(255,122,51,.30)', '--pz-glow': 'rgba(163,226,87,.4)',
-      '--pz-e-1': '0 1px 2px rgba(0,0,0,.42), 0 2px 8px rgba(0,0,0,.36)',
-      '--pz-e-2': '0 10px 26px rgba(0,0,0,.52)'
+      '--color-bg': '#120D1B', '--color-surface': '#1C1429', '--color-surface-2': '#271D3A', '--color-surface-3': '#1F1930',
+      '--color-text': '#F1EBF8', '--color-muted': '#A697BD', '--color-border': '#372A50', '--color-hairline': '#2B2142',
+      '--color-primary': '#FF7A33', '--color-on-primary': '#241003', '--color-secondary': '#A3E257', '--color-accent': '#9D7BFF',
+      '--color-success': '#6FCB8B', '--color-error': '#F27080', '--color-on-error': '#1E0A0E', '--color-focus': '#FF7A33',
+      '--color-ring': 'rgba(255,122,51,.30)', '--color-glow': 'rgba(163,226,87,.4)',
+      '--shadow-1': '0 1px 2px rgba(0,0,0,.42), 0 2px 8px rgba(0,0,0,.36)',
+      '--shadow-2': '0 10px 26px rgba(0,0,0,.52)'
     }
   },
   corporate: {
@@ -63,29 +63,31 @@ export const THEMES = {
     particles: { label: 'Soft dots', motion: 'fall' },
     audio: 'Calm focus',
     vars: {
-      '--pz-bg': '#F5F8FA', '--pz-surface': '#FFFFFF', '--pz-surface-2': '#EAF0F9', '--pz-surface-3': '#E9F4EF',
-      '--pz-text': '#16212F', '--pz-muted': '#5B6979', '--pz-border': '#DBE3EC', '--pz-hairline': '#E8EEF4',
-      '--pz-primary': '#2257E0', '--pz-on-primary': '#FFFFFF', '--pz-secondary': '#0B7D6E', '--pz-accent': '#E8A413',
-      '--pz-success': '#0D8049', '--pz-error': '#CE3D50', '--pz-focus': '#2257E0',
-      '--pz-ring': 'rgba(34,87,224,.22)', '--pz-glow': 'rgba(232,164,19,.45)',
-      '--pz-e-1': '0 1px 2px rgba(15,26,42,.05), 0 2px 6px rgba(15,26,42,.05)',
-      '--pz-e-2': '0 8px 22px rgba(15,26,42,.10)'
+      '--color-bg': '#F5F8FA', '--color-surface': '#FFFFFF', '--color-surface-2': '#EAF0F9', '--color-surface-3': '#E9F4EF',
+      '--color-text': '#16212F', '--color-muted': '#5B6979', '--color-border': '#DBE3EC', '--color-hairline': '#E8EEF4',
+      '--color-primary': '#2257E0', '--color-on-primary': '#FFFFFF', '--color-secondary': '#0B7D6E', '--color-accent': '#E8A413',
+      '--color-success': '#0D8049', '--color-error': '#CE3D50', '--color-on-error': '#FFFFFF', '--color-focus': '#2257E0',
+      '--color-ring': 'rgba(34,87,224,.22)', '--color-glow': 'rgba(232,164,19,.45)',
+      '--shadow-1': '0 1px 2px rgba(15,26,42,.05), 0 2px 6px rgba(15,26,42,.05)',
+      '--shadow-2': '0 8px 22px rgba(15,26,42,.10)'
     }
   }
 };
 
+/** The default preset every unknown id falls back to. */
+export const DEFAULT_THEME = 'birthday';
+
+/** Resolve a preset id to its object, falling back to the default. */
+export function themeOf(id) {
+  return THEMES[id] || THEMES[DEFAULT_THEME];
+}
+
 /**
- * Apply a theme preset to a stage element:
- * sets every --pz-* var, flips particle motion, swaps the box asset.
+ * The design-token map for a preset, ready to bind as an inline `style` on a themed
+ * container. Every themed surface — the app shell, the builder's live preview,
+ * the player — applies a theme this way, alongside `data-theme="<id>"` so
+ * CSS can still key off the active preset.
  */
-export function applyTheme(el, id) {
-  const t = THEMES[id] || THEMES.birthday;
-  for (const [k, v] of Object.entries(t.vars)) el.style.setProperty(k, v);
-  el.setAttribute('data-pz-theme', t.id);
-  el.querySelectorAll('[data-pz-particle]').forEach((p) => {
-    p.style.animationName = t.particles.motion === 'rise' ? 'pzRise' : 'pzFall';
-  });
-  el.querySelectorAll('[data-pz-box]').forEach((b) => {
-    b.style.display = b.getAttribute('data-pz-box') === t.box ? '' : 'none';
-  });
+export function themeVars(id) {
+  return themeOf(id).vars;
 }

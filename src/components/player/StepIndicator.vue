@@ -28,15 +28,15 @@ defineProps({
 .dot {
   width: 8px;
   height: 8px;
-  border-radius: var(--pz-r-full);
-  background: var(--pz-border);
-  transition: width var(--pz-dur) var(--pz-ease), background var(--pz-dur) var(--pz-ease);
+  border-radius: var(--radius-full);
+  background: var(--color-border);
+  transition: width var(--duration) var(--ease), background var(--duration) var(--ease);
 }
 .dot.done {
-  background: var(--pz-primary);
+  background: var(--color-primary);
 }
 .dot.active {
   width: 30px;
-  background: var(--pz-primary);
+  background: var(--color-primary);
 }
 </style>

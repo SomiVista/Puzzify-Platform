@@ -39,7 +39,7 @@ test.describe('Landing page on a phone', () => {
     // Scope to the header — the footer has its own language switcher.
     await page.locator('header').getByRole('button', { name: /فارسی/ }).click()
 
-    await expect(page.locator('.pz-stage')).toHaveAttribute('dir', 'rtl')
+    await expect(page.locator('.app-stage')).toHaveAttribute('dir', 'rtl')
   })
 
   test('does not scroll horizontally', async ({ page }) => {

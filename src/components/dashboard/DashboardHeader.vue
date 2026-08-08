@@ -13,9 +13,9 @@
           :aria-label="t('dashboard.header.searchLabel')"
         />
       </div>
-      <IconButton :label="t('dashboard.header.notifications')" :size="44">
+      <BaseIconButton :label="t('dashboard.header.notifications')" :size="44">
         <Bell :size="20" />
-      </IconButton>
+      </BaseIconButton>
       <router-link to="/dashboard/settings" class="avatar" :aria-label="t('dashboard.header.userSettings')">
         {{ creatorInfo.initials }}
       </router-link>
@@ -30,7 +30,7 @@ import { useI18n } from 'vue-i18n'
 import { storeToRefs } from 'pinia'
 import { useAppStore } from '../../stores/useAppStore'
 import { Bell, Search } from 'lucide-vue-next'
-import IconButton from '../ui/IconButton.vue'
+import BaseIconButton from '../ui/BaseIconButton.vue'
 
 const { t } = useI18n()
 const route = useRoute()
@@ -52,12 +52,12 @@ const pageTitle = computed(() =>
   flex-shrink: 0;
 }
 .main-header h1 {
-  font-family: var(--pz-font-display);
+  font-family: var(--font-display);
   font-size: 24px;
   font-weight: 800;
   letter-spacing: -0.025em;
   margin: 0;
-  color: var(--pz-text);
+  color: var(--color-text);
 }
 .header-actions {
   display: flex;
@@ -72,36 +72,36 @@ const pageTitle = computed(() =>
 .search-icon {
   position: absolute;
   inset-inline-start: 14px;
-  color: var(--pz-muted);
+  color: var(--color-muted);
   pointer-events: none;
 }
 .search-input {
   width: 240px;
   height: 44px;
   padding-inline: 40px 16px;
-  border-radius: var(--pz-r-full);
-  border: 1px solid var(--pz-border);
-  background: var(--pz-surface);
-  color: var(--pz-text);
-  font-family: var(--pz-font-ui);
+  border-radius: var(--radius-full);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-text);
+  font-family: var(--font-ui);
   font-size: 14px;
   transition: all .2s;
   outline: none;
 }
 .search-input::placeholder {
-  color: var(--pz-muted);
+  color: var(--color-muted);
 }
 .search-input:focus {
-  border-color: var(--pz-focus);
-  box-shadow: 0 0 0 4px var(--pz-ring);
+  border-color: var(--color-focus);
+  box-shadow: 0 0 0 4px var(--color-ring);
 }
 .avatar {
   width: 44px;
   height: 44px;
-  border-radius: var(--pz-r-full);
-  background: linear-gradient(140deg, var(--pz-surface-2), var(--pz-surface));
-  border: 1px solid var(--pz-border);
-  color: var(--pz-primary);
+  border-radius: var(--radius-full);
+  background: linear-gradient(140deg, var(--color-surface-2), var(--color-surface));
+  border: 1px solid var(--color-border);
+  color: var(--color-primary);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -113,9 +113,9 @@ const pageTitle = computed(() =>
 }
 .avatar:hover {
   filter: brightness(0.95);
-  box-shadow: var(--pz-e-1);
+  box-shadow: var(--shadow-1);
 }
-.avatar:focus-visible { outline: none; box-shadow: 0 0 0 4px var(--pz-ring); }
+.avatar:focus-visible { outline: none; box-shadow: 0 0 0 4px var(--color-ring); }
 
 @media (max-width: 900px) {
   .main-header {

@@ -9,7 +9,7 @@
   "themeMystery": "Misterio",
   "heroKicker": "Acabas de jugar uno. Ahora crea uno.",
   "heroHeadline": "Convierte cualquier regalo en un mini escape room.",
-  "heroSub": "Puzzify convierte un regalo digital, mensaje o anuncio en una misión online personalizada. Tú construyes el misterio — ellos juegan para desbloquear su recompensa. Sin app, sin inicio de sesión.",
+  "heroSub": "@:appName convierte un regalo digital, mensaje o anuncio en una misión online personalizada. Tú construyes el misterio — ellos juegan para desbloquear su recompensa. Sin app, sin inicio de sesión.",
   "heroCta1": "Crea tu primera misión — gratis",
   "heroCta2": "Ver una demo en vivo",
   "playerKicker": "Misión · Un Año Juntos",
@@ -18,7 +18,7 @@
   "playerPrompt": "¿Dónde compartimos nuestro primer café? Una palabra.",
   "inputPlaceholder": "Escribe tu respuesta",
   "submit": "Desbloquear",
-  "watermark": "Creado con Puzzify",
+  "watermark": "Creado con @:appName",
   "trustLine": "Dedica cinco minutos. Entrega algo inolvidable.",
   "trustStats": [
     "Más de 120k misiones jugadas",
@@ -75,7 +75,7 @@
     "Revelaciones de productos",
     "Propuestas"
   ],
-  "whyKicker": "Por qué Puzzify",
+  "whyKicker": "Por qué @:appName",
   "whyTitle": "La entrega es el regalo",
   "whySub": "Una sorpresa que desbloquean supera a un enlace que ignoran. Construido para convertir el momento de deleite en la siguiente misión.",
   "why": [
@@ -111,7 +111,7 @@
         "Hasta 3 pasos",
         "Módulos de acertijos base",
         "Temas de Celebración y Misterio",
-        "Marca de agua de Puzzify"
+        "Marca de agua de @:appName"
       ]
     },
     {
@@ -144,8 +144,8 @@
   ],
   "partnerBlock": {
     "kicker": "Ahora colaborando",
-    "title": "Puzzify × WelloWork — juega tu camino hacia un equipo más fuerte.",
-    "desc": "Nos hemos asociado con WelloWork, la plataforma sueca de rendimiento laboral, para llevar misiones de Puzzify dentro de las herramientas que las empresas ya utilizan. Los empleadores convierten la inducción, formación y creación de equipos en juegos que los empleados realmente quieren jugar.",
+    "title": "@:appName × WelloWork — juega tu camino hacia un equipo más fuerte.",
+    "desc": "Nos hemos asociado con WelloWork, la plataforma sueca de rendimiento laboral, para llevar misiones de @:appName dentro de las herramientas que las empresas ya utilizan. Los empleadores convierten la inducción, formación y creación de equipos en juegos que los empleados realmente quieren jugar.",
     "cta": "Explora la asociación",
     "link": "https://www.wellowork.net/",
     "features": [
@@ -198,7 +198,7 @@
     }
   ],
   "footLang": "Idioma",
-  "footLegal": "© 2026 Puzzify · Hecho para sorpresas deliciosas",
+  "footLegal": "© 2026 @:appName · Hecho para sorpresas deliciosas",
   "dashboard": {
     "workspace": "Espacio de trabajo",
     "nav": {
@@ -241,16 +241,24 @@
       "published": "Publicadas",
       "drafts": "Borradores",
       "sortRecent": "Recientes",
-      "noResults": "Ninguna misión coincide con tu búsqueda o filtro."
+      "noResults": "Ninguna misión coincide con tu búsqueda o filtro.",
+      "sortName": "Nombre"
     },
     "card": {
       "plays": "Partidas",
       "avgSolve": "Tiempo medio",
       "completion": "Finalización",
-      "edit": "Editar misión",
-      "analytics": "Analíticas",
       "statusPublished": "Publicada",
-      "statusDraft": "Borrador"
+      "statusDraft": "Borrador",
+      "open": "Abrir",
+      "copyLink": "Copiar enlace",
+      "copied": "Enlace copiado",
+      "reward": "Recompensa",
+      "rewards": {
+        "letter": "Carta",
+        "video": "Vídeo",
+        "voucher": "Cupón"
+      }
     },
     "createHero": {
       "title": "Crea un regalo nuevo",
@@ -384,7 +392,7 @@
       "submit": "Desbloquear",
       "inputPlaceholder": "Escribe tu respuesta",
       "attempts": "{n} intentos",
-      "watermark": "Hecho con Puzzify"
+      "watermark": "Hecho con @:appName"
     },
     "issues": {
       "promptRequired": "Añade un enunciado.",
@@ -450,6 +458,6 @@
     "ctaTitle": "¿Quieres sorprender a alguien más?",
     "ctaBody": "Crea tu primera misión gratis.",
     "ctaButton": "Crea la tuya",
-    "watermark": "Hecho con Puzzify"
+    "watermark": "Hecho con @:appName"
   }
 }

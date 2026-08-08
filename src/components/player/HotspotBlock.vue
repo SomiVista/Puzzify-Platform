@@ -91,9 +91,9 @@ watch(() => props.stepId, () => { marks.value = [] })
   display: block;
   width: 100%;
   padding: 0;
-  border: 1.5px solid var(--pz-border);
-  border-radius: var(--pz-r-md);
-  background: var(--pz-surface);
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
   overflow: hidden;
   cursor: crosshair;
   line-height: 0;
@@ -103,12 +103,12 @@ watch(() => props.stepId, () => { marks.value = [] })
   cursor: not-allowed;
 }
 .scene.wrong {
-  border-color: var(--pz-error);
-  animation: pzShake 0.4s var(--pz-ease);
+  border-color: var(--color-error);
+  animation: shake 0.4s var(--ease);
 }
 .scene:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 4px var(--pz-ring);
+  box-shadow: 0 0 0 4px var(--color-ring);
 }
 .scene img {
   display: block;
@@ -125,8 +125,8 @@ watch(() => props.stepId, () => { marks.value = [] })
   height: 22px;
   margin: -11px 0 0 -11px;
   border-radius: 50%;
-  border: 2px solid var(--pz-error);
-  background: color-mix(in srgb, var(--pz-error) 22%, transparent);
+  border: 2px solid var(--color-error);
+  background: color-mix(in srgb, var(--color-error) 22%, transparent);
   pointer-events: none;
 }
 
@@ -134,7 +134,7 @@ watch(() => props.stepId, () => { marks.value = [] })
   margin: 0;
   text-align: center;
   font-size: 12.5px;
-  color: var(--pz-muted);
+  color: var(--color-muted);
 }
 
 @media (prefers-reduced-motion: reduce) {

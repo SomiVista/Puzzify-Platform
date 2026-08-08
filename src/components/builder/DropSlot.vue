@@ -35,16 +35,16 @@ const builder = useBuilderStore()
   justify-content: center;
   height: 10px;
   border: 1.5px dashed transparent;
-  border-radius: var(--pz-r-md);
-  transition: height var(--pz-dur) var(--pz-ease), background var(--pz-dur) var(--pz-ease);
+  border-radius: var(--radius-md);
+  transition: height var(--duration) var(--ease), background var(--duration) var(--ease);
 }
 .drop-slot.armed {
   height: 44px;
-  background: color-mix(in srgb, var(--pz-primary) 8%, transparent);
-  border-color: color-mix(in srgb, var(--pz-primary) 45%, transparent);
+  background: color-mix(in srgb, var(--color-primary) 8%, transparent);
+  border-color: color-mix(in srgb, var(--color-primary) 45%, transparent);
 }
 .drop-slot.active {
-  background: color-mix(in srgb, var(--pz-primary) 16%, transparent);
+  background: color-mix(in srgb, var(--color-primary) 16%, transparent);
   border-style: solid;
 }
 
@@ -53,9 +53,9 @@ const builder = useBuilderStore()
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: var(--pz-primary);
+  color: var(--color-primary);
   opacity: 0;
-  transition: opacity var(--pz-dur) var(--pz-ease);
+  transition: opacity var(--duration) var(--ease);
 }
 .drop-slot.active .drop-label {
   opacity: 1;

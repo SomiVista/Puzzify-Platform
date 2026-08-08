@@ -4,12 +4,12 @@
 
     <!-- The quest's own theme is applied HERE only, so the studio chrome keeps
          the app-wide theme while the preview shows what the recipient sees. -->
-    <div class="phone" :style="themeVars" :data-pz-theme="builder.themePreset" data-testid="live-preview">
+    <div class="phone" :style="themeVars" :data-theme="builder.themePreset" data-testid="live-preview">
       <div v-if="particlesOn" class="particles" aria-hidden="true">
         <i
           v-for="n in 8"
           :key="n"
-          class="pz-anim"
+          class="anim"
           :style="particleStyle(n)"
         ></i>
       </div>
@@ -47,7 +47,7 @@
           <img v-if="step.config.imageUrl" :src="step.config.imageUrl" alt="" />
           <div v-else class="hotspot-placeholder"><ImageIcon :size="20" aria-hidden="true" /></div>
           <span
-            class="hotspot-ring pz-anim"
+            class="hotspot-ring anim"
             :style="{
               left: `${step.config.target.x}%`,
               top: `${step.config.target.y}%`,
@@ -82,25 +82,25 @@
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { Check, Image as ImageIcon, Lightbulb, Volume2 } from 'lucide-vue-next'
-import { THEMES } from '../../themes'
+import { themeOf } from '../../themes'
 import { useBuilderStore } from '../../stores/useBuilderStore'
 
 const { t } = useI18n()
 const builder = useBuilderStore()
 
 const step = computed(() => builder.selectedStep)
-const preset = computed(() => THEMES[builder.themePreset] || THEMES.birthday)
+const preset = computed(() => themeOf(builder.themePreset))
 const themeVars = computed(() => preset.value.vars)
 const particlesOn = computed(() => builder.draft.theme.particles)
 
 /** Particle motion is a theme property (`fall` / `rise`), never an occasion. */
 function particleStyle(n) {
   return {
-    animationName: preset.value.particles.motion === 'rise' ? 'pzRise' : 'pzFall',
+    animationName: preset.value.particles.motion === 'rise' ? 'rise' : 'fall',
     animationDuration: `${5 + (n % 4)}s`,
     animationDelay: `${n * 0.6}s`,
     insetInlineStart: `${(n * 13) % 92}%`,
-    background: n % 2 ? 'var(--pz-primary)' : 'var(--pz-accent)'
+    background: n % 2 ? 'var(--color-primary)' : 'var(--color-accent)'
   }
 }
 </script>
@@ -108,29 +108,29 @@ function particleStyle(n) {
 <style scoped>
 .preview-pane {
   padding: 20px 16px;
-  border-top: 1px solid var(--pz-hairline);
+  border-top: 1px solid var(--color-hairline);
 }
 .pane-title {
-  font-family: var(--pz-font-ui);
+  font-family: var(--font-ui);
   font-size: 12px;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: var(--pz-track-kicker);
-  color: var(--pz-muted);
+  letter-spacing: var(--tracking-kicker);
+  color: var(--color-muted);
   margin: 0 0 12px;
 }
 
 .phone {
   position: relative;
   overflow: hidden;
-  border-radius: var(--pz-r-xl);
-  border: 1px solid var(--pz-border);
-  background: var(--pz-bg);
-  color: var(--pz-text);
-  box-shadow: var(--pz-e-2);
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--color-border);
+  background: var(--color-bg);
+  color: var(--color-text);
+  box-shadow: var(--shadow-2);
   padding: 16px;
   min-height: 260px;
-  font-family: var(--pz-font-ui);
+  font-family: var(--font-ui);
 }
 
 .particles {
@@ -157,7 +157,7 @@ function particleStyle(n) {
   min-height: 228px;
   text-align: center;
   font-size: 12.5px;
-  color: var(--pz-muted);
+  color: var(--color-muted);
 }
 
 .screen {
@@ -173,9 +173,9 @@ function particleStyle(n) {
 }
 .kicker {
   padding: 4px 9px;
-  border-radius: var(--pz-r-full);
-  background: var(--pz-surface-2);
-  color: var(--pz-primary);
+  border-radius: var(--radius-full);
+  background: var(--color-surface-2);
+  color: var(--color-primary);
   font-size: 9.5px;
   font-weight: 700;
   text-transform: uppercase;
@@ -183,28 +183,28 @@ function particleStyle(n) {
 }
 .audio-icon {
   margin-inline-start: auto;
-  color: var(--pz-muted);
+  color: var(--color-muted);
 }
 .screen-title {
-  font-family: var(--pz-font-display);
+  font-family: var(--font-display);
   font-size: 17px;
   font-weight: 800;
-  letter-spacing: var(--pz-track-display);
+  letter-spacing: var(--tracking-display);
   margin: 0;
 }
 .screen-prompt {
   font-size: 12.5px;
   line-height: 1.5;
-  color: var(--pz-muted);
+  color: var(--color-muted);
   margin: 0;
 }
 
 .mock-input {
   padding: 11px 12px;
-  border-radius: var(--pz-r-md);
-  border: 1.5px solid var(--pz-border);
-  background: var(--pz-surface);
-  color: var(--pz-muted);
+  border-radius: var(--radius-md);
+  border: 1.5px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-muted);
   font-size: 12.5px;
   text-align: start;
 }
@@ -222,32 +222,32 @@ function particleStyle(n) {
   align-items: center;
   gap: 8px;
   padding: 9px 11px;
-  border-radius: var(--pz-r-md);
-  border: 1.5px solid var(--pz-border);
-  background: var(--pz-surface);
+  border-radius: var(--radius-md);
+  border: 1.5px solid var(--color-border);
+  background: var(--color-surface);
   font-size: 12.5px;
 }
 .mock-options li.correct {
-  border-color: var(--pz-success);
+  border-color: var(--color-success);
 }
 .radio {
   flex: none;
   width: 13px;
   height: 13px;
   border-radius: 50%;
-  border: 2px solid var(--pz-border);
+  border: 2px solid var(--color-border);
 }
 .mock-options li.correct .radio {
-  border-color: var(--pz-success);
-  background: var(--pz-success);
+  border-color: var(--color-success);
+  background: var(--color-success);
 }
 
 .mock-hotspot {
   position: relative;
-  border-radius: var(--pz-r-md);
+  border-radius: var(--radius-md);
   overflow: hidden;
-  border: 1.5px solid var(--pz-border);
-  background: var(--pz-surface);
+  border: 1.5px solid var(--color-border);
+  background: var(--color-surface);
 }
 .mock-hotspot img {
   display: block;
@@ -258,14 +258,14 @@ function particleStyle(n) {
   align-items: center;
   justify-content: center;
   height: 96px;
-  color: var(--pz-muted);
+  color: var(--color-muted);
 }
 /* Hotspot coordinates are relative to the image, which does not mirror in RTL. */
 .hotspot-ring {
   position: absolute;
-  border: 2px solid var(--pz-primary);
-  border-radius: var(--pz-r-full);
-  animation: pzPulse 2.4s ease-out infinite;
+  border: 2px solid var(--color-primary);
+  border-radius: var(--radius-full);
+  animation: pulse 2.4s ease-out infinite;
 }
 
 .screen-meta {
@@ -279,23 +279,23 @@ function particleStyle(n) {
   align-items: center;
   gap: 4px;
   padding: 3px 8px;
-  border-radius: var(--pz-r-full);
-  background: color-mix(in srgb, var(--pz-accent) 20%, transparent);
-  color: var(--pz-accent);
+  border-radius: var(--radius-full);
+  background: color-mix(in srgb, var(--color-accent) 20%, transparent);
+  color: var(--color-accent);
   font-size: 10.5px;
   font-weight: 700;
 }
 .attempts {
   margin-inline-start: auto;
   font-size: 10.5px;
-  color: var(--pz-muted);
+  color: var(--color-muted);
 }
 
 .mock-submit {
   padding: 11px;
-  border-radius: var(--pz-r-md);
-  background: var(--pz-primary);
-  color: var(--pz-on-primary);
+  border-radius: var(--radius-md);
+  background: var(--color-primary);
+  color: var(--color-on-primary);
   font-size: 13px;
   font-weight: 700;
   text-align: center;
@@ -306,9 +306,9 @@ function particleStyle(n) {
   align-items: center;
   gap: 6px;
   padding: 8px 10px;
-  border-radius: var(--pz-r-md);
-  background: var(--pz-text);
-  color: var(--pz-bg);
+  border-radius: var(--radius-md);
+  background: var(--color-text);
+  color: var(--color-bg);
   font-size: 11.5px;
   line-height: 1.4;
 }
@@ -316,6 +316,6 @@ function particleStyle(n) {
 .watermark {
   text-align: center;
   font-size: 10px;
-  color: var(--pz-muted);
+  color: var(--color-muted);
 }
 </style>

@@ -19,7 +19,7 @@ import DashboardHeader from '../components/dashboard/DashboardHeader.vue'
   height: 100vh;
   /* 100vw ignores the scrollbar gutter and forces a horizontal overflow. */
   width: 100%;
-  background: var(--pz-surface);
+  background: var(--color-surface);
   overflow: hidden;
 }
 .main-column {
@@ -27,7 +27,7 @@ import DashboardHeader from '../components/dashboard/DashboardHeader.vue'
   min-width: 0;
   display: flex;
   flex-direction: column;
-  background: radial-gradient(120% 90% at 88% -12%, var(--pz-surface-2), var(--pz-bg) 56%);
+  background: radial-gradient(120% 90% at 88% -12%, var(--color-surface-2), var(--color-bg) 56%);
   overflow: hidden;
 }
 .main-content {

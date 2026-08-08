@@ -9,7 +9,7 @@
   "themeMystery": "Mystery",
   "heroKicker": "You just played one. Now make one.",
   "heroHeadline": "Turn any gift into a mini-escape room.",
-  "heroSub": "Puzzify turns a digital gift, message, or announcement into a personalized online quest. You build the mystery — they play to unlock their reward. No app, no login.",
+  "heroSub": "@:appName turns a digital gift, message, or announcement into a personalized online quest. You build the mystery — they play to unlock their reward. No app, no login.",
   "heroCta1": "Create your first quest — free",
   "heroCta2": "See a live demo",
   "playerKicker": "Quest · A Year of Us",
@@ -18,7 +18,7 @@
   "playerPrompt": "Where did we first share a coffee? One word.",
   "inputPlaceholder": "Type your answer",
   "submit": "Unlock",
-  "watermark": "Made with Puzzify",
+  "watermark": "Made with @:appName",
   "trustLine": "Spend five minutes. Deliver something unforgettable.",
   "trustStats": [
     "120k+ quests played",
@@ -75,7 +75,7 @@
     "Product reveals",
     "Proposals"
   ],
-  "whyKicker": "Why Puzzify",
+  "whyKicker": "Why @:appName",
   "whyTitle": "The delivery is the gift",
   "whySub": "A surprise they unlock beats a link they ignore. Built to convert the moment of delight into the next quest.",
   "why": [
@@ -111,7 +111,7 @@
         "Up to 3 steps",
         "Base puzzle modules",
         "Birthday & Mystery themes",
-        "Puzzify watermark"
+        "@:appName watermark"
       ]
     },
     {
@@ -144,8 +144,8 @@
   ],
   "partnerBlock": {
     "kicker": "Now collaborating",
-    "title": "Puzzify × WelloWork — play your way to a stronger team.",
-    "desc": "We’ve teamed up with WelloWork, the Swedish workplace-performance platform, to bring Puzzify quests inside the tools companies already use. Employers turn onboarding, training, and team-building into games employees actually want to play.",
+    "title": "@:appName × WelloWork — play your way to a stronger team.",
+    "desc": "We’ve teamed up with WelloWork, the Swedish workplace-performance platform, to bring @:appName quests inside the tools companies already use. Employers turn onboarding, training, and team-building into games employees actually want to play.",
     "cta": "Explore the partnership",
     "link": "https://www.wellowork.net/",
     "features": [
@@ -198,7 +198,7 @@
     }
   ],
   "footLang": "Language",
-  "footLegal": "© 2026 Puzzify · Made for delightful surprises",
+  "footLegal": "© 2026 @:appName · Made for delightful surprises",
   "dashboard": {
     "workspace": "Workspace",
     "nav": {
@@ -241,16 +241,24 @@
       "published": "Published",
       "drafts": "Drafts",
       "sortRecent": "Recent",
-      "noResults": "No quests match your search or filter."
+      "noResults": "No quests match your search or filter.",
+      "sortName": "Name"
     },
     "card": {
       "plays": "Plays",
       "avgSolve": "Avg solve",
       "completion": "Completion",
-      "edit": "Edit quest",
-      "analytics": "Analytics",
       "statusPublished": "Published",
-      "statusDraft": "Draft"
+      "statusDraft": "Draft",
+      "open": "Open",
+      "copyLink": "Copy link",
+      "copied": "Link copied",
+      "reward": "Reward",
+      "rewards": {
+        "letter": "Letter",
+        "video": "Video",
+        "voucher": "Voucher"
+      }
     },
     "createHero": {
       "title": "Start a new gift",
@@ -384,7 +392,7 @@
       "submit": "Unlock",
       "inputPlaceholder": "Type your answer",
       "attempts": "{n} attempts",
-      "watermark": "Made with Puzzify"
+      "watermark": "Made with @:appName"
     },
     "issues": {
       "promptRequired": "Add a prompt.",
@@ -450,6 +458,6 @@
     "ctaTitle": "Want to surprise someone else?",
     "ctaBody": "Create your first quest for free.",
     "ctaButton": "Create your own",
-    "watermark": "Made with Puzzify"
+    "watermark": "Made with @:appName"
   }
 }

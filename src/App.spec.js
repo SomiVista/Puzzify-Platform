@@ -4,6 +4,9 @@ import { createPinia, setActivePinia } from 'pinia'
 import i18n from './i18n'
 import router from './router'
 import App from './App.vue'
+import { THEMES } from './themes'
+import { APP_NAME } from './config/app'
+import { useAppStore } from './stores/useAppStore'
 
 describe('App.vue', () => {
   let wrapper
@@ -26,10 +29,12 @@ describe('App.vue', () => {
 
   it('renders correctly with default english and birthday theme', () => {
     expect(wrapper.exists()).toBe(true)
-    expect(wrapper.text()).toContain('Puzzify')
+    expect(wrapper.text()).toContain(APP_NAME)
     expect(wrapper.text()).toContain('Turn any gift into a mini-escape room.')
-    expect(wrapper.classes()).not.toContain('pz-theme-mystery')
-    expect(wrapper.classes()).not.toContain('pz-lang-fa')
+    expect(wrapper.classes()).not.toContain('theme-mystery')
+    expect(wrapper.classes()).not.toContain('lang-fa')
+    expect(wrapper.classes()).not.toContain('lang-rtl')
+    expect(wrapper.attributes('dir')).toBe('ltr')
   })
 
   it('toggles theme to mystery', async () => {
@@ -37,10 +42,22 @@ describe('App.vue', () => {
     const buttons = wrapper.findAll('button')
     const mysteryBtn = buttons.find(b => b.text() === 'Mystery')
     expect(mysteryBtn.exists()).toBe(true)
-    
+
     await mysteryBtn.trigger('click')
-    
-    expect(wrapper.classes()).toContain('pz-theme-mystery')
+
+    expect(wrapper.classes()).toContain('theme-mystery')
+  })
+
+  it('stamps the active preset so [data-theme] rules apply', async () => {
+    expect(wrapper.attributes('data-theme')).toBe('birthday')
+    // The preset's own token values ride along as inline custom properties.
+    expect(wrapper.attributes('style')).toContain(THEMES.birthday.vars['--color-primary'])
+
+    const mysteryBtn = wrapper.findAll('button').find(b => b.text() === 'Mystery')
+    await mysteryBtn.trigger('click')
+
+    expect(wrapper.attributes('data-theme')).toBe('mystery')
+    expect(wrapper.attributes('style')).toContain(THEMES.mystery.vars['--color-primary'])
   })
 
   it('toggles language to persian', async () => {
@@ -58,7 +75,25 @@ describe('App.vue', () => {
 
     await persianOption.trigger('click')
     
-    expect(wrapper.classes()).toContain('pz-lang-fa')
+    expect(wrapper.classes()).toContain('lang-fa')
+    expect(wrapper.classes()).toContain('lang-rtl')
+    expect(wrapper.attributes('dir')).toBe('rtl')
     expect(wrapper.text()).toContain('هر هدیه را به یک اتاق فرار کوچک تبدیل کن.')
+  })
+
+  it('mirrors the stage for Arabic, not only Persian', async () => {
+    const store = useAppStore()
+
+    const dropdownBtn = wrapper.findAll('button').find(b => b.text().includes('English'))
+    await dropdownBtn.trigger('click')
+    const arabicOption = wrapper.findAll('button').find(b => b.text().includes('العربية'))
+    await arabicOption.trigger('click')
+
+    expect(store.lang).toBe('ar')
+    expect(wrapper.attributes('dir')).toBe('rtl')
+    // Carries the RTL font swap, without claiming to be Persian.
+    expect(wrapper.classes()).toContain('lang-rtl')
+    expect(wrapper.classes()).toContain('lang-ar')
+    expect(wrapper.classes()).not.toContain('lang-fa')
   })
 })

@@ -3,13 +3,14 @@ import { mount } from '@vue/test-utils'
 import { nextTick } from 'vue'
 import { createPinia, setActivePinia } from 'pinia'
 import i18n from '../../i18n'
+import { APP_NAME } from '../../config/app'
 import LockBlock from './LockBlock.vue'
 import TriviaBlock from './TriviaBlock.vue'
 import HotspotBlock from './HotspotBlock.vue'
 import StepIndicator from './StepIndicator.vue'
 import GrandFinale from './GrandFinale.vue'
 
-// GrandFinale renders BoxStage (a store consumer) and a RouterLink.
+// GrandFinale renders BaseBoxStage (a store consumer) and a RouterLink.
 const mountWith = (component, props) =>
   mount(component, {
     props,
@@ -231,6 +232,6 @@ describe('GrandFinale', () => {
       reward: { type: 'letter', body: 'x' },
       watermark: false
     })
-    expect(wrapper.text()).not.toContain('Made with Puzzify')
+    expect(wrapper.text()).not.toContain(APP_NAME)
   })
 })

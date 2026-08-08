@@ -4,7 +4,7 @@
     role="switch"
     :aria-checked="modelValue ? 'true' : 'false'"
     :aria-label="label"
-    class="pz-toggle"
+    class="base-toggle"
     @click="$emit('update:modelValue', !modelValue)"
   >
     <span class="track" :class="{ on: modelValue }">
@@ -24,7 +24,7 @@ defineEmits(['update:modelValue'])
 <style scoped>
 /* design.md §2.5 — 46×27 pill track. The button itself carries the 44px hit
    target while the visible track stays the specified size. */
-.pz-toggle {
+.base-toggle {
   flex: none;
   display: inline-flex;
   align-items: center;
@@ -42,12 +42,12 @@ defineEmits(['update:modelValue'])
   display: block;
   width: 46px;
   height: 27px;
-  border-radius: var(--pz-r-full);
-  background: var(--pz-border);
-  transition: background var(--pz-dur) var(--pz-ease);
+  border-radius: var(--radius-full);
+  background: var(--color-border);
+  transition: background var(--duration) var(--ease);
 }
 .track.on {
-  background: var(--pz-primary);
+  background: var(--color-primary);
 }
 /* Knob position uses a logical inset so it slides toward the correct edge
    under RTL without a direction-specific transform. */
@@ -59,13 +59,13 @@ defineEmits(['update:modelValue'])
   height: 21px;
   border-radius: 50%;
   background: #ffffff;
-  box-shadow: var(--pz-e-1);
-  transition: inset-inline-start var(--pz-dur) var(--pz-ease);
+  box-shadow: var(--shadow-1);
+  transition: inset-inline-start var(--duration) var(--ease);
 }
 .track.on .knob {
   inset-inline-start: 22px;
 }
-.pz-toggle:focus-visible .track {
-  box-shadow: 0 0 0 4px var(--pz-ring);
+.base-toggle:focus-visible .track {
+  box-shadow: 0 0 0 4px var(--color-ring);
 }
 </style>

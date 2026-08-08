@@ -2,9 +2,9 @@
   <section class="create-hero">
     <div class="hero-head">
       <h2 class="hero-title">{{ t('dashboard.createHero.title') }}</h2>
-      <PzButton variant="primary" size="md" data-testid="new-quest" @click="startQuest()">
+      <BaseButton variant="primary" size="md" data-testid="new-quest" @click="startQuest()">
         <Plus :size="18" /> {{ t('dashboard.createHero.newQuest') }}
-      </PzButton>
+      </BaseButton>
     </div>
 
     <div class="preset-grid">
@@ -30,7 +30,7 @@ import { useI18n } from 'vue-i18n'
 import { useRouter } from 'vue-router'
 import { Plus } from 'lucide-vue-next'
 import { OCCASION_PRESETS } from '../../quest/occasions'
-import PzButton from '../ui/PzButton.vue'
+import BaseButton from '../ui/BaseButton.vue'
 
 const { t } = useI18n()
 const router = useRouter()
@@ -53,12 +53,12 @@ function startQuest(occasion) {
   margin-bottom: 16px;
 }
 .hero-title {
-  font-family: var(--pz-font-ui);
+  font-family: var(--font-ui);
   font-size: 13px;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: var(--pz-track-kicker);
-  color: var(--pz-muted);
+  letter-spacing: var(--tracking-kicker);
+  color: var(--color-muted);
   margin: 0;
 }
 .preset-grid {
@@ -74,29 +74,29 @@ function startQuest(occasion) {
   gap: 12px;
   padding: 24px 16px;
   min-height: 120px;
-  background: var(--pz-surface);
-  box-shadow: var(--pz-e-1);
-  border-radius: var(--pz-r-lg);
-  border: 1px solid var(--pz-border);
-  font-family: var(--pz-font-ui);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-1);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  font-family: var(--font-ui);
   font-size: 13.5px;
   font-weight: 600;
-  color: var(--pz-text);
+  color: var(--color-text);
   cursor: pointer;
-  transition: transform var(--pz-dur) var(--pz-ease), box-shadow var(--pz-dur) var(--pz-ease),
-    border-color var(--pz-dur) var(--pz-ease);
+  transition: transform var(--duration) var(--ease), box-shadow var(--duration) var(--ease),
+    border-color var(--duration) var(--ease);
 }
 .preset-card:hover {
-  border-color: var(--pz-primary);
+  border-color: var(--color-primary);
   transform: translateY(-2px);
-  box-shadow: var(--pz-e-2);
+  box-shadow: var(--shadow-2);
 }
 .preset-card:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 4px var(--pz-ring);
+  box-shadow: 0 0 0 4px var(--color-ring);
 }
 .preset-icon {
-  color: var(--pz-primary);
+  color: var(--color-primary);
   display: inline-flex;
 }
 .preset-name {

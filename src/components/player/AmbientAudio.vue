@@ -9,7 +9,7 @@
     @click="toggle"
   >
     <span v-if="playing" class="bars" aria-hidden="true">
-      <i class="pz-anim" v-for="n in 3" :key="n" :style="{ animationDelay: `${n * 0.12}s` }"></i>
+      <i class="anim" v-for="n in 3" :key="n" :style="{ animationDelay: `${n * 0.12}s` }"></i>
     </span>
     <VolumeX v-else :size="16" aria-hidden="true" />
   </button>
@@ -123,15 +123,15 @@ onBeforeUnmount(stop)
   align-items: center;
   justify-content: center;
   gap: 2px;
-  border: 1px solid var(--pz-border);
-  border-radius: var(--pz-r-full);
-  background: var(--pz-surface);
-  color: var(--pz-muted);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  background: var(--color-surface);
+  color: var(--color-muted);
   cursor: pointer;
   outline: none;
 }
 .audio-toggle:focus-visible {
-  box-shadow: 0 0 0 4px var(--pz-ring);
+  box-shadow: 0 0 0 4px var(--color-ring);
 }
 
 .bars {
@@ -144,8 +144,8 @@ onBeforeUnmount(stop)
   width: 3px;
   height: 100%;
   border-radius: 2px;
-  background: var(--pz-primary);
+  background: var(--color-primary);
   transform-origin: center;
-  animation: pzBars 1s ease-in-out infinite;
+  animation: bars 1s ease-in-out infinite;
 }
 </style>

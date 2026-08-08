@@ -48,7 +48,7 @@ Puzzify is an MVP in active development.
 | | Module |
 | :--- | :--- |
 | ✅ Shipped | Marketing landing page (9 locales, RTL, live theme switching) · design-token system with 4 theme presets · CI/CD with automated releases and Firebase deploys |
-| 🔨 In progress | Creator dashboard — quest overview, KPIs, occasion presets ([Direction A design](docs/README.md)) |
+| 🔨 In progress | Creator dashboard — quest overview, KPIs, occasion presets ("Direction A" layout) |
 | 🗺️ Planned | Quest builder (canvas editor + live preview) · interactive player at `/q/{questId}` · playable puzzle blocks · Grand Finale rewards · Firebase Auth + Firestore · monetization |
 
 The full spec lives in the [PRD](docs/prd.md); the [design system](docs/design.md) governs all visuals.
@@ -91,13 +91,13 @@ src/
     sections/          Landing sections (hero, pricing, use cases, …)
     layout/            Header, footer
     dashboard/         Sidebar, quest cards, KPI row, empty state
-    ui/                Shared kit: PzButton, PzBadge, IconButton, BoxStage
+    ui/                Shared kit: BaseButton, BaseBadge, BaseIconButton, BaseBoxStage
   stores/              Pinia store (language, theme, plan tier, quests)
   locales/             9 locale JSON files
   assets/tokens/       Design-token CSS (colors, type, spacing, motion, …)
-  themes.js            Theme presets + applyTheme()
+  themes.js            Theme presets + themeVars()/themeOf()
 e2e/                   Playwright specs
-docs/                  PRD, design system, dashboard design handoff
+docs/                  PRD, design system
 old-version/           Legacy prototype — reference only
 ```
 
@@ -119,7 +119,6 @@ Every push and PR runs the full pipeline: **install → lint → unit tests → 
 | :--- | :--- |
 | [Product Requirements (PRD)](docs/prd.md) | Vision, functional requirements, monetization, implementation status |
 | [Design System](docs/design.md) | Tokens, typography, components, theming, RTL, design principles |
-| [Dashboard Design Handoff](docs/README.md) | Creator dashboard "Direction A" specification |
 
 ---
 

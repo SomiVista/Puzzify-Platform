@@ -8,6 +8,7 @@ import pt from './pt.json'
 import it_ from './it.json'
 import fa from './fa.json'
 import ar from './ar.json'
+import i18n, { RTL_LOCALES, isRtlLocale, dirForLocale } from '../i18n'
 
 const locales = { sv, es, fr, de, pt, it: it_, fa, ar }
 
@@ -40,5 +41,29 @@ describe('locale files', () => {
     it(`${code}.json has the same keys as en.json`, () => {
       expect(flattenKeys(messages).sort()).toEqual(enKeys)
     })
+  })
+})
+
+describe('text direction', () => {
+  it('registers every locale that ships', () => {
+    expect(Object.keys(i18n.global.messages.value).sort()).toEqual(
+      ['en', ...Object.keys(locales)].sort()
+    )
+  })
+
+  it('marks both right-to-left scripts as RTL', () => {
+    expect(RTL_LOCALES).toEqual(expect.arrayContaining(['fa', 'ar']))
+  })
+
+  it('gives every registered locale a direction', () => {
+    for (const code of Object.keys(i18n.global.messages.value)) {
+      expect(dirForLocale(code)).toBe(isRtlLocale(code) ? 'rtl' : 'ltr')
+    }
+  })
+
+  it('leaves left-to-right locales alone', () => {
+    for (const code of ['en', 'sv', 'es', 'fr', 'de', 'pt', 'it']) {
+      expect(isRtlLocale(code)).toBe(false)
+    }
   })
 })

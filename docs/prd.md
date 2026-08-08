@@ -71,7 +71,7 @@ The product does not hardcode theme logic for any specific event in the frontend
 | **Ambient Sound** | Background audio loops that enhance immersive interaction. | A soft lo-fi melody or a mysterious, suspenseful background track. |
 | **Box Asset** | The visual model/icon of the final container that unlocks. | A classic ribboned gift box, a heavy steel safe, a cauldron, or a confidential envelope. |
 
-**Implementation contract `[Shipped]`:** components read **only semantic design tokens** (`--pz-primary`, `--pz-surface`, `--pz-text`, …) — never raw hex values and never occasion names. A theme is a preset object in `src/themes.js` that assigns values to those token names; the `applyTheme()` helper applies it at runtime by setting the CSS variables, stamping a `data-pz-theme` attribute, flipping particle motion, and swapping the visible box asset. Adding a new occasion means adding **one preset object** — zero component edits.
+**Implementation contract `[Shipped]`:** components read **only semantic design tokens** (`--color-primary`, `--color-surface`, `--color-text`, …) — never raw hex values and never occasion names. A theme is a preset object in `src/themes.js` that assigns values to those token names. Every themed surface — the app shell (`App.vue`), the builder's live preview, and the player — applies a preset the same way: `themeVars(id)` is bound as inline custom properties and `data-theme="<id>"` is stamped on the same container, so CSS can also key off the active preset. `src/assets/tokens/colors.css` mirrors the presets for surfaces rendered outside a themed container, and `src/themes.spec.js` fails the build if the two drift. Adding a new occasion means adding **one preset object** — zero component edits.
 
 #### 2.1.1. Named Theme Presets
 
@@ -94,7 +94,7 @@ Four presets are implemented in `src/themes.js` (the single source of truth for 
 **Implementation contract `[Shipped — landing page]`:**
 
 * All layout CSS uses **logical properties** (`inset-inline-start/end`, `margin-inline-*`, `text-align: start`) — "mirror, don't flip." No hardcoded left/right.
-* The document `dir` attribute is bound from the global Pinia store; selecting Persian sets `dir="rtl"` and applies the `.pz-lang-fa` class, which swaps display and UI fonts to **Vazirmatn**.
+* The document `dir` attribute is bound from the global Pinia store; selecting Persian sets `dir="rtl"` and applies the `.lang-fa` class, which swaps display and UI fonts to **Vazirmatn**.
 * Translations are managed with **vue-i18n**; adding a locale means adding one JSON file to `src/locales/`.
 
 **Shipped locales (9):**
@@ -108,7 +108,7 @@ Four presets are implemented in `src/themes.js` (the single source of truth for 
 | `de` | German | LTR | |
 | `pt` | Portuguese | LTR | |
 | `it` | Italian | LTR | |
-| `fa` | Persian | **RTL** | Vazirmatn font swap via `.pz-lang-fa` |
+| `fa` | Persian | **RTL** | Vazirmatn font swap via `.lang-fa` |
 | `ar` | Arabic | **RTL** | Vazirmatn |
 
 **Requirement:** every authenticated surface (Sender Dashboard, Quest Builder) must consume vue-i18n message keys — no hardcoded UI strings. *(Current gap: dashboard strings are hardcoded English — see Section 9.)*
@@ -121,9 +121,9 @@ The platform enforces a strict decoupling of raw puzzle data from the rendering 
 
 The normative design reference is **`docs/design.md`** ("Puzzify Design System"). The PRD deliberately does not duplicate visual specifications; where this document and `design.md` describe the same surface, `design.md` governs appearance and this document governs behavior.
 
-* **Tokens `[Shipped]`:** semantic `--pz-*` variables defined in `src/assets/tokens/` (`colors`, `typography`, `spacing`, `radius`, `elevation`, `motion`, `base`); theme values in `src/themes.js`.
+* **Tokens `[Shipped]`:** semantic design-token variables (`--color-*`, `--font-*`, `--space-*`, `--radius-*`, `--shadow-*`) defined in `src/assets/tokens/` (`colors`, `typography`, `spacing`, `radius`, `elevation`, `motion`, `base`); theme values in `src/themes.js`.
 * **Typography:** Bricolage Grotesque (display), IBM Plex Sans (UI/body), IBM Plex Mono (code/voucher codes), Vazirmatn (Persian/Arabic) — all self-hosted `.woff2`.
-* **Motion:** CSS-only animation (`--pz-dur: .32s`, custom cubic-bezier easing); all decorative motion honors `prefers-reduced-motion`.
+* **Motion:** CSS-only animation (`--duration: .32s`, custom cubic-bezier easing); all decorative motion honors `prefers-reduced-motion`.
 * **Seven design principles** (from `design.md`): the theme is the product · tension, then relief · thumb-first · "two seconds or it's gone" · one step, one job · mirror, don't flip · delight everyone.
 
 ---
@@ -141,7 +141,7 @@ Puzzify is a single Vue SPA today, structured so the two experiences (Creator St
 | i18n | **vue-i18n 11** — 9 locale JSON files in `src/locales/` | Shipped |
 | Icons | **Lucide** (`lucide-vue-next`) | Shipped |
 | Styling | Plain CSS with design tokens (`src/assets/tokens/`); no CSS framework | Shipped |
-| Theming | Preset objects + `applyTheme()` in `src/themes.js` | Shipped |
+| Theming | Preset objects + `themeVars()` in `src/themes.js`, bound as inline tokens + `data-theme` | Shipped |
 | Hosting | **Firebase Hosting**, project `puzzify-platform` (SPA rewrite to `/index.html`) | Shipped |
 | Backend (planned) | **Firebase Auth** (creator accounts), **Firestore** (quest documents, analytics), **Cloud Functions** (secure reward endpoint), **Storage** (media uploads) | Not started |
 | Unit testing | **Vitest 2** + **Vue Test Utils** (jsdom) | Shipped |
@@ -158,13 +158,13 @@ src/
     sections/          Landing-page sections (hero, pricing, use cases, …)
     layout/            Header, footer
     dashboard/         Sidebar, header, quest cards, KPI row, empty state
-    ui/                Shared kit: PzButton, PzBadge, IconButton, BoxStage
+    ui/                Shared kit: BaseButton, BaseBadge, BaseIconButton, BaseBoxStage
   stores/              Pinia store(s)
   locales/             9 locale JSON files
   assets/tokens/       Design-token CSS files
-  themes.js            Theme presets + applyTheme()
+  themes.js            Theme presets + themeVars()/themeOf()
 e2e/                   Playwright specs
-docs/                  prd.md, design.md, dashboard design handoff
+docs/                  prd.md, design.md
 .github/workflows/     ci-cd.yml, release.yml, auto-pr-description.yml
 old-version/           Legacy prototype — reference only, out of scope
 ```
@@ -191,14 +191,14 @@ Requirements:
 
 #### 4.2.1. Sender Dashboard `[Shipped — on local persistence]`
 
-The creator's home after sign-in: view, manage, and track every quest. The layout follows the approved **"Direction A"** design (persistent left sidebar + airy card grid — see `docs/README.md` and the standalone HTML handoff in `docs/`). Routes: `/dashboard` redirects to `/dashboard/quests`, with sibling views `analytics`, `presets`, and `settings`.
+The creator's home after sign-in: view, manage, and track every quest. The layout follows the approved **"Direction A"** design (persistent left sidebar + airy card grid). Routes: `/dashboard` redirects to `/dashboard/quests`, with sibling views `analytics`, `presets`, and `settings`.
 
 * **Sidebar:** logo lockup; "Workspace" navigation — **Quests**, **Analytics**, **Presets**, **Settings**; an **Upgrade card** pinned to the bottom, shown **only when `planTier === 'free'`** (hidden for premium/corporate); user row with avatar initials, name, and plan label.
 * **Header:** time-of-day greeting with the creator's name; a search field that live-filters the quest list by name; notification bell; avatar. All interactive targets ≥ 44 px.
 * **Create hero:** "Start a new gift" panel with a primary **New quest** button and **six occasion presets** that pre-seed the quest's theme, ambient audio, and reward box: Birthday, Anniversary, Holiday (→ `birthday` theme), Mystery night (→ `mystery`), Corporate (→ `corporate`), and Start blank (creator's choice). Selecting either path opens the Quest Builder (§4.2.2).
 * **KPI row:** four derived (never stored) metrics — **Total gifts** (with published count), **Total plays**, **Average completion** (published quests only), **Average solve time** (played quests only).
 * **Quest list:** segmented filter **All / Published / Drafts** (client-side), sort control (default: recent activity), and a responsive card grid. Each **quest card** shows: occasion kicker, quest name, status badge (Published = success tone, Draft = neutral), step count with per-step type glyphs (`lock` / `trivia` / `hotspot`), metrics (plays, average solve time, reward type `video` / `letter` / `voucher`), a completion-rate bar, and a footer with relative last-activity time, a **copy-link** button (clipboard + confirmation toast), and **Open** (→ quest editor).
-* **Empty state (first run):** centered BoxStage gift illustration, "Create your first gift" heading, New quest CTA, the same six occasion presets, and the signature line *"The delivery is the gift."*
+* **Empty state (first run):** centered BaseBoxStage gift illustration, "Create your first gift" heading, New quest CTA, the same six occasion presets, and the signature line *"The delivery is the gift."*
 * **State model:** `planTier: 'free' | 'premium' | 'corporate'`; `quests[]` (name, occasion, steps, step kinds, status, plays, completion, average solve, reward type, last activity); search / filter / sort state. KPIs are computed from `quests[]`.
 * **Data requirement:** the dashboard must load the signed-in creator's quests and play analytics from Firestore. *Currently it renders hardcoded mock data (six sample quests, persona "Maya Kapoor") — see Section 9.*
 * Analytics, Presets, and Settings views are routed placeholders pending specification. `[Not started]`
@@ -309,7 +309,7 @@ Over 90% of recipients open their links inside social in-app browsers (Telegram,
 ### 6.4. Accessibility
 
 * Every theme preset maintains **WCAG 2.1 AA** contrast on its own surfaces.
-* Visible keyboard focus: 4 px ring (`--pz-ring`) plus focus border color (`--pz-focus`) on all interactive elements.
+* Visible keyboard focus: 4 px ring (`--color-ring`) plus focus border color (`--color-focus`) on all interactive elements.
 * All decorative motion (particles, box float, typewriter) is disabled under `prefers-reduced-motion`; no infinite decorative loops for users who opt out.
 
 ### 6.5. Infrastructure Elasticity
@@ -385,8 +385,6 @@ No functionality ships without tests; automation is the source of truth for buil
 * The reward gate is client-side: it keeps the payload out of the initial download and requires a valid completion proof, but a determined inspector can read it from local storage. The Cloud Function of §4.5 closes this.
 * The six sample quests (persona "Maya Kapoor") remain as demo content alongside real ones.
 * `docs/design.md` §5 still lists Spooky and Corporate presets as "roadmap"; all four presets ship in `src/themes.js`.
-* `CLAUDE.md` / `GEMINI.md` reference `docs/DESIGN.md` (wrong case — file is `docs/design.md`) and mention a legacy `gh-pages` deploy; actual CD target is Firebase Hosting.
-* `docs/README.md` (dashboard handoff) uses the legacy theme alias "Celebration" for `birthday`.
 * Monetization is still unenforced: the free tier's 3-step cap and premium-only Hotspot block are not gated.
 
 ---
@@ -394,7 +392,6 @@ No functionality ships without tests; automation is the source of truth for buil
 ## Appendix A — References
 
 * `docs/design.md` — Puzzify Design System (tokens, components, theming, RTL, design principles). **Normative for all visuals.**
-* `docs/README.md` + `docs/Creator Dashboard - Direction A (standalone).html` — Sender Dashboard design handoff (Direction A).
 * `src/themes.js` — canonical theme preset ids and token values.
 * `src/locales/en.json` — canonical marketing/pricing copy.
 * `CLAUDE.md` / `GEMINI.md` — agent working agreements (testing, CI/CD, PR discipline).

@@ -51,18 +51,18 @@ function onDragStart(event, kind) {
   padding: 20px 16px;
 }
 .pane-title {
-  font-family: var(--pz-font-ui);
+  font-family: var(--font-ui);
   font-size: 12px;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: var(--pz-track-kicker);
-  color: var(--pz-muted);
+  letter-spacing: var(--tracking-kicker);
+  color: var(--color-muted);
   margin: 0 0 6px;
 }
 .pane-hint {
   font-size: 12px;
   line-height: 1.45;
-  color: var(--pz-muted);
+  color: var(--color-muted);
   margin: 0 0 16px;
 }
 
@@ -82,25 +82,25 @@ function onDragStart(event, kind) {
   gap: 12px;
   padding: 12px;
   text-align: start;
-  background: var(--pz-surface);
-  border: 1px solid var(--pz-border);
-  border-radius: var(--pz-r-md);
-  color: var(--pz-text);
-  font-family: var(--pz-font-ui);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  color: var(--color-text);
+  font-family: var(--font-ui);
   cursor: grab;
-  transition: border-color var(--pz-dur) var(--pz-ease), box-shadow var(--pz-dur) var(--pz-ease);
+  transition: border-color var(--duration) var(--ease), box-shadow var(--duration) var(--ease);
 }
 .block:hover {
-  border-color: var(--pz-primary);
-  box-shadow: var(--pz-e-1);
+  border-color: var(--color-primary);
+  box-shadow: var(--shadow-1);
 }
 .block:active {
   cursor: grabbing;
 }
 .block:focus-visible {
   outline: none;
-  border-color: var(--pz-focus);
-  box-shadow: 0 0 0 4px var(--pz-ring);
+  border-color: var(--color-focus);
+  box-shadow: 0 0 0 4px var(--color-ring);
 }
 
 .block-icon {
@@ -111,8 +111,8 @@ function onDragStart(event, kind) {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--pz-surface-2);
-  color: var(--pz-primary);
+  background: var(--color-surface-2);
+  color: var(--color-primary);
 }
 .block-text {
   flex: 1;
@@ -129,10 +129,10 @@ function onDragStart(event, kind) {
 .block-desc {
   font-size: 11.5px;
   line-height: 1.35;
-  color: var(--pz-muted);
+  color: var(--color-muted);
 }
 .block-grip {
   flex: none;
-  color: var(--pz-muted);
+  color: var(--color-muted);
 }
 </style>

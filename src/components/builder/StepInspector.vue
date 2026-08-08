@@ -13,7 +13,7 @@
     <template v-else>
       <!-- Flow Manager wizard: walk the chain in strict order. -->
       <nav class="wizard" data-testid="wizard-nav">
-        <IconButton
+        <BaseIconButton
           :label="t('builder.inspector.prev')"
           :size="36"
           :disabled="builder.selectedIndex === 0"
@@ -21,11 +21,11 @@
           @click="builder.selectPrev()"
         >
           <ChevronLeft :size="16" class="nav-icon" />
-        </IconButton>
+        </BaseIconButton>
         <span class="wizard-label" data-testid="wizard-label">
           {{ t('builder.inspector.stepOf', { n: builder.selectedIndex + 1, total: builder.stepCount }) }}
         </span>
-        <IconButton
+        <BaseIconButton
           :label="t('builder.inspector.next')"
           :size="36"
           :disabled="builder.selectedIndex === builder.stepCount - 1"
@@ -33,7 +33,7 @@
           @click="builder.selectNext()"
         >
           <ChevronRight :size="16" class="nav-icon" />
-        </IconButton>
+        </BaseIconButton>
       </nav>
 
       <div class="kind-chip">
@@ -50,7 +50,7 @@
         <label :for="`${step.id}-title`">{{ t('builder.inspector.fields.title') }}</label>
         <input
           :id="`${step.id}-title`"
-          class="pz-input"
+          class="base-input"
           type="text"
           :value="step.title"
           :placeholder="t('builder.inspector.fields.titlePlaceholder')"
@@ -62,7 +62,7 @@
         <label :for="`${step.id}-prompt`">{{ t('builder.inspector.fields.prompt') }}</label>
         <textarea
           :id="`${step.id}-prompt`"
-          class="pz-input"
+          class="base-input"
           rows="3"
           data-testid="field-prompt"
           :value="step.prompt"
@@ -77,7 +77,7 @@
           <label :for="`${step.id}-answer`">{{ t('builder.inspector.fields.answer') }}</label>
           <input
             :id="`${step.id}-answer`"
-            class="pz-input"
+            class="base-input"
             type="text"
             data-testid="field-answer"
             :value="step.config.answer"
@@ -87,7 +87,7 @@
         </div>
         <div class="row">
           <span class="row-label">{{ t('builder.inspector.fields.caseSensitive') }}</span>
-          <PzToggle
+          <BaseToggle
             :model-value="step.config.caseSensitive"
             :label="t('builder.inspector.fields.caseSensitive')"
             data-testid="toggle-case"
@@ -111,7 +111,7 @@
               @change="builder.updateConfig({ correctIndex: i })"
             />
             <input
-              class="pz-input"
+              class="base-input"
               type="text"
               :value="option"
               :placeholder="t('builder.inspector.fields.optionPlaceholder', { n: i + 1 })"
@@ -119,16 +119,16 @@
               :aria-label="t('builder.inspector.fields.optionPlaceholder', { n: i + 1 })"
               @input="setOption(i, $event.target.value)"
             />
-            <IconButton
+            <BaseIconButton
               :label="t('builder.inspector.fields.removeOption')"
               :size="36"
               :disabled="step.config.options.length <= TRIVIA_MIN_OPTIONS"
               @click="removeOption(i)"
             >
               <X :size="14" />
-            </IconButton>
+            </BaseIconButton>
           </div>
-          <PzButton
+          <BaseButton
             variant="ghost"
             size="sm"
             :disabled="step.config.options.length >= TRIVIA_MAX_OPTIONS"
@@ -136,7 +136,7 @@
             @click="addOption"
           >
             <Plus :size="14" /> {{ t('builder.inspector.fields.addOption') }}
-          </PzButton>
+          </BaseButton>
         </div>
       </template>
 
@@ -146,7 +146,7 @@
           <label :for="`${step.id}-image`">{{ t('builder.inspector.fields.imageUrl') }}</label>
           <input
             :id="`${step.id}-image`"
-            class="pz-input"
+            class="base-input"
             type="url"
             data-testid="field-image"
             :value="step.config.imageUrl"
@@ -160,7 +160,7 @@
             <label v-for="axis in TARGET_AXES" :key="axis.key" class="target-cell">
               <span>{{ t(`builder.inspector.fields.${axis.labelKey}`) }}</span>
               <input
-                class="pz-input"
+                class="base-input"
                 type="number"
                 min="0"
                 max="100"
@@ -205,7 +205,7 @@
             <label :for="`${step.id}-hint`">{{ t('builder.inspector.advanced.hintText') }}</label>
             <input
               :id="`${step.id}-hint`"
-              class="pz-input"
+              class="base-input"
               type="text"
               data-testid="field-hint"
               :value="step.hintText"
@@ -219,7 +219,7 @@
             <label :for="`${step.id}-success`">{{ t('builder.inspector.advanced.successMessage') }}</label>
             <input
               :id="`${step.id}-success`"
-              class="pz-input"
+              class="base-input"
               type="text"
               data-testid="field-success"
               :value="step.successMessage"
@@ -233,7 +233,7 @@
             <label :for="`${step.id}-attempts`">{{ t('builder.inspector.advanced.maxAttempts') }}</label>
             <input
               :id="`${step.id}-attempts`"
-              class="pz-input"
+              class="base-input"
               type="number"
               :min="MAX_ATTEMPTS_MIN"
               :max="MAX_ATTEMPTS_MAX"
@@ -257,9 +257,9 @@ import { ChevronLeft, ChevronRight, ChevronDown, MousePointerClick, Plus, X } fr
 import { blockIcon } from '../../quest/blocks'
 import { TRIVIA_MIN_OPTIONS, TRIVIA_MAX_OPTIONS, MAX_ATTEMPTS_MIN, MAX_ATTEMPTS_MAX, validateStep } from '../../quest/model'
 import { useBuilderStore } from '../../stores/useBuilderStore'
-import IconButton from '../ui/IconButton.vue'
-import PzButton from '../ui/PzButton.vue'
-import PzToggle from '../ui/PzToggle.vue'
+import BaseIconButton from '../ui/BaseIconButton.vue'
+import BaseButton from '../ui/BaseButton.vue'
+import BaseToggle from '../ui/BaseToggle.vue'
 
 const { t } = useI18n()
 const builder = useBuilderStore()
@@ -317,12 +317,12 @@ function setTarget(axis, value) {
   justify-content: space-between;
 }
 .pane-title {
-  font-family: var(--pz-font-ui);
+  font-family: var(--font-ui);
   font-size: 12px;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: var(--pz-track-kicker);
-  color: var(--pz-muted);
+  letter-spacing: var(--tracking-kicker);
+  color: var(--color-muted);
   margin: 0;
 }
 
@@ -333,13 +333,13 @@ function setTarget(axis, value) {
   gap: 6px;
   padding: 28px 16px;
   text-align: center;
-  color: var(--pz-muted);
-  border: 1.5px dashed var(--pz-border);
-  border-radius: var(--pz-r-md);
+  color: var(--color-muted);
+  border: 1.5px dashed var(--color-border);
+  border-radius: var(--radius-md);
 }
 .none strong {
   font-size: 14px;
-  color: var(--pz-text);
+  color: var(--color-text);
 }
 .none span {
   font-size: 12px;
@@ -352,13 +352,13 @@ function setTarget(axis, value) {
   justify-content: space-between;
   gap: 8px;
   padding: 6px;
-  background: var(--pz-surface-2);
-  border-radius: var(--pz-r-md);
+  background: var(--color-surface-2);
+  border-radius: var(--radius-md);
 }
 .wizard-label {
   font-size: 12.5px;
   font-weight: 700;
-  color: var(--pz-text);
+  color: var(--color-text);
 }
 /* Chevrons point along the reading direction, so mirror them for RTL. The
    ancestor selector needs no :global() — scoped CSS only scopes the last one. */
@@ -372,9 +372,9 @@ function setTarget(axis, value) {
   align-self: flex-start;
   gap: 6px;
   padding: 5px 10px;
-  border-radius: var(--pz-r-full);
-  background: var(--pz-surface-2);
-  color: var(--pz-primary);
+  border-radius: var(--radius-full);
+  background: var(--color-surface-2);
+  color: var(--color-primary);
   font-size: 11px;
   font-weight: 700;
   text-transform: uppercase;
@@ -385,9 +385,9 @@ function setTarget(axis, value) {
   margin: 0;
   padding: 10px 14px;
   padding-inline-start: 26px;
-  border-radius: var(--pz-r-md);
-  background: color-mix(in srgb, var(--pz-accent) 12%, transparent);
-  color: var(--pz-text);
+  border-radius: var(--radius-md);
+  background: color-mix(in srgb, var(--color-accent) 12%, transparent);
+  color: var(--color-text);
   font-size: 12px;
   line-height: 1.6;
 }
@@ -401,36 +401,36 @@ function setTarget(axis, value) {
 .field-label {
   font-size: 12px;
   font-weight: 700;
-  color: var(--pz-text);
+  color: var(--color-text);
 }
 .field small {
   font-size: 11.5px;
   line-height: 1.45;
-  color: var(--pz-muted);
+  color: var(--color-muted);
 }
 
-.pz-input {
+.base-input {
   width: 100%;
   min-height: 44px;
   padding: 11px 12px;
-  border: 1.5px solid var(--pz-border);
-  border-radius: var(--pz-r-md);
-  background: var(--pz-bg);
-  color: var(--pz-text);
-  font-family: var(--pz-font-ui);
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-ui);
   font-size: 13.5px;
   text-align: start;
   outline: none;
-  transition: border-color var(--pz-dur) var(--pz-ease), box-shadow var(--pz-dur) var(--pz-ease);
+  transition: border-color var(--duration) var(--ease), box-shadow var(--duration) var(--ease);
 }
-textarea.pz-input {
+textarea.base-input {
   min-height: 76px;
   resize: vertical;
   line-height: 1.5;
 }
-.pz-input:focus {
-  border-color: var(--pz-focus);
-  box-shadow: 0 0 0 4px var(--pz-ring);
+.base-input:focus {
+  border-color: var(--color-focus);
+  box-shadow: 0 0 0 4px var(--color-ring);
 }
 
 .row {
@@ -442,7 +442,7 @@ textarea.pz-input {
 .row-label {
   font-size: 12.5px;
   font-weight: 600;
-  color: var(--pz-text);
+  color: var(--color-text);
 }
 
 .option-row {
@@ -454,7 +454,7 @@ textarea.pz-input {
   flex: none;
   width: 18px;
   height: 18px;
-  accent-color: var(--pz-primary);
+  accent-color: var(--color-primary);
 }
 
 .target-grid {
@@ -468,9 +468,9 @@ textarea.pz-input {
   gap: 4px;
   font-size: 11px;
   font-weight: 600;
-  color: var(--pz-muted);
+  color: var(--color-muted);
 }
-.target-cell .pz-input {
+.target-cell .base-input {
   padding: 8px;
   min-height: 40px;
   font-size: 12.5px;
@@ -478,9 +478,9 @@ textarea.pz-input {
 .target-preview {
   position: relative;
   margin-top: 8px;
-  border-radius: var(--pz-r-md);
+  border-radius: var(--radius-md);
   overflow: hidden;
-  border: 1px solid var(--pz-border);
+  border: 1px solid var(--color-border);
 }
 .target-preview img {
   display: block;
@@ -488,13 +488,13 @@ textarea.pz-input {
 }
 .target-box {
   position: absolute;
-  border: 2px solid var(--pz-primary);
+  border: 2px solid var(--color-primary);
   border-radius: 6px;
-  background: color-mix(in srgb, var(--pz-primary) 18%, transparent);
+  background: color-mix(in srgb, var(--color-primary) 18%, transparent);
 }
 
 .advanced {
-  border-top: 1px solid var(--pz-hairline);
+  border-top: 1px solid var(--color-hairline);
   padding-top: 12px;
 }
 .advanced-toggle {
@@ -506,8 +506,8 @@ textarea.pz-input {
   padding: 0;
   background: none;
   border: none;
-  color: var(--pz-text);
-  font-family: var(--pz-font-ui);
+  color: var(--color-text);
+  font-family: var(--font-ui);
   font-size: 12.5px;
   font-weight: 700;
   text-align: start;
@@ -515,12 +515,12 @@ textarea.pz-input {
   outline: none;
 }
 .advanced-toggle:focus-visible {
-  box-shadow: 0 0 0 4px var(--pz-ring);
-  border-radius: var(--pz-r-sm);
+  box-shadow: 0 0 0 4px var(--color-ring);
+  border-radius: var(--radius-sm);
 }
 .chevron {
-  color: var(--pz-muted);
-  transition: transform var(--pz-dur) var(--pz-ease);
+  color: var(--color-muted);
+  transition: transform var(--duration) var(--ease);
 }
 .chevron.open {
   transform: rotate(180deg);

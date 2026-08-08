@@ -83,26 +83,26 @@ watch(
   width: 100%;
   min-height: 52px;
   padding: 14px 16px;
-  border: 1.5px solid var(--pz-border);
-  border-radius: var(--pz-r-md);
-  background: var(--pz-surface);
-  color: var(--pz-text);
-  font-family: var(--pz-font-ui);
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  color: var(--color-text);
+  font-family: var(--font-ui);
   font-size: 16px; /* 16px keeps iOS from zooming the viewport on focus */
   text-align: start;
   outline: none;
-  transition: border-color var(--pz-dur) var(--pz-ease), box-shadow var(--pz-dur) var(--pz-ease);
+  transition: border-color var(--duration) var(--ease), box-shadow var(--duration) var(--ease);
 }
 .answer-input::placeholder {
-  color: var(--pz-muted);
+  color: var(--color-muted);
 }
 .answer-input:focus {
-  border-color: var(--pz-focus);
-  box-shadow: 0 0 0 4px var(--pz-ring);
+  border-color: var(--color-focus);
+  box-shadow: 0 0 0 4px var(--color-ring);
 }
 .answer-input.wrong {
-  border-color: var(--pz-error);
-  animation: pzShake 0.4s var(--pz-ease);
+  border-color: var(--color-error);
+  animation: shake 0.4s var(--ease);
 }
 .answer-input:disabled {
   opacity: 0.6;
@@ -112,14 +112,14 @@ watch(
   width: 100%;
   min-height: 52px;
   border: none;
-  border-radius: var(--pz-r-md);
-  background: var(--pz-primary);
-  color: var(--pz-on-primary);
-  font-family: var(--pz-font-ui);
+  border-radius: var(--radius-md);
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+  font-family: var(--font-ui);
   font-size: 15px;
   font-weight: 700;
   cursor: pointer;
-  box-shadow: var(--pz-e-1);
+  box-shadow: var(--shadow-1);
   transition: transform 0.15s, box-shadow 0.15s;
 }
 .submit:not(:disabled):active {
@@ -131,7 +131,7 @@ watch(
 }
 .submit:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 4px var(--pz-ring);
+  box-shadow: 0 0 0 4px var(--color-ring);
 }
 
 @media (prefers-reduced-motion: reduce) {

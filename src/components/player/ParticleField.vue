@@ -1,6 +1,6 @@
 <template>
   <div class="particle-field" aria-hidden="true">
-    <i v-for="p in particles" :key="p.id" class="pz-anim" :style="p.style"></i>
+    <i v-for="p in particles" :key="p.id" class="anim" :style="p.style"></i>
   </div>
 </template>
 
@@ -16,12 +16,12 @@ const props = defineProps({
 /**
  * Decorative only — motion direction comes from the theme preset (`fall` or
  * `rise`), never from an occasion. All of it stops under prefers-reduced-motion
- * via the shared `.pz-anim` rule in tokens/motion.css.
+ * via the shared `.anim` rule in tokens/motion.css.
  */
 const particles = computed(() => {
   const theme = THEMES[props.preset] || THEMES.birthday
-  const name = theme.particles.motion === 'rise' ? 'pzRise' : 'pzFall'
-  const colors = ['var(--pz-primary)', 'var(--pz-accent)', 'var(--pz-secondary)']
+  const name = theme.particles.motion === 'rise' ? 'rise' : 'fall'
+  const colors = ['var(--color-primary)', 'var(--color-accent)', 'var(--color-secondary)']
 
   return Array.from({ length: props.count }, (_, i) => ({
     id: i,

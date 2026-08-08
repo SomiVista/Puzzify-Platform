@@ -1,9 +1,9 @@
 <template>
   <div
     class="player"
-    :class="{ 'pz-lang-fa': isRtl }"
-    :style="themeVars"
-    :data-pz-theme="preset"
+    :class="{ 'lang-rtl': isRtl }"
+    :style="stageVars"
+    :data-theme="preset"
     :dir="dir"
   >
     <ParticleField v-if="showParticles" :preset="preset" />
@@ -125,7 +125,8 @@ import { ref, computed, watch, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 import { useI18n } from 'vue-i18n'
 import { Lightbulb, Check } from 'lucide-vue-next'
-import { THEMES } from '../themes'
+import { DEFAULT_THEME, themeVars } from '../themes'
+import { isRtlLocale, dirForLocale } from '../i18n'
 import {
   SUBMIT,
   createSession,
@@ -159,8 +160,8 @@ const wrongNonce = ref(0)
 const hintOpen = ref(false)
 const toast = ref('')
 
-const preset = computed(() => quest.value?.theme?.preset || 'birthday')
-const themeVars = computed(() => (THEMES[preset.value] || THEMES.birthday).vars)
+const preset = computed(() => quest.value?.theme?.preset || DEFAULT_THEME)
+const stageVars = computed(() => themeVars(preset.value))
 const showParticles = computed(() => quest.value?.theme?.particles !== false)
 const step = computed(() => (quest.value && session.value ? currentStep(quest.value, session.value) : null))
 const finished = computed(() => Boolean(session.value) && isComplete(session.value))
@@ -176,9 +177,9 @@ const stepLabel = computed(() =>
 )
 
 /** The gift is written in the sender's language, so the player follows it —
-    including the Vazirmatn font swap that `.pz-lang-fa` carries. */
-const isRtl = computed(() => ['fa', 'ar'].includes(quest.value?.lang))
-const dir = computed(() => (isRtl.value ? 'rtl' : 'ltr'))
+    including the Vazirmatn font swap that `.lang-rtl` carries. */
+const isRtl = computed(() => isRtlLocale(quest.value?.lang))
+const dir = computed(() => dirForLocale(quest.value?.lang))
 
 onMounted(load)
 watch(() => route.params.questId, load)
@@ -249,9 +250,9 @@ function showToast(message) {
   flex-direction: column;
   justify-content: center;
   padding: max(24px, env(safe-area-inset-top)) 20px max(24px, env(safe-area-inset-bottom));
-  background: var(--pz-bg);
-  color: var(--pz-text);
-  font-family: var(--pz-font-ui);
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-ui);
   overflow: hidden;
 }
 
@@ -285,28 +286,28 @@ function showToast(message) {
   font-size: 11px;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: var(--pz-track-kicker);
-  color: var(--pz-secondary);
+  letter-spacing: var(--tracking-kicker);
+  color: var(--color-secondary);
 }
 .title {
   margin: 0;
-  font-family: var(--pz-font-display);
-  font-size: var(--pz-fs-display);
+  font-family: var(--font-display);
+  font-size: var(--font-size-display);
   font-weight: 800;
-  line-height: var(--pz-lh-display);
-  letter-spacing: var(--pz-track-display);
+  line-height: var(--line-height-display);
+  letter-spacing: var(--tracking-display);
 }
 .prompt {
   margin: 0 0 6px;
   font-size: 16px;
-  line-height: var(--pz-lh-body);
-  color: var(--pz-text);
+  line-height: var(--line-height-body);
+  color: var(--color-text);
 }
 .muted {
   margin: 0;
   font-size: 14px;
   line-height: 1.5;
-  color: var(--pz-muted);
+  color: var(--color-muted);
 }
 
 .meta {
@@ -322,30 +323,30 @@ function showToast(message) {
   min-height: 44px;
   padding: 0 12px;
   border: none;
-  border-radius: var(--pz-r-full);
-  background: color-mix(in srgb, var(--pz-accent) 18%, transparent);
-  color: var(--pz-accent);
-  font-family: var(--pz-font-ui);
+  border-radius: var(--radius-full);
+  background: color-mix(in srgb, var(--color-accent) 18%, transparent);
+  color: var(--color-accent);
+  font-family: var(--font-ui);
   font-size: 13px;
   font-weight: 700;
   cursor: pointer;
 }
 .hint-button:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 4px var(--pz-ring);
+  box-shadow: 0 0 0 4px var(--color-ring);
 }
 .attempts {
   margin-inline-start: auto;
   font-size: 12.5px;
-  color: var(--pz-muted);
+  color: var(--color-muted);
 }
 
 .hint.revealed {
   margin: 0;
   padding: 12px 14px;
-  border-radius: var(--pz-r-md);
-  background: color-mix(in srgb, var(--pz-accent) 12%, transparent);
-  box-shadow: 0 0 0 1px color-mix(in srgb, var(--pz-accent) 30%, transparent);
+  border-radius: var(--radius-md);
+  background: color-mix(in srgb, var(--color-accent) 12%, transparent);
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--color-accent) 30%, transparent);
   font-size: 14px;
   line-height: 1.5;
   text-align: start;
@@ -357,7 +358,7 @@ function showToast(message) {
   font-weight: 600;
 }
 .feedback.error {
-  color: var(--pz-error);
+  color: var(--color-error);
 }
 
 .locked {
@@ -366,19 +367,19 @@ function showToast(message) {
   align-items: center;
   gap: 8px;
   padding: 20px;
-  border: 1.5px solid var(--pz-border);
-  border-radius: var(--pz-r-lg);
-  background: var(--pz-surface);
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
   text-align: center;
 }
 .locked strong {
-  font-family: var(--pz-font-display);
+  font-family: var(--font-display);
   font-size: 18px;
   font-weight: 800;
 }
 .locked span {
   font-size: 13.5px;
-  color: var(--pz-muted);
+  color: var(--color-muted);
 }
 
 .ghost-cta {
@@ -388,11 +389,11 @@ function showToast(message) {
   min-height: 48px;
   margin-top: 8px;
   padding: 0 22px;
-  border: 1px solid var(--pz-border);
-  border-radius: var(--pz-r-full);
-  background: var(--pz-surface-2);
-  color: var(--pz-primary);
-  font-family: var(--pz-font-ui);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  background: var(--color-surface-2);
+  color: var(--color-primary);
+  font-family: var(--font-ui);
   font-size: 14.5px;
   font-weight: 700;
   text-decoration: none;
@@ -400,14 +401,14 @@ function showToast(message) {
 }
 .ghost-cta:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 4px var(--pz-ring);
+  box-shadow: 0 0 0 4px var(--color-ring);
 }
 
 .watermark {
   margin: 8px 0 0;
   text-align: center;
-  font-size: var(--pz-fs-caption);
-  color: var(--pz-muted);
+  font-size: var(--font-size-caption);
+  color: var(--color-muted);
 }
 
 .toast {
@@ -422,16 +423,16 @@ function showToast(message) {
   max-width: 420px;
   margin-inline: auto;
   padding: 13px 16px;
-  border-radius: var(--pz-r-md);
-  background: var(--pz-text);
-  color: var(--pz-bg);
+  border-radius: var(--radius-md);
+  background: var(--color-text);
+  color: var(--color-bg);
   font-size: 14px;
   font-weight: 600;
-  box-shadow: var(--pz-e-2);
+  box-shadow: var(--shadow-2);
 }
 .toast-enter-active,
 .toast-leave-active {
-  transition: opacity var(--pz-dur) var(--pz-ease), transform var(--pz-dur) var(--pz-ease);
+  transition: opacity var(--duration) var(--ease), transform var(--duration) var(--ease);
 }
 .toast-enter-from,
 .toast-leave-to {

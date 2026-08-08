@@ -86,9 +86,9 @@ describe('LivePreview', () => {
     builder.setThemePreset('mystery')
     const preview = mountWith(LivePreview).find('[data-testid="live-preview"]')
 
-    expect(preview.attributes('data-pz-theme')).toBe('mystery')
+    expect(preview.attributes('data-theme')).toBe('mystery')
     // Values come straight from the preset in themes.js.
-    expect(preview.attributes('style')).toContain(THEMES.mystery.vars['--pz-primary'])
+    expect(preview.attributes('style')).toContain(THEMES.mystery.vars['--color-primary'])
   })
 
   it('shows the advanced settings the creator configured', async () => {

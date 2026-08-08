@@ -1,5 +1,5 @@
 {
-  "name": "puzzify",
+  "name": "quest-platform",
   "version": "1.1.5",
   "type": "module",
   "scripts": {
@@ -13,7 +13,6 @@
     "lint:fix": "eslint . --fix"
   },
   "dependencies": {
-    "@lucide/vue": "^1.22.0",
     "lucide-vue-next": "^1.0.0",
     "pinia": "^3.0.4",
     "vue": "^3.5.13",

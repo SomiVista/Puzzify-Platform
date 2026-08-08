@@ -1,13 +1,13 @@
 <template>
-  <section class="finale pz-anim" data-testid="grand-finale">
-    <BoxStage :asset="boxAsset" :size="128" />
+  <section class="finale anim" data-testid="grand-finale">
+    <BaseBoxStage :asset="boxAsset" :size="128" />
 
     <p class="kicker">{{ t('player.finaleKicker') }}</p>
     <h1 class="title">{{ reward?.title || questName || t('player.finaleTitle') }}</h1>
 
     <!-- letter — an animated rich-text note (PRD §4.4) -->
     <article v-if="type === 'letter'" class="letter" data-testid="reward-letter">
-      <p class="typed">{{ typed }}<span v-if="!typingDone" class="caret pz-anim" aria-hidden="true"></span></p>
+      <p class="typed">{{ typed }}<span v-if="!typingDone" class="caret anim" aria-hidden="true"></span></p>
     </article>
 
     <!-- video — an embedded stream -->
@@ -36,7 +36,7 @@
     </div>
 
     <!-- The viral loop: delight converted straight into adoption (PRD §5.2). -->
-    <aside class="cta pz-anim" data-testid="viral-cta">
+    <aside class="cta anim" data-testid="viral-cta">
       <strong>{{ t('player.ctaTitle') }}</strong>
       <span>{{ t('player.ctaBody') }}</span>
       <router-link to="/dashboard/quests" class="cta-button" data-testid="viral-cta-button">
@@ -53,7 +53,7 @@ import { ref, computed, watch, onBeforeUnmount } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { Copy, Check } from 'lucide-vue-next'
 import { THEMES } from '../../themes'
-import BoxStage from '../ui/BoxStage.vue'
+import BaseBoxStage from '../ui/BaseBoxStage.vue'
 
 const props = defineProps({
   reward: { type: Object, default: null },
@@ -133,7 +133,7 @@ async function copy() {
   align-items: center;
   gap: 12px;
   text-align: center;
-  animation: pzFadeUp 0.5s var(--pz-ease) both;
+  animation: fadeUp 0.5s var(--ease) both;
 }
 
 .kicker {
@@ -141,33 +141,33 @@ async function copy() {
   font-size: 11px;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: var(--pz-track-kicker);
-  color: var(--pz-secondary);
+  letter-spacing: var(--tracking-kicker);
+  color: var(--color-secondary);
 }
 .title {
   margin: 0;
-  font-family: var(--pz-font-display);
-  font-size: var(--pz-fs-display);
+  font-family: var(--font-display);
+  font-size: var(--font-size-display);
   font-weight: 800;
-  line-height: var(--pz-lh-display);
-  letter-spacing: var(--pz-track-display);
-  color: var(--pz-text);
+  line-height: var(--line-height-display);
+  letter-spacing: var(--tracking-display);
+  color: var(--color-text);
 }
 
 .letter {
   width: 100%;
   padding: 18px;
-  border: 1px solid var(--pz-border);
-  border-radius: var(--pz-r-lg);
-  background: var(--pz-surface);
-  box-shadow: var(--pz-e-2);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-2);
 }
 .typed {
   margin: 0;
   text-align: start;
   font-size: 15px;
   line-height: 1.65;
-  color: var(--pz-text);
+  color: var(--color-text);
   white-space: pre-wrap;
 }
 .caret {
@@ -176,15 +176,15 @@ async function copy() {
   height: 1em;
   margin-inline-start: 2px;
   vertical-align: text-bottom;
-  background: var(--pz-primary);
-  animation: pzCaret 1s steps(1) infinite;
+  background: var(--color-primary);
+  animation: caret 1s steps(1) infinite;
 }
 
 .video {
   width: 100%;
-  border-radius: var(--pz-r-lg);
+  border-radius: var(--radius-lg);
   overflow: hidden;
-  box-shadow: var(--pz-e-2);
+  box-shadow: var(--shadow-2);
 }
 .video iframe {
   display: block;
@@ -195,40 +195,40 @@ async function copy() {
 .fallback {
   margin: 0;
   padding: 24px;
-  background: var(--pz-surface);
-  color: var(--pz-muted);
+  background: var(--color-surface);
+  color: var(--color-muted);
 }
 
 .voucher {
   width: 100%;
   padding: 18px;
-  border: 1px solid var(--pz-border);
-  border-radius: var(--pz-r-lg);
-  background: var(--pz-surface);
-  box-shadow: var(--pz-e-2);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-2);
 }
 .voucher-body {
   margin: 0 0 14px;
   font-size: 14px;
   line-height: 1.5;
-  color: var(--pz-muted);
+  color: var(--color-muted);
 }
 .code-row {
   display: flex;
   align-items: center;
   gap: 10px;
   padding: 12px;
-  border: 1.5px dashed var(--pz-border);
-  border-radius: var(--pz-r-md);
-  background: var(--pz-bg);
+  border: 1.5px dashed var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-bg);
 }
 .code-row code {
   flex: 1;
   min-width: 0;
-  font-family: var(--pz-font-mono);
+  font-family: var(--font-mono);
   font-size: 16px;
   font-weight: 600;
-  color: var(--pz-text);
+  color: var(--color-text);
   text-align: start;
   word-break: break-all;
 }
@@ -240,17 +240,17 @@ async function copy() {
   min-height: 44px;
   padding: 0 14px;
   border: none;
-  border-radius: var(--pz-r-md);
-  background: var(--pz-primary);
-  color: var(--pz-on-primary);
-  font-family: var(--pz-font-ui);
+  border-radius: var(--radius-md);
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+  font-family: var(--font-ui);
   font-size: 13px;
   font-weight: 700;
   cursor: pointer;
 }
 .copy:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 4px var(--pz-ring);
+  box-shadow: 0 0 0 4px var(--color-ring);
 }
 
 .cta {
@@ -261,19 +261,19 @@ async function copy() {
   width: 100%;
   margin-top: 12px;
   padding: 18px;
-  border-radius: var(--pz-r-lg);
-  background: var(--pz-surface-2);
-  animation: pzFadeUp 0.5s var(--pz-ease) 0.6s both;
+  border-radius: var(--radius-lg);
+  background: var(--color-surface-2);
+  animation: fadeUp 0.5s var(--ease) 0.6s both;
 }
 .cta strong {
-  font-family: var(--pz-font-display);
+  font-family: var(--font-display);
   font-size: 17px;
   font-weight: 800;
-  color: var(--pz-text);
+  color: var(--color-text);
 }
 .cta span {
   font-size: 13.5px;
-  color: var(--pz-muted);
+  color: var(--color-muted);
 }
 .cta-button {
   display: inline-flex;
@@ -282,21 +282,21 @@ async function copy() {
   min-height: 48px;
   margin-top: 8px;
   padding: 0 22px;
-  border-radius: var(--pz-r-full);
-  background: var(--pz-primary);
-  color: var(--pz-on-primary);
+  border-radius: var(--radius-full);
+  background: var(--color-primary);
+  color: var(--color-on-primary);
   font-size: 14.5px;
   font-weight: 700;
   text-decoration: none;
 }
 .cta-button:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 4px var(--pz-ring);
+  box-shadow: 0 0 0 4px var(--color-ring);
 }
 
 .watermark {
   margin: 6px 0 0;
-  font-size: var(--pz-fs-caption);
-  color: var(--pz-muted);
+  font-size: var(--font-size-caption);
+  color: var(--color-muted);
 }
 </style>

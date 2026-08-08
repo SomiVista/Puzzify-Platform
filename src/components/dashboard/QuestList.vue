@@ -13,10 +13,16 @@
             {{ filter.label }}
           </button>
         </div>
-        <PzButton variant="secondary" size="md" class="sort-btn">
-          {{ t('dashboard.list.sortRecent') }}
+        <BaseButton
+          variant="secondary"
+          size="md"
+          class="sort-btn"
+          data-testid="quest-sort"
+          @click="toggleQuestSort"
+        >
+          {{ questSort === 'name' ? t('dashboard.list.sortName') : t('dashboard.list.sortRecent') }}
           <ChevronDown :size="14" />
-        </PzButton>
+        </BaseButton>
       </div>
     </div>
 
@@ -39,12 +45,13 @@ import { useI18n } from 'vue-i18n'
 import { storeToRefs } from 'pinia'
 import { ChevronDown } from 'lucide-vue-next'
 import { useAppStore } from '../../stores/useAppStore'
-import PzButton from '../ui/PzButton.vue'
+import BaseButton from '../ui/BaseButton.vue'
 import QuestCard from './QuestCard.vue'
 
 const { t } = useI18n()
 const store = useAppStore()
-const { questFilter, filteredQuests } = storeToRefs(store)
+const { questFilter, questSort, filteredQuests } = storeToRefs(store)
+const { toggleQuestSort } = store
 
 const filters = computed(() => [
   { label: t('dashboard.list.all'), value: 'all' },
@@ -64,10 +71,10 @@ const filters = computed(() => [
   margin-bottom: 24px;
 }
 .section-title {
-  font-family: var(--pz-font-ui);
+  font-family: var(--font-ui);
   font-size: 20px;
   font-weight: 800;
-  color: var(--pz-text);
+  color: var(--color-text);
   margin: 0;
 }
 .list-controls {
@@ -77,29 +84,29 @@ const filters = computed(() => [
 }
 .segmented-filter {
   display: flex;
-  background: var(--pz-surface-2);
+  background: var(--color-surface-2);
   padding: 4px;
-  border-radius: var(--pz-r-md);
+  border-radius: var(--radius-md);
 }
 .filter-btn {
   padding: 8px 16px;
   border: none;
   background: transparent;
-  font-family: var(--pz-font-ui);
+  font-family: var(--font-ui);
   font-size: 13px;
   font-weight: 600;
-  color: var(--pz-muted);
+  color: var(--color-muted);
   border-radius: 10px;
   cursor: pointer;
   transition: all 0.2s;
 }
 .filter-btn:hover {
-  color: var(--pz-text);
+  color: var(--color-text);
 }
 .filter-btn.active {
-  background: var(--pz-surface);
-  color: var(--pz-text);
-  box-shadow: var(--pz-e-1);
+  background: var(--color-surface);
+  color: var(--color-text);
+  box-shadow: var(--shadow-1);
 }
 .sort-btn {
   gap: 6px;
@@ -112,11 +119,11 @@ const filters = computed(() => [
 .no-results {
   padding: 40px;
   text-align: center;
-  color: var(--pz-muted);
+  color: var(--color-muted);
   font-size: 14px;
-  background: var(--pz-surface);
-  border-radius: var(--pz-r-md);
-  border: 1px dashed var(--pz-border);
+  background: var(--color-surface);
+  border-radius: var(--radius-md);
+  border: 1px dashed var(--color-border);
 }
 
 @media (max-width: 1100px) {
