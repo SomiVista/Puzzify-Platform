@@ -1,8 +1,13 @@
 name: Release
 
-# Every merge/push to main automatically bumps the patch version, commits the
-# bump back to main, and publishes a matching GitHub Release with generated
-# notes. No manual version bump is ever required.
+# Every merge/push to main publishes a GitHub Release with generated notes and
+# commits the matching version back to main. No manual version bump is required.
+#
+# The version comes from the released git TAGS, not from package.json: a branch
+# cut before a release carries a stale version, and merging it reverts main.
+# Deriving from package.json therefore re-derived an already-published tag and
+# the job failed with HTTP 422 "Release.tag_name already exists".
+# scripts/next-version.mjs owns that decision and is unit tested.
 #
 # The bump commit is made with the repo GITHUB_TOKEN, so it does NOT trigger
 # another workflow run (GitHub suppresses recursive runs for GITHUB_TOKEN), and
@@ -36,20 +41,35 @@ jobs:
         with:
           node-version: 20
 
-      - name: Bump patch version
+      - name: Resolve the next version
         id: bump
         run: |
-          # npm version prints the new tag (e.g. v1.2.3) and updates
-          # package.json + package-lock.json without creating a git tag itself.
-          TAG=$(npm version patch --no-git-tag-version)
-          echo "tag=$TAG" >> "$GITHUB_OUTPUT"
+          set -euo pipefail
+          # Released TAGS decide what has already shipped. package.json alone is
+          # not safe: a branch cut before a release carries an older version and
+          # merging it reverts main, which made this job retry a used tag and
+          # fail with "Release.tag_name already exists". See scripts/next-version.mjs.
+          git fetch --tags --force --quiet
+          node scripts/next-version.mjs >> "$GITHUB_OUTPUT"
+
+      - name: Write the version into package.json
+        run: |
+          set -euo pipefail
+          npm version "${{ steps.bump.outputs.version }}" \
+            --no-git-tag-version --allow-same-version
 
       - name: Commit version bump back to main
         run: |
+          set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git commit -am "chore(release): ${{ steps.bump.outputs.tag }} [skip ci]"
-          git push
+          # A deliberate bump made in the PR leaves nothing to commit here.
+          if git diff --quiet; then
+            echo "package.json is already at ${{ steps.bump.outputs.version }} — nothing to commit."
+          else
+            git commit -am "chore(release): ${{ steps.bump.outputs.tag }} [skip ci]"
+            git push
+          fi
 
       - name: Publish GitHub Release
         env:

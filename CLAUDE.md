@@ -40,7 +40,7 @@ GitHub Actions is the source of truth for build, test, and deploy. Automation mu
 - **Version control discipline:**
   - Branch per task; name branches with the ClickUp task ID (e.g. `CU-86xxxx_short-description`) so automation can link them.
   - Use Conventional Commits (`feat:`, `fix:`, `test:`, `chore:`, `ci:`...).
-  - Versioning is automated: every merge to `main` auto-bumps the patch version in `package.json` and publishes a tagged GitHub Release (see `.github/workflows/release.yml`). Do **not** bump the version manually in a PR. For a minor/major release, bump `package.json` in that PR yourself and the automation will tag whatever version is on `main`.
+  - Versioning is automated: every merge to `main` publishes a tagged GitHub Release and commits the matching version back (see `.github/workflows/release.yml`). The next version is derived from the released **git tags**, not from `package.json`, so a branch carrying a stale version cannot collide with a published tag. Do **not** bump the version manually in a PR. For a minor/major release, set `package.json` in that PR to a version **above every existing tag** and the automation releases exactly that. The rule lives in `scripts/next-version.mjs` (unit tested).
   - Never commit secrets. Firebase keys, `GEMINI_API_KEY`, etc. live in GitHub Secrets / env, not in the repo.
 - If you add or change a workflow, validate the YAML and keep `permissions` minimal.
 

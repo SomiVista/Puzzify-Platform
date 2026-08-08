@@ -6,7 +6,8 @@ export default defineConfig({
   test: {
     environment: 'jsdom',
     // Unit tests live next to source; Playwright E2E specs live in /e2e.
-    include: ['src/**/*.{test,spec}.{js,ts}'],
+    // `scripts/` holds release tooling that CI depends on, so it is tested too.
+    include: ['src/**/*.{test,spec}.{js,ts}', 'scripts/**/*.{test,spec}.{js,ts}'],
     exclude: ['e2e/**', 'node_modules/**', 'dist/**', 'old-version/**'],
     coverage: {
       provider: 'v8',

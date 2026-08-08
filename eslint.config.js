@@ -53,10 +53,12 @@ export default [
     },
   },
 
-  // E2E tests (Playwright) and config files run in Node.
+  // E2E tests (Playwright), build/release tooling and config files run in Node.
   {
-    files: ['e2e/**/*.js', 'playwright.config.js'],
+    files: ['e2e/**/*.js', 'scripts/**/*.{js,mjs}', 'playwright.config.js'],
     languageOptions: {
+      ecmaVersion: 'latest',
+      sourceType: 'module',
       globals: {
         ...globals.node,
       },
