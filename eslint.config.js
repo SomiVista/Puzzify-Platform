@@ -7,6 +7,8 @@ export default [
   {
     ignores: [
       'dist/**',
+      '**/dist/**', // build output anywhere, incl. local agent worktrees
+      '.claude/**', // local tooling scratch space, never source
       '.vite/**', // Vite dependency pre-bundling cache (generated, not source)
       'node_modules/**',
       'old-version/**',

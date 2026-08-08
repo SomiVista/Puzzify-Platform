@@ -9,7 +9,7 @@
   "themeMystery": "Mistero",
   "heroKicker": "Ne hai appena giocato uno. Ora creane uno.",
   "heroHeadline": "Trasforma qualsiasi regalo in una mini escape room.",
-  "heroSub": "Puzzify trasforma un regalo digitale, un messaggio o un annuncio in una missione online personalizzata. Tu costruisci il mistero — loro giocano per sbloccare la ricompensa. Nessuna app, nessun login.",
+  "heroSub": "@:appName trasforma un regalo digitale, un messaggio o un annuncio in una missione online personalizzata. Tu costruisci il mistero — loro giocano per sbloccare la ricompensa. Nessuna app, nessun login.",
   "heroCta1": "Crea la tua prima missione — gratis",
   "heroCta2": "Guarda una demo live",
   "playerKicker": "Missione · Un Anno Insieme",
@@ -18,7 +18,7 @@
   "playerPrompt": "Dove abbiamo preso il nostro primo caffè? Una parola.",
   "inputPlaceholder": "Scrivi la tua risposta",
   "submit": "Sblocca",
-  "watermark": "Creato con Puzzify",
+  "watermark": "Creato con @:appName",
   "trustLine": "Impiega cinque minuti. Consegna qualcosa di indimenticabile.",
   "trustStats": [
     "Oltre 120k missioni giocate",
@@ -75,7 +75,7 @@
     "Lanci di prodotti",
     "Proposte"
   ],
-  "whyKicker": "Perché Puzzify",
+  "whyKicker": "Perché @:appName",
   "whyTitle": "La consegna è il regalo",
   "whySub": "Una sorpresa che sbloccano batte un link che ignorano. Costruito per convertire il momento di gioia nella missione successiva.",
   "why": [
@@ -111,7 +111,7 @@
         "Fino a 3 passaggi",
         "Moduli base enigmi",
         "Temi Festa e Mistero",
-        "Filigrana Puzzify"
+        "Filigrana @:appName"
       ]
     },
     {
@@ -144,8 +144,8 @@
   ],
   "partnerBlock": {
     "kicker": "Ora in collaborazione",
-    "title": "Puzzify × WelloWork — gioca per rafforzare la tua squadra.",
-    "desc": "Abbiamo collaborato con WelloWork, la piattaforma svedese per le prestazioni sul posto di lavoro, per portare le missioni di Puzzify all'interno degli strumenti che le aziende già utilizzano. I datori di lavoro trasformano l'onboarding, la formazione e il team building in giochi che i dipendenti vogliono davvero giocare.",
+    "title": "@:appName × WelloWork — gioca per rafforzare la tua squadra.",
+    "desc": "Abbiamo collaborato con WelloWork, la piattaforma svedese per le prestazioni sul posto di lavoro, per portare le missioni di @:appName all'interno degli strumenti che le aziende già utilizzano. I datori di lavoro trasformano l'onboarding, la formazione e il team building in giochi che i dipendenti vogliono davvero giocare.",
     "cta": "Esplora la partnership",
     "link": "https://www.wellowork.net/",
     "features": [
@@ -198,5 +198,266 @@
     }
   ],
   "footLang": "Lingua",
-  "footLegal": "© 2026 Puzzify · Realizzato per deliziose sorprese"
+  "footLegal": "© 2026 @:appName · Realizzato per deliziose sorprese",
+  "dashboard": {
+    "workspace": "Spazio di lavoro",
+    "nav": {
+      "quests": "Quest",
+      "analytics": "Statistiche",
+      "presets": "Preimpostazioni",
+      "settings": "Impostazioni"
+    },
+    "titles": {
+      "quests": "Le tue quest",
+      "analytics": "Statistiche",
+      "presets": "Preimpostazioni",
+      "settings": "Impostazioni"
+    },
+    "upgrade": {
+      "title": "Sei sul piano Gratis",
+      "body": "Ottieni funzioni avanzate e più quest.",
+      "cta": "Potenzia un regalo"
+    },
+    "plans": {
+      "free": "Piano gratuito",
+      "premium": "Premium",
+      "corporate": "Spazio aziendale"
+    },
+    "header": {
+      "searchPlaceholder": "Cerca quest…",
+      "searchLabel": "Cerca quest",
+      "notifications": "Notifiche",
+      "userSettings": "Impostazioni utente"
+    },
+    "stats": {
+      "gifts": "Regali creati in totale",
+      "plays": "Partite totali",
+      "completion": "Tasso medio di completamento",
+      "solve": "Tempo medio di risoluzione"
+    },
+    "list": {
+      "title": "Le tue quest",
+      "all": "Tutte",
+      "published": "Pubblicate",
+      "drafts": "Bozze",
+      "sortRecent": "Recenti",
+      "noResults": "Nessuna quest corrisponde alla ricerca o al filtro.",
+      "sortName": "Nome"
+    },
+    "card": {
+      "plays": "Partite",
+      "avgSolve": "Tempo medio",
+      "completion": "Completamento",
+      "statusPublished": "Pubblicata",
+      "statusDraft": "Bozza",
+      "open": "Apri",
+      "copyLink": "Copia il link",
+      "copied": "Link copiato",
+      "reward": "Ricompensa",
+      "rewards": {
+        "letter": "Lettera",
+        "video": "Video",
+        "voucher": "Buono"
+      }
+    },
+    "createHero": {
+      "title": "Crea un nuovo regalo",
+      "newQuest": "Nuova quest"
+    },
+    "empty": {
+      "title": "Crea il tuo primo regalo",
+      "body": "Costruisci una quest in pochi minuti: qualche indizio, poi la ricompensa. Parti da un’occasione e scegliamo noi tema, audio e scatola.",
+      "newQuest": "Nuova quest",
+      "kicker": "Oppure parti da un’occasione",
+      "tagline": "La consegna è il regalo."
+    },
+    "soon": {
+      "analytics": "La vista Statistiche arriva presto.",
+      "presets": "La vista Preimpostazioni arriva presto.",
+      "settings": "La vista Impostazioni arriva presto."
+    }
+  },
+  "builder": {
+    "occasions": {
+      "birthday": "Compleanno",
+      "anniversary": "Anniversario",
+      "holiday": "Festività",
+      "mysteryNight": "Notte del mistero",
+      "corporate": "Aziendale",
+      "blank": "Parti da zero"
+    },
+    "topbar": {
+      "back": "Torna alla dashboard",
+      "namePlaceholder": "Dai un nome alla quest",
+      "stepsLabel": "Passi",
+      "save": "Salva bozza",
+      "saved": "Salvato",
+      "unsaved": "Modifiche non salvate",
+      "newQuest": "Nuova quest"
+    },
+    "palette": {
+      "title": "Blocchi enigma",
+      "hint": "Trascina sulla tela, o premi per aggiungere.",
+      "add": "Aggiungi {block}",
+      "lock": {
+        "label": "Lucchetto testuale",
+        "desc": "Una risposta esatta digitata in un campo"
+      },
+      "trivia": {
+        "label": "Quiz",
+        "desc": "Da 2 a 4 opzioni, una corretta"
+      },
+      "hotspot": {
+        "label": "Punto sull’immagine",
+        "desc": "Tocca il punto giusto di un’immagine"
+      }
+    },
+    "canvas": {
+      "title": "Percorso",
+      "subtitle": "I passi si giocano dall’alto in basso, uno alla volta.",
+      "start": "Inizio",
+      "startCaption": "La persona apre il link",
+      "finale": "Gran finale",
+      "finaleCaption": "Qui si sblocca la ricompensa",
+      "empty": "Rilascia qui un blocco enigma",
+      "emptyBody": "I passi si giocano nell’ordine in cui li disponi.",
+      "dropHere": "Rilascia qui",
+      "step": "Passo {n}",
+      "unlocks": "Sblocca il passo {n}",
+      "lockedUntil": "Bloccato finché non risolvi il passo {n}",
+      "playsFirst": "Si gioca per primo",
+      "incomplete": "Da configurare",
+      "ready": "Pronto",
+      "moveUp": "Sposta prima",
+      "moveDown": "Sposta dopo",
+      "delete": "Elimina passo",
+      "untitled": "Passo senza titolo"
+    },
+    "inspector": {
+      "title": "Impostazioni del passo",
+      "stepOf": "Passo {n} di {total}",
+      "prev": "Precedente",
+      "next": "Successivo",
+      "none": "Nessun passo selezionato",
+      "noneBody": "Scegli una scheda sulla tela, o aggiungi un blocco enigma per iniziare.",
+      "kind": "Tipo di blocco",
+      "fields": {
+        "title": "Titolo del passo",
+        "titlePlaceholder": "Intestazione facoltativa",
+        "prompt": "Domanda",
+        "promptPlaceholder": "Cosa deve capire chi riceve il regalo?",
+        "answer": "Risposta corretta",
+        "answerPlaceholder": "La risposta esatta",
+        "caseSensitive": "Distingui maiuscole",
+        "options": "Opzioni",
+        "optionPlaceholder": "Opzione {n}",
+        "addOption": "Aggiungi opzione",
+        "removeOption": "Rimuovi opzione",
+        "correct": "Segna come corretta",
+        "imageUrl": "URL dell’immagine",
+        "imagePlaceholder": "https://…",
+        "target": "Area bersaglio (% dell’immagine)",
+        "targetX": "X",
+        "targetY": "Y",
+        "targetW": "Larghezza",
+        "targetH": "Altezza"
+      },
+      "advanced": {
+        "title": "Impostazioni avanzate",
+        "hintText": "Testo dell’indizio",
+        "hintHelp": "Mostrato solo quando si tocca l’icona dell’indizio.",
+        "hintPlaceholder": "Una piccola spinta…",
+        "successMessage": "Messaggio di successo",
+        "successHelp": "Compare subito dopo una risposta corretta.",
+        "successPlaceholder": "Esatto! Quella data non l’hai mai dimenticata.",
+        "maxAttempts": "Tentativi massimi",
+        "maxAttemptsHelp": "Lascia vuoto per tentativi illimitati (1–10).",
+        "unlimited": "Illimitati"
+      }
+    },
+    "theme": {
+      "title": "Tema",
+      "preset": "Tema preimpostato",
+      "ambientAudio": "Audio ambientale",
+      "ambientAudioHelp": "Parte dopo il primo tocco.",
+      "particles": "Particelle iniziali",
+      "particlesHelp": "Movimento decorativo sulla schermata iniziale.",
+      "on": "Attivo",
+      "off": "Disattivo"
+    },
+    "preview": {
+      "title": "Anteprima dal vivo",
+      "empty": "Aggiungi un passo per vederlo in anteprima.",
+      "hint": "Indizio",
+      "submit": "Sblocca",
+      "inputPlaceholder": "Scrivi la tua risposta",
+      "attempts": "{n} tentativi",
+      "watermark": "Creato con @:appName"
+    },
+    "issues": {
+      "promptRequired": "Aggiungi una domanda.",
+      "answerRequired": "Aggiungi la risposta corretta.",
+      "optionsRequired": "Aggiungi almeno due opzioni.",
+      "correctOptionRequired": "Compila l’opzione segnata come corretta.",
+      "imageRequired": "Aggiungi l’URL di un’immagine.",
+      "targetRequired": "Imposta un’area bersaglio.",
+      "maxAttemptsRange": "I tentativi massimi devono essere tra 1 e 10.",
+      "unknownKind": "Tipo di blocco non supportato.",
+      "nameRequired": "Dai un nome alla quest.",
+      "stepsRequired": "Aggiungi almeno un passo.",
+      "stepsIncomplete": "Completa tutti i passi."
+    },
+    "reward": {
+      "title": "Ricompensa",
+      "type": "Tipo di ricompensa",
+      "letter": "Lettera",
+      "video": "Video",
+      "voucher": "Buono",
+      "headline": "Titolo della ricompensa",
+      "headlinePlaceholder": "Buon compleanno, mamma!",
+      "message": "Messaggio",
+      "messagePlaceholder": "Scrivi il messaggio che sbloccheranno…",
+      "videoUrl": "URL del video",
+      "videoPlaceholder": "https://…",
+      "code": "Codice",
+      "codePlaceholder": "GIFT-2026"
+    },
+    "publish": {
+      "action": "Pubblica",
+      "update": "Aggiorna il link",
+      "published": "Pubblicata",
+      "copyLink": "Copia il link",
+      "copied": "Link copiato",
+      "shareHint": "Manda questo link alla persona per cui l’hai creata.",
+      "blocked": "Completa tutti i passi prima di pubblicare."
+    }
+  },
+  "player": {
+    "loading": "Apertura del tuo regalo…",
+    "notFoundTitle": "Questo link è scaduto",
+    "notFoundBody": "Non troviamo nessuna quest qui. Chiedi un nuovo link a chi te l’ha mandato.",
+    "notFoundCta": "Creane una tua",
+    "stepOf": "Passo {n} di {total}",
+    "hint": "Indizio",
+    "showHint": "Ti serve un indizio?",
+    "attemptsLeft": "{n} tentativi rimasti",
+    "lastAttempt": "Ultimo tentativo",
+    "submit": "Sblocca",
+    "inputPlaceholder": "Scrivi la tua risposta",
+    "incorrect": "Quasi — riprova.",
+    "tapPrompt": "Tocca il punto giusto",
+    "lockedTitle": "Tentativi esauriti",
+    "lockedBody": "Hai usato tutti i tentativi per questo passo.",
+    "restart": "Ricomincia",
+    "audioOn": "Attiva l’audio",
+    "audioOff": "Disattiva l’audio",
+    "finaleKicker": "Ce l’hai fatta",
+    "finaleTitle": "La tua ricompensa",
+    "copyCode": "Copia il codice",
+    "copied": "Copiato!",
+    "ctaTitle": "Vuoi sorprendere qualcun altro?",
+    "ctaBody": "Crea la tua prima quest gratis.",
+    "ctaButton": "Creane una tua",
+    "watermark": "Creato con @:appName"
+  }
 }

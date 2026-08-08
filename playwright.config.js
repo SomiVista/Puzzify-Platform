@@ -1,7 +1,7 @@
 import { defineConfig, devices } from '@playwright/test'
 
 /**
- * Playwright config for Puzzify.
+ * Playwright config.
  * Builds the app and serves the production preview, then runs E2E specs
  * against desktop and a mobile viewport (≈90% of recipients are mobile).
  */

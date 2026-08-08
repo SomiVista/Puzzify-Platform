@@ -1,8 +1,14 @@
 <template>
   <div class="placeholder-view">
-    <p>Settings view coming soon.</p>
+    <p>{{ t('dashboard.soon.settings') }}</p>
   </div>
 </template>
+
+<script setup>
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
+</script>
 
 <style scoped>
 .placeholder-view {
@@ -10,6 +16,6 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  color: var(--pz-muted);
+  color: var(--color-muted);
 }
 </style>

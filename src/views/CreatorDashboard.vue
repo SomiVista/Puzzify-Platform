@@ -17,19 +17,38 @@ import DashboardHeader from '../components/dashboard/DashboardHeader.vue'
 .dashboard-layout {
   display: flex;
   height: 100vh;
-  width: 100vw;
-  background: var(--pz-surface);
+  /* 100vw ignores the scrollbar gutter and forces a horizontal overflow. */
+  width: 100%;
+  background: var(--color-surface);
   overflow: hidden;
 }
 .main-column {
   flex: 1;
+  min-width: 0;
   display: flex;
   flex-direction: column;
-  background: radial-gradient(120% 90% at 88% -12%, var(--pz-surface-2), var(--pz-bg) 56%);
+  background: radial-gradient(120% 90% at 88% -12%, var(--color-surface-2), var(--color-bg) 56%);
   overflow: hidden;
 }
 .main-content {
   flex: 1;
   overflow-y: auto;
+}
+
+/* Below the sidebar breakpoint the rail becomes a top bar and the page scrolls
+   naturally, rather than the fixed 250px rail eating most of a phone screen. */
+@media (max-width: 900px) {
+  .dashboard-layout {
+    flex-direction: column;
+    height: auto;
+    min-height: 100vh;
+    overflow: visible;
+  }
+  .main-column {
+    overflow: visible;
+  }
+  .main-content {
+    overflow-y: visible;
+  }
 }
 </style>

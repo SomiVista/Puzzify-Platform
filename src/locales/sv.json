@@ -9,7 +9,7 @@
   "themeMystery": "Mysterium",
   "heroKicker": "Du har precis spelat ett. Gör nu ett eget.",
   "heroHeadline": "Förvandla vilken present som helst till ett miniescape-room.",
-  "heroSub": "Puzzify förvandlar en digital present, ett meddelande eller ett tillkännagivande till ett personligt online-äventyr. Du bygger mysteriet — de spelar för att låsa upp sin belöning. Ingen app, ingen inloggning.",
+  "heroSub": "@:appName förvandlar en digital present, ett meddelande eller ett tillkännagivande till ett personligt online-äventyr. Du bygger mysteriet — de spelar för att låsa upp sin belöning. Ingen app, ingen inloggning.",
   "heroCta1": "Skapa ditt första äventyr — gratis",
   "heroCta2": "Se en live-demo",
   "playerKicker": "Äventyr · Ett år av oss",
@@ -18,7 +18,7 @@
   "playerPrompt": "Var delade vi vår första fika? Ett ord.",
   "inputPlaceholder": "Skriv ditt svar",
   "submit": "Lås upp",
-  "watermark": "Skapad med Puzzify",
+  "watermark": "Skapad med @:appName",
   "trustLine": "Ägna fem minuter. Leverera något oförglömligt.",
   "trustStats": [
     "Över 120k spelade äventyr",
@@ -75,7 +75,7 @@
     "Produktlanseringar",
     "Frierier"
   ],
-  "whyKicker": "Varför Puzzify",
+  "whyKicker": "Varför @:appName",
   "whyTitle": "Leveransen är presenten",
   "whySub": "En överraskning de låser upp slår en länk de ignorerar. Byggt för att omvandla glädjeögonblicket till nästa äventyr.",
   "why": [
@@ -111,7 +111,7 @@
         "Upp till 3 steg",
         "Grundläggande pusselmoduler",
         "Teman: Firande & Mysterium",
-        "Puzzify-vattenstämpel"
+        "@:appName-vattenstämpel"
       ]
     },
     {
@@ -144,8 +144,8 @@
   ],
   "partnerBlock": {
     "kicker": "Samarbetar nu",
-    "title": "Puzzify × WelloWork — spela er till ett starkare team.",
-    "desc": "Vi har slagit oss samman med WelloWork, den svenska plattformen för arbetsprestation, för att ta in Puzzify-äventyr i de verktyg som företag redan använder. Arbetsgivare förvandlar onboarding, utbildning och teambuilding till spel som anställda faktiskt vill spela.",
+    "title": "@:appName × WelloWork — spela er till ett starkare team.",
+    "desc": "Vi har slagit oss samman med WelloWork, den svenska plattformen för arbetsprestation, för att ta in @:appName-äventyr i de verktyg som företag redan använder. Arbetsgivare förvandlar onboarding, utbildning och teambuilding till spel som anställda faktiskt vill spela.",
     "cta": "Utforska partnerskapet",
     "link": "https://www.wellowork.net/",
     "features": [
@@ -198,5 +198,266 @@
     }
   ],
   "footLang": "Språk",
-  "footLegal": "© 2026 Puzzify · Gjord för härliga överraskningar"
+  "footLegal": "© 2026 @:appName · Gjord för härliga överraskningar",
+  "dashboard": {
+    "workspace": "Arbetsyta",
+    "nav": {
+      "quests": "Uppdrag",
+      "analytics": "Statistik",
+      "presets": "Förval",
+      "settings": "Inställningar"
+    },
+    "titles": {
+      "quests": "Dina uppdrag",
+      "analytics": "Statistik",
+      "presets": "Förval",
+      "settings": "Inställningar"
+    },
+    "upgrade": {
+      "title": "Du kör Gratis",
+      "body": "Få avancerade funktioner och fler uppdrag.",
+      "cta": "Uppgradera en present"
+    },
+    "plans": {
+      "free": "Gratisplan",
+      "premium": "Premium",
+      "corporate": "Företagsyta"
+    },
+    "header": {
+      "searchPlaceholder": "Sök uppdrag…",
+      "searchLabel": "Sök uppdrag",
+      "notifications": "Aviseringar",
+      "userSettings": "Användarinställningar"
+    },
+    "stats": {
+      "gifts": "Totalt skapade presenter",
+      "plays": "Totalt antal spel",
+      "completion": "Snittandel klarade",
+      "solve": "Snittid att lösa"
+    },
+    "list": {
+      "title": "Dina uppdrag",
+      "all": "Alla",
+      "published": "Publicerade",
+      "drafts": "Utkast",
+      "sortRecent": "Senaste",
+      "noResults": "Inga uppdrag matchar din sökning eller ditt filter.",
+      "sortName": "Namn"
+    },
+    "card": {
+      "plays": "Spel",
+      "avgSolve": "Snittid",
+      "completion": "Klarade",
+      "statusPublished": "Publicerad",
+      "statusDraft": "Utkast",
+      "open": "Öppna",
+      "copyLink": "Kopiera länken",
+      "copied": "Länk kopierad",
+      "reward": "Belöning",
+      "rewards": {
+        "letter": "Brev",
+        "video": "Video",
+        "voucher": "Presentkort"
+      }
+    },
+    "createHero": {
+      "title": "Skapa en ny present",
+      "newQuest": "Nytt uppdrag"
+    },
+    "empty": {
+      "title": "Skapa din första present",
+      "body": "Bygg ett uppdrag på några minuter — några ledtrådar, sedan belöningen. Utgå från ett tillfälle så väljer vi tema, ljud och ask åt dig.",
+      "newQuest": "Nytt uppdrag",
+      "kicker": "Eller utgå från ett tillfälle",
+      "tagline": "Leveransen är presenten."
+    },
+    "soon": {
+      "analytics": "Statistikvyn kommer snart.",
+      "presets": "Förvalsvyn kommer snart.",
+      "settings": "Inställningsvyn kommer snart."
+    }
+  },
+  "builder": {
+    "occasions": {
+      "birthday": "Födelsedag",
+      "anniversary": "Årsdag",
+      "holiday": "Högtid",
+      "mysteryNight": "Mysteriekväll",
+      "corporate": "Företag",
+      "blank": "Börja tomt"
+    },
+    "topbar": {
+      "back": "Tillbaka till översikten",
+      "namePlaceholder": "Namnge ditt uppdrag",
+      "stepsLabel": "Steg",
+      "save": "Spara utkast",
+      "saved": "Sparat",
+      "unsaved": "Osparade ändringar",
+      "newQuest": "Nytt uppdrag"
+    },
+    "palette": {
+      "title": "Pusselblock",
+      "hint": "Dra ut på ytan, eller tryck för att lägga till.",
+      "add": "Lägg till {block}",
+      "lock": {
+        "label": "Text- / lösenordslås",
+        "desc": "Ett exakt svar som skrivs in i ett fält"
+      },
+      "trivia": {
+        "label": "Frågesport",
+        "desc": "2–4 alternativ, ett av dem rätt"
+      },
+      "hotspot": {
+        "label": "Bildpunkt",
+        "desc": "Tryck på rätt ställe i en bild"
+      }
+    },
+    "canvas": {
+      "title": "Flöde",
+      "subtitle": "Stegen spelas uppifrån och ner, ett i taget.",
+      "start": "Start",
+      "startCaption": "Mottagaren öppnar länken",
+      "finale": "Stora finalen",
+      "finaleCaption": "Belöningen låses upp här",
+      "empty": "Släpp ett pusselblock här",
+      "emptyBody": "Stegen spelas i den ordning du placerar dem.",
+      "dropHere": "Släpp här",
+      "step": "Steg {n}",
+      "unlocks": "Låser upp steg {n}",
+      "lockedUntil": "Låst tills steg {n} är löst",
+      "playsFirst": "Spelas först",
+      "incomplete": "Behöver ställas in",
+      "ready": "Klart",
+      "moveUp": "Flytta tidigare",
+      "moveDown": "Flytta senare",
+      "delete": "Ta bort steg",
+      "untitled": "Namnlöst steg"
+    },
+    "inspector": {
+      "title": "Steginställningar",
+      "stepOf": "Steg {n} av {total}",
+      "prev": "Föregående",
+      "next": "Nästa",
+      "none": "Inget steg valt",
+      "noneBody": "Välj ett kort på ytan, eller lägg till ett pusselblock för att börja.",
+      "kind": "Blocktyp",
+      "fields": {
+        "title": "Stegrubrik",
+        "titlePlaceholder": "Valfri rubrik",
+        "prompt": "Fråga",
+        "promptPlaceholder": "Vad ska mottagaren lista ut?",
+        "answer": "Rätt svar",
+        "answerPlaceholder": "Det exakta svaret",
+        "caseSensitive": "Skiftlägeskänsligt",
+        "options": "Alternativ",
+        "optionPlaceholder": "Alternativ {n}",
+        "addOption": "Lägg till alternativ",
+        "removeOption": "Ta bort alternativ",
+        "correct": "Markera som rätt",
+        "imageUrl": "Bild-URL",
+        "imagePlaceholder": "https://…",
+        "target": "Målyta (% av bilden)",
+        "targetX": "X",
+        "targetY": "Y",
+        "targetW": "Bredd",
+        "targetH": "Höjd"
+      },
+      "advanced": {
+        "title": "Avancerade inställningar",
+        "hintText": "Ledtrådstext",
+        "hintHelp": "Visas bara när mottagaren trycker på ledtrådsikonen.",
+        "hintPlaceholder": "En liten knuff…",
+        "successMessage": "Bekräftelsemeddelande",
+        "successHelp": "Visas direkt efter ett rätt svar.",
+        "successPlaceholder": "Rätt! Du kom alltid ihåg det datumet.",
+        "maxAttempts": "Max antal försök",
+        "maxAttemptsHelp": "Lämna tomt för obegränsat antal gissningar (1–10).",
+        "unlimited": "Obegränsat"
+      }
+    },
+    "theme": {
+      "title": "Tema",
+      "preset": "Temaförval",
+      "ambientAudio": "Bakgrundsljud",
+      "ambientAudioHelp": "Spelas efter mottagarens första tryck.",
+      "particles": "Partiklar vid start",
+      "particlesHelp": "Dekorativ rörelse på öppningsskärmen.",
+      "on": "På",
+      "off": "Av"
+    },
+    "preview": {
+      "title": "Direktförhandsvisning",
+      "empty": "Lägg till ett steg för att förhandsgranska det.",
+      "hint": "Ledtråd",
+      "submit": "Lås upp",
+      "inputPlaceholder": "Skriv ditt svar",
+      "attempts": "{n} försök",
+      "watermark": "Skapad med @:appName"
+    },
+    "issues": {
+      "promptRequired": "Lägg till en fråga.",
+      "answerRequired": "Lägg till rätt svar.",
+      "optionsRequired": "Lägg till minst två alternativ.",
+      "correctOptionRequired": "Fyll i alternativet du markerat som rätt.",
+      "imageRequired": "Lägg till en bild-URL.",
+      "targetRequired": "Ange en målyta.",
+      "maxAttemptsRange": "Max antal försök måste vara mellan 1 och 10.",
+      "unknownKind": "Blocktypen stöds inte.",
+      "nameRequired": "Namnge ditt uppdrag.",
+      "stepsRequired": "Lägg till minst ett steg.",
+      "stepsIncomplete": "Slutför alla steg."
+    },
+    "reward": {
+      "title": "Belöning",
+      "type": "Typ av belöning",
+      "letter": "Brev",
+      "video": "Video",
+      "voucher": "Presentkort",
+      "headline": "Belöningens titel",
+      "headlinePlaceholder": "Grattis, mamma!",
+      "message": "Meddelande",
+      "messagePlaceholder": "Skriv hälsningen de låser upp…",
+      "videoUrl": "Video-URL",
+      "videoPlaceholder": "https://…",
+      "code": "Kod",
+      "codePlaceholder": "GIFT-2026"
+    },
+    "publish": {
+      "action": "Publicera",
+      "update": "Uppdatera länken",
+      "published": "Publicerad",
+      "copyLink": "Kopiera länken",
+      "copied": "Länk kopierad",
+      "shareHint": "Skicka länken till den du gjorde den för.",
+      "blocked": "Slutför alla steg innan du publicerar."
+    }
+  },
+  "player": {
+    "loading": "Öppnar din present…",
+    "notFoundTitle": "Länken har gått ut",
+    "notFoundBody": "Vi hittade inget uppdrag här. Be den som skickade den om en ny länk.",
+    "notFoundCta": "Gör ett eget",
+    "stepOf": "Steg {n} av {total}",
+    "hint": "Ledtråd",
+    "showHint": "Behöver du en ledtråd?",
+    "attemptsLeft": "{n} försök kvar",
+    "lastAttempt": "Sista försöket",
+    "submit": "Lås upp",
+    "inputPlaceholder": "Skriv ditt svar",
+    "incorrect": "Inte riktigt — försök igen.",
+    "tapPrompt": "Tryck på rätt ställe",
+    "lockedTitle": "Slut på försök",
+    "lockedBody": "Du har använt alla gissningar för det här steget.",
+    "restart": "Börja om",
+    "audioOn": "Slå på ljudet",
+    "audioOff": "Stäng av ljudet",
+    "finaleKicker": "Du klarade det",
+    "finaleTitle": "Din belöning",
+    "copyCode": "Kopiera koden",
+    "copied": "Kopierat!",
+    "ctaTitle": "Vill du överraska någon annan?",
+    "ctaBody": "Skapa ditt första uppdrag gratis.",
+    "ctaButton": "Gör ett eget",
+    "watermark": "Skapad med @:appName"
+  }
 }

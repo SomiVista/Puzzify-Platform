@@ -1,10 +1,10 @@
-/* Puzzify spacing scale: 4 · 8 · 12 · 16 · 24 · 32 · 48 */
+/* Spacing scale: 4 · 8 · 12 · 16 · 24 · 32 · 48 */
 :root {
-  --pz-sp-1: 4px;
-  --pz-sp-2: 8px;
-  --pz-sp-3: 12px;
-  --pz-sp-4: 16px;
-  --pz-sp-5: 24px;
-  --pz-sp-6: 32px;
-  --pz-sp-7: 48px;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
 }

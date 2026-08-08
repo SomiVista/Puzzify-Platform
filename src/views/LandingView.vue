@@ -5,7 +5,7 @@ import TrustStrip from '../components/sections/TrustStrip.vue'
 import HowItWorks from '../components/sections/HowItWorks.vue'
 import PuzzleTypes from '../components/sections/PuzzleTypes.vue'
 import UseCases from '../components/sections/UseCases.vue'
-import WhyPuzzify from '../components/sections/WhyPuzzify.vue'
+import WhySection from '../components/sections/WhySection.vue'
 import PartnersSection from '../components/sections/PartnersSection.vue'
 import PricingSection from '../components/sections/PricingSection.vue'
 import FinalCta from '../components/sections/FinalCta.vue'
@@ -19,7 +19,7 @@ import TheFooter from '../components/layout/TheFooter.vue'
   <HowItWorks />
   <PuzzleTypes />
   <UseCases />
-  <WhyPuzzify />
+  <WhySection />
   <PartnersSection />
   <PricingSection />
   <FinalCta />

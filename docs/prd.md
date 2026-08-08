@@ -1,6 +1,6 @@
 # Product Requirement Document (PRD)
 
-## Project Name: Puzzify
+## Project Name: Quest Platform
 
 * **Version:** 1.1
 * **Status:** Living document — MVP in development
@@ -39,11 +39,11 @@ The digital gifting and online interaction industries currently face three funda
 
 ### 1.2. The Solution
 
-**Puzzify** gamifies the digital gifting process, shifting the experience from a simple "delivery" to an **Exploration Experience**. Senders spend just a few minutes configuring a highly personalized digital "Quest." This investment of time and thought exponentially increases the emotional value of the gift for the recipient, even if the final reward is a simple text message.
+**Quest Platform** gamifies the digital gifting process, shifting the experience from a simple "delivery" to an **Exploration Experience**. Senders spend just a few minutes configuring a highly personalized digital "Quest." This investment of time and thought exponentially increases the emotional value of the gift for the recipient, even if the final reward is a simple text message.
 
 ### 1.3. Core Value Proposition
 
-**"Puzzify turns any digital gift, message, or announcement into a personalized, online mini-escape room. Creators build the mystery; recipients play the game to unlock their reward."**
+**"Quest Platform turns any digital gift, message, or announcement into a personalized, online mini-escape room. Creators build the mystery; recipients play the game to unlock their reward."**
 
 ### 1.4. Target Users & Personas
 
@@ -58,7 +58,7 @@ The digital gifting and online interaction industries currently face three funda
 
 ## 2. Core Pillars: Universal & Modular
 
-To ensure Puzzify operates as a truly generic, scalable, and globally accessible platform, it is built upon four foundational pillars.
+To ensure Quest Platform operates as a truly generic, scalable, and globally accessible platform, it is built upon four foundational pillars.
 
 ### 2.1. Occasion-Agnostic Architecture
 
@@ -71,7 +71,7 @@ The product does not hardcode theme logic for any specific event in the frontend
 | **Ambient Sound** | Background audio loops that enhance immersive interaction. | A soft lo-fi melody or a mysterious, suspenseful background track. |
 | **Box Asset** | The visual model/icon of the final container that unlocks. | A classic ribboned gift box, a heavy steel safe, a cauldron, or a confidential envelope. |
 
-**Implementation contract `[Shipped]`:** components read **only semantic design tokens** (`--pz-primary`, `--pz-surface`, `--pz-text`, …) — never raw hex values and never occasion names. A theme is a preset object in `src/themes.js` that assigns values to those token names; the `applyTheme()` helper applies it at runtime by setting the CSS variables, stamping a `data-pz-theme` attribute, flipping particle motion, and swapping the visible box asset. Adding a new occasion means adding **one preset object** — zero component edits.
+**Implementation contract `[Shipped]`:** components read **only semantic design tokens** (`--color-primary`, `--color-surface`, `--color-text`, …) — never raw hex values and never occasion names. A theme is a preset object in `src/themes.js` that assigns values to those token names. Every themed surface — the app shell (`App.vue`), the builder's live preview, and the player — applies a preset the same way: `themeVars(id)` is bound as inline custom properties and `data-theme="<id>"` is stamped on the same container, so CSS can also key off the active preset. `src/assets/tokens/colors.css` mirrors the presets for surfaces rendered outside a themed container, and `src/themes.spec.js` fails the build if the two drift. Adding a new occasion means adding **one preset object** — zero component edits.
 
 #### 2.1.1. Named Theme Presets
 
@@ -94,7 +94,7 @@ Four presets are implemented in `src/themes.js` (the single source of truth for 
 **Implementation contract `[Shipped — landing page]`:**
 
 * All layout CSS uses **logical properties** (`inset-inline-start/end`, `margin-inline-*`, `text-align: start`) — "mirror, don't flip." No hardcoded left/right.
-* The document `dir` attribute is bound from the global Pinia store; selecting Persian sets `dir="rtl"` and applies the `.pz-lang-fa` class, which swaps display and UI fonts to **Vazirmatn**.
+* The document `dir` attribute is bound from the global Pinia store; selecting Persian sets `dir="rtl"` and applies the `.lang-fa` class, which swaps display and UI fonts to **Vazirmatn**.
 * Translations are managed with **vue-i18n**; adding a locale means adding one JSON file to `src/locales/`.
 
 **Shipped locales (9):**
@@ -108,29 +108,29 @@ Four presets are implemented in `src/themes.js` (the single source of truth for 
 | `de` | German | LTR | |
 | `pt` | Portuguese | LTR | |
 | `it` | Italian | LTR | |
-| `fa` | Persian | **RTL** | Vazirmatn font swap via `.pz-lang-fa` |
+| `fa` | Persian | **RTL** | Vazirmatn font swap via `.lang-fa` |
 | `ar` | Arabic | **RTL** | Vazirmatn |
 
 **Requirement:** every authenticated surface (Sender Dashboard, Quest Builder) must consume vue-i18n message keys — no hardcoded UI strings. *(Current gap: dashboard strings are hardcoded English — see Section 9.)*
 
-### 2.3. JSON-Driven Engine `[Not started]`
+### 2.3. JSON-Driven Engine `[Shipped]`
 
 The platform enforces a strict decoupling of raw puzzle data from the rendering UI. The client-side application evaluates a structured JSON object to render the step-by-step interface dynamically. This keeps the bundle size exceptionally lightweight, allows creators to make real-time edits without rebuilding, and simplifies database storage: each quest is a single document addressed by an unguessable identifier and served on the canonical player path **`/q/{questId}`** (see Section 8 for the full URL scheme).
 
 ### 2.4. Design System as Source of Truth
 
-The normative design reference is **`docs/design.md`** ("Puzzify Design System"). The PRD deliberately does not duplicate visual specifications; where this document and `design.md` describe the same surface, `design.md` governs appearance and this document governs behavior.
+The normative design reference is **`docs/design.md`** ("Quest Platform Design System"). The PRD deliberately does not duplicate visual specifications; where this document and `design.md` describe the same surface, `design.md` governs appearance and this document governs behavior.
 
-* **Tokens `[Shipped]`:** semantic `--pz-*` variables defined in `src/assets/tokens/` (`colors`, `typography`, `spacing`, `radius`, `elevation`, `motion`, `base`); theme values in `src/themes.js`.
+* **Tokens `[Shipped]`:** semantic design-token variables (`--color-*`, `--font-*`, `--space-*`, `--radius-*`, `--shadow-*`) defined in `src/assets/tokens/` (`colors`, `typography`, `spacing`, `radius`, `elevation`, `motion`, `base`); theme values in `src/themes.js`.
 * **Typography:** Bricolage Grotesque (display), IBM Plex Sans (UI/body), IBM Plex Mono (code/voucher codes), Vazirmatn (Persian/Arabic) — all self-hosted `.woff2`.
-* **Motion:** CSS-only animation (`--pz-dur: .32s`, custom cubic-bezier easing); all decorative motion honors `prefers-reduced-motion`.
+* **Motion:** CSS-only animation (`--duration: .32s`, custom cubic-bezier easing); all decorative motion honors `prefers-reduced-motion`.
 * **Seven design principles** (from `design.md`): the theme is the product · tension, then relief · thumb-first · "two seconds or it's gone" · one step, one job · mirror, don't flip · delight everyone.
 
 ---
 
 ## 3. System Architecture & Technology Stack
 
-Puzzify is a single Vue SPA today, structured so the two experiences (Creator Studio and Interactive Player) stay decoupled and the Player can later be split/optimized independently to protect its load budget.
+Quest Platform is a single Vue SPA today, structured so the two experiences (Creator Studio and Interactive Player) stay decoupled and the Player can later be split/optimized independently to protect its load budget.
 
 | Layer | Technology | Status |
 | :--- | :--- | :--- |
@@ -141,7 +141,7 @@ Puzzify is a single Vue SPA today, structured so the two experiences (Creator St
 | i18n | **vue-i18n 11** — 9 locale JSON files in `src/locales/` | Shipped |
 | Icons | **Lucide** (`lucide-vue-next`) | Shipped |
 | Styling | Plain CSS with design tokens (`src/assets/tokens/`); no CSS framework | Shipped |
-| Theming | Preset objects + `applyTheme()` in `src/themes.js` | Shipped |
+| Theming | Preset objects + `themeVars()` in `src/themes.js`, bound as inline tokens + `data-theme` | Shipped |
 | Hosting | **Firebase Hosting**, project `puzzify-platform` (SPA rewrite to `/index.html`) | Shipped |
 | Backend (planned) | **Firebase Auth** (creator accounts), **Firestore** (quest documents, analytics), **Cloud Functions** (secure reward endpoint), **Storage** (media uploads) | Not started |
 | Unit testing | **Vitest 2** + **Vue Test Utils** (jsdom) | Shipped |
@@ -158,13 +158,13 @@ src/
     sections/          Landing-page sections (hero, pricing, use cases, …)
     layout/            Header, footer
     dashboard/         Sidebar, header, quest cards, KPI row, empty state
-    ui/                Shared kit: PzButton, PzBadge, IconButton, BoxStage
+    ui/                Shared kit: BaseButton, BaseBadge, BaseIconButton, BaseBoxStage
   stores/              Pinia store(s)
   locales/             9 locale JSON files
   assets/tokens/       Design-token CSS files
-  themes.js            Theme presets + applyTheme()
+  themes.js            Theme presets + themeVars()/themeOf()
 e2e/                   Playwright specs
-docs/                  prd.md, design.md, dashboard design handoff
+docs/                  prd.md, design.md
 .github/workflows/     ci-cd.yml, release.yml, auto-pr-description.yml
 old-version/           Legacy prototype — reference only, out of scope
 ```
@@ -179,7 +179,7 @@ The application splits into two decoupled core experiences — the **Creator Stu
 
 A dedicated marketing and product introduction page at `/` that showcases the platform, highlights use cases, and drives new creator sign-ups.
 
-Shipped sections, in order: **Hero** (headline, primary CTA, animated phone mock of the Player with a live particle field and theme switching), **Trust strip**, **How it works** (create → send → play), **Puzzle types showcase** (the three MVP blocks), **Use cases**, **Why Puzzify**, **Partners** (Puzzify × WelloWork collaboration block), **Pricing** (the three tiers of Section 5.1), **Final CTA**, and a footer.
+Shipped sections, in order: **Hero** (headline, primary CTA, animated phone mock of the Player with a live particle field and theme switching), **Trust strip**, **How it works** (create → send → play), **Puzzle types showcase** (the three MVP blocks), **Use cases**, **Why Quest Platform**, **Partners** (Quest Platform × WelloWork collaboration block), **Pricing** (the three tiers of Section 5.1), **Final CTA**, and a footer.
 
 Requirements:
 
@@ -189,31 +189,31 @@ Requirements:
 
 ### 4.2. Creator Studio (Sender Experience)
 
-#### 4.2.1. Sender Dashboard `[In progress]`
+#### 4.2.1. Sender Dashboard `[Shipped — on local persistence]`
 
-The creator's home after sign-in: view, manage, and track every quest. The layout follows the approved **"Direction A"** design (persistent left sidebar + airy card grid — see `docs/README.md` and the standalone HTML handoff in `docs/`). Routes: `/dashboard` redirects to `/dashboard/quests`, with sibling views `analytics`, `presets`, and `settings`.
+The creator's home after sign-in: view, manage, and track every quest. The layout follows the approved **"Direction A"** design (persistent left sidebar + airy card grid). Routes: `/dashboard` redirects to `/dashboard/quests`, with sibling views `analytics`, `presets`, and `settings`.
 
 * **Sidebar:** logo lockup; "Workspace" navigation — **Quests**, **Analytics**, **Presets**, **Settings**; an **Upgrade card** pinned to the bottom, shown **only when `planTier === 'free'`** (hidden for premium/corporate); user row with avatar initials, name, and plan label.
 * **Header:** time-of-day greeting with the creator's name; a search field that live-filters the quest list by name; notification bell; avatar. All interactive targets ≥ 44 px.
 * **Create hero:** "Start a new gift" panel with a primary **New quest** button and **six occasion presets** that pre-seed the quest's theme, ambient audio, and reward box: Birthday, Anniversary, Holiday (→ `birthday` theme), Mystery night (→ `mystery`), Corporate (→ `corporate`), and Start blank (creator's choice). Selecting either path opens the Quest Builder (§4.2.2).
 * **KPI row:** four derived (never stored) metrics — **Total gifts** (with published count), **Total plays**, **Average completion** (published quests only), **Average solve time** (played quests only).
 * **Quest list:** segmented filter **All / Published / Drafts** (client-side), sort control (default: recent activity), and a responsive card grid. Each **quest card** shows: occasion kicker, quest name, status badge (Published = success tone, Draft = neutral), step count with per-step type glyphs (`lock` / `trivia` / `hotspot`), metrics (plays, average solve time, reward type `video` / `letter` / `voucher`), a completion-rate bar, and a footer with relative last-activity time, a **copy-link** button (clipboard + confirmation toast), and **Open** (→ quest editor).
-* **Empty state (first run):** centered BoxStage gift illustration, "Create your first gift" heading, New quest CTA, the same six occasion presets, and the signature line *"The delivery is the gift."*
+* **Empty state (first run):** centered BaseBoxStage gift illustration, "Create your first gift" heading, New quest CTA, the same six occasion presets, and the signature line *"The delivery is the gift."*
 * **State model:** `planTier: 'free' | 'premium' | 'corporate'`; `quests[]` (name, occasion, steps, step kinds, status, plays, completion, average solve, reward type, last activity); search / filter / sort state. KPIs are computed from `quests[]`.
 * **Data requirement:** the dashboard must load the signed-in creator's quests and play analytics from Firestore. *Currently it renders hardcoded mock data (six sample quests, persona "Maya Kapoor") — see Section 9.*
 * Analytics, Presets, and Settings views are routed placeholders pending specification. `[Not started]`
 
-#### 4.2.2. Quest Builder — Canvas-Style Design Engine `[Not started]`
+#### 4.2.2. Quest Builder — Canvas-Style Design Engine `[Shipped]`
 
 * **Canvas-Style Design Engine:** a rich design experience featuring drag-and-drop interfaces and canvas-style tools for building the puzzle flow and placing elements intuitively.
 * **Live Output Preview:** a real-time preview panel allowing the sender to interact with and test the quest exactly as the recipient will see it.
 * **Flow Manager:** a step-by-step configuration wizard to add, delete, or reorder steps. For the MVP, gameplay progression is strictly **Linear** (Step N must evaluate to true before Step N+1 unlocks).
 
-#### 4.2.3. Theme Configurator `[Not started]`
+#### 4.2.3. Theme Configurator `[Shipped]`
 
 An interface to assign one of the visual theme presets (§2.1.1), select ambient audio, and toggle opening particle effects. Occasion presets chosen on the dashboard (§4.2.1) pre-populate this configuration.
 
-#### 4.2.4. Per-Step Advanced Settings `[Not started]`
+#### 4.2.4. Per-Step Advanced Settings `[Shipped]`
 
 Senders can optionally configure three fields for each individual step:
 
@@ -221,11 +221,11 @@ Senders can optionally configure three fields for each individual step:
 * **Success Message:** a short toast or text block appearing immediately after a correct answer (e.g., "Correct! You always remembered that date.").
 * **Max Attempts:** an optional integer to cap how many times a recipient can guess before being locked out or penalized.
 
-#### 4.2.5. Publishing & Unique URL Generation `[Not started]`
+#### 4.2.5. Publishing & Unique URL Generation `[Shipped]`
 
 Upon publishing, the studio generates a unique, secure URL on the `/q/{questId}` scheme (Section 8) for the creator to copy and send directly to the recipient. Identifiers must be unguessable.
 
-### 4.3. MVP Puzzle Block Library `[Not started]`
+### 4.3. MVP Puzzle Block Library `[Shipped]`
 
 Each puzzle block operates as an isolated, reusable frontend component accepting standardized props and emitting a boolean (true/false) validity state to the main engine. The canonical block ids below are already used across the dashboard data model and design system:
 
@@ -235,7 +235,7 @@ Each puzzle block operates as an isolated, reusable frontend component accepting
 
 *(A non-interactive visual mock of the `lock` block exists in the landing-page hero; no playable block is implemented yet.)*
 
-### 4.4. Interactive Player (Recipient Experience) `[Not started]`
+### 4.4. Interactive Player (Recipient Experience) `[Shipped]`
 
 * **Zero-Friction Access:** recipients **must not** be forced to download an application, register, or authenticate. Access is handled strictly via the unique URL token at `/q/{questId}`.
 * **In-App Browser Compatibility:** the player must work flawlessly inside Telegram, WhatsApp, and Instagram in-app browsers (see Section 6.3).
@@ -248,7 +248,7 @@ Each puzzle block operates as an isolated, reusable frontend component accepting
   * `voucher` — a digital voucher/gift-card display with an instant copy-to-clipboard action.
 * The Grand Finale hosts the viral-loop CTA (Section 5.2).
 
-### 4.5. Client-Side Data Security `[Not started]`
+### 4.5. Client-Side Data Security `[Shipped — client side]`
 
 To prevent tech-savvy recipients from opening browser developer tools to read raw JSON answers or find the final payload URL, the system applies these safeguards:
 
@@ -267,15 +267,15 @@ The platform utilizes a combination of freemium limits, micro-transactions, and 
 
 | Tier | Price | Target Audience | Features & Packaging |
 | :--- | :--- | :--- | :--- |
-| **Freemium** | $0 — free forever | Casual, everyday senders | • Up to 3 linear steps per quest. • Base puzzle modules (`lock`, `trivia`). • Birthday & Mystery themes. • Puzzify watermark on the player. |
+| **Freemium** | $0 — free forever | Casual, everyday senders | • Up to 3 linear steps per quest. • Base puzzle modules (`lock`, `trivia`). • Birthday & Mystery themes. • Quest Platform watermark on the player. |
 | **Premium Box** | $4 — one-time, per quest | One-off event creators | • Unlimited gameplay steps. • Premium themes, particles & ambient audio (all presets, incl. `spooky`). • Image Hotspot module. • No watermark. |
 | **Corporate** | Custom — billed annually | HR teams & marketing agencies | • Team dashboard & seats. • White-labeling & custom domains. • Analytics & play tracking (completion rates, solve times, engagement). • Priority support. |
 
 *Monetization enforcement (tier gating, payments) is not yet implemented — the pricing page is display-only today (Section 9).*
 
-### 5.2. The Viral Loop `[Not started — player-side]`
+### 5.2. The Viral Loop `[Shipped]`
 
-Because Puzzify is an inherently shared utility, the product leverages built-in organic growth mechanics:
+Because Quest Platform is an inherently shared utility, the product leverages built-in organic growth mechanics:
 
 ```
 [Sender Creates Quest] ──> [Recipient Opens Link] ──> [Recipient Plays & Unlocks Reward]
@@ -309,7 +309,7 @@ Over 90% of recipients open their links inside social in-app browsers (Telegram,
 ### 6.4. Accessibility
 
 * Every theme preset maintains **WCAG 2.1 AA** contrast on its own surfaces.
-* Visible keyboard focus: 4 px ring (`--pz-ring`) plus focus border color (`--pz-focus`) on all interactive elements.
+* Visible keyboard focus: 4 px ring (`--color-ring`) plus focus border color (`--color-focus`) on all interactive elements.
 * All decorative motion (particles, box float, typewriter) is disabled under `prefers-reduced-motion`; no infinite decorative loops for users who opt out.
 
 ### 6.5. Infrastructure Elasticity
@@ -351,7 +351,7 @@ No functionality ships without tests; automation is the source of truth for buil
 | Player | `/q/{questId}` — unguessable id, no authentication | Not started |
 | Production hosting | `https://puzzify-platform.web.app` (Firebase `live` channel) | Shipped |
 | PR previews | Firebase Hosting `dev` preview channel | Shipped |
-| Custom domain | `puzzify.me` (target production domain; the `/q/` path scheme is normative regardless of host) | Not started |
+| Custom domain | To be decided — the previously planned domain is tied to the former product name (see `APP_NAME` in `src/config/app.js`). The `/q/` path scheme is normative regardless of host. | Not started |
 
 ---
 
@@ -363,37 +363,35 @@ No functionality ships without tests; automation is the source of truth for buil
 | :--- | :--- | :--- | :--- |
 | Public landing page (all sections, 9 locales, RTL) | 4.1 | **Shipped** | |
 | Design system: tokens + 4 theme presets | 2.1, 2.4 | **Shipped** | `src/assets/tokens/`, `src/themes.js` |
-| i18n framework + 9 locales | 2.2 | **Shipped (landing only)** | Dashboard not localized |
-| Sender Dashboard — shell + Quests view | 4.2.1 | **In progress** | Mock data; create/open/copy-link actions inert |
+| i18n framework + 9 locales | 2.2 | **Shipped** | Landing, dashboard, builder and player all localized |
+| Sender Dashboard — shell + Quests view | 4.2.1 | **Shipped** | Create / open / publish all live; six sample quests remain as demo content |
 | Dashboard — Analytics / Presets / Settings | 4.2.1 | **Not started** | Route stubs only |
-| Quest Builder (canvas, live preview, flow manager) | 4.2.2–4.2.5 | **Not started** | |
-| Quest data model + CRUD (Firestore) | 4.2, 6.1 | **Not started** | |
+| Quest Builder (canvas, live preview, flow manager) | 4.2.2–4.2.5 | **Shipped** | Drag-and-drop canvas, linear Flow Manager wizard, per-step settings, theme configurator, reward editor, publish |
+| Quest data model + CRUD | 4.2, 6.1 | **Shipped on localStorage** | `src/quest/storage.js` is a one-driver swap away from Firestore |
 | Creator authentication (Firebase Auth) | 4.2, 6.1 | **Not started** | Landing CTAs route straight to the dashboard |
-| Puzzle blocks (`lock` / `trivia` / `hotspot`), playable | 4.3 | **Not started** | Visual `lock` mock in landing hero only |
-| Interactive Player + `/q/:id` + state persistence | 4.4 | **Not started** | |
-| Grand Finale (`video` / `letter` / `voucher`) | 4.4 | **Not started** | |
-| Viral CTA + watermark on player | 5.2 | **Not started** | |
-| Answer hashing + secure reward endpoint | 4.5 | **Not started** | |
-| Ambient audio playback | 2.1 | **Not started** | Theme audio is a label only |
+| Puzzle blocks (`lock` / `trivia` / `hotspot`), playable | 4.3 | **Shipped** | All three playable in the Player |
+| Interactive Player + `/q/:id` + state persistence | 4.4 | **Shipped** | Resumes at the furthest unlocked step |
+| Grand Finale (`video` / `letter` / `voucher`) | 4.4 | **Shipped** | Letter uses the typewriter; voucher copies to clipboard |
+| Viral CTA + watermark on player | 5.2 | **Shipped** | |
+| Answer hashing + secure reward endpoint | 4.5 | **Shipped (client side)** | Salted SHA-256 via Web Crypto; the reward gate mirrors the future Cloud Function signature |
+| Ambient audio playback | 2.1 | **Shipped** | Synthesised per-theme pad (Web Audio), gesture-gated, no assets to download |
 | Monetization enforcement / payments | 5.1 | **Not started** | Pricing page is display-only |
 | Analytics pipeline | 5.1 (Corporate) | **Not started** | Dashboard KPIs derive from mock data |
 | Hosting, CI/CD, release automation | 7, 8 | **Shipped** | |
 
 ### Known gaps / documentation debt
 
-* Dashboard UI strings are hardcoded English — must migrate to vue-i18n (§2.2 requirement).
-* Dashboard runs on mock data (six sample quests, persona "Maya Kapoor") pending Auth + Firestore.
+* Quests persist to **localStorage**, so they do not follow a creator across devices and a player link only opens in the browser that published it. Firebase Auth + Firestore replace `src/quest/storage.js` wholesale.
+* The reward gate is client-side: it keeps the payload out of the initial download and requires a valid completion proof, but a determined inspector can read it from local storage. The Cloud Function of §4.5 closes this.
+* The six sample quests (persona "Maya Kapoor") remain as demo content alongside real ones.
 * `docs/design.md` §5 still lists Spooky and Corporate presets as "roadmap"; all four presets ship in `src/themes.js`.
-* `CLAUDE.md` / `GEMINI.md` reference `docs/DESIGN.md` (wrong case — file is `docs/design.md`) and mention a legacy `gh-pages` deploy; actual CD target is Firebase Hosting.
-* `docs/README.md` (dashboard handoff) uses the legacy theme alias "Celebration" for `birthday`.
-* `npm run test:coverage` requires a `@vitest/coverage-*` provider that is not yet in `devDependencies`.
+* Monetization is still unenforced: the free tier's 3-step cap and premium-only Hotspot block are not gated.
 
 ---
 
 ## Appendix A — References
 
-* `docs/design.md` — Puzzify Design System (tokens, components, theming, RTL, design principles). **Normative for all visuals.**
-* `docs/README.md` + `docs/Creator Dashboard - Direction A (standalone).html` — Sender Dashboard design handoff (Direction A).
+* `docs/design.md` — Quest Platform Design System (tokens, components, theming, RTL, design principles). **Normative for all visuals.**
 * `src/themes.js` — canonical theme preset ids and token values.
 * `src/locales/en.json` — canonical marketing/pricing copy.
 * `CLAUDE.md` / `GEMINI.md` — agent working agreements (testing, CI/CD, PR discipline).
@@ -402,7 +400,7 @@ No functionality ships without tests; automation is the source of truth for buil
 
 | Term | Meaning |
 | :--- | :--- |
-| **Quest** | One complete Puzzify experience: an ordered set of steps plus a theme and a reward, shared via a unique link. |
+| **Quest** | One complete Quest Platform experience: an ordered set of steps plus a theme and a reward, shared via a unique link. |
 | **Step** | A single screen in a quest containing exactly one puzzle block. MVP progression is strictly linear. |
 | **Puzzle Block** | A reusable, isolated puzzle component (`lock`, `trivia`, `hotspot`) that receives standardized props and emits a boolean validity state. |
 | **Grand Finale** | The reward screen that mounts only after every step is solved. |
@@ -411,4 +409,4 @@ No functionality ships without tests; automation is the source of truth for buil
 | **Occasion Preset** | A dashboard shortcut (e.g., Anniversary, Mystery night) that pre-seeds a new quest's theme, audio, and reward box. |
 | **Creator / Sender** | The authenticated user who builds and publishes quests in the Creator Studio. |
 | **Recipient** | The person who plays a quest via its link — no account, no install. |
-| **Watermark** | The Puzzify brand badge on free-tier players; part of the viral loop and removed in paid tiers. |
+| **Watermark** | The Quest Platform brand badge on free-tier players; part of the viral loop and removed in paid tiers. |

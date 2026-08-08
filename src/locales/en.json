@@ -9,7 +9,7 @@
   "themeMystery": "Mystery",
   "heroKicker": "You just played one. Now make one.",
   "heroHeadline": "Turn any gift into a mini-escape room.",
-  "heroSub": "Puzzify turns a digital gift, message, or announcement into a personalized online quest. You build the mystery — they play to unlock their reward. No app, no login.",
+  "heroSub": "@:appName turns a digital gift, message, or announcement into a personalized online quest. You build the mystery — they play to unlock their reward. No app, no login.",
   "heroCta1": "Create your first quest — free",
   "heroCta2": "See a live demo",
   "playerKicker": "Quest · A Year of Us",
@@ -18,7 +18,7 @@
   "playerPrompt": "Where did we first share a coffee? One word.",
   "inputPlaceholder": "Type your answer",
   "submit": "Unlock",
-  "watermark": "Made with Puzzify",
+  "watermark": "Made with @:appName",
   "trustLine": "Spend five minutes. Deliver something unforgettable.",
   "trustStats": [
     "120k+ quests played",
@@ -75,7 +75,7 @@
     "Product reveals",
     "Proposals"
   ],
-  "whyKicker": "Why Puzzify",
+  "whyKicker": "Why @:appName",
   "whyTitle": "The delivery is the gift",
   "whySub": "A surprise they unlock beats a link they ignore. Built to convert the moment of delight into the next quest.",
   "why": [
@@ -111,7 +111,7 @@
         "Up to 3 steps",
         "Base puzzle modules",
         "Birthday & Mystery themes",
-        "Puzzify watermark"
+        "@:appName watermark"
       ]
     },
     {
@@ -144,8 +144,8 @@
   ],
   "partnerBlock": {
     "kicker": "Now collaborating",
-    "title": "Puzzify × WelloWork — play your way to a stronger team.",
-    "desc": "We’ve teamed up with WelloWork, the Swedish workplace-performance platform, to bring Puzzify quests inside the tools companies already use. Employers turn onboarding, training, and team-building into games employees actually want to play.",
+    "title": "@:appName × WelloWork — play your way to a stronger team.",
+    "desc": "We’ve teamed up with WelloWork, the Swedish workplace-performance platform, to bring @:appName quests inside the tools companies already use. Employers turn onboarding, training, and team-building into games employees actually want to play.",
     "cta": "Explore the partnership",
     "link": "https://www.wellowork.net/",
     "features": [
@@ -198,5 +198,266 @@
     }
   ],
   "footLang": "Language",
-  "footLegal": "© 2026 Puzzify · Made for delightful surprises"
+  "footLegal": "© 2026 @:appName · Made for delightful surprises",
+  "dashboard": {
+    "workspace": "Workspace",
+    "nav": {
+      "quests": "Quests",
+      "analytics": "Analytics",
+      "presets": "Presets",
+      "settings": "Settings"
+    },
+    "titles": {
+      "quests": "Your quests",
+      "analytics": "Analytics",
+      "presets": "Presets",
+      "settings": "Settings"
+    },
+    "upgrade": {
+      "title": "You're on Free",
+      "body": "Get advanced features and more quests.",
+      "cta": "Upgrade a gift"
+    },
+    "plans": {
+      "free": "Free plan",
+      "premium": "Premium",
+      "corporate": "Corporate workspace"
+    },
+    "header": {
+      "searchPlaceholder": "Search quests…",
+      "searchLabel": "Search quests",
+      "notifications": "Notifications",
+      "userSettings": "User settings"
+    },
+    "stats": {
+      "gifts": "Total gifts created",
+      "plays": "Total plays across all gifts",
+      "completion": "Avg completion rate",
+      "solve": "Avg time to solve"
+    },
+    "list": {
+      "title": "Your quests",
+      "all": "All",
+      "published": "Published",
+      "drafts": "Drafts",
+      "sortRecent": "Recent",
+      "noResults": "No quests match your search or filter.",
+      "sortName": "Name"
+    },
+    "card": {
+      "plays": "Plays",
+      "avgSolve": "Avg solve",
+      "completion": "Completion",
+      "statusPublished": "Published",
+      "statusDraft": "Draft",
+      "open": "Open",
+      "copyLink": "Copy link",
+      "copied": "Link copied",
+      "reward": "Reward",
+      "rewards": {
+        "letter": "Letter",
+        "video": "Video",
+        "voucher": "Voucher"
+      }
+    },
+    "createHero": {
+      "title": "Start a new gift",
+      "newQuest": "New quest"
+    },
+    "empty": {
+      "title": "Create your first gift",
+      "body": "Build a quest in a few minutes — a few clues, then the reward. Start from an occasion and we'll set the theme, audio and box for you.",
+      "newQuest": "New quest",
+      "kicker": "Or start from an occasion",
+      "tagline": "The delivery is the gift."
+    },
+    "soon": {
+      "analytics": "Analytics view coming soon.",
+      "presets": "Presets view coming soon.",
+      "settings": "Settings view coming soon."
+    }
+  },
+  "builder": {
+    "occasions": {
+      "birthday": "Birthday",
+      "anniversary": "Anniversary",
+      "holiday": "Holiday",
+      "mysteryNight": "Mystery night",
+      "corporate": "Corporate",
+      "blank": "Start blank"
+    },
+    "topbar": {
+      "back": "Back to dashboard",
+      "namePlaceholder": "Name your quest",
+      "stepsLabel": "Steps",
+      "save": "Save draft",
+      "saved": "Saved",
+      "unsaved": "Unsaved changes",
+      "newQuest": "New quest"
+    },
+    "palette": {
+      "title": "Puzzle blocks",
+      "hint": "Drag onto the canvas, or press to add.",
+      "add": "Add {block}",
+      "lock": {
+        "label": "Text / Password Lock",
+        "desc": "An exact answer typed into a field"
+      },
+      "trivia": {
+        "label": "Trivia",
+        "desc": "2–4 options, one of them correct"
+      },
+      "hotspot": {
+        "label": "Image Hotspot",
+        "desc": "Tap the right spot on an image"
+      }
+    },
+    "canvas": {
+      "title": "Flow",
+      "subtitle": "Steps play top to bottom, one at a time.",
+      "start": "Start",
+      "startCaption": "Recipient opens the link",
+      "finale": "Grand Finale",
+      "finaleCaption": "The reward unlocks here",
+      "empty": "Drop a puzzle block here",
+      "emptyBody": "Steps play in the order you place them.",
+      "dropHere": "Drop here",
+      "step": "Step {n}",
+      "unlocks": "Unlocks Step {n}",
+      "lockedUntil": "Locked until Step {n} is solved",
+      "playsFirst": "Plays first",
+      "incomplete": "Needs setup",
+      "ready": "Ready",
+      "moveUp": "Move earlier",
+      "moveDown": "Move later",
+      "delete": "Delete step",
+      "untitled": "Untitled step"
+    },
+    "inspector": {
+      "title": "Step settings",
+      "stepOf": "Step {n} of {total}",
+      "prev": "Previous",
+      "next": "Next",
+      "none": "No step selected",
+      "noneBody": "Pick a card on the canvas, or add a puzzle block to begin.",
+      "kind": "Block type",
+      "fields": {
+        "title": "Step title",
+        "titlePlaceholder": "Optional heading",
+        "prompt": "Prompt",
+        "promptPlaceholder": "What should the recipient work out?",
+        "answer": "Correct answer",
+        "answerPlaceholder": "The exact answer",
+        "caseSensitive": "Case sensitive",
+        "options": "Options",
+        "optionPlaceholder": "Option {n}",
+        "addOption": "Add option",
+        "removeOption": "Remove option",
+        "correct": "Mark as correct",
+        "imageUrl": "Image URL",
+        "imagePlaceholder": "https://…",
+        "target": "Target area (% of image)",
+        "targetX": "X",
+        "targetY": "Y",
+        "targetW": "Width",
+        "targetH": "Height"
+      },
+      "advanced": {
+        "title": "Advanced settings",
+        "hintText": "Hint text",
+        "hintHelp": "Revealed only when the recipient taps the hint icon.",
+        "hintPlaceholder": "A gentle nudge…",
+        "successMessage": "Success message",
+        "successHelp": "Appears right after a correct answer.",
+        "successPlaceholder": "Correct! You always remembered that date.",
+        "maxAttempts": "Max attempts",
+        "maxAttemptsHelp": "Leave blank for unlimited guesses (1–10).",
+        "unlimited": "Unlimited"
+      }
+    },
+    "theme": {
+      "title": "Theme",
+      "preset": "Theme preset",
+      "ambientAudio": "Ambient audio",
+      "ambientAudioHelp": "Plays after the recipient's first tap.",
+      "particles": "Opening particles",
+      "particlesHelp": "Decorative motion on the opening screen.",
+      "on": "On",
+      "off": "Off"
+    },
+    "preview": {
+      "title": "Live preview",
+      "empty": "Add a step to preview it.",
+      "hint": "Hint",
+      "submit": "Unlock",
+      "inputPlaceholder": "Type your answer",
+      "attempts": "{n} attempts",
+      "watermark": "Made with @:appName"
+    },
+    "issues": {
+      "promptRequired": "Add a prompt.",
+      "answerRequired": "Add the correct answer.",
+      "optionsRequired": "Add at least two options.",
+      "correctOptionRequired": "Fill in the option you marked correct.",
+      "imageRequired": "Add an image URL.",
+      "targetRequired": "Set a target area.",
+      "maxAttemptsRange": "Max attempts must be between 1 and 10.",
+      "unknownKind": "Unsupported block type.",
+      "nameRequired": "Name your quest.",
+      "stepsRequired": "Add at least one step.",
+      "stepsIncomplete": "Finish every step."
+    },
+    "reward": {
+      "title": "Reward",
+      "type": "Reward type",
+      "letter": "Letter",
+      "video": "Video",
+      "voucher": "Voucher",
+      "headline": "Reward title",
+      "headlinePlaceholder": "Happy birthday, Mum!",
+      "message": "Message",
+      "messagePlaceholder": "Write the note they unlock…",
+      "videoUrl": "Video embed URL",
+      "videoPlaceholder": "https://…",
+      "code": "Voucher code",
+      "codePlaceholder": "GIFT-2026"
+    },
+    "publish": {
+      "action": "Publish",
+      "update": "Update link",
+      "published": "Published",
+      "copyLink": "Copy link",
+      "copied": "Link copied",
+      "shareHint": "Send this link to the person you made it for.",
+      "blocked": "Finish every step before publishing."
+    }
+  },
+  "player": {
+    "loading": "Opening your gift…",
+    "notFoundTitle": "This link has expired",
+    "notFoundBody": "We couldn't find a quest here. Ask whoever sent it for a fresh link.",
+    "notFoundCta": "Make your own",
+    "stepOf": "Step {n} of {total}",
+    "hint": "Hint",
+    "showHint": "Need a hint?",
+    "attemptsLeft": "{n} tries left",
+    "lastAttempt": "Last try",
+    "submit": "Unlock",
+    "inputPlaceholder": "Type your answer",
+    "incorrect": "Not quite — try again.",
+    "tapPrompt": "Tap the right spot",
+    "lockedTitle": "Out of tries",
+    "lockedBody": "You've used every guess for this step.",
+    "restart": "Start over",
+    "audioOn": "Turn sound on",
+    "audioOff": "Turn sound off",
+    "finaleKicker": "You made it",
+    "finaleTitle": "Your reward",
+    "copyCode": "Copy code",
+    "copied": "Copied!",
+    "ctaTitle": "Want to surprise someone else?",
+    "ctaBody": "Create your first quest for free.",
+    "ctaButton": "Create your own",
+    "watermark": "Made with @:appName"
+  }
 }

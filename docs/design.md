@@ -1,4 +1,4 @@
-# Puzzify Design System
+# Design System
 
 > A token-driven system for building gift-quest experiences. One component set;
 > the **theme** (a set of token values) is the product. Swap tokens → re-skin
@@ -10,14 +10,14 @@
 
 ### 1.1 Core idea — semantic over primitive
 
-Components **only ever read semantic token names** (`--pz-primary`, `--pz-surface`,
-`--pz-text`…). They never reference a raw hex value or a holiday. A *theme* is a JSON
+Components **only ever read semantic token names** (`--color-primary`, `--color-surface`,
+`--color-text`…). They never reference a raw hex value or a holiday. A *theme* is a JSON
 preset that assigns values to those names. The runtime flips one `data-theme`
 attribute and every component re-skins with zero component edits.
 
 ```
 Primitive values  ─►  Semantic tokens  ─►  Components
-   #D62E6C              --pz-primary         button, lock, dot…
+   #D62E6C              --color-primary         button, lock, dot…
    (per theme)          (stable name)        (never see the hex)
 ```
 
@@ -30,9 +30,9 @@ Primitive values  ─►  Semantic tokens  ─►  Components
 | Display | **Bricolage Grotesque** | `'Bricolage Grotesque', system-ui, sans-serif` |
 | UI / body | **IBM Plex Sans** | `'IBM Plex Sans', system-ui, sans-serif` |
 | Mono / code | **IBM Plex Mono** | `'IBM Plex Mono', ui-monospace, monospace` |
-| RTL (Persian) | **Vazirmatn** | `'Vazirmatn', system-ui, sans-serif` (overrides both display + UI under `.pz-lang-fa`) |
+| RTL (Persian) | **Vazirmatn** | `'Vazirmatn', system-ui, sans-serif` (overrides both display + UI under `.lang-fa`) |
 
-Tokens: `--pz-font-display`, `--pz-font-ui`.
+Tokens: `--font-display`, `--font-ui`.
 
 **Type scale**
 
@@ -49,23 +49,23 @@ Stored as semantic names. Two shipped presets below share **every name** — onl
 
 | Token | Role | Birthday (default) | Mystery |
 |-------|------|-------------------|---------|
-| `--pz-bg` | Canvas | `#FFF6F1` | `#0E1118` |
-| `--pz-surface` | Cards | `#FFFFFF` | `#161B26` |
-| `--pz-surface-2` | Raised / chips | `#FFEEF3` | `#1E2531` |
-| `--pz-surface-3` | Tertiary fill | `#FFF9EC` | `#11202A` |
-| `--pz-text` | Text | `#2B2230` | `#ECEFF4` |
-| `--pz-muted` | Secondary text | `#7C6F79` | `#94A0B0` |
-| `--pz-border` | Borders | `#F2DBE4` | `#2A3340` |
-| `--pz-hairline` | Dividers | `#F6E7EC` | `#222B38` |
-| `--pz-primary` | Primary action | `#D62E6C` | `#E0A92E` |
-| `--pz-on-primary` | Text on primary | `#FFFFFF` | `#15110A` |
-| `--pz-secondary` | Accent action | `#1C9A92` | `#4FB0A5` |
-| `--pz-accent` | Highlight / hint | `#F4B740` | `#C7604F` |
-| `--pz-success` | Correct | `#1E9E6A` | `#56B47E` |
-| `--pz-error` | Incorrect | `#D64545` | `#E06A6A` |
-| `--pz-focus` | Focus border | `#D62E6C` | `#E0A92E` |
-| `--pz-ring` | Focus ring | `rgba(214,46,108,.26)` | `rgba(224,169,46,.30)` |
-| `--pz-glow` | Hint glow | `rgba(244,183,64,.55)` | `rgba(79,176,165,.5)` |
+| `--color-bg` | Canvas | `#FFF6F1` | `#0E1118` |
+| `--color-surface` | Cards | `#FFFFFF` | `#161B26` |
+| `--color-surface-2` | Raised / chips | `#FFEEF3` | `#1E2531` |
+| `--color-surface-3` | Tertiary fill | `#FFF9EC` | `#11202A` |
+| `--color-text` | Text | `#2B2230` | `#ECEFF4` |
+| `--color-muted` | Secondary text | `#7C6F79` | `#94A0B0` |
+| `--color-border` | Borders | `#F2DBE4` | `#2A3340` |
+| `--color-hairline` | Dividers | `#F6E7EC` | `#222B38` |
+| `--color-primary` | Primary action | `#D62E6C` | `#E0A92E` |
+| `--color-on-primary` | Text on primary | `#FFFFFF` | `#15110A` |
+| `--color-secondary` | Accent action | `#1C9A92` | `#4FB0A5` |
+| `--color-accent` | Highlight / hint | `#F4B740` | `#C7604F` |
+| `--color-success` | Correct | `#1E9E6A` | `#56B47E` |
+| `--color-error` | Incorrect | `#D64545` | `#E06A6A` |
+| `--color-focus` | Focus border | `#D62E6C` | `#E0A92E` |
+| `--color-ring` | Focus ring | `rgba(214,46,108,.26)` | `rgba(224,169,46,.30)` |
+| `--color-glow` | Hint glow | `rgba(244,183,64,.55)` | `rgba(79,176,165,.5)` |
 
 > **Contrast:** every theme targets **WCAG AA**.
 
@@ -75,48 +75,48 @@ Stored as semantic names. Two shipped presets below share **every name** — onl
 
 | Token | Value |
 |-------|-------|
-| `--pz-sp-1` | 4px |
-| `--pz-sp-2` | 8px |
-| `--pz-sp-3` | 12px |
-| `--pz-sp-4` | 16px |
-| `--pz-sp-5` | 24px |
-| `--pz-sp-6` | 32px |
-| `--pz-sp-7` | 48px |
+| `--space-1` | 4px |
+| `--space-2` | 8px |
+| `--space-3` | 12px |
+| `--space-4` | 16px |
+| `--space-5` | 24px |
+| `--space-6` | 32px |
+| `--space-7` | 48px |
 
 ### 1.5 Radius
 
 | Token | Value |
 |-------|-------|
-| `--pz-r-sm` | 8px |
-| `--pz-r-md` | 14px |
-| `--pz-r-lg` | 20px |
-| `--pz-r-xl` | 30px |
-| `--pz-r-full` | 999px |
+| `--radius-sm` | 8px |
+| `--radius-md` | 14px |
+| `--radius-lg` | 20px |
+| `--radius-xl` | 30px |
+| `--radius-full` | 999px |
 
 ### 1.6 Elevation
 
 | Token | Shadow | Use |
 |-------|--------|-----|
-| `--pz-e-1` | `0 1px 2px rgba(12,14,20,.06), 0 2px 6px rgba(12,14,20,.05)` | Buttons, chips, small cards |
-| `--pz-e-2` | `0 8px 22px rgba(12,14,20,.12)` | Raised cards, voucher |
-| `--pz-e-3` | `0 26px 70px rgba(8,9,14,.45)` | Phone frame, studio window |
+| `--shadow-1` | `0 1px 2px rgba(12,14,20,.06), 0 2px 6px rgba(12,14,20,.05)` | Buttons, chips, small cards |
+| `--shadow-2` | `0 8px 22px rgba(12,14,20,.12)` | Raised cards, voucher |
+| `--shadow-3` | `0 26px 70px rgba(8,9,14,.45)` | Phone frame, studio window |
 
-> Mystery theme deepens `--pz-e-1` / `--pz-e-2` for dark-surface legibility.
+> Mystery theme deepens `--shadow-1` / `--shadow-2` for dark-surface legibility.
 
 ### 1.7 Motion
 
-- Duration token: `--pz-dur: .32s` (320ms)
-- Easing token: `--pz-ease: cubic-bezier(.2, .8, .2, 1)`
-- CSS-only animations; **honors `prefers-reduced-motion`** (`.pz-anim` is disabled).
+- Duration token: `--duration: .32s` (320ms)
+- Easing token: `--ease: cubic-bezier(.2, .8, .2, 1)`
+- CSS-only animations; **honors `prefers-reduced-motion`** (`.anim` is disabled).
 
 | Keyframe | Purpose |
 |----------|---------|
-| `pzFall` | Birthday particles fall + spin |
-| `pzRise` | Mystery particles rise + scale |
-| `pzBars` | Ambient-audio equalizer bars |
-| `pzFloatBox` | Box asset idle float |
-| `pzPulse` | Focus / hotspot ring pulse |
-| `pzCaret` | Input caret blink |
+| `fall` | Birthday particles fall + spin |
+| `rise` | Mystery particles rise + scale |
+| `bars` | Ambient-audio equalizer bars |
+| `floatBox` | Box asset idle float |
+| `pulse` | Focus / hotspot ring pulse |
+| `caret` | Input caret blink |
 
 ---
 
@@ -130,43 +130,43 @@ The core unit — one puzzle per screen. Variants by type:
 - **Password Lock** — kicker chip (puzzle type) → title → prompt → focused input
   with blinking caret → hint button + attempts counter → primary submit.
 - **Trivia (MCQ)** — optional media placeholder → radio options; selected option
-  uses `--pz-success` border + filled radio.
-- **Image inspect / hotspot** — scene image with a pulsing `--pz-primary` ring
+  uses `--color-success` border + filled radio.
+- **Image inspect / hotspot** — scene image with a pulsing `--color-primary` ring
   marking the tappable clue.
 
-**States:** Correct (`--pz-success`) · Incorrect (`--pz-error`) · Locked
-(muted, "solve previous") · Hint (`--pz-accent` + `--pz-glow`).
+**States:** Correct (`--color-success`) · Incorrect (`--color-error`) · Locked
+(muted, "solve previous") · Hint (`--color-accent` + `--color-glow`).
 
 ### 2.2 Buttons
 
 | Variant | Fill | Text | Border |
 |---------|------|------|--------|
-| Primary | `--pz-primary` | `--pz-on-primary` | none |
-| Secondary | `--pz-surface-2` | `--pz-primary` | `--pz-border` |
-| Disabled | transparent | `--pz-muted` | `--pz-border`, `opacity:.6` |
+| Primary | `--color-primary` | `--color-on-primary` | none |
+| Secondary | `--color-surface-2` | `--color-primary` | `--color-border` |
+| Disabled | transparent | `--color-muted` | `--color-border`, `opacity:.6` |
 
-Padding `10–14px`, radius `--pz-r-md`, weight 700, `--pz-e-1`. Min hit target **44px**.
+Padding `10–14px`, radius `--radius-md`, weight 700, `--shadow-1`. Min hit target **44px**.
 
 ### 2.3 Inputs
-Background `--pz-bg`, `1.5px` border. **Focus:** `--pz-focus` border + `0 0 0 4px var(--pz-ring)`. **Error:** `--pz-error` border + text. Text aligns `start` (RTL-safe).
+Background `--color-bg`, `1.5px` border. **Focus:** `--color-focus` border + `0 0 0 4px var(--color-ring)`. **Error:** `--color-error` border + text. Text aligns `start` (RTL-safe).
 
 ### 2.4 Step indicator
-Row of dots; active dot widens to `30px` and fills `--pz-primary`, completed dots fill, upcoming dots are `--pz-border`. Animated width transition.
+Row of dots; active dot widens to `30px` and fills `--color-primary`, completed dots fill, upcoming dots are `--color-border`. Animated width transition.
 
 ### 2.5 Toggle / switch
-46×27 (or 44×26) pill track. On = `--pz-primary` + knob to end; Off = `--pz-border` + knob to start. White knob with `--pz-e-1`.
+46×27 (or 44×26) pill track. On = `--color-primary` + knob to end; Off = `--color-border` + knob to start. White knob with `--shadow-1`.
 
 ### 2.6 Toast
-`--pz-text` background, `--pz-bg` text, `--pz-success` status dot. Radius `--pz-r-md`.
+`--color-text` background, `--color-bg` text, `--color-success` status dot. Radius `--radius-md`.
 
 ### 2.7 Box stage (swappable asset)
-One framed 128px tile; the artwork is **token-selected** (`box.asset`). Shipped assets: **gift** (Birthday default), **safe** (Mystery default), **envelope**. Idle `pzFloatBox` + `pzPulse` ring.
+One framed 128px tile; the artwork is **token-selected** (`box.asset`). Shipped assets: **gift** (Birthday default), **safe** (Mystery default), **envelope**. Idle `floatBox` + `pulse` ring.
 
 ### 2.8 Voucher / reward
-Surface card: label + small gift icon → title → description → dashed-border code row (mono) with copy button (turns `--pz-success` "Copied!").
+Surface card: label + small gift icon → title → description → dashed-border code row (mono) with copy button (turns `--color-success` "Copied!").
 
 ### 2.9 Particle field
-Decorative overlay of 14–16 token-colored shapes. Birthday falls (`pzFall`), Mystery rises (`pzRise`). Toggleable; off by default respects reduced-motion.
+Decorative overlay of 14–16 token-colored shapes. Birthday falls (`fall`), Mystery rises (`rise`). Toggleable; off by default respects reduced-motion.
 
 ---
 
@@ -186,7 +186,7 @@ RTL is **automatic**. Every component uses logical properties
 (`inset-inline-start/end`, `margin-inline-*`, `text-align:start`), so a Persian
 locale mirrors layout, alignment, and box animations with **zero new CSS**.
 
-- Switch sets `dir="rtl"` and adds `.pz-lang-fa`, which swaps both font tokens to **Vazirmatn**.
+- Switch sets `dir="rtl"` and adds `.lang-fa`, which swaps both font tokens to **Vazirmatn**.
 - Chrome / control bar stays `dir="ltr"` (neutral shell).
 
 ---
@@ -225,5 +225,5 @@ Roadmap presets: **Spooky**, **Corporate**.
 
 ---
 
-*Source of truth: `Puzzify System.dc.html` — the live, themeable showcase. Toggle
+*Source of truth: this document plus `src/assets/tokens/` and `src/themes.js`. Toggle
 its controls to see every token, component, and screen re-skin and mirror.*

@@ -2,27 +2,29 @@
   <section class="stats-row">
     <div class="stat-card">
       <div class="stat-value">{{ totalGifts }}</div>
-      <div class="stat-label">Total gifts created</div>
+      <div class="stat-label">{{ t('dashboard.stats.gifts') }}</div>
     </div>
     <div class="stat-card">
       <div class="stat-value">{{ totalPlays }}</div>
-      <div class="stat-label">Total plays across all gifts</div>
+      <div class="stat-label">{{ t('dashboard.stats.plays') }}</div>
     </div>
     <div class="stat-card">
       <div class="stat-value">{{ avgCompletion }}<span class="stat-unit">%</span></div>
-      <div class="stat-label">Avg completion rate</div>
+      <div class="stat-label">{{ t('dashboard.stats.completion') }}</div>
     </div>
     <div class="stat-card">
       <div class="stat-value">{{ formatTime(avgSolveSeconds) }}</div>
-      <div class="stat-label">Avg time to solve</div>
+      <div class="stat-label">{{ t('dashboard.stats.solve') }}</div>
     </div>
   </section>
 </template>
 
 <script setup>
+import { useI18n } from 'vue-i18n'
 import { storeToRefs } from 'pinia'
 import { useAppStore } from '../../stores/useAppStore'
 
+const { t } = useI18n()
 const store = useAppStore()
 const { totalGifts, totalPlays, avgCompletion, avgSolveSeconds } = storeToRefs(store)
 
@@ -42,20 +44,20 @@ const formatTime = (seconds) => {
   padding: 0 30px 32px;
 }
 .stat-card {
-  background: var(--pz-surface);
-  border: 1px solid var(--pz-border);
-  border-radius: var(--pz-r-md);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
   padding: 24px;
   display: flex;
   flex-direction: column;
   gap: 8px;
-  box-shadow: var(--pz-e-1);
+  box-shadow: var(--shadow-1);
 }
 .stat-value {
-  font-family: var(--pz-font-display);
+  font-family: var(--font-display);
   font-size: 32px;
   font-weight: 800;
-  color: var(--pz-primary);
+  color: var(--color-primary);
   line-height: 1;
   letter-spacing: -0.02em;
 }
@@ -66,11 +68,11 @@ const formatTime = (seconds) => {
 .stat-label {
   font-size: 13px;
   font-weight: 500;
-  color: var(--pz-muted);
+  color: var(--color-muted);
 }
 
 @media (max-width: 900px) {
-  .stats-row { grid-template-columns: repeat(2, 1fr); }
+  .stats-row { grid-template-columns: repeat(2, 1fr); padding-inline: 16px; }
 }
 @media (max-width: 480px) {
   .stats-row { grid-template-columns: 1fr; }

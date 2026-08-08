@@ -1,44 +1,51 @@
 <template>
   <div class="empty-state-view">
-
     <div class="empty-content">
-      <BoxStage asset="gift" :size="160" />
-      <h2>Create your first gift</h2>
-      <p>Build a quest in a few minutes — a few clues, then the reward. Start from an occasion and we'll set the theme, audio and box for you.</p>
-      <PzButton variant="primary" size="lg" class="new-quest-btn">
-        <Plus :size="20" /> New quest
-      </PzButton>
+      <BaseBoxStage asset="gift" :size="160" />
+      <h2>{{ t('dashboard.empty.title') }}</h2>
+      <p>{{ t('dashboard.empty.body') }}</p>
+      <BaseButton variant="primary" size="lg" class="new-quest-btn" data-testid="new-quest" @click="startQuest()">
+        <Plus :size="20" /> {{ t('dashboard.empty.newQuest') }}
+      </BaseButton>
 
-      <div class="kicker">OR START FROM AN OCCASION</div>
+      <div class="kicker">{{ t('dashboard.empty.kicker') }}</div>
       <div class="preset-grid">
-        <button v-for="preset in presets" :key="preset.name" class="preset-card">
+        <button
+          v-for="preset in OCCASION_PRESETS"
+          :key="preset.id"
+          type="button"
+          class="preset-card"
+          :data-testid="`occasion-${preset.id}`"
+          @click="startQuest(preset.id)"
+        >
           <div class="preset-icon">
             <component :is="preset.icon" :size="20" />
           </div>
-          <div class="preset-name">{{ preset.name }}</div>
+          <div class="preset-name">{{ t(preset.labelKey) }}</div>
         </button>
       </div>
     </div>
 
     <footer class="empty-footer">
-      The delivery is the gift.
+      {{ t('dashboard.empty.tagline') }}
     </footer>
   </div>
 </template>
 
 <script setup>
-import { Plus, Cake, Heart, Search, Briefcase, Snowflake } from 'lucide-vue-next'
-import BoxStage from '../ui/BoxStage.vue'
-import PzButton from '../ui/PzButton.vue'
+import { useI18n } from 'vue-i18n'
+import { useRouter } from 'vue-router'
+import { Plus } from 'lucide-vue-next'
+import { OCCASION_PRESETS } from '../../quest/occasions'
+import BaseBoxStage from '../ui/BaseBoxStage.vue'
+import BaseButton from '../ui/BaseButton.vue'
 
-const presets = [
-  { name: 'Birthday', icon: Cake },
-  { name: 'Anniversary', icon: Heart },
-  { name: 'Mystery night', icon: Search },
-  { name: 'Corporate', icon: Briefcase },
-  { name: 'Holiday', icon: Snowflake },
-  { name: 'Start blank', icon: Plus }
-]
+const { t } = useI18n()
+const router = useRouter()
+
+function startQuest(occasion) {
+  router.push({ name: 'quest-builder-new', query: occasion ? { occasion } : {} })
+}
 </script>
 
 <style scoped>
@@ -57,14 +64,14 @@ const presets = [
   text-align: center;
 }
 .empty-content h2 {
-  font-family: var(--pz-font-display);
+  font-family: var(--font-display);
   font-size: 30px;
   font-weight: 800;
   margin: 24px 0 12px;
 }
 .empty-content p {
   font-size: 15px;
-  color: var(--pz-muted);
+  color: var(--color-muted);
   max-width: 430px;
   line-height: 1.5;
   margin: 0 0 32px;
@@ -78,8 +85,8 @@ const presets = [
   font-size: 11px;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.14em;
-  color: var(--pz-muted);
+  letter-spacing: var(--tracking-kicker);
+  color: var(--color-muted);
   margin-bottom: 24px;
 }
 
@@ -94,25 +101,25 @@ const presets = [
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: var(--pz-bg);
-  border: 1px solid var(--pz-border);
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
   border-radius: 14px;
   padding: 16px 12px;
   cursor: pointer;
-  transition: all var(--pz-dur) var(--pz-ease);
+  transition: all var(--duration) var(--ease);
 }
 .preset-card:hover {
   transform: translateY(-2px);
-  border-color: var(--pz-primary);
-  box-shadow: var(--pz-e-1);
+  border-color: var(--color-primary);
+  box-shadow: var(--shadow-1);
 }
-.preset-card:focus-visible { outline: none; box-shadow: 0 0 0 4px var(--pz-ring); }
+.preset-card:focus-visible { outline: none; box-shadow: 0 0 0 4px var(--color-ring); }
 .preset-icon {
   width: 36px;
   height: 36px;
   border-radius: 11px;
-  background: var(--pz-surface-2);
-  color: var(--pz-primary);
+  background: var(--color-surface-2);
+  color: var(--color-primary);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -121,17 +128,17 @@ const presets = [
 .preset-name {
   font-size: 13.5px;
   font-weight: 700;
-  color: var(--pz-text);
+  color: var(--color-text);
   line-height: 1.2;
 }
 
 .empty-footer {
   text-align: center;
   padding: 24px;
-  font-family: var(--pz-font-display);
+  font-family: var(--font-display);
   font-size: 15px;
   font-weight: 800;
-  color: var(--pz-muted);
+  color: var(--color-muted);
 }
 
 @media (max-width: 900px) {

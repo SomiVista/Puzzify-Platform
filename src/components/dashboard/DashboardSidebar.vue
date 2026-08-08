@@ -1,37 +1,37 @@
 <template>
-  <aside class="pz-sidebar">
+  <aside class="app-sidebar">
     <!-- Logo Lockup -->
     <div class="logo-lockup">
       <router-link to="/" class="logo-link">
         <span class="logo-icon">
           <span class="candle"></span>
         </span>
-        <span class="logo-text">Puzzify</span>
+        <span class="logo-text">{{ APP_NAME }}</span>
       </router-link>
     </div>
 
     <!-- Workspace -->
-    <div class="kicker">WORKSPACE</div>
+    <div class="kicker">{{ t('dashboard.workspace') }}</div>
     <nav class="nav-menu">
       <router-link to="/dashboard/quests" class="nav-item">
-        <LayoutGrid :size="18" /> Quests
+        <LayoutGrid :size="18" /> {{ t('dashboard.nav.quests') }}
       </router-link>
       <router-link to="/dashboard/analytics" class="nav-item">
-        <BarChart2 :size="18" /> Analytics
+        <BarChart2 :size="18" /> {{ t('dashboard.nav.analytics') }}
       </router-link>
       <router-link to="/dashboard/presets" class="nav-item">
-        <Star :size="18" /> Presets
+        <Star :size="18" /> {{ t('dashboard.nav.presets') }}
       </router-link>
       <router-link to="/dashboard/settings" class="nav-item">
-        <Settings :size="18" /> Settings
+        <Settings :size="18" /> {{ t('dashboard.nav.settings') }}
       </router-link>
     </nav>
 
     <!-- Upgrade Card -->
     <div v-if="planTier === 'free'" class="upgrade-card">
-      <div class="upgrade-title">You're on Free</div>
-      <div class="upgrade-body">Get advanced features and more quests.</div>
-      <PzButton variant="primary" size="sm" block class="upgrade-btn">Upgrade a gift</PzButton>
+      <div class="upgrade-title">{{ t('dashboard.upgrade.title') }}</div>
+      <div class="upgrade-body">{{ t('dashboard.upgrade.body') }}</div>
+      <BaseButton variant="primary" size="sm" block class="upgrade-btn">{{ t('dashboard.upgrade.cta') }}</BaseButton>
     </div>
 
     <!-- User Row -->
@@ -47,26 +47,25 @@
 
 <script setup>
 import { computed } from 'vue'
+import { useI18n } from 'vue-i18n'
 import { storeToRefs } from 'pinia'
 import { useAppStore } from '../../stores/useAppStore'
 import { LayoutGrid, BarChart2, Star, Settings } from 'lucide-vue-next'
-import PzButton from '../ui/PzButton.vue'
+import BaseButton from '../ui/BaseButton.vue'
+import { APP_NAME } from '../../config/app'
 
+const { t } = useI18n()
 const store = useAppStore()
 const { planTier, creatorInfo } = storeToRefs(store)
 
-const planLabel = computed(() => {
-  if (planTier.value === 'free') return 'Free plan'
-  if (planTier.value === 'premium') return 'Premium'
-  return 'Corporate workspace'
-})
+const planLabel = computed(() => t(`dashboard.plans.${planTier.value}`))
 </script>
 
 <style scoped>
-.pz-sidebar {
+.app-sidebar {
   width: 250px;
-  background: var(--pz-surface);
-  border-inline-end: 1px solid var(--pz-hairline);
+  background: var(--color-surface);
+  border-inline-end: 1px solid var(--color-hairline);
   padding: 22px 16px;
   display: flex;
   flex-direction: column;
@@ -86,7 +85,7 @@ const planLabel = computed(() => {
   width: 32px;
   height: 32px;
   border-radius: 10px;
-  background: linear-gradient(140deg, var(--pz-primary), var(--pz-secondary));
+  background: linear-gradient(140deg, var(--color-primary), var(--color-secondary));
   display: flex;
   align-items: center;
   justify-content: center;
@@ -95,14 +94,14 @@ const planLabel = computed(() => {
   width: 7px;
   height: 11px;
   border-radius: 99px 99px 4px 4px;
-  background: var(--pz-on-primary);
+  background: var(--color-on-primary);
 }
 .logo-text {
-  font-family: var(--pz-font-display);
+  font-family: var(--font-display);
   font-size: 20px;
   font-weight: 800;
   letter-spacing: -0.02em;
-  color: var(--pz-text);
+  color: var(--color-text);
 }
 
 .kicker {
@@ -110,7 +109,7 @@ const planLabel = computed(() => {
   font-weight: 700;
   letter-spacing: 0.13em;
   text-transform: uppercase;
-  color: var(--pz-muted);
+  color: var(--color-muted);
   margin-bottom: 12px;
   padding: 0 12px;
 }
@@ -129,40 +128,40 @@ const planLabel = computed(() => {
   font-size: 14px;
   text-decoration: none;
   font-weight: 600;
-  color: var(--pz-muted);
-  transition: all var(--pz-dur) var(--pz-ease);
+  color: var(--color-muted);
+  transition: all var(--duration) var(--ease);
 }
 .nav-item.router-link-active {
-  background: var(--pz-surface-2);
-  color: var(--pz-primary);
+  background: var(--color-surface-2);
+  color: var(--color-primary);
   font-weight: 700;
 }
-.nav-item:focus-visible { outline: none; box-shadow: 0 0 0 4px var(--pz-ring); }
+.nav-item:focus-visible { outline: none; box-shadow: 0 0 0 4px var(--color-ring); }
 
 .upgrade-card {
   margin-top: auto;
-  border: 1px solid var(--pz-border);
+  border: 1px solid var(--color-border);
   border-radius: 16px;
   padding: 15px;
-  background: radial-gradient(140% 140% at 100% 0%, var(--pz-surface-3), var(--pz-surface-2));
+  background: radial-gradient(140% 140% at 100% 0%, var(--color-surface-3), var(--color-surface-2));
   margin-bottom: 16px;
 }
 .upgrade-title {
-  font-family: var(--pz-font-display);
+  font-family: var(--font-display);
   font-size: 14px;
   font-weight: 800;
   margin-bottom: 4px;
 }
 .upgrade-body {
   font-size: 12px;
-  color: var(--pz-muted);
+  color: var(--color-muted);
   margin-bottom: 12px;
   line-height: 1.4;
 }
 
 .user-row {
   margin-top: auto;
-  border-top: 1px solid var(--pz-hairline);
+  border-top: 1px solid var(--color-hairline);
   padding-top: 16px;
   display: flex;
   align-items: center;
@@ -170,21 +169,21 @@ const planLabel = computed(() => {
   text-decoration: none;
   color: inherit;
   cursor: pointer;
-  transition: opacity var(--pz-dur) var(--pz-ease);
+  transition: opacity var(--duration) var(--ease);
 }
 .user-row:hover {
   opacity: 0.8;
 }
-.user-row:focus-visible { outline: none; box-shadow: 0 0 0 4px var(--pz-ring); border-radius: var(--pz-r-md); }
+.user-row:focus-visible { outline: none; box-shadow: 0 0 0 4px var(--color-ring); border-radius: var(--radius-md); }
 .upgrade-card + .user-row {
   margin-top: 0;
 }
 .avatar {
   width: 38px;
   height: 38px;
-  border-radius: var(--pz-r-full);
-  background: var(--pz-surface-2);
-  color: var(--pz-primary);
+  border-radius: var(--radius-full);
+  background: var(--color-surface-2);
+  color: var(--color-primary);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -197,6 +196,80 @@ const planLabel = computed(() => {
 }
 .user-plan {
   font-size: 11.5px;
-  color: var(--pz-muted);
+  color: var(--color-muted);
+}
+
+/* On phones the rail becomes a compact top bar: logo and avatar on one line,
+   the workspace nav scrolling horizontally beneath it. */
+@media (max-width: 900px) {
+  .app-sidebar {
+    width: 100%;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    grid-template-areas:
+      'logo . user'
+      'nav nav nav'
+      'upgrade upgrade upgrade';
+    align-items: center;
+    column-gap: 12px;
+    row-gap: 12px;
+    padding: 14px 16px;
+    border-inline-end: none;
+    border-block-end: 1px solid var(--color-hairline);
+  }
+  .logo-lockup {
+    grid-area: logo;
+    margin-bottom: 0;
+  }
+  .kicker {
+    display: none;
+  }
+  .nav-menu {
+    grid-area: nav;
+    flex-direction: row;
+    gap: 6px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    /* Bleed to the edges so the scroll affordance reaches the screen border. */
+    margin-inline: -16px;
+    padding-inline: 16px;
+  }
+  .nav-menu::-webkit-scrollbar {
+    display: none;
+  }
+  .nav-item {
+    flex: none;
+    white-space: nowrap;
+    min-height: 44px;
+  }
+  .upgrade-card {
+    grid-area: upgrade;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 0;
+    padding: 10px 14px;
+  }
+  .upgrade-title {
+    flex: 1;
+    margin-bottom: 0;
+  }
+  .upgrade-body {
+    display: none;
+  }
+  .upgrade-card .upgrade-btn {
+    width: auto;
+    flex: none;
+  }
+  .user-row {
+    grid-area: user;
+    margin-top: 0;
+    border-top: none;
+    padding-top: 0;
+  }
+  /* Avatar alone — the name and plan live in Settings anyway. */
+  .user-info {
+    display: none;
+  }
 }
 </style>
