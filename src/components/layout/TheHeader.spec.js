@@ -36,7 +36,7 @@ describe('TheHeader language menu', () => {
   })
 
   const trigger = () => wrapper.findAll('button').find((b) => b.text().includes('English'))
-  const menu = () => wrapper.find('.pz-lang div')
+  const menu = () => wrapper.find('.lang-menu div')
 
   it('opens on click', async () => {
     expect(menu().exists()).toBe(false)
@@ -48,7 +48,7 @@ describe('TheHeader language menu', () => {
     await trigger().trigger('click')
     expect(menu().exists()).toBe(true)
 
-    await wrapper.find('.pz-lang').trigger('focusout')
+    await wrapper.find('.lang-menu').trigger('focusout')
     expect(onError).not.toHaveBeenCalled()
 
     // The close is deferred so a click on an option still lands first.
@@ -60,8 +60,8 @@ describe('TheHeader language menu', () => {
 
   it('keeps the menu open when focus moves back inside it', async () => {
     await trigger().trigger('click')
-    await wrapper.find('.pz-lang').trigger('focusout')
-    await wrapper.find('.pz-lang').trigger('focusin')
+    await wrapper.find('.lang-menu').trigger('focusout')
+    await wrapper.find('.lang-menu').trigger('focusin')
 
     vi.runAllTimers()
     await wrapper.vm.$nextTick()
@@ -70,7 +70,7 @@ describe('TheHeader language menu', () => {
 
   it('closes on Escape', async () => {
     await trigger().trigger('click')
-    await wrapper.find('.pz-lang').trigger('keydown.esc')
+    await wrapper.find('.lang-menu').trigger('keydown.esc')
     expect(menu().exists()).toBe(false)
   })
 

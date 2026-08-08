@@ -1,11 +1,13 @@
-# GEMINI.md — Agent Guide for Puzzify
+# GEMINI.md — Agent Guide for Quest Platform
 
-This file tells Gemini (and any Gemini-based agent or automation) how to work in the **Puzzify** repository. Read it before making changes. Keep it in sync with `docs/prd.md` and `docs/design.md`.
+This file tells Gemini (and any Gemini-based agent or automation) how to work in the **Quest Platform** repository. Read it before making changes. Keep it in sync with `docs/prd.md` and `docs/design.md`.
 
 > Note: Gemini already powers an automation in this repo — the **Auto PR Description** workflow (`.github/workflows/auto-pr-description.yml`, model `gemini-2.5-flash-lite`). Section 5 is especially relevant to that role.
 
-## 1. What Puzzify is
-Puzzify turns any digital gift, message, or announcement into a personalized, online mini-escape room. Creators build a multi-step **Quest** in a **Creator Studio**; recipients play it on a unique link (no login, no download) and unlock a reward.
+## 1. What Quest Platform is
+Quest Platform turns any digital gift, message, or announcement into a personalized, online mini-escape room. Creators build a multi-step **Quest** in a **Creator Studio**; recipients play it on a unique link (no login, no download) and unlock a reward.
+
+**Naming:** the product name is NOT hardcoded anywhere. It lives in `APP_NAME` (`src/config/app.js`); locale files reference it as the vue-i18n linked message `@:appName`. Never hardcode a product name in a component, a locale file or a test — import the constant. Design tokens are brand-neutral (`--color-*`, `--font-*`, `--space-*`, `--radius-*`, `--shadow-*`) and shared components use the `Base*` prefix.
 
 Authoritative specs:
 - Product scope & requirements → `docs/prd.md`

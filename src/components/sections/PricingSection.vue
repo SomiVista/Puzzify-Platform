@@ -6,15 +6,17 @@
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 
-const { tm } = useI18n()
+const { tm, rt } = useI18n()
 const tierCard = 'display:flex; flex-direction:column; background:var(--color-surface); border:1px solid var(--color-border); border-radius:var(--radius-xl); padding:28px; box-shadow:var(--shadow-1);'
 const tierCardRec = 'display:flex; flex-direction:column; background:var(--color-surface); border:2px solid var(--color-primary); border-radius:var(--radius-xl); padding:28px; box-shadow:var(--shadow-2); position:relative;'
 const ctaPrimary = 'display:inline-flex; align-items:center; justify-content:center; width:100%; padding:14px; min-height:44px; background:var(--color-primary); color:var(--color-on-primary); border:none; border-radius:var(--radius-md); font-family:var(--font-ui); font-weight:700; font-size:14.5px; cursor:pointer; text-decoration:none;'
 const ctaSecondary = 'display:inline-flex; align-items:center; justify-content:center; width:100%; padding:14px; min-height:44px; background:var(--color-surface-2); color:var(--color-primary); border:1px solid var(--color-border); border-radius:var(--radius-md); font-family:var(--font-ui); font-weight:700; font-size:14.5px; cursor:pointer; text-decoration:none;'
 
 const pricing = computed(() => tm('pricing').map(p => ({
-  name:p.name, price:p.price, period:p.period, tagline:p.tagline, cta:p.cta, rec:!!p.rec,
-  features:p.features,
+  name: rt(p.name), price: rt(p.price), period: rt(p.period),
+  tagline: rt(p.tagline), cta: rt(p.cta), rec: !!p.rec,
+  // `rt` resolves linked messages (e.g. `@:appName`) that `tm` leaves raw.
+  features: p.features.map((f) => rt(f)),
   cardStyle: p.rec ? tierCardRec : tierCard,
   ctaStyle: p.rec ? ctaPrimary : ctaSecondary,
 })))

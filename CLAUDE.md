@@ -1,9 +1,11 @@
-# CLAUDE.md — Agent Guide for Puzzify
+# CLAUDE.md — Agent Guide for Quest Platform
 
-This file tells Claude (and any Claude-based agent) how to work in the **Puzzify** repository. Read it before making changes. Keep it in sync with `docs/prd.md` and `docs/design.md`.
+This file tells Claude (and any Claude-based agent) how to work in the **Quest Platform** repository. Read it before making changes. Keep it in sync with `docs/prd.md` and `docs/design.md`.
 
-## 1. What Puzzify is
-Puzzify turns any digital gift, message, or announcement into a personalized, online mini-escape room. Creators build a multi-step **Quest** in a **Creator Studio**; recipients play it on a unique link (no login, no download) and unlock a reward.
+## 1. What Quest Platform is
+Quest Platform turns any digital gift, message, or announcement into a personalized, online mini-escape room. Creators build a multi-step **Quest** in a **Creator Studio**; recipients play it on a unique link (no login, no download) and unlock a reward.
+
+**Naming:** the product name is NOT hardcoded anywhere. It lives in `APP_NAME` (`src/config/app.js`); locale files reference it as the vue-i18n linked message `@:appName`. Never hardcode a product name in a component, a locale file or a test — import the constant. Design tokens are brand-neutral (`--color-*`, `--font-*`, `--space-*`, `--radius-*`, `--shadow-*`) and shared components use the `Base*` prefix.
 
 Authoritative specs:
 - Product scope & requirements → `docs/prd.md`

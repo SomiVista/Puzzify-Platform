@@ -1,8 +1,10 @@
-# 🎁 Puzzify
+# 🎁 Quest Platform
 
 **The delivery is the gift.**
 
-Puzzify turns any digital gift, message, or announcement into a personalized, online mini-escape room. Creators build the mystery in a few minutes — recipients play the game on a unique link (no app, no login) to unlock their reward.
+> **Product name is a placeholder.** "Quest Platform" is a stand-in. The name renders from a single constant, `APP_NAME` in [`src/config/app.js`](src/config/app.js) — change it there and every screen, all 9 locales and the browser tab follow. Infrastructure identifiers (the GitHub repository, the Firebase project `puzzify-platform` and its hosting domain) still carry the old name and must be renamed in their own consoles.
+
+Quest Platform turns any digital gift, message, or announcement into a personalized, online mini-escape room. Creators build the mystery in a few minutes — recipients play the game on a unique link (no app, no login) to unlock their reward.
 
 [![CI/CD](https://github.com/SomiVista/Puzzify-Platform/actions/workflows/ci-cd.yml/badge.svg)](https://github.com/SomiVista/Puzzify-Platform/actions/workflows/ci-cd.yml)
 [![Release](https://img.shields.io/github/v/release/SomiVista/Puzzify-Platform)](https://github.com/SomiVista/Puzzify-Platform/releases)
@@ -14,9 +16,9 @@ Puzzify turns any digital gift, message, or announcement into a personalized, on
 
 ---
 
-## Why Puzzify?
+## Why Quest Platform?
 
-Sending a gift card or a greeting link feels transactional — the recipient clicks once and it's over. Puzzify replaces "delivery" with an **exploration experience**:
+Sending a gift card or a greeting link feels transactional — the recipient clicks once and it's over. Quest Platform replaces "delivery" with an **exploration experience**:
 
 1. **🛠️ Create** — Pick an occasion, add puzzle steps (a password riddle, a trivia question, a hidden spot in a photo), attach the reward.
 2. **🔗 Send** — Share one unique link in any chat app.
@@ -43,7 +45,7 @@ A few minutes of the sender's thought and creativity become the most valuable pa
 
 ## 🚧 Project Status
 
-Puzzify is an MVP in active development.
+Quest Platform is an MVP in active development.
 
 | | Module |
 | :--- | :--- |

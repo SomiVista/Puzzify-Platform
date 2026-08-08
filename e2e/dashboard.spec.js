@@ -113,8 +113,8 @@ test.describe('Creator dashboard', () => {
     await page.getByRole('button', { name: /تسجيل الدخول|Log in/ }).click()
     await expect(page).toHaveURL(/\/dashboard\/quests$/)
 
-    await expect(page.locator('.pz-stage')).toHaveAttribute('dir', 'rtl')
-    await expect(page.locator('.pz-stage')).toHaveClass(/pz-lang-rtl/)
+    await expect(page.locator('.app-stage')).toHaveAttribute('dir', 'rtl')
+    await expect(page.locator('.app-stage')).toHaveClass(/lang-rtl/)
     // Card chrome is translated, not left in English.
     await expect(page.locator('.quest-card').first().getByTestId('quest-reward')).not.toHaveText(
       /Letter|Video|Voucher/

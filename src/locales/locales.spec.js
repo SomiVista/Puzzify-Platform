@@ -9,6 +9,7 @@ import it_ from './it.json'
 import fa from './fa.json'
 import ar from './ar.json'
 import i18n, { RTL_LOCALES, isRtlLocale, dirForLocale } from '../i18n'
+import { APP_NAME } from '../config/app'
 
 const locales = { sv, es, fr, de, pt, it: it_, fa, ar }
 
@@ -41,6 +42,34 @@ describe('locale files', () => {
     it(`${code}.json has the same keys as en.json`, () => {
       expect(flattenKeys(messages).sort()).toEqual(enKeys)
     })
+  })
+})
+
+describe('product name', () => {
+  const BRANDED_KEYS = ['watermark', 'whyKicker', 'heroSub', 'footLegal']
+
+  it('is never hardcoded in a locale file', () => {
+    for (const [code, messages] of Object.entries({ en, ...locales })) {
+      const json = JSON.stringify(messages)
+      expect(json, `${code}.json hardcodes the product name`).not.toContain(APP_NAME)
+    }
+  })
+
+  // The `@:appName` link is what keeps the name in one place. If it stopped
+  // resolving, every branded string would render the literal "@:appName".
+  it.each(['en', ...Object.keys(locales)])('resolves @:appName in %s', (code) => {
+    i18n.global.locale.value = code
+    for (const key of BRANDED_KEYS) {
+      const rendered = i18n.global.t(key)
+      expect(rendered, `${code}.${key}`).toContain(APP_NAME)
+      expect(rendered, `${code}.${key} left a raw link`).not.toContain('@:')
+    }
+    i18n.global.locale.value = 'en'
+  })
+
+  it('takes the name from the single config constant', () => {
+    i18n.global.locale.value = 'en'
+    expect(i18n.global.t('watermark')).toBe(`Made with ${APP_NAME}`)
   })
 })
 

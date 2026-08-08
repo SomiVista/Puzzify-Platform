@@ -1,6 +1,6 @@
 # Product Requirement Document (PRD)
 
-## Project Name: Puzzify
+## Project Name: Quest Platform
 
 * **Version:** 1.1
 * **Status:** Living document — MVP in development
@@ -39,11 +39,11 @@ The digital gifting and online interaction industries currently face three funda
 
 ### 1.2. The Solution
 
-**Puzzify** gamifies the digital gifting process, shifting the experience from a simple "delivery" to an **Exploration Experience**. Senders spend just a few minutes configuring a highly personalized digital "Quest." This investment of time and thought exponentially increases the emotional value of the gift for the recipient, even if the final reward is a simple text message.
+**Quest Platform** gamifies the digital gifting process, shifting the experience from a simple "delivery" to an **Exploration Experience**. Senders spend just a few minutes configuring a highly personalized digital "Quest." This investment of time and thought exponentially increases the emotional value of the gift for the recipient, even if the final reward is a simple text message.
 
 ### 1.3. Core Value Proposition
 
-**"Puzzify turns any digital gift, message, or announcement into a personalized, online mini-escape room. Creators build the mystery; recipients play the game to unlock their reward."**
+**"Quest Platform turns any digital gift, message, or announcement into a personalized, online mini-escape room. Creators build the mystery; recipients play the game to unlock their reward."**
 
 ### 1.4. Target Users & Personas
 
@@ -58,7 +58,7 @@ The digital gifting and online interaction industries currently face three funda
 
 ## 2. Core Pillars: Universal & Modular
 
-To ensure Puzzify operates as a truly generic, scalable, and globally accessible platform, it is built upon four foundational pillars.
+To ensure Quest Platform operates as a truly generic, scalable, and globally accessible platform, it is built upon four foundational pillars.
 
 ### 2.1. Occasion-Agnostic Architecture
 
@@ -119,7 +119,7 @@ The platform enforces a strict decoupling of raw puzzle data from the rendering 
 
 ### 2.4. Design System as Source of Truth
 
-The normative design reference is **`docs/design.md`** ("Puzzify Design System"). The PRD deliberately does not duplicate visual specifications; where this document and `design.md` describe the same surface, `design.md` governs appearance and this document governs behavior.
+The normative design reference is **`docs/design.md`** ("Quest Platform Design System"). The PRD deliberately does not duplicate visual specifications; where this document and `design.md` describe the same surface, `design.md` governs appearance and this document governs behavior.
 
 * **Tokens `[Shipped]`:** semantic design-token variables (`--color-*`, `--font-*`, `--space-*`, `--radius-*`, `--shadow-*`) defined in `src/assets/tokens/` (`colors`, `typography`, `spacing`, `radius`, `elevation`, `motion`, `base`); theme values in `src/themes.js`.
 * **Typography:** Bricolage Grotesque (display), IBM Plex Sans (UI/body), IBM Plex Mono (code/voucher codes), Vazirmatn (Persian/Arabic) — all self-hosted `.woff2`.
@@ -130,7 +130,7 @@ The normative design reference is **`docs/design.md`** ("Puzzify Design System")
 
 ## 3. System Architecture & Technology Stack
 
-Puzzify is a single Vue SPA today, structured so the two experiences (Creator Studio and Interactive Player) stay decoupled and the Player can later be split/optimized independently to protect its load budget.
+Quest Platform is a single Vue SPA today, structured so the two experiences (Creator Studio and Interactive Player) stay decoupled and the Player can later be split/optimized independently to protect its load budget.
 
 | Layer | Technology | Status |
 | :--- | :--- | :--- |
@@ -179,7 +179,7 @@ The application splits into two decoupled core experiences — the **Creator Stu
 
 A dedicated marketing and product introduction page at `/` that showcases the platform, highlights use cases, and drives new creator sign-ups.
 
-Shipped sections, in order: **Hero** (headline, primary CTA, animated phone mock of the Player with a live particle field and theme switching), **Trust strip**, **How it works** (create → send → play), **Puzzle types showcase** (the three MVP blocks), **Use cases**, **Why Puzzify**, **Partners** (Puzzify × WelloWork collaboration block), **Pricing** (the three tiers of Section 5.1), **Final CTA**, and a footer.
+Shipped sections, in order: **Hero** (headline, primary CTA, animated phone mock of the Player with a live particle field and theme switching), **Trust strip**, **How it works** (create → send → play), **Puzzle types showcase** (the three MVP blocks), **Use cases**, **Why Quest Platform**, **Partners** (Quest Platform × WelloWork collaboration block), **Pricing** (the three tiers of Section 5.1), **Final CTA**, and a footer.
 
 Requirements:
 
@@ -267,7 +267,7 @@ The platform utilizes a combination of freemium limits, micro-transactions, and 
 
 | Tier | Price | Target Audience | Features & Packaging |
 | :--- | :--- | :--- | :--- |
-| **Freemium** | $0 — free forever | Casual, everyday senders | • Up to 3 linear steps per quest. • Base puzzle modules (`lock`, `trivia`). • Birthday & Mystery themes. • Puzzify watermark on the player. |
+| **Freemium** | $0 — free forever | Casual, everyday senders | • Up to 3 linear steps per quest. • Base puzzle modules (`lock`, `trivia`). • Birthday & Mystery themes. • Quest Platform watermark on the player. |
 | **Premium Box** | $4 — one-time, per quest | One-off event creators | • Unlimited gameplay steps. • Premium themes, particles & ambient audio (all presets, incl. `spooky`). • Image Hotspot module. • No watermark. |
 | **Corporate** | Custom — billed annually | HR teams & marketing agencies | • Team dashboard & seats. • White-labeling & custom domains. • Analytics & play tracking (completion rates, solve times, engagement). • Priority support. |
 
@@ -275,7 +275,7 @@ The platform utilizes a combination of freemium limits, micro-transactions, and 
 
 ### 5.2. The Viral Loop `[Shipped]`
 
-Because Puzzify is an inherently shared utility, the product leverages built-in organic growth mechanics:
+Because Quest Platform is an inherently shared utility, the product leverages built-in organic growth mechanics:
 
 ```
 [Sender Creates Quest] ──> [Recipient Opens Link] ──> [Recipient Plays & Unlocks Reward]
@@ -351,7 +351,7 @@ No functionality ships without tests; automation is the source of truth for buil
 | Player | `/q/{questId}` — unguessable id, no authentication | Not started |
 | Production hosting | `https://puzzify-platform.web.app` (Firebase `live` channel) | Shipped |
 | PR previews | Firebase Hosting `dev` preview channel | Shipped |
-| Custom domain | `puzzify.me` (target production domain; the `/q/` path scheme is normative regardless of host) | Not started |
+| Custom domain | To be decided — the previously planned domain is tied to the former product name (see `APP_NAME` in `src/config/app.js`). The `/q/` path scheme is normative regardless of host. | Not started |
 
 ---
 
@@ -391,7 +391,7 @@ No functionality ships without tests; automation is the source of truth for buil
 
 ## Appendix A — References
 
-* `docs/design.md` — Puzzify Design System (tokens, components, theming, RTL, design principles). **Normative for all visuals.**
+* `docs/design.md` — Quest Platform Design System (tokens, components, theming, RTL, design principles). **Normative for all visuals.**
 * `src/themes.js` — canonical theme preset ids and token values.
 * `src/locales/en.json` — canonical marketing/pricing copy.
 * `CLAUDE.md` / `GEMINI.md` — agent working agreements (testing, CI/CD, PR discipline).
@@ -400,7 +400,7 @@ No functionality ships without tests; automation is the source of truth for buil
 
 | Term | Meaning |
 | :--- | :--- |
-| **Quest** | One complete Puzzify experience: an ordered set of steps plus a theme and a reward, shared via a unique link. |
+| **Quest** | One complete Quest Platform experience: an ordered set of steps plus a theme and a reward, shared via a unique link. |
 | **Step** | A single screen in a quest containing exactly one puzzle block. MVP progression is strictly linear. |
 | **Puzzle Block** | A reusable, isolated puzzle component (`lock`, `trivia`, `hotspot`) that receives standardized props and emits a boolean validity state. |
 | **Grand Finale** | The reward screen that mounts only after every step is solved. |
@@ -409,4 +409,4 @@ No functionality ships without tests; automation is the source of truth for buil
 | **Occasion Preset** | A dashboard shortcut (e.g., Anniversary, Mystery night) that pre-seeds a new quest's theme, audio, and reward box. |
 | **Creator / Sender** | The authenticated user who builds and publishes quests in the Creator Studio. |
 | **Recipient** | The person who plays a quest via its link — no account, no install. |
-| **Watermark** | The Puzzify brand badge on free-tier players; part of the viral loop and removed in paid tiers. |
+| **Watermark** | The Quest Platform brand badge on free-tier players; part of the viral loop and removed in paid tiers. |

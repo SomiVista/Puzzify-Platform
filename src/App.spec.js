@@ -48,6 +48,21 @@ describe('App.vue', () => {
     expect(wrapper.classes()).toContain('theme-mystery')
   })
 
+  /**
+   * `tm()` returns RAW messages, so a component reading a branded string that
+   * way renders the literal "@:appName" instead of the product name. Scanning
+   * the whole landing page catches every present and future case in one go.
+   */
+  it('leaves no unresolved i18n link on the page', () => {
+    expect(wrapper.text()).not.toContain('@:')
+  })
+
+  it('renders the product name from the config constant', () => {
+    expect(wrapper.text()).toContain(APP_NAME)
+    // …including strings that reach the DOM through a linked message.
+    expect(wrapper.text()).toContain(`${APP_NAME} × WelloWork`)
+  })
+
   it('stamps the active preset so [data-theme] rules apply', async () => {
     expect(wrapper.attributes('data-theme')).toBe('birthday')
     // The preset's own token values ride along as inline custom properties.

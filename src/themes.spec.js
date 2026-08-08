@@ -6,14 +6,14 @@ import { THEMES, DEFAULT_THEME, themeOf, themeVars } from './themes'
 // Vitest runs from the repo root; `import.meta.url` is not a file URL under jsdom.
 const css = readFileSync(resolve('src/assets/tokens/colors.css'), 'utf8')
 
-/** Pull `--pz-*` declarations out of the first rule whose selector matches. */
+/** Pull design-token declarations out of the first rule whose selector matches. */
 function declarationsFor(selector) {
   const escaped = selector.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
   const rule = new RegExp(`${escaped}\\s*\\{([^}]*)\\}`).exec(css)
   if (!rule) return null
   const declarations = {}
   for (const line of rule[1].split(';')) {
-    const match = /(--pz-[\w-]+)\s*:\s*([^;/]+)/.exec(line)
+    const match = /(--[\w-]+)\s*:\s*([^;/]+)/.exec(line)
     if (match) declarations[match[1]] = match[2].trim()
   }
   return declarations
@@ -21,7 +21,7 @@ function declarationsFor(selector) {
 
 /* Shadows are elevation tokens, not colors: the light themes inherit them from
    elevation.css and only the dark presets restate them. */
-const isShadow = (token) => token.startsWith('--pz-e-')
+const isShadow = (token) => token.startsWith('--shadow-')
 
 describe('theme presets', () => {
   it('falls back to the default preset for an unknown id', () => {
@@ -58,9 +58,9 @@ describe('theme presets', () => {
     })
 
     it.each(Object.keys(THEMES).filter((id) => id !== DEFAULT_THEME))(
-      '[data-pz-theme="%s"] matches its preset',
+      '[data-theme="%s"] matches its preset',
       (id) => {
-        const block = declarationsFor(`[data-pz-theme="${id}"]`)
+        const block = declarationsFor(`[data-theme="${id}"]`)
         expect(block, `colors.css has no block for ${id}`).not.toBeNull()
 
         // Every value the CSS declares must be the preset's value…

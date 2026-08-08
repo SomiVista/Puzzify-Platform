@@ -9,9 +9,19 @@ import { useI18n } from 'vue-i18n'
 import { APP_NAME } from '../../config/app'
 
 const store = useAppStore()
-const { tm } = useI18n()
+const { tm, rt } = useI18n()
 
-const pb = computed(() => tm('partnerBlock'))
+/* `tm` hands back RAW messages: linked messages such as `@:appName` are not
+   resolved until each leaf goes through `rt`. */
+const raw = computed(() => tm('partnerBlock'))
+const pb = computed(() => ({
+  ...raw.value,
+  kicker: rt(raw.value.kicker),
+  title: rt(raw.value.title),
+  desc: rt(raw.value.desc),
+  cta: rt(raw.value.cta),
+  link: rt(raw.value.link)
+}))
 </script>
 
 <template>
